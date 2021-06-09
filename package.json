@@ -1,0 +1,45 @@
+{
+  "name": "affineplane",
+  "version": "1.0.0-alpha",
+  "description": "Affine plane geometry library",
+  "keywords": [
+    "affine",
+    "transformation",
+    "plane",
+    "2d",
+    "space",
+    "geometry",
+    "scale",
+    "rotate",
+    "translate",
+    "estimator",
+    "rigid",
+    "nonreflective",
+    "similarity"
+  ],
+  "homepage": "https://github.com/axelpale/affineplane",
+  "main": "index.js",
+  "author": {
+    "name": "Akseli Palen",
+    "email": "akseli.palen@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/axelpale/affineplane.git"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "genversion": "^3.0.0",
+    "standard": "^16.0.3",
+    "tape": "^5.2.2"
+  },
+  "scripts": {
+    "test": "npm run test:lint && npm run test:unit",
+    "test:unit": "node test/index.test.js",
+    "test:lint": "standard index.js 'lib/**/*.js' 'test/**/*.js'",
+    "test:lint:fix": "standard --fix index.js 'lib/**/*.js' 'test/**/*.js'",
+    "gv": "genversion lib/version.js",
+    "build:standalone": "browserify index.js --standalone affineplane -o affineplane.js"
+  }
+}
