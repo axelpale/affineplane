@@ -6,16 +6,20 @@ Affine 2D plane geometry library
 
 - Point
   - A 2D point on an affine plane
-  - The affine plane has no origin. Adding point to a point does not mean anything because the result depends on the origin and the plane does not have any origin.
+  - The affine plane has no origin. The operation of adding a point to another point does not mean anything because the result depends on the origin and the plane does not have an origin.
   - `{ x, y }`
 - Vector
   - A 2D difference on an affine plane
   - Meaning a kind of translation, change, or move on the plane
   - It has origin at `{ dx: 0, dy: 0 }` and therefore it also has length and angle, and can be added and multiplied.
   - `{ dx, dy }`
-- Rect
+- Path
+  - An open sequence of points
+- Polygon
+  - A closed sequence of points
+- Box
   - A 2D rectangle
-  - `{ w, h }`
+  - `{ xmin, ymin, xmax, ymax }`
 - Linear
   - A linear transformation matrix
   - More strictly: a linear non-reflective similarity transformation matrix
@@ -35,3 +39,12 @@ Affine 2D plane geometry library
   - An affine transformation matrix
   - Represents a translation, rotation, and/or scaling on a plane
   - `{ da, db, dx, dy }`
+- Scaling
+  - `{ ds }`
+- Rotation
+  - `{ dr }`
+- Point3
+  - `{ x, y, z }`
+- Vector3
+  - `{ dx, dy, dz }`
+  - `{ x, y, z, r }`
