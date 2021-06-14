@@ -25,7 +25,7 @@ Affine 2D plane geometry library
   - More strictly: a linear non-reflective similarity transformation matrix
   - It captures scaling and rotation around origin.
   - `{ a, b }`
-- Position or Placement
+- Position
   - An affine transformation matrix
   - Represents a position of an object on a space
   - A point with scale and rotation
@@ -48,3 +48,46 @@ Affine 2D plane geometry library
 - Vector3
   - `{ dx, dy, dz }`
   - `{ x, y, z, r }`
+
+What if we redefine "point"?
+
+- Point
+  - An affine transformation matrix
+  - Represents a position of an object on a plane
+  - A point with scale and rotation angle
+  - `{ a, b, x, y }`
+  - `{ x, y, z, r }`
+- Vector
+  - An affine transformation matrix
+  - Represents change of a position on a plane
+  - A vector with scaling and rotation
+  - `{ da, db, dx, dy }`
+  - `{ dx, dy, dz, dr }`
+
+What if
+
+- Formation
+- Transformation
+
+Z defined as zoom layers
+
+z <- z - 1 <=> scale <- scale * 2
+z <- z + 1 <=> scale <- scale * (1 / 2)
+z <- z + 2 <=> scale <- scale * (1 / 4)
+z <- z + 3 <=> scale <- scale * (1 / 8)
+
+=> scale = 1 / (z ** 2)
+
+z = -1 <=> scale = 0.5
+z = 0 <=> scale = 1
+z = 1 <=> scale = 2
+z = 2 <=> scale = 4
+
+Z defined as viewing distance
+
+z <- z * 0 <=> scale <- scale / 0
+z <- z * 1 <=> scale <- scale / 1
+z <- z * 2 <=> scale <- scale / 2
+z <- z * 4 <=> scale <- scale / 4
+
+=> scale = 1 / z
