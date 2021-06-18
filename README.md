@@ -4,11 +4,14 @@ Affine 2D plane geometry library
 
 ## Geometries
 
+- Vector
+  - An abstract `{ x, y }`
+  - provides operators for Point and Translation
 - Point
   - A 2D point on an affine plane
   - The affine plane has no origin. The operation of adding a point to another point does not mean anything because the result depends on the origin and the plane does not have an origin.
   - `{ x, y }`
-- Vector
+- Translation
   - A 2D difference on an affine plane
   - Meaning a kind of translation, change, or move on the plane
   - It has origin at `{ dx: 0, dy: 0 }` and therefore it also has length and angle, and can be added and multiplied.
