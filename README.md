@@ -50,6 +50,9 @@ Affine 2D plane geometry library
 - Vector3
   - `{ dx, dy, dz }`
   - `{ x, y, z, r }`
+- Perspective or Projection or Vector4
+  - `{ x, y, z, r }`
+  - `{ a, b, x, y }`
 
 What if we redefine "point"?
 
