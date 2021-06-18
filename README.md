@@ -1,6 +1,6 @@
 # affineplane
 
-Affine 2D plane geometry library
+A geometry library for 2D affine planes that follows a functional, class-free paradigm.
 
 ## Geometries
 
