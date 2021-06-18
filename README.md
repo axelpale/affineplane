@@ -20,6 +20,8 @@ Affine 2D plane geometry library
 - Box
   - A 2D rectangle
   - `{ xmin, ymin, xmax, ymax }`
+- Transform
+  - An abstract `{ a, b, x, y }`
 - Linear
   - A linear transformation matrix
   - More strictly: a linear non-reflective similarity transformation matrix
