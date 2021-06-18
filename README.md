@@ -14,12 +14,14 @@ A geometry library for 2D affine planes that follows a functional, class-free pa
 - Translation
   - A 2D difference on an affine plane
   - Meaning a kind of translation, change, or move on the plane
-  - It has origin at `{ dx: 0, dy: 0 }` and therefore it also has length and angle, and can be added and multiplied.
-  - `{ dx, dy }`
+  - It has origin at `{ x: 0, y: 0 }` and therefore it also has length and angle, and can be added and multiplied.
+  - `{ x, y }`
 - Path
   - An open sequence of points
+  - `[{ x, y }, { x, y }, ...]`
 - Polygon
   - A closed sequence of points
+  - `[{ x, y }, { x, y }, ...]`
 - Box
   - A 2D rectangle
   - `{ xmin, ymin, xmax, ymax }`
@@ -30,20 +32,20 @@ A geometry library for 2D affine planes that follows a functional, class-free pa
   - More strictly: a linear non-reflective similarity transformation matrix
   - It captures scaling and rotation around origin.
   - `{ a, b }`
-- Position
+- Position or Placement or Plane
   - An affine transformation matrix
-  - Represents a position of an object on a space
+  - Represents a position and orientation of an object on a plane
   - A point with scale and rotation
   - `{ a, b, x, y }`
 - Transit
   - An affine transformation matrix
   - Represents a change of basis
   - Use to convert geometries between coordinate systems
-  - `{ pa, pb, px, py }`
+  - `{ a, b, x, y }`
 - Affine or Transform
   - An affine transformation matrix
   - Represents a translation, rotation, and/or scaling on a plane
-  - `{ da, db, dx, dy }`
+  - `{ a, b, x, y }`
 - Scaling
   - `{ ds }`
 - Rotation
