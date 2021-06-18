@@ -103,3 +103,53 @@ z <- z * 2 <=> scale <- scale / 2
 z <- z * 4 <=> scale <- scale / 4
 
 => scale = 1 / z
+
+## Geometries and API
+
+Point
+- create
+- copy
+- distance
+- difference
+- equal
+- translate
+- transform
+- mean
+
+Vector
+- add
+- multiply
+- transform
+
+Path
+- addPoint
+- atIndex
+- transform
+- mean
+
+Polygon
+- addPoint
+- atIndex
+- transform
+- mean
+
+Rectangle or Box
+- atTopLeft
+
+Placement
+- copy
+- create
+- between or difference
+- equal
+- mean (of multiple placements)
+- rotate
+- translate
+- transform
+
+Motion
+- copy
+- create
+- combine, multiply
+
+Transition
+- between two placements or planes
