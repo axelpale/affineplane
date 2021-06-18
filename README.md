@@ -58,6 +58,8 @@ A geometry library for 2D affine planes that follows a functional, class-free pa
 - Perspective or Projection or Vector4
   - `{ x, y, z, r }`
   - `{ a, b, x, y }`
+- Origin2
+  - `{ ox, oy }`
 
 What if we redefine "point"?
 
