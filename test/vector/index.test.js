@@ -1,6 +1,6 @@
 // A unit for each method.
 const units = {
-  // add: require('./add.test'),
+  add: require('./add.test'),
   // average: require('./average.test'),
   // copy: require('./copy.test'),
   create: require('./create.test'),

@@ -1,17 +1,30 @@
-module.exports = (v, w) => {
-  // Add two vectors. See vector.sum to add many vectors.
-  //
-  // Parameters
-  //   v
-  //     a vector
-  //   w
-  //     a vector
-  //
-  // Return
-  //   a vector
-  //
-  return {
-    x: v.x + w.x,
-    y: v.y + w.y
-  }
+const affineplane = require('../../index')
+const vector = affineplane.vector
+
+module.exports = (ts) => {
+  ts.test('case: zeroes and ones', (t) => {
+    t.deepEqual(
+      vector.add(
+        { x: 0, y: 0 },
+        { x: 0, y: 0 }
+      ),
+      {
+        x: 0,
+        y: 0
+      }
+    )
+
+    t.deepEqual(
+      vector.add(
+        { x: 1, y: 1 },
+        { x: 1, y: 1 }
+      ),
+      {
+        x: 2,
+        y: 2
+      }
+    )
+
+    t.end()
+  })
 }
