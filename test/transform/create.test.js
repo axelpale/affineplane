@@ -1,9 +1,9 @@
-const nudged = require('../../index')
-const unit = nudged.transform
+const affineplane = require('../../index')
+const transform = affineplane.transform
 
 module.exports = (ts) => {
   ts.test('case: happy', (t) => {
-    t.deepEqual(unit.create(1, 2, 3, 4), {
+    t.deepEqual(transform.create(1, 2, 3, 4), {
       a: 1,
       b: 2,
       x: 3,

@@ -1,6 +1,6 @@
-const nudged = require('../../index')
-const almostEqual = nudged.transform.almostEqual
-const EPSILON = nudged.transform.EPSILON
+const affineplane = require('../../index')
+const almostEqual = affineplane.transform.almostEqual
+const EPSILON = affineplane.EPSILON
 
 module.exports = (ts) => {
   ts.test('case: various matches', (t) => {

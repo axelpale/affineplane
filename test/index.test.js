@@ -1,14 +1,16 @@
 const test = require('tape')
-const affineplane = require('../index')
-const EPSILON = affineplane.transform.EPSILON
-const transformAlmostEqual = affineplane.transform.almostEqual
-const vectorAlmostEqual = affineplane.vector.almostEqual
+const EPSILON = require('../lib/epsilon')
+const transform = require('../lib/transform')
+const vector = require('../lib/vector')
+const transformAlmostEqual = transform.almostEqual
+const vectorAlmostEqual = vector.almostEqual
 
 // Units
 
-const transform = require('./transform/index.test')
-const vector = require('./vector/index.test')
-const version = require('./version/index.test')
+const epsilonTest = require('./epsilon/index.test')
+const transformTest = require('./transform/index.test')
+const vectorTest = require('./vector/index.test')
+const versionTest = require('./version/index.test')
 
 // Custom assertations
 
@@ -52,7 +54,8 @@ test.Test.prototype.vectorEqual = function (actual, expected, message) {
 // Run test suite
 
 test('affineplane', (t) => {
-  t.test('affineplane.transform', transform)
-  t.test('affineplane.vector', vector)
-  t.test('affineplane.version', version)
+  t.test('affineplane.epsilon', epsilonTest)
+  t.test('affineplane.transform', transformTest)
+  t.test('affineplane.vector', vectorTest)
+  t.test('affineplane.version', versionTest)
 })
