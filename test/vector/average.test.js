@@ -1,28 +1,30 @@
-module.exports = (vs) => {
-  // Average of the vector endpoints. See polarMean for polar variant.
-  //
-  // Parameters
-  //   vs
-  //     array of vectors
-  //
-  // Return
-  //   a vector
-  //
-  const n = vs.length
+const affineplane = require('../../index')
+const vector = affineplane.vector
 
-  if (n < 1) {
-    throw new Error('Cannot compute mean for an empty array.')
-  }
+module.exports = (ts) => {
+  ts.test('case: basic averages', (t) => {
+    t.deepEqual(
+      vector.average([
+        { x: 0, y: 0 },
+        { x: 0, y: 0 }
+      ]),
+      {
+        x: 0,
+        y: 0
+      }
+    )
 
-  let sumx = 0
-  let sumy = 0
-  for (let i = 0; i < n; i += 1) {
-    sumx += vs[i].x
-    sumy += vs[i].y
-  }
+    t.deepEqual(
+      vector.average([
+        { x: 1, y: 1 },
+        { x: 3, y: 3 }
+      ]),
+      {
+        x: 2,
+        y: 2
+      }
+    )
 
-  return {
-    x: sumx / n,
-    y: sumy / n
-  }
+    t.end()
+  })
 }
