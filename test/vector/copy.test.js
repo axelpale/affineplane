@@ -1,15 +1,14 @@
-module.exports = (p) => {
-  // Copy point object
-  //
-  // Parameters
-  //   p
-  //     a point object
-  //
-  // Return
-  //   point
-  //
-  return {
-    x: p.x,
-    y: p.y
-  }
+const affineplane = require('../../index')
+const vector = affineplane.vector
+
+module.exports = (ts) => {
+  ts.test('case: ensure different identity', (t) => {
+    const vec = { x: 0, y: 0 }
+    t.notEqual(
+      vector.copy(vec),
+      vec
+    )
+
+    t.end()
+  })
 }

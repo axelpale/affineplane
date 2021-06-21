@@ -3,7 +3,7 @@ const units = {
   add: require('./add.test'),
   almostEqual: require('./almostEqual.test'),
   average: require('./average.test'),
-  // copy: require('./copy.test'),
+  copy: require('./copy.test'),
   create: require('./create.test'),
   // difference: require('./difference.test'),
   // equal: require('./equal.test'),
