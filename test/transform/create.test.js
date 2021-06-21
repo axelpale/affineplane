@@ -1,5 +1,4 @@
-const affineplane = require('../../index')
-const transform = affineplane.transform
+const transform = require('../../index').transform
 
 module.exports = (ts) => {
   ts.test('case: happy', (t) => {

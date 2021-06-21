@@ -1,6 +1,6 @@
-const nudged = require('../../index')
-const equal = nudged.transform.equal
-const EPSILON = nudged.transform.EPSILON
+const affineplane = require('../../index')
+const transform = affineplane.transform
+const EPSILON = affineplane.EPSILON
 
 module.exports = (ts) => {
   ts.test('case: various matches', (t) => {
@@ -10,9 +10,9 @@ module.exports = (ts) => {
     const d = { a: 1 - EPSILON, b: 2, x: 3, y: 4 }
     t.notEqual(a, b, 'a is not b')
     t.deepEqual(a, b, 'a is identical to b')
-    t.ok(equal(a, b), 'element-wise equal')
-    t.notOk(equal(a, c), 'values differ greatly')
-    t.notOk(equal(a, d), 'values differ slightly')
+    t.ok(transform.equal(a, b), 'element-wise equal')
+    t.notOk(transform.equal(a, c), 'values differ greatly')
+    t.notOk(transform.equal(a, d), 'values differ slightly')
 
     t.end()
   })

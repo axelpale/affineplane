@@ -1,4 +1,4 @@
-const transform = require('../../index').transform
+const transform = require('../../lib/transform')
 const mapPoint = transform.mapPoint
 const mapPoints = transform.mapPoints
 

@@ -1,6 +1,5 @@
-const nudged = require('../../index')
-const getScale = nudged.transform.getScale
-const transform = nudged.transform
+const transform = require('../../index').transform
+const getScale = transform.getScale
 
 module.exports = (ts) => {
   ts.test('case: basic scalings', (t) => {

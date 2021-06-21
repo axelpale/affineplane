@@ -1,11 +1,10 @@
-const nudged = require('../../index')
-const toMatrix = nudged.transform.toMatrix
+const transform = require('../../index').transform
 
 module.exports = (ts) => {
   ts.test('case: correct properties', (t) => {
     const tr = { a: 1, b: 2, x: 3, y: 4 }
 
-    t.deepEqual(toMatrix(tr), {
+    t.deepEqual(transform.toMatrix(tr), {
       a: 1,
       b: 2,
       c: -2,

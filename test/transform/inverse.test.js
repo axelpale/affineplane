@@ -1,6 +1,5 @@
-const nudged = require('../../index')
-const inverse = nudged.transform.inverse
-const transform = nudged.transform
+const transform = require('../../lib/transform')
+const inverse = transform.inverse
 
 module.exports = (ts) => {
   ts.test('case: various inversions', (t) => {

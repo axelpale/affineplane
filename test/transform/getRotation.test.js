@@ -1,10 +1,10 @@
-const nudged = require('../../index')
-const getRotation = nudged.transform.getRotation
+const transform = require('../../index').transform
+const getRotation = transform.getRotation
 
-const multiply = nudged.transform.multiply
-const ROT45 = nudged.transform.ROT45
-const ROT90 = nudged.transform.ROT90
-const ROT180 = nudged.transform.ROT180
+const multiply = transform.multiply
+const ROT45 = transform.ROT45
+const ROT90 = transform.ROT90
+const ROT180 = transform.ROT180
 
 module.exports = (ts) => {
   ts.test('case: basic rotations', (t) => {

@@ -1,9 +1,8 @@
-const nudged = require('../../index')
-const unit = nudged.transform.createFromArray
+const transform = require('../../index').transform
 
 module.exports = (ts) => {
   ts.test('case: hapyy', (t) => {
-    t.deepEqual(unit([1, 2, 3, 4]), {
+    t.deepEqual(transform.createFromArray([1, 2, 3, 4]), {
       a: 1,
       b: 2,
       x: 3,
