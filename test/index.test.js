@@ -1,7 +1,8 @@
 const test = require('tape')
 const affineplane = require('../index')
 const EPSILON = affineplane.transform.EPSILON
-const almostEqual = affineplane.transform.almostEqual
+const transformAlmostEqual = affineplane.transform.almostEqual
+const vectorAlmostEqual = affineplane.vector.almostEqual
 
 // Units
 
@@ -32,9 +33,17 @@ test.Test.prototype.notAlmostEqual = function (actual, expected, message) {
 }
 
 test.Test.prototype.transformEqual = function (actual, expected, message) {
-  this._assert(almostEqual(actual, expected), {
+  this._assert(transformAlmostEqual(actual, expected), {
     message: message || 'transform should have correct elements',
     operator: 'transformEqual',
+    actual: actual,
+    expected: expected
+  })
+}
+test.Test.prototype.vectorEqual = function (actual, expected, message) {
+  this._assert(vectorAlmostEqual(actual, expected), {
+    message: message || 'vector should have correct elements',
+    operator: 'vectorEqual',
     actual: actual,
     expected: expected
   })
