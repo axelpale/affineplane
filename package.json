@@ -35,10 +35,10 @@
     "tape": "^5.2.2"
   },
   "scripts": {
-    "test": "npm run test:lint && npm run test:unit",
+    "lint": "standard index.js 'lib/**/*.js' 'test/**/*.js'",
+    "lint:fix": "standard --fix index.js 'lib/**/*.js' 'test/**/*.js'",
+    "test": "npm run lint && npm run test:unit",
     "test:unit": "node test/index.test.js",
-    "test:lint": "standard index.js 'lib/**/*.js' 'test/**/*.js'",
-    "test:lint:fix": "standard --fix index.js 'lib/**/*.js' 'test/**/*.js'",
     "gv": "genversion lib/version.js",
     "build:standalone": "browserify index.js --standalone affineplane -o affineplane.js"
   }
