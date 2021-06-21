@@ -1,0 +1,29 @@
+// A unit for each method.
+const units = {
+  almostEqual: require('./almostEqual.test'),
+  create: require('./create.test'),
+  createFromArray: require('./createFromArray.test'),
+  createFromPolar: require('./createFromPolar.test'),
+  epsilon: require('./epsilon.test'),
+  equal: require('./equal.test'),
+  getRotation: require('./getRotation.test'),
+  getScale: require('./getScale.test'),
+  getTranslation: require('./getTranslation.test'),
+  inverse: require('./inverse.test'),
+  multiply: require('./multiply.test'),
+  mapPoints: require('./mapPoints.test'),
+  mapVector: require('./mapVector.test'),
+  rotateBy: require('./rotateBy.test'),
+  scaleBy: require('./scaleBy.test'),
+  toArray: require('./toArray.test'),
+  toMatrix: require('./toMatrix.test'),
+  toString: require('./toString.test'),
+  translateBy: require('./translateBy.test'),
+  validate: require('./validate.test')
+}
+
+module.exports = (t) => {
+  Object.keys(units).forEach((unitName) => {
+    t.test('affineplane.transform.' + unitName, units[unitName])
+  })
+}
