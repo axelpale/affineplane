@@ -1,20 +1,37 @@
-module.exports = (v, radians) => {
-  // Rotate vector by the given angle.
-  //
-  // Parameters
-  //   v
-  //     a vector
-  //   radians
-  //     from positive x-axis towards positive y-axis
-  //
-  // Return
-  //   a vector
-  //
-  const co = Math.cos(radians)
-  const si = Math.sin(radians)
+const affineplane = require('../../index')
+const vector = affineplane.vector
 
-  return {
-    x: v.x * co - v.y * si,
-    y: v.x * si + v.y * co
-  }
+module.exports = (ts) => {
+  ts.test('case: rotate zero vector', (t) => {
+    t.vectorEqual(
+      vector.rotateBy({ x: 0, y: 0 }, Math.PI),
+      { x: 0, y: 0 }
+    )
+
+    t.vectorEqual(
+      vector.rotateBy({ x: 0, y: 0 }, 0),
+      { x: 0, y: 0 }
+    )
+
+    t.end()
+  })
+
+  ts.test('case: rotate unit vector', (t) => {
+    t.vectorEqual(
+      vector.rotateBy({ x: 1, y: 0 }, Math.PI),
+      { x: -1, y: 0 }
+    )
+
+    t.vectorEqual(
+      vector.rotateBy({ x: 1, y: 0 }, 2 * Math.PI),
+      { x: 1, y: 0 }
+    )
+
+    t.vectorEqual(
+      vector.rotateBy({ x: 1, y: 0 }, Math.PI / 2),
+      { x: 0, y: 1 }
+    )
+
+    t.end()
+  })
 }

@@ -12,7 +12,7 @@ const units = {
   // magnitude: require('./magnitude.test'),
   // max: require('./max.test'),
   // min: require('./min.test'),
-  // rotateBy: require('./rotateBy.test'),
+  rotateBy: require('./rotateBy.test'),
   // rotateTo: require('./rotateTo.test'),
   sum: require('./sum.test')
 }
