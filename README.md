@@ -1,6 +1,6 @@
 # affineplane
 
-A geometry library for 2D affine planes that follows a functional, class-free paradigm.
+A 2D plane geometry and dynamics library for spatial 2D applications. Written in JavaScript (ECMAScript 6) with a functional, class-free style.
 
 ## Geometries
 
