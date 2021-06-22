@@ -4,6 +4,30 @@ A 2D plane geometry and dynamics library for spatial 2D applications. Written in
 
 ## Geometries
 
+For `{ x, y }`:
+
+- point2d (alias .point2 .point)
+- vector2d (alias .vector2d .vector .vec)
+
+For `{ x, y, z, r }`:
+
+- point3dr (alias .point3r)
+- vector3dr (alias .vec3r)
+
+For `{ a, b, x, y }`:
+
+- formation (alias .form .placement)
+- transformation (alias .transform, .tran, .motion)
+
+Basis change for `{ a, b, x, y }`:
+
+- transition
+
+Conversion between `{ x, y, z, r }` and `{ a, b, x, y }`:
+
+- projection
+
+
 - Vector
   - An abstract `{ x, y }`
   - provides operators for Point and Translation
