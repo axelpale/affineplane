@@ -18,6 +18,10 @@ For `{ a, b, x, y }`:
 
 - formation (alias .form .placement)
 - transformation (alias .transform, .tran, .motion)
+- transition
+  - functions to change of basis
+  HEY wait a minute. The change of basis is just a couple of methods.
+  It should be just a part of transformation api.
 
 Basis change for `{ a, b, x, y }`:
 
