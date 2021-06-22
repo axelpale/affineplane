@@ -14,7 +14,8 @@ const units = {
   // min: require('./min.test'),
   rotateBy: require('./rotateBy.test'),
   // rotateTo: require('./rotateTo.test'),
-  sum: require('./sum.test')
+  sum: require('./sum.test'),
+  validate: require('./validate.test')
 }
 
 module.exports = (t) => {
