@@ -28,6 +28,8 @@ Conversion between `{ x, y, z, r }` and `{ a, b, x, y }`:
 - projection
 
 
+## Possible geometries
+
 - Vector
   - An abstract `{ x, y }`
   - provides operators for Point and Translation
