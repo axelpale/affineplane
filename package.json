@@ -15,7 +15,9 @@
     "estimator",
     "rigid",
     "nonreflective",
-    "similarity"
+    "similarity",
+    "helmert",
+    "perspective"
   ],
   "homepage": "https://github.com/axelpale/affineplane",
   "main": "index.js",
