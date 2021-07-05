@@ -4,20 +4,20 @@ A 2D plane geometry and dynamics library for spatial 2D applications. Written in
 
 ## Data structures and functions
 
-Instead of classes, the functions of affineplane operate on plain objects. The functions are pure, in a sense that they never modify the input, do not cause side effects, have no hidden state, and they always return new objects computed from the input.
+Instead of classes, affineplane provides functions that operate on plain objects. The available functions are pure, in a sense that they never modify the input, do not cause side effects, have no hidden state, and they always return new objects computed from the input.
 
-The available functions understand following structures:
+The functions are grouped in namespaces, each focusing on a certain geometry. A common theme of the lib is to explicitly distinguish static positions from their dynamic movements. Otherwise, in our experience, it is all too easy to mix these concepts in the code. Available namespaces are:
+- `point`, a location on a plane
+- `vector`, a displacement on a plane
+- `point3r`, a location in a 3D space with orientation around z-axis
+- `vector3r`, a change in a 3D space with change of orientation
+- `formation`, a location on a plane with scale and orientation
+- `transformation`, a change of formation on a plane
+
+The functions operate on the following plain objects:
 - `{ x, y }` for points and vectors
 - `{ x, y, z, r }` for 3D points and vectors with rotation
 - `{ a, b, x, y }` for similarity transformations
-
-The functions are grouped in namespaces, each focusing on a certain geometry.
-- `point`, a location on a plane
-- `vector`, a displacement on a plane
-- `point3r`, a location in a 3D space with orientation
-- `vector3r`, a change in a 3D space with change of orientation
-- `formation`, a location on a plane with scale and orientation
-- `transformation`, a change in formation on a plane
 
 
 ## Points and vectors on the affine plane
