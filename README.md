@@ -1,6 +1,6 @@
 # affineplane
 
-A 2D plane geometry and dynamics library for spatial 2D applications. Written in JavaScript (ECMAScript 6) with a functional, class-free style.
+A functional 2D plane geometry and dynamics library for spatial 2D applications. Written in JavaScript (ECMAScript 6) with a functional, immutable, class-free style.
 
 ![affineplane social banner](doc/affineplane-social-banner.jpg)
 
@@ -168,6 +168,7 @@ z <- z * 2 <=> scale <- scale / 2
 z <- z * 4 <=> scale <- scale / 4
 
 => scale = 1 / z
+
 
 ## Geometries and API
 
