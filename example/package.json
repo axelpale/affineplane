@@ -21,6 +21,7 @@
   "scripts": {
     "lint": "standard '*.js'",
     "lint:fix": "standard --fix '*.js'",
-    "build": "webpack"
+    "build": "webpack",
+    "build:watch": "webpack --watch"
   }
 }
