@@ -1,6 +1,6 @@
 // Affine geometry example
 
-const plane = require('../index')
+const plane = require('../../index')
 
 // Setup
 
