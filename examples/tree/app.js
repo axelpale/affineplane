@@ -14,14 +14,10 @@ const drawPoint = (ctx, p) => {
   ctx.fillRect(p.x - 5, p.y - 5, 10, 10)
 }
 
-const drawRandomPoint = (ctx, x, y, w, h) => {
-  const rx = x + Math.random() * w
-  const ry = y + Math.random() * h
-
-  drawPoint(ctx, {
-    x: rx,
-    y: ry
-  })
+const drawBranch = (ctx, tr) => {
+  ctx.setTransform(plane.transform.toMatrix(tr))
+  ctx.drawImage(branch, 0, 0)
+  ctx.resetTransform()
 }
 
 const drawAll = (ctx) => {
