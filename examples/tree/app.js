@@ -1,6 +1,7 @@
 // Affine geometry example
 
 const plane = require('../../index')
+const loadimages = require('loadimages')
 
 // Setup
 

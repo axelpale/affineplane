@@ -23,5 +23,8 @@
     "lint:fix": "standard --fix '*.js'",
     "build": "webpack",
     "build:watch": "webpack --watch"
+  },
+  "dependencies": {
+    "loadimages": "^1.0.0"
   }
 }
