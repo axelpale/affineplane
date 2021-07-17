@@ -4,6 +4,17 @@ A functional 2D plane geometry and dynamics library for spatial 2D applications.
 
 ![affineplane social banner](doc/affineplane-social-banner.jpg)
 
+## Shapes
+
+- `distance`
+- `point`
+- `rectangle`
+
+## Movements
+
+- `vector`
+- `transform`
+
 ## Data structures and functions
 
 Instead of classes, affineplane provides functions that operate on plain objects. The available functions are pure, in a sense that they never modify the input, do not cause side effects, have no hidden state, and they always return new objects computed from the input.
