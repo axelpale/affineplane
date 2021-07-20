@@ -1,7 +1,6 @@
 
 exports.EPSILON = require('./lib/epsilon')
 
-exports.perspective = require('./lib/perspective')
 
 exports.point = require('./lib/point')
 
