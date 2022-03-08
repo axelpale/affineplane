@@ -15,38 +15,72 @@ const drawPoint = (ctx, p) => {
   ctx.fillRect(p.x - 5, p.y - 5, 10, 10)
 }
 
-const drawBranch = (ctx, tr) => {
+const drawBranch = (ctx, p0, p1, canvasRect, branchImg) => {
+  const imgWidth = branchImg.width
+  const imgHeight = branchImg.height
+
+  let branchRect = plane.rectangle.create(0, 0, imgWidth, imgHeight)
+
+  plane.basis.estimate({
+    source: [
+      plane.rectangle.atTopMid(branchRect),
+      plane.rectangle.atBottomMid(branchRect)
+    ],
+    target: [
+      plane.
+    ]
+  })
+  branchRect = plane.rectangle.transform
+
+  const imgSize = {
+    w: imgWidth,
+    h: imgHeight
+  }
+
+  plane.formation.create()
+  plane.rectangle.create()
+
+  let tr = plane.transform.I
+  tr = plane.transform.rotateBy(tr, c, Math.PI / 5)
   ctx.setTransform(plane.transform.toMatrix(tr))
-  ctx.drawImage(branch, 0, 0)
+  ctx.drawImage(branchImg, 0, 0)
   ctx.resetTransform()
 }
 
-const drawAll = (ctx) => {
-  const w = canvas.width
-  const h = canvas.height
+const drawAll = (ctx, images) => {
 
-  const c = {
-    x: Math.round(w / 2),
-    y: Math.round(h / 2)
+  // Canvas
+  const canvasRect = plane.rectangle.create(0, 0, canvas.width, canvas.height)
+
+  // Begin tree at
+  const p0 = plane.rectangle.atBottomMid(canvasRect)
+
+  // Growing step
+  const v0 = plane.vector.fromPolar(200, -Math.PI / 2)
+
+  const p1 = plane.point.translate(p0, v0)
+  const p2 = plane.point.translate(p1, v0)
+
+  const branchImg = images[0]
+
+  drawBranch(ctx, p0, p1, branchImg)
+
+  // MAYBE FUTURE
+  // let rect = plane.rectangle.create()
+  // rect = plane.rectangle.rotateBy(rect)
+}
+
+const main = (err, images) => {
+  if (err) {
+    console.error(err)
   }
-
-  let p = plane.point.offset(c, 5, 0)
-
-  let tr = plane.transform.I
-  tr = plane.transform.rotateBy(tr, c, Math.PI / 6)
-  tr = plane.transform.scaleBy(tr, c, Math.pow(1.618033, 1 / 5))
-
-  for (let i = 0; i < 200; i += 1) {
-    p = plane.point.transform(p, tr)
-    drawPoint(ctx, p)
+  if (canvas.getContext) {
+    const ctx = canvas.getContext('2d')
+    drawAll(ctx, images)
+  } else {
+    console.error('No canvas context available')
   }
 }
 
-// Main
-
-if (canvas.getContext) {
-  const ctx = canvas.getContext('2d')
-  drawAll(ctx)
-} else {
-  console.error('No canvas context available')
-}
+// Preload images
+loadimages(['branch.png'], main)
