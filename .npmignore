@@ -1,7 +1,9 @@
 .travis.yml
+.editorconfig
 
 /dist/.gitkeep
 /docs
+/examples
 /test
 
 .DS_Store
