@@ -7,8 +7,8 @@ const indexToDoc = require('./indexToDoc')
 const modules = [
   {
     doc: '', // initial docs for consistency
-    title: 'Nudged API Documentation',
-    name: 'nudged',
+    title: 'Affineplane API Documentation',
+    name: 'affineplane',
     path: path.resolve(__dirname, '../../lib')
   }
 ]

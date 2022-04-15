@@ -1,3 +1,6 @@
+// Pretty text.
+// Add links and markup to keywords and strip content.
+//
 const expressions = require('./expressions')
 
 const prettyArrayLiterals = (text) => {
@@ -13,14 +16,14 @@ const removeGenversion = (text) => {
 }
 
 const pointKeyword = /(a|optional|of) point(s?)($|\W+)/g
-const transformKeyword = /a transform($|\W+)/g
-const moduleKeyword = /nudged\.(\w+)($|\.$|\.\W+| )/g
-const memberKeyword = /nudged\.(\w+)\.(\w+)($|\W+| )/g
+const transformKeyword = /tran2($|\W+)/g
+const moduleKeyword = /affineplane\.(\w+)($|\.$|\.\W+| )/g
+const memberKeyword = /affineplane\.(\w+)\.(\w+)($|\W+| )/g
 const routeKeywords = (text) => {
   text = text.replace(pointKeyword, '$1 [point$2](#nudgedpoint)$3')
-  text = text.replace(transformKeyword, 'a [transform](#nudgedtransform)$1')
-  text = text.replace(moduleKeyword, '[nudged.$1](#nudged$1)$2')
-  text = text.replace(memberKeyword, '[nudged.$1.$2](#nudged$1$2)$3')
+  text = text.replace(transformKeyword, '[tran2](#affineplanetran2)$1')
+  text = text.replace(moduleKeyword, '[affineplane.$1](#affineplane$1)$2')
+  text = text.replace(memberKeyword, '[affineplane.$1.$2](#affineplane$1$2)$3')
   return text
 }
 
