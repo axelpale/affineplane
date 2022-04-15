@@ -9,4 +9,6 @@ Customisation:
 - see `gendocs/prettyText.js` for keyword substitution.
 
 Syntax:
-- triple slash `///` to exclude comment from documentation.
+- Triple slash `///` to exclude comment from documentation.
+- Double dot `..` in the beginning of comment continues line.
+- If a parameter list contains single word, it will be `emphasised`.
