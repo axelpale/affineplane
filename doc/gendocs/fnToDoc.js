@@ -60,33 +60,33 @@ module.exports = (code, codeModule) => {
 
   const handleCommon = (comment) => {
     // Test if param docs
-      const beginParams = comment.match(expressions.paramsTitle)
-      if (beginParams) {
-        output += '<p style="display: inline">Parameters:</p>\n\n'
+    const beginParams = comment.match(expressions.paramsTitle)
+    if (beginParams) {
+      output += '<p style="display: inline">Parameters:</p>\n\n'
 
-        substate = 'params'
-        return
-      }
+      substate = 'params'
+      return
+    }
 
-      const beginReturn = comment.match(expressions.returnTitle)
-      if (beginReturn) {
-        output += '<p style="display: inline">Return:</p>\n\n'
+    const beginReturn = comment.match(expressions.returnTitle)
+    if (beginReturn) {
+      output += '<p style="display: inline">Return:</p>\n\n'
 
-        substate = 'return'
-        return
-      }
+      substate = 'return'
+      return
+    }
 
-      const beginExample = comment.match(expressions.exampleTitle)
-      if (beginExample) {
-        output += 'Example:\n\n'
+    const beginExample = comment.match(expressions.exampleTitle)
+    if (beginExample) {
+      output += 'Example:\n\n'
 
-        substate = 'example'
-        return
-      }
+      substate = 'example'
+      return
+    }
 
-      // Otherwise, just common docs.
-      const pretty = prettyText(comment)
-      output += pretty + '\n'
+    // Otherwise, just common docs.
+    const pretty = prettyText(comment)
+    output += pretty + '\n'
   }
 
   const handleParams = (comment) => {
