@@ -6,9 +6,13 @@ const indexToDoc = require('./indexToDoc')
 // Code modules to document
 const modules = [
   {
-    doc: '', // initial docs for consistency
+    // Main title
     title: 'Affineplane API Documentation',
+    // Introduction; initial docs for consistency
+    doc: 'Types and functions for affine 2D geometry.',
+    // Package name
     name: 'affineplane',
+    // Where to start
     path: path.resolve(__dirname, '../../lib')
   }
 ]
