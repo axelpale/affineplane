@@ -1,7 +1,7 @@
 
 exports.basis = require('./lib/basis')
 
-exports.distance = require('./lib/distance')
+exports.dist2 = require('./lib/dist2')
 
 exports.epsilon = require('./lib/epsilon')
 
