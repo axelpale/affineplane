@@ -21,11 +21,11 @@ module.exports = (ts) => {
 
   ts.test('case: allow small difference', (t) => {
     t.ok(
-      vector.almostEqual({ x: 1, y: 1 - affineplane.EPSILON / 2 }, { x: 1, y: 1 }),
+      vector.almostEqual({ x: 1, y: 1 - affineplane.epsilon / 2 }, { x: 1, y: 1 }),
       'half epsilon difference'
     )
     t.notOk(
-      vector.almostEqual({ x: 1, y: 1 - affineplane.EPSILON * 2 }, { x: 1, y: 1 }),
+      vector.almostEqual({ x: 1, y: 1 - affineplane.epsilon * 2 }, { x: 1, y: 1 }),
       'double epsilon difference'
     )
 

@@ -1,5 +1,5 @@
 const affineplane = require('../../index')
-const EPS = affineplane.EPSILON
+const EPS = affineplane.epsilon
 
 module.exports = (ts) => {
   ts.test('case: epsilon magnitude', (t) => {

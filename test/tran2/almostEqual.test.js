@@ -1,6 +1,6 @@
 const affineplane = require('../../index')
-const EPSILON = affineplane.EPSILON
 const almostEqual = affineplane.tran2.almostEqual
+const EPSILON = affineplane.epsilon
 
 module.exports = (ts) => {
   ts.test('case: various matches', (t) => {
