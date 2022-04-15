@@ -18,6 +18,7 @@ const removeGenversion = (text) => {
 const linear2Keyword = /linear2($|\W+)/g
 const point2Keyword = /point2($|\W+)/g
 const proj2Keyword = /proj2($|\W+)/g
+const size2Keyword = /size2($|\W+)/g
 const tran2Keyword = /tran2($|\W+)/g
 const vector2Keyword = /vector2($|\W+)/g
 const moduleKeyword = /affineplane\.(\w+)($|\.$|\.\W+| )/g
@@ -26,6 +27,7 @@ const routeKeywords = (text) => {
   text = text.replace(linear2Keyword, '[linear2](#affineplanelinear2)$1')
   text = text.replace(point2Keyword, '[point2](#affineplanepoint2)$1')
   text = text.replace(proj2Keyword, '[proj2](#affineplaneproj2)$1')
+  text = text.replace(size2Keyword, '[size2](#affineplanesize2)$1')
   text = text.replace(tran2Keyword, '[tran2](#affineplanetran2)$1')
   text = text.replace(vector2Keyword, '[vector2](#affineplanevector2)$1')
   text = text.replace(moduleKeyword, '[affineplane.$1](#affineplane$1)$2')
