@@ -42,7 +42,7 @@
     "test": "npm run lint && npm run test:unit",
     "test:unit": "node test/index.test.js",
     "gv": "genversion lib/version.js",
-    "build:docs": "node doc/gendocs/index.js",
+    "build:docs": "node docs/gendocs/index.js",
     "build:standalone": "browserify index.js --standalone affineplane -o affineplane.js",
     "release": "npm run gv && npm run test && npm publish"
   }
