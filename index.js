@@ -5,20 +5,23 @@ exports.dist2 = require('./lib/dist2')
 
 exports.epsilon = require('./lib/epsilon')
 
-exports.formation = require('./lib/formation')
+exports.linear2 = require('./lib/linear2')
 
-exports.point = require('./lib/point')
-
+exports.point2 = require('./lib/point2')
+exports.point3 = require('./lib/point3')
 exports.point3r = require('./lib/point3r')
 
-exports.rectangle = require('./lib/rectangle')
+exports.proj2 = require('./lib/proj2')
+exports.proj3 = require('./lib/proj3')
 
-exports.size = require('./lib/size')
+exports.rect2 = require('./lib/rect2')
 
-exports.transform = require('./lib/transform')
+exports.size2 = require('./lib/size2')
 
-exports.vector = require('./lib/vector')
+exports.tran2 = require('./lib/tran2')
 
+exports.vector2 = require('./lib/vector2')
+exports.vector3 = require('./lib/vector3')
 exports.vector3r = require('./lib/vector3r')
 
 exports.version = require('./lib/version')
