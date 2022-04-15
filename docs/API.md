@@ -5,6 +5,8 @@ Types and functions for affine 2D geometry.
 - [affineplane.dist2](#affineplanedist2)
 - [affineplane.epsilon](#affineplaneepsilon)
 - [affineplane.linear2](#affineplanelinear2)
+- [affineplane.path2](#affineplanepath2)
+- [affineplane.poly2](#affineplanepoly2)
 - [affineplane.point2](#affineplanepoint2)
 - [affineplane.point3](#affineplanepoint3)
 - [affineplane.point3r](#affineplanepoint3r)
@@ -96,6 +98,46 @@ Create a two-dimensional linear non-reflective singularity transform
 
 - a [linear2](#affineplanelinear2)
 
+## affineplane.path2
+
+Two-dimensional path; Array of point2; Open sequence of points;
+Does not form a polygon but a sequence of line segments.
+`[{ x, y }, { x, y }, ...]`
+
+- [affineplane.path2.create](#affineplanepath2create)
+
+<a name="affineplanepath2create"></a>
+### affineplane.path2.create(points)
+
+Create a path on plane. Deep-clones the points array.
+
+<p style="display: inline">Parameters:</p>
+
+- `points`
+  - array of [point2](#affineplanepoint2)
+
+<p style="display: inline">Return:</p>
+
+- a path2, array of points
+
+## affineplane.poly2
+
+A two-dimensional polygon; Array of point2;
+A closed sequence of points `[{ x, y }, { x, y }, ...]`
+Create a polygon on plane. Deep-clones the points array.
+
+Parameters:
+  points
+    array of [point2](#affineplanepoint2)
+
+Return:
+  a poly2, array of points
+
+- [affineplane.poly2.create](#affineplanepoly2create)
+
+### affineplane.poly2.create
+
+
 ## affineplane.point2
 
 A two-dimensional point. Due to affinity, two points cannot be added
@@ -112,6 +154,7 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 - [affineplane.point2.difference](#affineplanepoint2difference)
 - [affineplane.point2.distance](#affineplanepoint2distance)
 - [affineplane.point2.equal](#affineplanepoint2equal)
+- [affineplane.point2.equals](#affineplanepoint2equals)
 - [affineplane.point2.fromArray](#affineplanepoint2fromArray)
 - [affineplane.point2.offset](#affineplanepoint2offset)
 - [affineplane.point2.polarOffset](#affineplanepoint2polarOffset)
@@ -240,6 +283,10 @@ Test if points p, q are equal.
 <p style="display: inline">Return:</p>
 
 - a boolean
+
+### affineplane.point2.equals
+
+Alias of `affineplane.point2.equal`.
 
 <a name="affineplanepoint2fromArray"></a>
 ### affineplane.point2.fromArray(arrp)
@@ -730,15 +777,15 @@ Convert a rectangle between bases.
 - `rect`
   - a rectangle on the source basis.
 - `sourceBasis`
-  - a ABXY, a transition from the source basis to
-  - the reference basis.
+  - a [proj2](#affineplaneproj2), a transition from the source basis to
+    the reference basis.
 - `targetBasis`
-  - a ABXY, a transition from the target basis to
-  - the reference basis.
+  - a [proj2](#affineplaneproj2), a transition from the target basis to
+    the reference basis.
 
 <p style="display: inline">Return:</p>
 
-- the rectangle on the targer basis.
+- the rectangle on the target basis.
 
 <a name="affineplanerect2create"></a>
 ### affineplane.rect2.create(a, b, x, y, w, h)
