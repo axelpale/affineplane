@@ -90,7 +90,7 @@ module.exports = (code, codeModule) => {
       const fullname = codeModule.name + '.' + exportedName
 
       membersOutput += '### ' + fullname + '\n\n'
-      membersOutput += prettyText(codeModule.doc + doc) + '\n'
+      membersOutput += prettyText(doc) + '\n'
       const hashName = '#' + fullname.replace(expressions.hashPath, '')
       tocOutput += '- [' + fullname + '](' + hashName + ')\n'
       // doc consumed
