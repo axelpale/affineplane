@@ -39,7 +39,11 @@ module.exports = (mod) => {
       }
 
       // Index found
-      output += mod.indexToDoc(indexdata, mod)
+      try {
+        output += mod.indexToDoc(indexdata, mod)
+      } catch (e) {
+        console.error(e)
+      }
 
       return output
     }
