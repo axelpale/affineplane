@@ -1,7 +1,7 @@
-const transform = require('../../index').transform
-const rotateBy = transform.rotateBy
-const IDENTITY = transform.IDENTITY
-const ROT180 = transform.ROT180
+const tran2 = require('../../index').tran2
+const rotateBy = tran2.rotateBy
+const IDENTITY = tran2.IDENTITY
+const ROT180 = tran2.ROT180
 
 module.exports = (ts) => {
   ts.test('case: basic rotations', (t) => {

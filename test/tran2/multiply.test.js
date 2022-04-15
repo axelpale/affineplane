@@ -1,10 +1,10 @@
-const transform = require('../../index').transform
-const multiply = transform.multiply
-const IDENTITY = transform.IDENTITY
-const ROT90 = transform.ROT90
-const ROT180 = transform.ROT180
-const X2 = transform.X2
-const HALF = transform.HALF
+const tran2 = require('../../index').tran2
+const multiply = tran2.multiply
+const IDENTITY = tran2.IDENTITY
+const ROT90 = tran2.ROT90
+const ROT180 = tran2.ROT180
+const X2 = tran2.X2
+const HALF = tran2.HALF
 
 module.exports = (ts) => {
   ts.test('case: basic matrix products', (t) => {

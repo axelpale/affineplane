@@ -1,10 +1,10 @@
 const affineplane = require('../../index')
-const vector = affineplane.vector
+const vector2 = affineplane.vector2
 
 module.exports = (ts) => {
   ts.test('case: zeroes and ones', (t) => {
     t.deepEqual(
-      vector.add(
+      vector2.add(
         { x: 0, y: 0 },
         { x: 0, y: 0 }
       ),
@@ -15,7 +15,7 @@ module.exports = (ts) => {
     )
 
     t.deepEqual(
-      vector.add(
+      vector2.add(
         { x: 1, y: 1 },
         { x: 1, y: 1 }
       ),

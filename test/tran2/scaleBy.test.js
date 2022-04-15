@@ -1,8 +1,8 @@
-const transform = require('../../index').transform
-const scaleBy = transform.scaleBy
-const IDENTITY = transform.IDENTITY
-const HALF = transform.HALF
-const X2 = transform.X2
+const tran2 = require('../../index').tran2
+const scaleBy = tran2.scaleBy
+const IDENTITY = tran2.IDENTITY
+const HALF = tran2.HALF
+const X2 = tran2.X2
 
 module.exports = (ts) => {
   ts.test('case: basic scalings', (t) => {

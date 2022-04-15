@@ -1,4 +1,4 @@
-const vector = require('../../lib/vector')
+const vector = require('../../lib/vector2')
 
 module.exports = (ts) => {
   ts.test('case: valid vector', (t) => {

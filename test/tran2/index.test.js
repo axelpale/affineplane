@@ -24,6 +24,6 @@ const units = {
 
 module.exports = (t) => {
   Object.keys(units).forEach((unitName) => {
-    t.test('affineplane.transform.' + unitName, units[unitName])
+    t.test('affineplane.tran2.' + unitName, units[unitName])
   })
 }

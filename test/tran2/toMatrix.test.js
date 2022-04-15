@@ -1,10 +1,10 @@
-const transform = require('../../index').transform
+const tran2 = require('../../index').tran2
 
 module.exports = (ts) => {
   ts.test('case: correct properties', (t) => {
     const tr = { a: 1, b: 2, x: 3, y: 4 }
 
-    t.deepEqual(transform.toMatrix(tr), {
+    t.deepEqual(tran2.toMatrix(tr), {
       a: 1,
       b: 2,
       c: -2,

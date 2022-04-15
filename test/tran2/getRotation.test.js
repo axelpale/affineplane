@@ -1,10 +1,10 @@
-const transform = require('../../index').transform
-const getRotation = transform.getRotation
+const tran2 = require('../../index').tran2
+const getRotation = tran2.getRotation
 
-const multiply = transform.multiply
-const ROT45 = transform.ROT45
-const ROT90 = transform.ROT90
-const ROT180 = transform.ROT180
+const multiply = tran2.multiply
+const ROT45 = tran2.ROT45
+const ROT90 = tran2.ROT90
+const ROT180 = tran2.ROT180
 
 module.exports = (ts) => {
   ts.test('case: basic rotations', (t) => {

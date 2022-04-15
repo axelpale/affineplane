@@ -1,5 +1,5 @@
 const affineplane = require('../../index')
-const transform = affineplane.transform
+const tran2 = affineplane.tran2
 const EPSILON = affineplane.EPSILON
 
 module.exports = (ts) => {
@@ -10,9 +10,9 @@ module.exports = (ts) => {
     const d = { a: 1 - EPSILON, b: 2, x: 3, y: 4 }
     t.notEqual(a, b, 'a is not b')
     t.deepEqual(a, b, 'a is identical to b')
-    t.ok(transform.equal(a, b), 'element-wise equal')
-    t.notOk(transform.equal(a, c), 'values differ greatly')
-    t.notOk(transform.equal(a, d), 'values differ slightly')
+    t.ok(tran2.equal(a, b), 'element-wise equal')
+    t.notOk(tran2.equal(a, c), 'values differ greatly')
+    t.notOk(tran2.equal(a, d), 'values differ slightly')
 
     t.end()
   })

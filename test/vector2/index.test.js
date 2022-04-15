@@ -20,6 +20,6 @@ const units = {
 
 module.exports = (t) => {
   Object.keys(units).forEach((unitName) => {
-    t.test('affineplane.transform.' + unitName, units[unitName])
+    t.test('affineplane.vector2.' + unitName, units[unitName])
   })
 }

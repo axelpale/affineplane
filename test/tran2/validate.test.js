@@ -1,5 +1,5 @@
-const transform = require('../../index').transform
-const validate = transform.validate
+const tran2 = require('../../index').tran2
+const validate = tran2.validate
 
 module.exports = (ts) => {
   ts.test('case: various valid transforms', (t) => {
@@ -10,10 +10,10 @@ module.exports = (ts) => {
       y: 4
     }))
 
-    t.true(validate(transform.HALF))
-    t.true(validate(transform.X2))
-    t.true(validate(transform.ROT45))
-    t.true(validate(transform.ROT180))
+    t.true(validate(tran2.HALF))
+    t.true(validate(tran2.X2))
+    t.true(validate(tran2.ROT45))
+    t.true(validate(tran2.ROT180))
 
     t.end()
   })

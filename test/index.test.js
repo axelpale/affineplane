@@ -1,15 +1,15 @@
 const test = require('tape')
 const EPSILON = require('../lib/epsilon')
-const transform = require('../lib/transform')
-const vector = require('../lib/vector')
-const transformAlmostEqual = transform.almostEqual
-const vectorAlmostEqual = vector.almostEqual
+const tran2 = require('../lib/tran2')
+const vector2 = require('../lib/vector2')
+const tran2AlmostEqual = tran2.almostEqual
+const vector2AlmostEqual = vector2.almostEqual
 
 // Units
 
 const epsilonTest = require('./epsilon/index.test')
-const transformTest = require('./transform/index.test')
-const vectorTest = require('./vector/index.test')
+const tran2Test = require('./tran2/index.test')
+const vector2Test = require('./vector2/index.test')
 const versionTest = require('./version/index.test')
 
 // Custom assertations
@@ -35,16 +35,16 @@ test.Test.prototype.notAlmostEqual = function (actual, expected, message) {
 }
 
 test.Test.prototype.transformEqual = function (actual, expected, message) {
-  this._assert(transformAlmostEqual(actual, expected), {
-    message: message || 'transform should have correct elements',
+  this._assert(tran2AlmostEqual(actual, expected), {
+    message: message || 'tran2 should have correct elements',
     operator: 'transformEqual',
     actual: actual,
     expected: expected
   })
 }
 test.Test.prototype.vectorEqual = function (actual, expected, message) {
-  this._assert(vectorAlmostEqual(actual, expected), {
-    message: message || 'vector should have correct elements',
+  this._assert(vector2AlmostEqual(actual, expected), {
+    message: message || 'vector2 should have correct elements',
     operator: 'vectorEqual',
     actual: actual,
     expected: expected
@@ -55,7 +55,7 @@ test.Test.prototype.vectorEqual = function (actual, expected, message) {
 
 test('affineplane', (t) => {
   t.test('affineplane.epsilon', epsilonTest)
-  t.test('affineplane.transform', transformTest)
-  t.test('affineplane.vector', vectorTest)
+  t.test('affineplane.tran2', tran2Test)
+  t.test('affineplane.vector2', vector2Test)
   t.test('affineplane.version', versionTest)
 })

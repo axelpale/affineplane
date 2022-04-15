@@ -1,5 +1,5 @@
 const affineplane = require('../../index')
-const vector = affineplane.vector
+const vector = affineplane.vector2
 
 module.exports = (ts) => {
   ts.test('case: basic averages', (t) => {

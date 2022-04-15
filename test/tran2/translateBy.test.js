@@ -1,8 +1,8 @@
-const transform = require('../../index').transform
-const translateBy = transform.translateBy
+const tran2 = require('../../index').tran2
+const translateBy = tran2.translateBy
 
-const IDENTITY = transform.IDENTITY
-const ROT90 = transform.ROT90
+const IDENTITY = tran2.IDENTITY
+const ROT90 = tran2.ROT90
 
 module.exports = (ts) => {
   ts.test('case: basic translations', (t) => {

@@ -1,9 +1,9 @@
-const transform = require('../../index').transform
+const tran2 = require('../../index').tran2
 
 module.exports = (ts) => {
   ts.test('case: convert to CSS string', (t) => {
     t.equal(
-      transform.toString({ a: 1, b: 0, x: 0, y: 0 }),
+      tran2.toString({ a: 1, b: 0, x: 0, y: 0 }),
       'matrix(' +
       '1.00000000,0.00000000,' +
       '0.00000000,1.00000000,' +
@@ -12,7 +12,7 @@ module.exports = (ts) => {
     )
 
     t.equal(
-      transform.toString({ a: 1, b: 0, x: 5, y: -5 }),
+      tran2.toString({ a: 1, b: 0, x: 5, y: -5 }),
       'matrix(' +
       '1.00000000,0.00000000,' +
       '0.00000000,1.00000000,' +
@@ -21,7 +21,7 @@ module.exports = (ts) => {
     )
 
     t.equal(
-      transform.toString({ a: 1, b: 0, x: 0, y: 1e-10 }),
+      tran2.toString({ a: 1, b: 0, x: 0, y: 1e-10 }),
       'matrix(' +
       '1.00000000,0.00000000,' +
       '0.00000000,1.00000000,' +
