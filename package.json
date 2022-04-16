@@ -44,6 +44,6 @@
     "gv": "genversion lib/version.js",
     "build:docs": "node docs/gendocs/index.js",
     "build:standalone": "browserify index.js --standalone affineplane -o affineplane.js",
-    "release": "npm run gv && npm run test && npm publish"
+    "release": "npm run gv && npm run test && npm run build:docs && npm publish"
   }
 }
