@@ -18,7 +18,6 @@ Shapes:
 - [dist2](docs/API.md#affineplanedist2), distance between two points on a plane
 - [point2](docs/API.md#affineplanepoint2), a location on aplane
 - [point3](docs/API.md#affineplanepoint3), a location in a 3D space
-- [rect2](docs/API.md#affineplanerect2), a rectangle on a plane
 - [size2](docs/API.md#affineplanesize2), a rectangle size on a plane
 
 Movements:
