@@ -1409,6 +1409,7 @@ Vector is a two dimensional dynamic movent between points.
 - [affineplane.vector2.rotateTo](#affineplanevector2rotateTo)
 - [affineplane.vector2.sum](#affineplanevector2sum)
 - [affineplane.vector2.toArray](#affineplanevector2toArray)
+- [affineplane.vector2.toPolar](#affineplanevector2toPolar)
 - [affineplane.vector2.validate](#affineplanevector2validate)
 
 <a name="affineplanevector2add"></a>
@@ -1686,6 +1687,21 @@ Get the vector object as an array.
 <p style="display: inline">Return:</p>
 
 - an array `[x, y]`
+
+<a name="affineplanevector2toPolar"></a>
+### affineplane.vector2.toPolar(v)
+
+Get polar coordinates of a vector.
+
+<p style="display: inline">Parameters:</p>
+
+- `v`
+  - a [vector2](#affineplanevector2)
+
+<p style="display: inline">Return:</p>
+
+- object, polar coordinates `{ magnitude, direction }` where
+  the direction is an angle in radians.
 
 <a name="affineplanevector2validate"></a>
 ### affineplane.vector2.validate(v)
