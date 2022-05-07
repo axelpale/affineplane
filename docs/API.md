@@ -79,6 +79,7 @@ it describes a rotation and uniform scaling around (0,0).
 Linear transformations cannot be used on point2
 because the points in affine space
 do not have origin. With an origin it is possible.
+Therefore vector2 can be linearly transformed.
 
 - [affineplane.linear2.compose](#affineplanelinear2compose)
 - [affineplane.linear2.multiply](#affineplanelinear2multiply)
@@ -128,7 +129,7 @@ Deep copy [linear2](#affineplanelinear2).
 <a name="affineplanelinear2create"></a>
 ### affineplane.linear2.create(a, b)
 
-Create a two-dimensional linear non-reflective singularity transform
+Create a two-dimensional linear non-reflective similarity transform
 `{ a, b }`
 
 <p style="display: inline">Parameters:</p>
@@ -541,6 +542,8 @@ Alias of `affineplane.proj2.I`.
 <a name="affineplaneproj2copy"></a>
 ### affineplane.proj2.copy(pr)
 
+Deep-copy the projection object.
+
 <p style="display: inline">Parameters:</p>
 
 - `pr`
@@ -640,7 +643,7 @@ Project a one-dimensional distance.
 <p style="display: inline">Parameters:</p>
 
 - `pr`
-  - a [proj2](#affineplaneproj2), projection between planes
+  - a [proj2](#affineplaneproj2), a projection between planes
 - `d`
   - a number, a distance in two-dimensions
 
@@ -655,7 +658,7 @@ Alias of `affineplane.proj2.dist2`.
 <a name="affineplaneproj2point2"></a>
 ### affineplane.proj2.point2(pr, p2)
 
-Project [point2](#affineplanepoint2) from plane to another.
+Project a [point2](#affineplanepoint2) from a plane to another.
 Unlike [vector2](#affineplanevector2), [point2](#affineplanepoint2) is affected by translation.
 
 <p style="display: inline">Parameters:</p>
@@ -676,7 +679,7 @@ Alias of `affineplane.proj2.point2`.
 <a name="affineplaneproj2vector2"></a>
 ### affineplane.proj2.vector2(pr, v2)
 
-Project [vector2](#affineplanevector2) from plane to another.
+Project a [vector2](#affineplanevector2) from a plane to another.
 Translations do not affect vectors,
 only scaling and rotation do.
 
@@ -695,7 +698,7 @@ only scaling and rotation do.
 <a name="affineplaneproj2linear2"></a>
 ### affineplane.proj2.linear2(pr, lin2)
 
-Project a linear transformation from plane to another.
+Project a linear transformation from a plane to another.
 Use to represent the linear transformation on another plane.
 
 <p style="display: inline">Parameters:</p>
@@ -797,7 +800,7 @@ Create a [size2](#affineplanesize2) object.
 <a name="affineplanesize2scaleBy"></a>
 ### affineplane.size2.scaleBy(sz, multiplier)
 
-Ratio-preserving scale. Multiplies all dimensions.
+Ratio-preserving scale. Multiplies all dimensions uniformly.
 
 <p style="display: inline">Parameters:</p>
 
@@ -812,11 +815,12 @@ Ratio-preserving scale. Multiplies all dimensions.
 
 ## affineplane.tran2
 
-Two-dimensional non-reflective similarity transformation.
+Various functions for two-dimensional affine non-reflective similarity
+transformation. Such transformations allow translation, uniform scaling, and
+rotation. The functions expect the transformation as an object
+`{ a, b, x, y }`
 Provides functions for 2D transformation matrices, and to be exact,
 affine non-reflective similarity transformation matrices.
-
-Clockwise rotation of 45 degrees.
 
 - [affineplane.tran2.I](#affineplanetran2I)
 - [affineplane.tran2.IDENTITY](#affineplanetran2IDENTITY)
@@ -840,7 +844,6 @@ Clockwise rotation of 45 degrees.
 - [affineplane.tran2.equals](#affineplanetran2equals)
 - [affineplane.tran2.fromArray](#affineplanetran2fromArray)
 - [affineplane.tran2.fromPolar](#affineplanetran2fromPolar)
-- [affineplane.tran2.fromVector3r](#affineplanetran2fromVector3r)
 - [affineplane.tran2.getRotation](#affineplanetran2getRotation)
 - [affineplane.tran2.getScale](#affineplanetran2getScale)
 - [affineplane.tran2.getTranslation](#affineplanetran2getTranslation)
@@ -855,7 +858,6 @@ Clockwise rotation of 45 degrees.
 - [affineplane.tran2.toArray](#affineplanetran2toArray)
 - [affineplane.tran2.toMatrix](#affineplanetran2toMatrix)
 - [affineplane.tran2.toString](#affineplanetran2toString)
-- [affineplane.tran2.toVector3r](#affineplanetran2toVector3r)
 - [affineplane.tran2.transform](#affineplanetran2transform)
 - [affineplane.tran2.transit](#affineplanetran2transit)
 - [affineplane.tran2.translateBy](#affineplanetran2translateBy)
@@ -872,6 +874,7 @@ Alias of `affineplane.tran2.I`.
 
 ### affineplane.tran2.ROT45
 
+Clockwise rotation of 45 degrees.
 
 ### affineplane.tran2.ROT90
 
@@ -897,8 +900,9 @@ Scaling to double size.
 ### affineplane.tran2.almostEqual(tr, ts, epsilon)
 
 Are two transforms almost equal? Return true if a matrix norm
-of the difference is smaller than epsilon. We use modified L1 norm
-that values a, b, x, and y as equally important.
+of the difference is smaller than epsilon. We use modified
+[L1 norm](https://mathworld.wolfram.com/L1-Norm.html) aka
+Manhattan Distance to compute the difference.
 
 <p style="display: inline">Parameters:</p>
 
@@ -921,7 +925,7 @@ Alias of `affineplane.tran2.almostEqual`.
 <a name="affineplanetran2changeBasis"></a>
 ### affineplane.tran2.changeBasis(tr, sourceBasis, targetBasis)
 
-Convert transformation from basis to another.
+Convert transformation from a basis to another.
 
 <p style="display: inline">Parameters:</p>
 
@@ -995,7 +999,10 @@ Create a 2D non-reflective similarity transform object.
 <a name="affineplanetran2det"></a>
 ### affineplane.tran2.det(tr)
 
-Transform matrix determinant.
+The matrix determinant of the transformation. If the determinant equals
+zero then the matrix cannot be inverted and thus is not a valid
+transformation. In practice, determinants close to zero are also
+problematic due to floating point arithmetics.
 
 <p style="display: inline">Parameters:</p>
 
@@ -1100,23 +1107,6 @@ rotation angle, and translation.
 
 Precondition:
   scale must be positive
-
-<a name="affineplanetran2fromVector3r"></a>
-### affineplane.tran2.fromVector3r(vec3r, vanishing)
-
-To transform
-
-<p style="display: inline">Parameters:</p>
-
-- `vec3r`
-  - a vector3r, a perspective point, a 3D vector with rotation.
-  - Vanishing point and { vec3r.x, vec3r.y } must have the same basis.
-- `vanishing`
-  - a [point2](#affineplanepoint2)
-
-<p style="display: inline">Return:</p>
-
-- a [tran2](#affineplanetran2)
 
 <a name="affineplanetran2getRotation"></a>
 ### affineplane.tran2.getRotation(tr)
@@ -1304,8 +1294,9 @@ in the format common to other APIs, including:
 <a name="affineplanetran2toString"></a>
 ### affineplane.tran2.toString(tr)
 
-Return a string of CSS transform-function data type.
-Together with transform.createFromString(...), this method allows
+Convert the transformation to a string compatible with the CSS
+transform-function data type, for example `matrix(1, 2, -2, 1, 3, 4)`.
+Together with transform.createFromString(...), this method enables [tran2](#affineplanetran2)
 serialization to and from strings.
 
 <p style="display: inline">Parameters:</p>
@@ -1316,22 +1307,6 @@ serialization to and from strings.
 <p style="display: inline">Return:</p>
 
 - a string, CSS transform
-
-<a name="affineplanetran2toVector3r"></a>
-### affineplane.tran2.toVector3r(tr, vanishing)
-
-A perspective projection from transformation to vector3r
-
-<p style="display: inline">Parameters:</p>
-
-- `tr`
-  - a [tran2](#affineplanetran2)
-- `vanishing`
-  - a [point2](#affineplanepoint2), the vanishing point.
-
-<p style="display: inline">Return:</p>
-
-- a vector3r
 
 <a name="affineplanetran2transform"></a>
 ### affineplane.tran2.transform(tr, ts)
@@ -1379,7 +1354,7 @@ further by the given vector.
 <a name="affineplanetran2translateTo"></a>
 ### affineplane.tran2.translateTo(tr, p)
 
-Modify transformation so that it maps `{ x: 0, y: 0 }`
+Modify the transformation so that the result maps `{ x: 0, y: 0 }`
 to the given point.
 
 <p style="display: inline">Parameters:</p>
@@ -1455,7 +1430,7 @@ Add two vectors. See vector.sum to add many vectors.
 <a name="affineplanevector2almostEqual"></a>
 ### affineplane.vector2.almostEqual(v, w, epsilon)
 
-Test if two vectors v,w are almost equal by the margin of epsilon.
+Test if two vectors v and w are almost equal by the margin of epsilon.
 
 <p style="display: inline">Parameters:</p>
 
@@ -1474,7 +1449,7 @@ Test if two vectors v,w are almost equal by the margin of epsilon.
 <a name="affineplanevector2average"></a>
 ### affineplane.vector2.average(vs)
 
-Average of the vector endpoints. See polarMean for polar variant.
+Average of the vectors.
 
 <p style="display: inline">Parameters:</p>
 
