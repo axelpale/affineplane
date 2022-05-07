@@ -137,7 +137,12 @@ module.exports = (code, codeModule) => {
     if (retval) {
       const text = retval[2] // second captured is the text after the indent
       const pretty = prettyText(text)
-      output += '- ' + pretty + '\n'
+      // Detect line continuation string ..
+      if (pretty.startsWith('..')) {
+        output += '  ' + pretty.substring(2) + '\n'
+      } else {
+        output += '- ' + pretty + '\n'
+      }
     } else {
       // The empty line after return value docs
       output += '\n'
