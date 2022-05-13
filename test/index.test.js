@@ -8,6 +8,7 @@ const vector2AlmostEqual = vector2.almostEqual
 // Units
 
 const epsilonTest = require('./epsilon/index.test')
+const proj2Test = require('./proj2/index.test')
 const dir2Test = require('./dir2/index.test')
 const tran2Test = require('./tran2/index.test')
 const vector2Test = require('./vector2/index.test')
@@ -56,6 +57,7 @@ test.Test.prototype.vectorEqual = function (actual, expected, message) {
 
 test('affineplane', (t) => {
   t.test('affineplane.epsilon', epsilonTest)
+  t.test('affineplane.proj2', proj2Test)
   t.test('affineplane.dir2', dir2Test)
   t.test('affineplane.tran2', tran2Test)
   t.test('affineplane.vector2', vector2Test)
