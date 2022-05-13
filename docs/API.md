@@ -2,6 +2,7 @@
 
 Types and functions for affine 2D geometry.
 
+- [affineplane.dir2](#affineplanedir2)
 - [affineplane.dist2](#affineplanedist2)
 - [affineplane.epsilon](#affineplaneepsilon)
 - [affineplane.linear2](#affineplanelinear2)
@@ -16,6 +17,30 @@ Types and functions for affine 2D geometry.
 - [affineplane.vector2](#affineplanevector2)
 - [affineplane.vector3](#affineplanevector3)
 - [affineplane.version](#affineplaneversion)
+
+## affineplane.dir2
+
+A direction is just a number in radians clockwise from
+the positive x-axis. The direction is capped between -Pi (inclusive)
+and Pi (exclusive).
+When a direction is projected between planes, only the rotation of
+the coordinate space affects the direction.
+
+- [affineplane.dir2.create](#affineplanedir2create)
+
+<a name="affineplanedir2create"></a>
+### affineplane.dir2.create(r)
+
+Create a new direction.
+
+<p style="display: inline">Parameters:</p>
+
+- `r`
+  - a number. The angle in radians.
+
+<p style="display: inline">Return:</p>
+
+- a number. The angle in radians between -Pi and +Pi.
 
 ## affineplane.dist2
 
@@ -498,11 +523,15 @@ Create a three-dimensional point `{x, y, z}`
 ## affineplane.proj2
 
 Projections between two-dimensional planes for various geometries.
-Projections are maps from plane A to plane B.
+The [proj2](#affineplaneproj2) projections are orthogonal projections from plane A to plane B,
+assuming that the planes are parallel in 3D.
+
 A projection can be used as a function that converts
 coordinates of geometric structures from plane to plane.
-The structure stays completely intact: isomorphism.
-Only the representation changes.
+
+The structure of projected objects stays completely intact.
+Only the representation changes. Therefore projections are isomorphisms.
+
 The structures are in affine space: there is no origin or 'global' plane.
 
 The projection defines the location of plane A on plane B.
@@ -523,12 +552,15 @@ the projection from A to B is equivalent to the location of A on B.
 - [affineplane.proj2.invert](#affineplaneproj2invert)
 - [affineplane.proj2.between](#affineplaneproj2between)
 - [affineplane.proj2.delta](#affineplaneproj2delta)
+- [affineplane.proj2.dir2](#affineplaneproj2dir2)
+- [affineplane.proj2.direction](#affineplaneproj2direction)
 - [affineplane.proj2.dist2](#affineplaneproj2dist2)
 - [affineplane.proj2.distance](#affineplaneproj2distance)
 - [affineplane.proj2.point2](#affineplaneproj2point2)
 - [affineplane.proj2.point](#affineplaneproj2point)
 - [affineplane.proj2.vector2](#affineplaneproj2vector2)
 - [affineplane.proj2.linear2](#affineplaneproj2linear2)
+- [affineplane.proj2.size2](#affineplaneproj2size2)
 - [affineplane.proj2.tran2](#affineplaneproj2tran2)
 
 ### affineplane.proj2.I
@@ -635,6 +667,26 @@ and the source projection.
 
 Alias of `affineplane.proj2.between`.
 
+<a name="affineplaneproj2dir2"></a>
+### affineplane.proj2.dir2(pr, r)
+
+Project a direction angle from a plane to another.
+
+<p style="display: inline">Parameters:</p>
+
+- `pr`
+  - a [proj2](#affineplaneproj2), a projection between planes
+- `r`
+  - a number, a direction angle in radians
+
+<p style="display: inline">Return:</p>
+
+- a number, the equivalent direction on the target plane.
+
+### affineplane.proj2.direction
+
+Alias of `affineplane.proj2.dir2`.
+
 <a name="affineplaneproj2dist2"></a>
 ### affineplane.proj2.dist2(pr, d)
 
@@ -711,6 +763,23 @@ Use to represent the linear transformation on another plane.
 <p style="display: inline">Return:</p>
 
 - a [linear2](#affineplanelinear2), the same transformation represented on the target plane
+
+<a name="affineplaneproj2size2"></a>
+### affineplane.proj2.size2(pr, size)
+
+Project a rectangular size from a plane to another.
+Only the scale change affects the size.
+
+<p style="display: inline">Parameters:</p>
+
+- `pr`
+  - a [proj2](#affineplaneproj2), a projection between planes
+- `size`
+  - a [size2](#affineplanesize2), a rectangular size in 2D
+
+<p style="display: inline">Return:</p>
+
+- a number, the same size on the target plane.
 
 <a name="affineplaneproj2tran2"></a>
 ### affineplane.proj2.tran2(pr, tr)
