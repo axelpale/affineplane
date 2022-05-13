@@ -54,7 +54,7 @@ On the other hand, *vectors* represent movement and displacement on the plane. I
 
 There is another way to understand why points on an affine plane behave such a way. Think of a plane in 3D space so that the plane is lifted away from the space origin, as illustrated below. Now, the points A,B on the plane can be described as 3D vectors from the space origin O to the points, denoted as OA and OB. As you can see, addition of two such vectors OA + OB yields a result that does not stay on the plane. Their difference OA - OB is a vector parallel to the plane and the distance between the points is the length of that vector. Does the mean of the two vectors stay on the plane?
 
-(TODO 3d drawing here)
+![In 3D the vector sum does not stay on plane](docs/origin-dependent-sum-3d.jpg)
 
 ## License
 
