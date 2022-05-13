@@ -33,6 +33,7 @@
   "devDependencies": {
     "async": "^3.2.3",
     "genversion": "^3.1.1",
+    "nodemon": "^2.0.16",
     "standard": "^16.0.4",
     "tape": "^5.5.3"
   },
@@ -41,6 +42,7 @@
     "lint:fix": "standard --fix index.js 'lib/**/*.js' 'test/**/*.js'",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "node test/index.test.js",
+    "test:watch": "nodemon --exec npm run test",
     "gv": "genversion lib/version.js",
     "build:docs": "node docs/gendocs/index.js",
     "build:standalone": "browserify index.js --standalone affineplane -o affineplane.js",
