@@ -7,12 +7,14 @@ const vector2AlmostEqual = vector2.almostEqual
 
 // Units
 
-const epsilonTest = require('./epsilon/index.test')
-const proj2Test = require('./proj2/index.test')
-const dir2Test = require('./dir2/index.test')
-const tran2Test = require('./tran2/index.test')
-const vector2Test = require('./vector2/index.test')
-const versionTest = require('./version/index.test')
+const units = {
+  'affineplane.epsilon': require('./epsilon/index.test'),
+  'affineplane.proj2': require('./proj2/index.test'),
+  'affineplane.dir2': require('./dir2/index.test'),
+  'affineplane.tran2': require('./tran2/index.test'),
+  'affineplane.vector2': require('./vector2/index.test'),
+  'affineplane.version': require('./version/index.test')
+}
 
 // Custom assertations
 
@@ -44,6 +46,7 @@ test.Test.prototype.transformEqual = function (actual, expected, message) {
     expected: expected
   })
 }
+
 test.Test.prototype.vectorEqual = function (actual, expected, message) {
   this._assert(vector2AlmostEqual(actual, expected), {
     message: message || 'vector2 should have correct elements',
@@ -56,10 +59,8 @@ test.Test.prototype.vectorEqual = function (actual, expected, message) {
 // Run test suite
 
 test('affineplane', (t) => {
-  t.test('affineplane.epsilon', epsilonTest)
-  t.test('affineplane.proj2', proj2Test)
-  t.test('affineplane.dir2', dir2Test)
-  t.test('affineplane.tran2', tran2Test)
-  t.test('affineplane.vector2', vector2Test)
-  t.test('affineplane.version', versionTest)
+  // Test each unit.
+  Object.keys(units).forEach((unitName) => {
+    t.test(unitName, units[unitName])
+  })
 })
