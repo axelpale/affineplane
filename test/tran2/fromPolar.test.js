@@ -23,4 +23,10 @@ module.exports = (ts) => {
 
     t.end()
   })
+
+  ts.test('case: no translation args', (t) => {
+    t.transformEqual(tran2.fromPolar(1, 0), tran2.I)
+
+    t.end()
+  })
 }
