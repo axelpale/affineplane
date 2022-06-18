@@ -211,19 +211,22 @@ Create a path on plane. Deep-clones the points array.
 
 A two-dimensional polygon; Array of point2;
 A closed sequence of points `[{ x, y }, { x, y }, ...]`
-Create a polygon on plane. Deep-clones the points array.
-
-Parameters:
-  points
-    array of [point2](#affineplanepoint2)
-
-Return:
-  a poly2, array of points
 
 - [affineplane.poly2.create](#affineplanepoly2create)
 
-### affineplane.poly2.create
+<a name="affineplanepoly2create"></a>
+### affineplane.poly2.create(points)
 
+Create a polygon on plane. Deep-clones the points array.
+
+<p style="display: inline">Parameters:</p>
+
+- `points`
+  - array of [point2](#affineplanepoint2)
+
+<p style="display: inline">Return:</p>
+
+- a poly2, array of points
 
 ## affineplane.point2
 
@@ -898,6 +901,7 @@ affine non-reflective similarity transformation matrices.
 
 - [affineplane.tran2.I](#affineplanetran2I)
 - [affineplane.tran2.IDENTITY](#affineplanetran2IDENTITY)
+- [affineplane.tran2.ROT0](#affineplanetran2ROT0)
 - [affineplane.tran2.ROT45](#affineplanetran2ROT45)
 - [affineplane.tran2.ROT90](#affineplanetran2ROT90)
 - [affineplane.tran2.ROT180](#affineplanetran2ROT180)
@@ -929,6 +933,7 @@ affine non-reflective similarity transformation matrices.
 - [affineplane.tran2.rebase](#affineplanetran2rebase)
 - [affineplane.tran2.rotateBy](#affineplanetran2rotateBy)
 - [affineplane.tran2.rotateTo](#affineplanetran2rotateTo)
+- [affineplane.tran2.rotateToOrtho](#affineplanetran2rotateToOrtho)
 - [affineplane.tran2.toArray](#affineplanetran2toArray)
 - [affineplane.tran2.toMatrix](#affineplanetran2toMatrix)
 - [affineplane.tran2.toString](#affineplanetran2toString)
@@ -945,6 +950,12 @@ Identity transform, a kind of multiplication by 1.
 ### affineplane.tran2.IDENTITY
 
 Alias of `affineplane.tran2.I`.
+
+### affineplane.tran2.ROT0
+
+Zero angle rotation.
+
+Alias of `affineplane.tran2.IDENTITY`.
 
 ### affineplane.tran2.ROT45
 
@@ -1171,9 +1182,9 @@ rotation angle, and translation.
 - `rotation`
   - a number, rotation in radians from positive x axis towards pos. y axis.
 - `tx`
-  - a number, translation toward pos. x
+  - optional number, translation toward positive x. Default 0.
 - `ty`
-  - a number, translation toward pos. y
+  - optional number, translation toward positive y. Default 0.
 
 <p style="display: inline">Return:</p>
 
@@ -1259,7 +1270,7 @@ The operation is also called homothety.
 - `tr`
   - a [tran2](#affineplanetran2), a transform
 - `center`
-  - a [point2](#affineplanepoint2), a point
+  - a [point2](#affineplanepoint2), a point on the image of the transform
 - `multiplier`
   - a number
 
@@ -1279,7 +1290,7 @@ Scale the given transform so that
 - `tr`
   - a [tran2](#affineplanetran2)
 - `center`
-  - a [point2](#affineplanepoint2), a fixed pivot point for scaling.
+  - a [point2](#affineplanepoint2), a point on the image of the transform
 - `scale`
   - a number, target scale
 
@@ -1305,7 +1316,7 @@ so that the given center point stays fixed.
 - `tr`
   - a [tran2](#affineplanetran2), a transform
 - `center`
-  - a [point2](#affineplanepoint2), a point
+  - a [point2](#affineplanepoint2), a point on the image of the transform
 - `radians`
   - a number, angle in radians
 
@@ -1324,13 +1335,33 @@ so that the given center point stays fixed.
 - `tr`
   - a [tran2](#affineplanetran2), a transform
 - `center`
-  - a [point2](#affineplanepoint2), a point
+  - a [point2](#affineplanepoint2), a point on the image of the transform
 - `radians`
   - a number, angle to rotate to
 
 <p style="display: inline">Return:</p>
 
 - a [tran2](#affineplanetran2), a transform
+
+<a name="affineplanetran2rotateToOrtho"></a>
+### affineplane.tran2.rotateToOrtho(tr, center)
+
+Rotate to nearest orthogonal angle 0, 90, 180, and 270 deg.
+Note that if the given transform represents exact 45, 135, 225, or 315 deg
+rotation then the nearest orthogonal angle is arbitrarily either the next
+or previous orthogonal angle due to the variation caused by
+floating-point arithmetics.
+
+<p style="display: inline">Parameters:</p>
+
+- `tr`
+  - a [tran2](#affineplanetran2)
+- `center`
+  - a [point2](#affineplanepoint2), a point on the image of the transform
+
+<p style="display: inline">Return:</p>
+
+- a [tran2](#affineplanetran2)
 
 <a name="affineplanetran2toArray"></a>
 ### affineplane.tran2.toArray(tr)
