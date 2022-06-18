@@ -545,6 +545,7 @@ the projection from A to B is equivalent to the location of A on B.
 - [affineplane.proj2.I](#affineplaneproj2I)
 - [affineplane.proj2.IDENTITY](#affineplaneproj2IDENTITY)
 - [affineplane.proj2.copy](#affineplaneproj2copy)
+- [affineplane.proj2.clone](#affineplaneproj2clone)
 - [affineplane.proj2.create](#affineplaneproj2create)
 - [affineplane.proj2.compose](#affineplaneproj2compose)
 - [affineplane.proj2.combine](#affineplaneproj2combine)
@@ -584,6 +585,10 @@ Deep-copy the projection object.
 <p style="display: inline">Return:</p>
 
 - a [proj2](#affineplaneproj2), a projection
+
+### affineplane.proj2.clone
+
+Alias of `affineplane.proj2.copy`.
 
 <a name="affineplaneproj2create"></a>
 ### affineplane.proj2.create(a, b, x, y)
