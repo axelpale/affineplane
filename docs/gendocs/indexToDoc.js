@@ -75,9 +75,14 @@ module.exports = (code, codeModule) => {
       const fullname = codeModule.name + '.' + exportedName
 
       membersOutput += '### ' + fullname + '\n\n'
+      if (doc.trim().length > 0) {
+        membersOutput += prettyText(doc) + '\n'
+      }
       membersOutput += 'Alias of `' + codeModule.name + '.' + aliasOf + '`.\n\n'
       const hashName = '#' + fullname.replace(expressions.hashPath, '')
       tocOutput += '- [' + fullname + '](' + hashName + ')\n'
+      // doc consumed
+      doc = ''
 
       return
     }
