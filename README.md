@@ -15,22 +15,23 @@ With [npm](https://www.npmjs.com/package/affineplane) or [yarn](https://yarnpkg.
 
 Shapes:
 
-- [dist2](docs/API.md#affineplanedist2), distance between two locations on a plane
-- [point2](docs/API.md#affineplanepoint2), a location on a plane
-- [point3](docs/API.md#affineplanepoint3), a location in a 3D space
-- [size2](docs/API.md#affineplanesize2), a rectangle size on a plane
+- [dir2](docs/API.md#affineplanedir2), direction on a plane, `number` in rad
+- [dist2](docs/API.md#affineplanedist2), distance between two locations on a plane, `number`
+- [point2](docs/API.md#affineplanepoint2), a location on a plane, `{x,y}`
+- [point3](docs/API.md#affineplanepoint3), a location in a 3D space, `{x,y,z}`
+- [size2](docs/API.md#affineplanesize2), a rectangle size on a plane, `{w,h}`
 
 Movements:
 
-- [linear2](docs/API.md#affineplanelinear2), a linear transformation on a plane
-- [tran2](docs/API.md#affineplanetran2), an affine transformation on a plane
-- [vector2](docs/API.md#affineplanevector2), a displacement on a plane
-- [vector3](docs/API.md#affineplanevector2), a displacement in a 3D space
+- [linear2](docs/API.md#affineplanelinear2), a linear transformation on a plane, `{a,b}`
+- [tran2](docs/API.md#affineplanetran2), an affine transformation on a plane, `{a,b,x,y}`
+- [vector2](docs/API.md#affineplanevector2), a displacement on a plane, `{x,y}`
+- [vector3](docs/API.md#affineplanevector2), a displacement in a 3D space, `{x,y,z}`
 
 Projections:
 
-- [proj2](docs/API.md#affineplaneproj2), projection between similar planes
-- [proj3](docs/API.md#affineplaneproj3), perspective projection between parallel planes
+- [proj2](docs/API.md#affineplaneproj2), projection between similar planes, `{a,b,x,y}`
+- [proj3](docs/API.md#affineplaneproj3), perspective projection between parallel planes, `{a,b,x,y,z}`
 
 See [API docs](docs/API.md) for more.
 
