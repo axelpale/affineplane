@@ -57,6 +57,18 @@ There is another way to understand why points on an affine plane behave such a w
 
 ![In 3D the vector sum does not stay on plane](docs/origin-dependent-sum-3d.jpg)
 
+## Contribute
+
+Pull requests and [bug reports](https://github.com/axelpale/affineplane/issues) are highly appreciated. Please test your contribution with the following scripts:
+
+Run test suite:
+
+    $ npm run test
+
+Run only linter:
+
+    $ npm run lint
+
 ## License
 
 [MIT](LICENSE)
