@@ -41,7 +41,7 @@ Instead of classes, affineplane provides functions that operate on plain objects
 
 The functions are grouped in *namespaces*, each focusing on a certain geometry. A common theme of the lib is to explicitly distinguish static shapes from their dynamic movements. Otherwise, in our experience, it is all too easy to mix these concepts in the code which can break the math as described below.
 
-## How points and vectors differ
+## Difference between points and vectors
 
 Affine planes have *no origin* by default. The point (0,0) on an affine plane is not an origin. This has interesting consequences that separates the often analogous concepts of the point and the vector.
 
