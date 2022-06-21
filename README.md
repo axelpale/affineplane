@@ -39,7 +39,13 @@ See [API docs](docs/API.md) for more.
 
 Instead of classes, affineplane provides functions that operate on plain objects. The available functions are pure, in a sense that they never modify the input, do not cause side effects, have no hidden state, and they always return new objects computed from the input.
 
-The functions are grouped in *namespaces*, each focusing on a certain geometry. A common theme of the lib is to explicitly distinguish static shapes from their dynamic movements. Otherwise, in our experience, it is all too easy to mix these concepts in the code which can break the math as described below.
+    const aff = require('affineplane')
+    const p = aff.point2.create(2, 5)
+    const po = aff.point2.offset(3, 0)
+    // po equals { x: 5, y: 5 }
+
+The functions are grouped in *namespaces*, each focusing on a certain geometry. A common theme of the lib is to explicitly distinguish static shapes from their dynamic movements, like [point2](docs/API.md#affineplanepoint2) from [vector2](docs/API.md#affineplanevector2). Otherwise, in our experience, it is all too easy to mix these concepts in the code which can break the math especially when projecting the geometry between planes.
+
 
 ## Difference between points and vectors
 
