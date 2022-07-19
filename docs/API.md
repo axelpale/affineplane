@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v1.2.0
+# Affineplane API Documentation v1.2.1
 
 Welcome to affineplane API reference documentation.
 
