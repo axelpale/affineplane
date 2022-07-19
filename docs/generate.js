@@ -1,6 +1,7 @@
 const yamdog = require('yamdog')
 const path = require('path')
 const version = require('../package.json').version
+const decor = yamdog.decorators
 
 yamdog.generate({
   // Where to start collecting comment blocks
@@ -12,11 +13,23 @@ yamdog.generate({
   // Main title of the document
   title: 'Affineplane API Documentation v' + version,
   // Introduction; the initial paragraph
-  intro: 'Types and functions for affine 2D geometry.',
+  intro: 'Welcome to affineplane API reference documentation.',
   // Styling; decorate the docs
   decorators: [
-    yamdog.decorators.linkNames(),
-    yamdog.decorators.replace([
+    decor.aliases(),
+    decor.alphabetical(),
+    decor.linkNames(),
+    decor.replace([
+      {
+        // Normalize parameters title
+        pattern: /^param(?:eter)?s?:?/i,
+        replacement: '**Parameters:**'
+      },
+      {
+        // Normalize return title
+        pattern: /^returns?:?/i,
+        replacement: '**Returns:**'
+      },
       {
         // Pretty array literals
         pattern: /(^|\s+)\[([\w,: ]*)\]($|\s+)/,
@@ -31,6 +44,16 @@ yamdog.generate({
         // Link linear2
         pattern: /(^|\s+)linear2($|\W+)/,
         replacement: '$1[linear2](#affineplanelinear2)$2'
+      },
+      {
+        // Link path2
+        pattern: /(^|\s+)path2($|\W+)/,
+        replacement: '$1[path2](#affineplanepath2)$2'
+      },
+      {
+        // Link poly2
+        pattern: /(^|\s+)poly2($|\W+)/,
+        replacement: '$1[poly2](#affineplanepoly2)$2'
       },
       {
         // Link point2
@@ -57,7 +80,14 @@ yamdog.generate({
         pattern: /(^|\s+)vector2($|\W+)/,
         replacement: '$1[vector2](#affineplanevector2)$2'
       },
+      {
+        // Link vector3
+        pattern: /(^|\s+)vector3($|\W+)/,
+        replacement: '$1[vector3](#affineplanevector3)$2'
+      },
     ]),
-    yamdog.decorators.toc()
+    decor.italicSingles(),
+    decor.backTopLinks(),
+    decor.toc()
   ]
 })
