@@ -1,23 +1,34 @@
-## Affineplane API Documentation
+<a name="top"></a>
+# Affineplane API Documentation v1.2.0
 
-Types and functions for affine 2D geometry.
+Welcome to affineplane API reference documentation.
+
+
+<a name="affineplane"></a>
+## affineplane
+
+The [affineplane](#affineplane) module provides functions for affine 2D geometry.
+The functions are grouped in the following submodules.
 
 - [affineplane.dir2](#affineplanedir2)
 - [affineplane.dist2](#affineplanedist2)
 - [affineplane.epsilon](#affineplaneepsilon)
 - [affineplane.linear2](#affineplanelinear2)
 - [affineplane.path2](#affineplanepath2)
-- [affineplane.poly2](#affineplanepoly2)
 - [affineplane.point2](#affineplanepoint2)
 - [affineplane.point3](#affineplanepoint3)
+- [affineplane.poly2](#affineplanepoly2)
 - [affineplane.proj2](#affineplaneproj2)
 - [affineplane.proj3](#affineplaneproj3)
 - [affineplane.size2](#affineplanesize2)
+- [affineplane.tran2](#affineplanetran2)
 - [affineplane.tran2](#affineplanetran2)
 - [affineplane.vector2](#affineplanevector2)
 - [affineplane.vector3](#affineplanevector3)
 - [affineplane.version](#affineplaneversion)
 
+
+<a name="affineplanedir2"></a>
 ## affineplane.dir2
 
 A direction is just a number in radians clockwise from
@@ -28,215 +39,168 @@ the coordinate space affects the direction.
 
 - [affineplane.dir2.create](#affineplanedir2create)
 
+
 <a name="affineplanedir2create"></a>
-### affineplane.dir2.create(r)
+## affineplane.dir2.create(r)
 
 Create a new direction.
 
-<p style="display: inline">Parameters:</p>
-
-- `r`
+**Parameters:**
+- *r*
   - a number. The angle in radians.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number. The angle in radians between -Pi and +Pi.
 
+<a name="affineplanedist2"></a>
 ## affineplane.dist2
 
 The distance measure is a directionless, always positive measure.
 If projected between planes, only a change in the coordinate scale
 affects the distance.
 
-- [affineplane.dist2.create](#affineplanedist2create)
 - [affineplane.dist2.changeBasis](#affineplanedist2changeBasis)
-- [affineplane.dist2.rebase](#affineplanedist2rebase)
+- [affineplane.dist2.create](#affineplanedist2create)
 
-<a name="affineplanedist2create"></a>
-### affineplane.dist2.create(d)
-
-Create a measure. Basically it is just the absolute value of the number.
-
-<p style="display: inline">Parameters:</p>
-
-- `d`
-  - a number
-
-<p style="display: inline">Return:</p>
-
-- a number, always zero or positive.
 
 <a name="affineplanedist2changeBasis"></a>
-### affineplane.dist2.changeBasis(d, sourceBasis, targetBasis)
+## affineplane.dist2.changeBasis(d, source, target)
 
 Convert a distance between bases.
 
-<p style="display: inline">Parameters:</p>
-
-- `d`
+**Parameters:**
+- *d*
   - a number, a measure on the source basis.
-- `sourceBasis`
-  - a [proj2](#affineplaneproj2), a transition from the source basis to
-    the reference basis.
-- `targetBasis`
-  - a [proj2](#affineplaneproj2), a transition from the target basis to
-    the reference basis.
+- *sourceBasis*
+  - a [proj2](#affineplaneproj2), a transition from the source basis to the reference basis.
+- *targetBasis*
+  - a [proj2](#affineplaneproj2), a transition from the target basis to the reference basis.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number, the scalar on the target basis.
 
-### affineplane.dist2.rebase
+<a name="affineplanedist2create"></a>
+## affineplane.dist2.create(d)
 
-Alias of `affineplane.dist2.changeBasis`.
+Create a measure. Basically it is just the absolute value of the number.
 
+**Parameters:**
+- *d*
+  - a number
+
+**Returns:**
+- a number, always zero or positive.
+
+<a name="affineplaneepsilon"></a>
 ## affineplane.epsilon
 
 Default margin for non-strict numeric equality.
+For example `0.0000000001`.
 
-
-
+<a name="affineplanelinear2"></a>
 ## affineplane.linear2
 
 Two-dimensional linear similarity transformation. In other words,
 it describes a rotation and uniform scaling around (0,0).
 
-Linear transformations cannot be used on point2
+Linear transformations cannot be used on [point2](#affineplanepoint2)
 because the points in affine space
 do not have origin. With an origin it is possible.
-Therefore vector2 can be linearly transformed.
+Therefore [vector2](#affineplanevector2) can be linearly transformed.
 
 - [affineplane.linear2.compose](#affineplanelinear2compose)
-- [affineplane.linear2.multiply](#affineplanelinear2multiply)
-- [affineplane.linear2.combine](#affineplanelinear2combine)
 - [affineplane.linear2.copy](#affineplanelinear2copy)
 - [affineplane.linear2.create](#affineplanelinear2create)
 - [affineplane.linear2.polar](#affineplanelinear2polar)
 
+
 <a name="affineplanelinear2compose"></a>
-### affineplane.linear2.compose(tr, ts)
+## affineplane.linear2.compose(tr, ts)
 
 Combine two linear transformations.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - transformation to be applied last
-- `ts`
+- *ts*
   - transformation to be applied first
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - [tran2](#affineplanetran2)
 
-### affineplane.linear2.multiply
-
-Alias of `affineplane.linear2.compose`.
-
-### affineplane.linear2.combine
-
-Alias of `affineplane.linear2.compose`.
-
 <a name="affineplanelinear2copy"></a>
-### affineplane.linear2.copy(lin)
+## affineplane.linear2.copy(lin)
 
 Deep copy [linear2](#affineplanelinear2).
 
-<p style="display: inline">Parameters:</p>
-
-- `lin`
+**Parameters:**
+- *lin*
   - a [linear2](#affineplanelinear2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [linear2](#affineplanelinear2)
 
 <a name="affineplanelinear2create"></a>
-### affineplane.linear2.create(a, b)
+## affineplane.linear2.create(a, b)
 
 Create a two-dimensional linear non-reflective similarity transform
 `{ a, b }`
 
-<p style="display: inline">Parameters:</p>
-
-- `a`
+**Parameters:**
+- *a*
   - a number
-- `b`
+- *b*
   - a number
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [linear2](#affineplanelinear2)
 
 <a name="affineplanelinear2polar"></a>
-### affineplane.linear2.polar(scale, rotation)
+## affineplane.linear2.polar(scale, rotation)
 
 Create a linear transformation from scale and rotation.
-See also [vector2](#affineplanevector2).polar(magnitude, direction)
+See also [affineplane.vector2.fromPolar](#affineplanevector2fromPolar).
 
-<p style="display: inline">Parameters:</p>
-
-- `scale`
+**Parameters:**
+- *scale*
   - a number, multiplier
-- `rotation`
+- *rotation*
   - a number, angle in radians
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - [linear2](#affineplanelinear2)
 
+<a name="affineplanepath2"></a>
 ## affineplane.path2
 
-Two-dimensional path; Array of point2; Open sequence of points;
+Two-dimensional path; Array of [point2](#affineplanepoint2); Open sequence of points;
 Does not form a polygon but a sequence of line segments.
 `[{ x, y }, { x, y }, ...]`
 
 - [affineplane.path2.create](#affineplanepath2create)
 
+
 <a name="affineplanepath2create"></a>
-### affineplane.path2.create(points)
+## affineplane.path2.create(points)
 
 Create a path on plane. Deep-clones the points array.
 
-<p style="display: inline">Parameters:</p>
-
-- `points`
+**Parameters:**
+- *points*
   - array of [point2](#affineplanepoint2)
 
-<p style="display: inline">Return:</p>
+**Returns:**
+- a [path2](#affineplanepath2), array of points
 
-- a path2, array of points
-
-## affineplane.poly2
-
-A two-dimensional polygon; Array of point2;
-A closed sequence of points `[{ x, y }, { x, y }, ...]`
-
-- [affineplane.poly2.create](#affineplanepoly2create)
-
-<a name="affineplanepoly2create"></a>
-### affineplane.poly2.create(points)
-
-Create a polygon on plane. Deep-clones the points array.
-
-<p style="display: inline">Parameters:</p>
-
-- `points`
-  - array of [point2](#affineplanepoint2)
-
-<p style="display: inline">Return:</p>
-
-- a poly2, array of points
-
+<a name="affineplanepoint2"></a>
 ## affineplane.point2
 
-A two-dimensional point. Due to affinity, two points cannot be added
-together, although the distance between and their mean can be computed.
-A point is a position in affine space.
+A two-dimensional point. A point is a position in affine space.
+Due to affinity, two points cannot be added together,
+although the distance between and their mean can be computed.
 An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 
 - [affineplane.point2.average](#affineplanepoint2average)
-- [affineplane.point2.mean](#affineplanepoint2mean)
 - [affineplane.point2.changeBasis](#affineplanepoint2changeBasis)
 - [affineplane.point2.copy](#affineplanepoint2copy)
 - [affineplane.point2.create](#affineplanepoint2create)
@@ -246,6 +210,8 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 - [affineplane.point2.equal](#affineplanepoint2equal)
 - [affineplane.point2.equals](#affineplanepoint2equals)
 - [affineplane.point2.fromArray](#affineplanepoint2fromArray)
+- [affineplane.point2.mean](#affineplanepoint2mean)
+- [affineplane.point2.move](#affineplanepoint2move)
 - [affineplane.point2.offset](#affineplanepoint2offset)
 - [affineplane.point2.polarOffset](#affineplanepoint2polarOffset)
 - [affineplane.point2.project](#affineplanepoint2project)
@@ -253,276 +219,276 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 - [affineplane.point2.toArray](#affineplanepoint2toArray)
 - [affineplane.point2.transform](#affineplanepoint2transform)
 - [affineplane.point2.translate](#affineplanepoint2translate)
-- [affineplane.point2.move](#affineplanepoint2move)
+
 
 <a name="affineplanepoint2average"></a>
-### affineplane.point2.average(ps)
+## affineplane.point2.average(ps)
 
 Average of points.
 
-<p style="display: inline">Parameters:</p>
-
-- `ps`
+**Parameters:**
+- *ps*
   - array of [point2](#affineplanepoint2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2)
 
-### affineplane.point2.mean
-
-Alias of `affineplane.point2.average`.
-
 <a name="affineplanepoint2changeBasis"></a>
-### affineplane.point2.changeBasis(p, sourceBasis, targetBasis)
+## affineplane.point2.changeBasis(p, source, target)
 
 Convert a point between bases.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2), a point on the source basis.
-- `sourceBasis`
-  - a [proj2](#affineplaneproj2), a transition from the source basis to
-    the reference basis.
-- `targetBasis`
-  - a [proj2](#affineplaneproj2), a transition from the target basis to
-    the reference basis.
+- *source*
+  - a [proj2](#affineplaneproj2), a transition from the source basis to the reference basis.
+- *target*
+  - a [proj2](#affineplaneproj2), a transition from the target basis to the reference basis.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2), the same point but represented on the targer basis.
 
 <a name="affineplanepoint2copy"></a>
-### affineplane.point2.copy(p)
+## affineplane.point2.copy(p)
 
 Copy point object.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2)
 
 <a name="affineplanepoint2create"></a>
-### affineplane.point2.create(x, y)
+## affineplane.point2.create(x, y)
 
 Create a [point2](#affineplanepoint2) object: `{ x, y }`
 
-<p style="display: inline">Parameters:</p>
-
-- `x`
+**Parameters:**
+- *x*
   - a number. The x coordinate.
-- `y`
+- *y*
   - a number. The y coordinate.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2)
 
 <a name="affineplanepoint2delta"></a>
-### affineplane.point2.delta(p, q)
+## affineplane.point2.delta
 
-A vector from point p to point q
+Alias for [affineplane.point2.difference](#affineplanepoint2difference)
 
-<p style="display: inline">Parameters:</p>
+<a name="affineplanepoint2difference"></a>
+## affineplane.point2.difference(p, q)
 
-- `p`
+A vector from point p to point q.
+
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
-- `q`
+- *q*
   - a [point2](#affineplanepoint2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
-### affineplane.point2.difference
-
-Alias of `affineplane.point2.delta`.
-
 <a name="affineplanepoint2distance"></a>
-### affineplane.point2.distance(p, q)
+## affineplane.point2.distance(p, q)
 
 Distance between two points.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
-- `q`
+- *q*
   - a [point2](#affineplanepoint2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number, a distance from p to q (= distance from q to p)
 
 <a name="affineplanepoint2equal"></a>
-### affineplane.point2.equal(p, q)
+## affineplane.point2.equal(p, q)
 
 Test if points p, q are equal.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
-- `q`
+- *q*
   - a [point2](#affineplanepoint2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a boolean
 
-### affineplane.point2.equals
+<a name="affineplanepoint2equals"></a>
+## affineplane.point2.equals
 
-Alias of `affineplane.point2.equal`.
+Alias for [affineplane.point2.equal](#affineplanepoint2equal)
 
 <a name="affineplanepoint2fromArray"></a>
-### affineplane.point2.fromArray(arrp)
+## affineplane.point2.fromArray(arrp)
 
 Create `{ x, y }` point from array `[x, y]`
 
-<p style="display: inline">Return:</p>
+**Parameters:**
+- *arrp*
+  - a two-element array
 
+**Returns:**
 - a [point2](#affineplanepoint2)
 
+<a name="affineplanepoint2mean"></a>
+## affineplane.point2.mean
+
+Alias for [affineplane.point2.average](#affineplanepoint2average)
+
+<a name="affineplanepoint2move"></a>
+## affineplane.point2.move
+
+Alias for [affineplane.point2.translate](#affineplanepoint2translate)
+
 <a name="affineplanepoint2offset"></a>
-### affineplane.point2.offset(p, dx, dy)
+## affineplane.point2.offset(p, dx, dy)
 
 Offset a point by scalars dx dy.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
-- `dx`
+- *dx*
   - a number, a horizontal offset
-- `dy`
+- *dy*
   - a number, a vertical offset
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2), translated by the vector `{ x: dx, y: dy }`
 
 <a name="affineplanepoint2polarOffset"></a>
-### affineplane.point2.polarOffset(p, distance, angle)
+## affineplane.point2.polarOffset(p, distance, angle)
 
 Create a point away from p at the given distance and angle.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
-- `distance`
-  - a number
-- `angle`
-  - a number, angle in radians
+- *distance*
+  - a number, the distance from p.
+- *angle*
+  - a number, the angle in radians
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2)
 
 <a name="affineplanepoint2project"></a>
-### affineplane.point2.project(p, pr)
+## affineplane.point2.project(p, pr)
 
 Project a point from a plane to another.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
-- `pr`
-  - a [proj2](#affineplaneproj2)
+- *pr*
+  - a [proj2](#affineplaneproj2), the projection to apply to p.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2)
 
 <a name="affineplanepoint2rotateBy"></a>
-### affineplane.point2.rotateBy(p, origin, radians)
+## affineplane.point2.rotateBy(p, origin, radians)
 
 Rotate point about the given center.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
-- `origin`
-  - a [point2](#affineplanepoint2), a point around to rotate
-- `radians`
+- *origin*
+  - a [point2](#affineplanepoint2), the point around to rotate
+- *radians*
   - a number, angle in radians
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2)
 
 <a name="affineplanepoint2toArray"></a>
-### affineplane.point2.toArray(p)
+## affineplane.point2.toArray(p)
 
 Get the [point2](#affineplanepoint2) object as an array.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - an array `[x, y]`
 
 <a name="affineplanepoint2transform"></a>
-### affineplane.point2.transform(p, tr)
+## affineplane.point2.transform(p, tr)
 
 Transform a point.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2), `{ x, y }`
-- `tr`
+- *tr*
   - a [tran2](#affineplanetran2), a transform
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2), the transformed point
 
 <a name="affineplanepoint2translate"></a>
-### affineplane.point2.translate(p, vec)
+## affineplane.point2.translate(p, vec)
 
 Translate the point by the given vector.
 
-<p style="display: inline">Parameters:</p>
-
-- `p`
+**Parameters:**
+- *p*
   - a [point2](#affineplanepoint2)
-- `vec`
+- *vec*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2)
 
-### affineplane.point2.move
-
-Alias of `affineplane.point2.translate`.
-
+<a name="affineplanepoint3"></a>
 ## affineplane.point3
 
 Three-dimensional point.
 
 - [affineplane.point3.create](#affineplanepoint3create)
 
+
 <a name="affineplanepoint3create"></a>
-### affineplane.point3.create(x, y, z)
+## affineplane.point3.create(x, y, z)
 
 Create a three-dimensional point `{x, y, z}`
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a point3
 
+<a name="affineplanepoly2"></a>
+## affineplane.poly2
+
+A two-dimensional polygon; Array of [point2](#affineplanepoint2);
+A closed sequence of points `[{ x, y }, { x, y }, ...]`
+
+- [affineplane.poly2.create](#affineplanepoly2create)
+
+
+<a name="affineplanepoly2create"></a>
+## affineplane.poly2.create(points)
+
+Create a polygon on plane. Deep-clones the points array.
+
+**Parameters:**
+- *points*
+  - array of [point2](#affineplanepoint2)
+
+**Returns:**
+- a [poly2](#affineplanepoly2), array of points
+
+<a name="affineplaneproj2"></a>
 ## affineplane.proj2
 
 Projections between two-dimensional planes for various geometries.
@@ -545,806 +511,785 @@ position on plane B, represented in the basis of B.
 If plane A is a child element and plane B the parent, then
 the projection from A to B is equivalent to the location of A on B.
 
-- [affineplane.proj2.I](#affineplaneproj2I)
-- [affineplane.proj2.IDENTITY](#affineplaneproj2IDENTITY)
-- [affineplane.proj2.copy](#affineplaneproj2copy)
-- [affineplane.proj2.clone](#affineplaneproj2clone)
-- [affineplane.proj2.create](#affineplaneproj2create)
-- [affineplane.proj2.compose](#affineplaneproj2compose)
-- [affineplane.proj2.combine](#affineplaneproj2combine)
-- [affineplane.proj2.inverse](#affineplaneproj2inverse)
-- [affineplane.proj2.invert](#affineplaneproj2invert)
 - [affineplane.proj2.between](#affineplaneproj2between)
-- [affineplane.proj2.delta](#affineplaneproj2delta)
+- [affineplane.proj2.clone](#affineplaneproj2clone)
+- [affineplane.proj2.combine](#affineplaneproj2combine)
+- [affineplane.proj2.compose](#affineplaneproj2compose)
+- [affineplane.proj2.copy](#affineplaneproj2copy)
+- [affineplane.proj2.create](#affineplaneproj2create)
 - [affineplane.proj2.dir2](#affineplaneproj2dir2)
 - [affineplane.proj2.direction](#affineplaneproj2direction)
 - [affineplane.proj2.dist2](#affineplaneproj2dist2)
 - [affineplane.proj2.distance](#affineplaneproj2distance)
-- [affineplane.proj2.point2](#affineplaneproj2point2)
-- [affineplane.proj2.point](#affineplaneproj2point)
-- [affineplane.proj2.vector2](#affineplaneproj2vector2)
+- [affineplane.proj2.inverse](#affineplaneproj2inverse)
+- [affineplane.proj2.invert](#affineplaneproj2invert)
 - [affineplane.proj2.linear2](#affineplaneproj2linear2)
+- [affineplane.proj2.point](#affineplaneproj2point)
+- [affineplane.proj2.point2](#affineplaneproj2point2)
 - [affineplane.proj2.size2](#affineplaneproj2size2)
 - [affineplane.proj2.tran2](#affineplaneproj2tran2)
+- [affineplane.proj2.vector2](#affineplaneproj2vector2)
 
-### affineplane.proj2.I
-
-Projection from a plane to itself.
-
-### affineplane.proj2.IDENTITY
-
-Alias of `affineplane.proj2.I`.
-
-<a name="affineplaneproj2copy"></a>
-### affineplane.proj2.copy(pr)
-
-Deep-copy the projection object.
-
-<p style="display: inline">Parameters:</p>
-
-- `pr`
-  - a [proj2](#affineplaneproj2), a projection
-
-<p style="display: inline">Return:</p>
-
-- a [proj2](#affineplaneproj2), a projection
-
-### affineplane.proj2.clone
-
-Alias of `affineplane.proj2.copy`.
-
-<a name="affineplaneproj2create"></a>
-### affineplane.proj2.create(a, b, x, y)
-
-Create a projection between two-dimensional planes: source and target.
-
-<p style="display: inline">Parameters:</p>
-
-- `a`
-  - a number. The diagonal of linear transformation.
-- `b`
-  - a number. The upper and lower triangle of lin. transf.
-- `x`
-  - a number. Position of the source's (0,0) on the target.
-- `y`
-  - a number. Position of the sources's (0,0) on the target.
-
-<p style="display: inline">Return:</p>
-
-- a [proj2](#affineplaneproj2), a projection object
-
-<a name="affineplaneproj2compose"></a>
-### affineplane.proj2.compose(p, q)
-
-Combine two projections.
-
-<p style="display: inline">Parameters:</p>
-
-- `p`
-  - a [proj2](#affineplaneproj2), projection to be applied last
-- `q`
-  - a [proj2](#affineplaneproj2), projection to be applied first
-
-<p style="display: inline">Return:</p>
-
-- a [proj2](#affineplaneproj2)
-
-### affineplane.proj2.combine
-
-Alias of `affineplane.proj2.compose`.
-
-<a name="affineplaneproj2inverse"></a>
-### affineplane.proj2.inverse(pr)
-
-Invert the projection. A projection from plane P to plane Q
-becomes a projection from plane Q to plane P.
-
-<p style="display: inline">Parameters:</p>
-
-- `pr`
-  - a [proj2](#affineplaneproj2)
-
-<p style="display: inline">Return:</p>
-
-- a [proj2](#affineplaneproj2), inversed projection
-
-### affineplane.proj2.invert
-
-Alias of `affineplane.proj2.inverse`.
 
 <a name="affineplaneproj2between"></a>
-### affineplane.proj2.between(sourceProj, targetProj)
+## affineplane.proj2.between(source, target)
 
 Finds a projection from a source plane A to a target plane B
 from their projections to a intermediate root plane R.
 The result is a combination of the inverse of the target projection
 and the source projection.
 
-<p style="display: inline">Parameters:</p>
-
-- `sourceProj`
+**Parameters:**
+- *source*
   - a [proj2](#affineplaneproj2), a projection from the source plane A to a root plane R
-- `targetProj`
+- *target*
   - a [proj2](#affineplaneproj2), a projection from the target plane B to a root plane R
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [proj2](#affineplaneproj2)
 
-### affineplane.proj2.delta
+<a name="affineplaneproj2clone"></a>
+## affineplane.proj2.clone
 
-Alias of `affineplane.proj2.between`.
+Alias of [affineplane.proj2.copy](#affineplaneproj2copy)
+
+<a name="affineplaneproj2combine"></a>
+## affineplane.proj2.combine(p, q)
+
+Alias of [affineplane.proj2.compose](#affineplaneproj2compose)
+
+<a name="affineplaneproj2compose"></a>
+## affineplane.proj2.compose(p, q)
+
+Combine two projections.
+
+**Parameters:**
+- *p*
+  - a [proj2](#affineplaneproj2), projection to be applied last
+- *q*
+  - a [proj2](#affineplaneproj2), projection to be applied first
+
+**Returns:**
+- a [proj2](#affineplaneproj2)
+
+Aliases: [affineplane.proj2.combine](#affineplaneproj2combine)
+
+<a name="affineplaneproj2copy"></a>
+## affineplane.proj2.copy(pr)
+
+Deep-copy the projection object.
+
+**Parameters:**
+- *pr*
+  - a [proj2](#affineplaneproj2), a projection
+
+**Returns:**
+- a [proj2](#affineplaneproj2), a projection
+
+Aliases: [affineplane.proj2.clone](#affineplaneproj2clone)
+
+<a name="affineplaneproj2create"></a>
+## affineplane.proj2.create(a, b, x, y)
+
+Create a projection between two-dimensional planes: source and target.
+
+**Parameters:**
+- *a*
+  - a number. The diagonal of linear transformation.
+- *b*
+  - a number. The upper and lower triangle of lin. transf.
+- *x*
+  - a number. Position of the source's (0,0) on the target.
+- *y*
+  - a number. Position of the sources's (0,0) on the target.
+
+**Returns:**
+- a [proj2](#affineplaneproj2), a projection object
 
 <a name="affineplaneproj2dir2"></a>
-### affineplane.proj2.dir2(pr, r)
+## affineplane.proj2.dir2(pr, r)
 
 Project a direction angle from a plane to another.
 
-<p style="display: inline">Parameters:</p>
-
-- `pr`
+**Parameters:**
+- *pr*
   - a [proj2](#affineplaneproj2), a projection between planes
-- `r`
+- *r*
   - a number, a direction angle in radians
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number, the equivalent direction on the target plane.
 
-### affineplane.proj2.direction
+Aliases: [affineplane.proj2.direction](#affineplaneproj2direction)
 
-Alias of `affineplane.proj2.dir2`.
+<a name="affineplaneproj2direction"></a>
+## affineplane.proj2.direction(pr, r)
+
+Alias of [affineplane.proj2.dir2](#affineplaneproj2dir2)
 
 <a name="affineplaneproj2dist2"></a>
-### affineplane.proj2.dist2(pr, d)
+## affineplane.proj2.dist2(pr, d)
 
 Project a one-dimensional distance.
 
-<p style="display: inline">Parameters:</p>
-
-- `pr`
+**Parameters:**
+- *pr*
   - a [proj2](#affineplaneproj2), a projection between planes
-- `d`
+- *d*
   - a number, a distance in two-dimensions
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number, the same distance on the target plane.
 
-### affineplane.proj2.distance
+Aliases: [affineplane.proj2.distance](#affineplaneproj2distance)
 
-Alias of `affineplane.proj2.dist2`.
+<a name="affineplaneproj2distance"></a>
+## affineplane.proj2.distance(pr, d)
+
+Alias of [affineplane.proj2.dist2](#affineplaneproj2dist2)
+
+<a name="affineplaneproj2inverse"></a>
+## affineplane.proj2.inverse(pr)
+
+Invert the projection. A projection from plane P to plane Q
+becomes a projection from plane Q to plane P.
+
+**Parameters:**
+- *pr*
+  - a [proj2](#affineplaneproj2)
+
+**Returns:**
+- a [proj2](#affineplaneproj2), inversed projection
+
+Aliases: [affineplane.proj2.invert](#affineplaneproj2invert)
+
+<a name="affineplaneproj2invert"></a>
+## affineplane.proj2.invert(pr)
+
+Alias of [affineplane.proj2.inverse](#affineplaneproj2inverse)
+
+<a name="affineplaneproj2linear2"></a>
+## affineplane.proj2.linear2(pr, lin)
+
+Project a linear transformation from a plane to another.
+Use to represent the linear transformation on another plane.
+
+**Parameters:**
+- *pr*
+  - a [proj2](#affineplaneproj2), projection between planes
+- *lin*
+  - a [linear2](#affineplanelinear2), linear transformation, represented on the source plane.
+
+**Returns:**
+- a [linear2](#affineplanelinear2), the same transformation represented on the target plane
+
+<a name="affineplaneproj2point"></a>
+## affineplane.proj2.point
+
+Alias of [affineplane.proj2.point2](#affineplaneproj2point2)
 
 <a name="affineplaneproj2point2"></a>
-### affineplane.proj2.point2(pr, p2)
+## affineplane.proj2.point2(pr, p2)
 
 Project a [point2](#affineplanepoint2) from a plane to another.
-Unlike [vector2](#affineplanevector2), [point2](#affineplanepoint2) is affected by translation.
+Unlike [vector2](#affineplanevector2), point2 is affected by translation.
 
-<p style="display: inline">Parameters:</p>
-
-- `pr`
+**Parameters:**
+- *pr*
   - a [proj2](#affineplaneproj2)
-- `p`
+- *p*
   - a [point2](#affineplanepoint2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2)
 
-### affineplane.proj2.point
+Aliases: [affineplane.proj2.point](#affineplaneproj2point)
 
-Alias of `affineplane.proj2.point2`.
+<a name="affineplaneproj2size2"></a>
+## affineplane.proj2.size2(pr, size)
+
+Project a rectangular size from a plane to another.
+Only the scale change affects the size.
+
+**Parameters:**
+- *pr*
+  - a [proj2](#affineplaneproj2), a projection between planes
+- *size*
+  - a [size2](#affineplanesize2), a rectangular size in 2D
+
+**Returns:**
+- a number, the same size on the target plane.
+
+<a name="affineplaneproj2tran2"></a>
+## affineplane.proj2.tran2(pr, tr)
+
+Transforms are quite similar to projections but they
+happen on the plane, and thus are automorphisms.
+
+**Parameters:**
+- *pr*
+  - a [proj2](#affineplaneproj2), projection to be applied
+- *tr*
+  - a [tran2](#affineplanetran2), an affine similarity transformation
+
+**Returns:**
+- a [tran2](#affineplanetran2), the same transformation on the target plane.
 
 <a name="affineplaneproj2vector2"></a>
-### affineplane.proj2.vector2(pr, v2)
+## affineplane.proj2.vector2(pr, v2)
 
 Project a [vector2](#affineplanevector2) from a plane to another.
 Translations do not affect vectors,
 only scaling and rotation do.
 
-<p style="display: inline">Parameters:</p>
-
-- `pr`
+**Parameters:**
+- *pr*
   - a [proj2](#affineplaneproj2), projection between planes
-- `v2`
-  - a [vector2](#affineplanevector2), a translation on a plane,
-    represented on the source plane.
+- *v2*
+  - a [vector2](#affineplanevector2), a translation on a plane, represented on the source plane.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2), the same vector represented on the target plane,
 
-<a name="affineplaneproj2linear2"></a>
-### affineplane.proj2.linear2(pr, lin2)
-
-Project a linear transformation from a plane to another.
-Use to represent the linear transformation on another plane.
-
-<p style="display: inline">Parameters:</p>
-
-- `pr`
-  - a [proj2](#affineplaneproj2), projection between planes
-- `lin2`
-  - a [linear2](#affineplanelinear2), linear transformation, represented on the source plane.
-
-<p style="display: inline">Return:</p>
-
-- a [linear2](#affineplanelinear2), the same transformation represented on the target plane
-
-<a name="affineplaneproj2size2"></a>
-### affineplane.proj2.size2(pr, size)
-
-Project a rectangular size from a plane to another.
-Only the scale change affects the size.
-
-<p style="display: inline">Parameters:</p>
-
-- `pr`
-  - a [proj2](#affineplaneproj2), a projection between planes
-- `size`
-  - a [size2](#affineplanesize2), a rectangular size in 2D
-
-<p style="display: inline">Return:</p>
-
-- a number, the same size on the target plane.
-
-<a name="affineplaneproj2tran2"></a>
-### affineplane.proj2.tran2(pr, tr)
-
-Transforms are quite similar to projections but they
-happen on the plane, and thus are automorphisms.
-
-<p style="display: inline">Parameters:</p>
-
-- `pr`
-  - a [proj2](#affineplaneproj2), projection to be applied
-- `tr`
-  - a [tran2](#affineplanetran2), an affine similarity transformation
-
-<p style="display: inline">Return:</p>
-
-- a [tran2](#affineplanetran2), the same transformation on the target plane.
-
+<a name="affineplaneproj3"></a>
 ## affineplane.proj3
 
-Perspective projection between parallel two-dimensional planes.
-Orthogonal perspective projection between parallel planes.
+Orthogonal perspective projection between parallel 2D planes.
 
 - [affineplane.proj3.create](#affineplaneproj3create)
 
-<a name="affineplaneproj3create"></a>
-### affineplane.proj3.create(a, b, x, y, z)
 
+<a name="affineplaneproj3create"></a>
+## affineplane.proj3.create(a, b, x, y, z)
+
+**Returns:**
+- a proj3
+
+<a name="affineplanesize2"></a>
 ## affineplane.size2
 
-Rectangular size, consisting of width and height.
+Two-dimensional rectangular size, consisting of width and height.
 
 - [affineplane.size2.area](#affineplanesize2area)
 - [affineplane.size2.atNorm](#affineplanesize2atNorm)
 - [affineplane.size2.create](#affineplanesize2create)
 - [affineplane.size2.scaleBy](#affineplanesize2scaleBy)
 
+
 <a name="affineplanesize2area"></a>
-### affineplane.size2.area(sz)
+## affineplane.size2.area(sz)
 
 Area. If your w and h are in px, this gives you
 the total number of pixels.
 
-<p style="display: inline">Parameters:</p>
-
-- `sz`
+**Parameters:**
+- *sz*
   - a [size2](#affineplanesize2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number
 
 <a name="affineplanesize2atNorm"></a>
-### affineplane.size2.atNorm(sz, nw, nh)
+## affineplane.size2.atNorm(sz, nw, nh)
 
 Find a point on the area.
 
-<p style="display: inline">Parameters:</p>
-
-- `sz`
+**Parameters:**
+- *sz*
   - a [size2](#affineplanesize2)
-- `nw`
+- *nw*
   - a normalized width in 0..1
-- `nh`
+- *nh*
   - a normalized height
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [point2](#affineplanepoint2)
 
 <a name="affineplanesize2create"></a>
-### affineplane.size2.create(width, height)
+## affineplane.size2.create(width, height)
 
 Create a [size2](#affineplanesize2) object.
 
-<p style="display: inline">Parameters:</p>
-
-- `width`
+**Parameters:**
+- *width*
   - a number
-- `height`
+- *height*
   - a number
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [size2](#affineplanesize2)
 
 <a name="affineplanesize2scaleBy"></a>
-### affineplane.size2.scaleBy(sz, multiplier)
+## affineplane.size2.scaleBy(sz, multiplier)
 
 Ratio-preserving scale. Multiplies all dimensions uniformly.
 
-<p style="display: inline">Parameters:</p>
-
-- `sz`
+**Parameters:**
+- *sz*
   - a [size2](#affineplanesize2)
-- `multiplier`
+- *multiplier*
   - a number
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [size2](#affineplanesize2)
 
+<a name="affineplanetran2"></a>
 ## affineplane.tran2
 
-Various functions for two-dimensional affine non-reflective similarity
-transformation. Such transformations allow translation, uniform scaling, and
-rotation. The functions expect the transformation as an object
-`{ a, b, x, y }`
-Provides functions for 2D transformation matrices, and to be exact,
-affine non-reflective similarity transformation matrices.
+Provides functions for a special kind of 2D transformation matrices.
+These matrices represent translation, rotation, and uniform scale.
+They are also known as *affine non-reflective similarity transformations*
+as well as *two-dimensional Helmert transformations*.
 
-- [affineplane.tran2.I](#affineplanetran2I)
-- [affineplane.tran2.IDENTITY](#affineplanetran2IDENTITY)
-- [affineplane.tran2.ROT0](#affineplanetran2ROT0)
-- [affineplane.tran2.ROT45](#affineplanetran2ROT45)
-- [affineplane.tran2.ROT90](#affineplanetran2ROT90)
-- [affineplane.tran2.ROT180](#affineplanetran2ROT180)
-- [affineplane.tran2.ROT270](#affineplanetran2ROT270)
-- [affineplane.tran2.HALF](#affineplanetran2HALF)
-- [affineplane.tran2.X2](#affineplanetran2X2)
+The functions expect the transformation as an object
+`{ a, b, x, y }`
+
+Aliases: [affineplane.tran2](#affineplanetran2)
+
 - [affineplane.tran2.almostEqual](#affineplanetran2almostEqual)
 - [affineplane.tran2.almostEquals](#affineplanetran2almostEquals)
 - [affineplane.tran2.changeBasis](#affineplanetran2changeBasis)
-- [affineplane.tran2.compose](#affineplanetran2compose)
+- [affineplane.tran2.clone](#affineplanetran2clone)
 - [affineplane.tran2.combine](#affineplanetran2combine)
+- [affineplane.tran2.compose](#affineplanetran2compose)
 - [affineplane.tran2.copy](#affineplanetran2copy)
 - [affineplane.tran2.create](#affineplanetran2create)
 - [affineplane.tran2.det](#affineplanetran2det)
-- [affineplane.tran2.solveLeft](#affineplanetran2solveLeft)
-- [affineplane.tran2.solveRight](#affineplanetran2solveRight)
+- [affineplane.tran2.determinant](#affineplanetran2determinant)
 - [affineplane.tran2.equal](#affineplanetran2equal)
 - [affineplane.tran2.equals](#affineplanetran2equals)
 - [affineplane.tran2.fromArray](#affineplanetran2fromArray)
 - [affineplane.tran2.fromPolar](#affineplanetran2fromPolar)
+- [affineplane.tran2.fromVector3r](#affineplanetran2fromVector3r)
 - [affineplane.tran2.getRotation](#affineplanetran2getRotation)
 - [affineplane.tran2.getScale](#affineplanetran2getScale)
 - [affineplane.tran2.getTranslation](#affineplanetran2getTranslation)
-- [affineplane.tran2.multiply](#affineplanetran2multiply)
+- [affineplane.tran2.HALF](#affineplanetran2HALF)
+- [affineplane.tran2.I](#affineplanetran2I)
+- [affineplane.tran2.IDENTITY](#affineplanetran2IDENTITY)
 - [affineplane.tran2.inverse](#affineplanetran2inverse)
 - [affineplane.tran2.invert](#affineplanetran2invert)
-- [affineplane.tran2.scaleBy](#affineplanetran2scaleBy)
-- [affineplane.tran2.scaleTo](#affineplanetran2scaleTo)
+- [affineplane.tran2.multiply](#affineplanetran2multiply)
 - [affineplane.tran2.rebase](#affineplanetran2rebase)
+- [affineplane.tran2.ROT0](#affineplanetran2ROT0)
+- [affineplane.tran2.ROT180](#affineplanetran2ROT180)
+- [affineplane.tran2.ROT270](#affineplanetran2ROT270)
+- [affineplane.tran2.ROT45](#affineplanetran2ROT45)
+- [affineplane.tran2.ROT90](#affineplanetran2ROT90)
 - [affineplane.tran2.rotateBy](#affineplanetran2rotateBy)
 - [affineplane.tran2.rotateTo](#affineplanetran2rotateTo)
 - [affineplane.tran2.rotateToOrtho](#affineplanetran2rotateToOrtho)
+- [affineplane.tran2.scaleBy](#affineplanetran2scaleBy)
+- [affineplane.tran2.scaleTo](#affineplanetran2scaleTo)
+- [affineplane.tran2.solveLeft](#affineplanetran2solveLeft)
+- [affineplane.tran2.solveRight](#affineplanetran2solveRight)
 - [affineplane.tran2.toArray](#affineplanetran2toArray)
 - [affineplane.tran2.toMatrix](#affineplanetran2toMatrix)
 - [affineplane.tran2.toString](#affineplanetran2toString)
+- [affineplane.tran2.toVector3r](#affineplanetran2toVector3r)
 - [affineplane.tran2.transform](#affineplanetran2transform)
-- [affineplane.tran2.transit](#affineplanetran2transit)
 - [affineplane.tran2.translateBy](#affineplanetran2translateBy)
 - [affineplane.tran2.translateTo](#affineplanetran2translateTo)
 - [affineplane.tran2.validate](#affineplanetran2validate)
+- [affineplane.tran2.X2](#affineplanetran2X2)
 
-### affineplane.tran2.I
 
-Identity transform, a kind of multiplication by 1.
+<a name="affineplanetran2"></a>
+## affineplane.tran2
 
-### affineplane.tran2.IDENTITY
+- [affineplane.tran2.almostEqual](#affineplanetran2almostEqual)
+- [affineplane.tran2.almostEquals](#affineplanetran2almostEquals)
+- [affineplane.tran2.changeBasis](#affineplanetran2changeBasis)
+- [affineplane.tran2.clone](#affineplanetran2clone)
+- [affineplane.tran2.combine](#affineplanetran2combine)
+- [affineplane.tran2.compose](#affineplanetran2compose)
+- [affineplane.tran2.copy](#affineplanetran2copy)
+- [affineplane.tran2.create](#affineplanetran2create)
+- [affineplane.tran2.det](#affineplanetran2det)
+- [affineplane.tran2.determinant](#affineplanetran2determinant)
+- [affineplane.tran2.equal](#affineplanetran2equal)
+- [affineplane.tran2.equals](#affineplanetran2equals)
+- [affineplane.tran2.fromArray](#affineplanetran2fromArray)
+- [affineplane.tran2.fromPolar](#affineplanetran2fromPolar)
+- [affineplane.tran2.fromVector3r](#affineplanetran2fromVector3r)
+- [affineplane.tran2.getRotation](#affineplanetran2getRotation)
+- [affineplane.tran2.getScale](#affineplanetran2getScale)
+- [affineplane.tran2.getTranslation](#affineplanetran2getTranslation)
+- [affineplane.tran2.HALF](#affineplanetran2HALF)
+- [affineplane.tran2.I](#affineplanetran2I)
+- [affineplane.tran2.IDENTITY](#affineplanetran2IDENTITY)
+- [affineplane.tran2.inverse](#affineplanetran2inverse)
+- [affineplane.tran2.invert](#affineplanetran2invert)
+- [affineplane.tran2.multiply](#affineplanetran2multiply)
+- [affineplane.tran2.rebase](#affineplanetran2rebase)
+- [affineplane.tran2.ROT0](#affineplanetran2ROT0)
+- [affineplane.tran2.ROT180](#affineplanetran2ROT180)
+- [affineplane.tran2.ROT270](#affineplanetran2ROT270)
+- [affineplane.tran2.ROT45](#affineplanetran2ROT45)
+- [affineplane.tran2.ROT90](#affineplanetran2ROT90)
+- [affineplane.tran2.rotateBy](#affineplanetran2rotateBy)
+- [affineplane.tran2.rotateTo](#affineplanetran2rotateTo)
+- [affineplane.tran2.rotateToOrtho](#affineplanetran2rotateToOrtho)
+- [affineplane.tran2.scaleBy](#affineplanetran2scaleBy)
+- [affineplane.tran2.scaleTo](#affineplanetran2scaleTo)
+- [affineplane.tran2.solveLeft](#affineplanetran2solveLeft)
+- [affineplane.tran2.solveRight](#affineplanetran2solveRight)
+- [affineplane.tran2.toArray](#affineplanetran2toArray)
+- [affineplane.tran2.toMatrix](#affineplanetran2toMatrix)
+- [affineplane.tran2.toString](#affineplanetran2toString)
+- [affineplane.tran2.toVector3r](#affineplanetran2toVector3r)
+- [affineplane.tran2.transform](#affineplanetran2transform)
+- [affineplane.tran2.translateBy](#affineplanetran2translateBy)
+- [affineplane.tran2.translateTo](#affineplanetran2translateTo)
+- [affineplane.tran2.validate](#affineplanetran2validate)
+- [affineplane.tran2.X2](#affineplanetran2X2)
 
-Alias of `affineplane.tran2.I`.
-
-### affineplane.tran2.ROT0
-
-Zero angle rotation.
-
-Alias of `affineplane.tran2.IDENTITY`.
-
-### affineplane.tran2.ROT45
-
-Clockwise rotation of 45 degrees.
-
-### affineplane.tran2.ROT90
-
-Clockwise rotation of 90 degrees.
-
-### affineplane.tran2.ROT180
-
-Rotation of 180 degrees.
-
-### affineplane.tran2.ROT270
-
-Clockwise rotation of 270 degrees.
-
-### affineplane.tran2.HALF
-
-Scaling to half size.
-
-### affineplane.tran2.X2
-
-Scaling to double size.
 
 <a name="affineplanetran2almostEqual"></a>
-### affineplane.tran2.almostEqual(tr, ts, epsilon)
+## affineplane.tran2.almostEqual(tr, ts, [epsilon])
 
 Are two transforms almost equal? Return true if a matrix norm
 of the difference is smaller than epsilon. We use modified
 [L1 norm](https://mathworld.wolfram.com/L1-Norm.html) aka
 Manhattan Distance to compute the difference.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2), a transform
-- `ts`
+- *ts*
   - a [tran2](#affineplanetran2), a transform
-- `epsilon`
-  - optional number, default to transform.EPSILON.
+- *epsilon*
+  - optional number, default to [affineplane.epsilon](#affineplaneepsilon).
   - Set to 0 for strict comparison.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a boolean
 
-### affineplane.tran2.almostEquals
+Aliases: [affineplane.tran2.almostEquals](#affineplanetran2almostEquals)
 
-Alias of `affineplane.tran2.almostEqual`.
+<a name="affineplanetran2almostEquals"></a>
+## affineplane.tran2.almostEquals
+
+Alias of [affineplane.tran2.almostEqual](#affineplanetran2almostEqual)
 
 <a name="affineplanetran2changeBasis"></a>
-### affineplane.tran2.changeBasis(tr, sourceBasis, targetBasis)
+## affineplane.tran2.changeBasis(tr, sourceBasis, targetBasis)
 
 Convert transformation from a basis to another.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2), a transform on the source basis.
-- `sourceBasis`
+- *sourceBasis*
   - a [proj2](#affineplaneproj2), a transition from the source basis to
   - the reference basis.
-- `targetBasis`
+- *targetBasis*
   - a [proj2](#affineplaneproj2), a transition from the target basis to
   - the reference basis.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), the given transform represented in the target basis.
 
+Aliases: [affineplane.tran2.rebase](#affineplanetran2rebase)
+
+<a name="affineplanetran2clone"></a>
+## affineplane.tran2.clone
+
+Alias of [affineplane.tran2.copy](#affineplanetran2copy)
+
+<a name="affineplanetran2combine"></a>
+## affineplane.tran2.combine
+
+Alias of [affineplane.tran2.compose](#affineplanetran2compose), [affineplane.tran2.multiply](#affineplanetran2multiply)
+
 <a name="affineplanetran2compose"></a>
-### affineplane.tran2.compose(tr, ts)
+## affineplane.tran2.compose(tr, ts)
 
 Multiply transformation matrix tr from
 the right with the given transformation matrix ts.
 In other words, transform the image of ts by tr.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2)
-- `ts`
+- *ts*
   - a [tran2](#affineplanetran2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2)
 
-### affineplane.tran2.combine
-
-Alias of `affineplane.tran2.compose`.
+Aliases: [affineplane.tran2.combine](#affineplanetran2combine), [affineplane.tran2.multiply](#affineplanetran2multiply)
 
 <a name="affineplanetran2copy"></a>
-### affineplane.tran2.copy(tr)
+## affineplane.tran2.copy(tr)
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2), a transform
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), a transform
 
+Aliases: [affineplane.tran2.clone](#affineplanetran2clone)
+
 <a name="affineplanetran2create"></a>
-### affineplane.tran2.create(a, b, x, y)
+## affineplane.tran2.create(a, b, x, y)
 
 Create a 2D non-reflective similarity transform object.
 
-<p style="display: inline">Parameters:</p>
-
-- `a`
+**Parameters:**
+- *a*
   - a number. The diagonal of linear transformation.
-- `b`
+- *b*
   - a number. The upper and lower triangle of lin. transf.
-- `x`
+- *x*
   - a number. The translation towards x
-- `y`
+- *y*
   - a number. The translation towards y
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), a transform object
 
 <a name="affineplanetran2det"></a>
-### affineplane.tran2.det(tr)
+## affineplane.tran2.det(tr)
 
 The matrix determinant of the transformation. If the determinant equals
 zero then the matrix cannot be inverted and thus is not a valid
 transformation. In practice, determinants close to zero are also
 problematic due to floating point arithmetics.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number, the determinant.
 
-<a name="affineplanetran2solveLeft"></a>
-### affineplane.tran2.solveLeft(tb, tc)
+Aliases: [affineplane.tran2.determinant](#affineplanetran2determinant)
 
-Given transforms B, C, find transform A, where AB = C.
-Given that B is invertible, then A = C * iB.
+<a name="affineplanetran2determinant"></a>
+## affineplane.tran2.determinant(tr)
 
-<p style="display: inline">Parameters:</p>
-
-- `tb`
-  - a [tran2](#affineplanetran2)
-- `tc`
-  - a [tran2](#affineplanetran2)
-
-<p style="display: inline">Return:</p>
-
-- a [tran2](#affineplanetran2), a transform
-
-<a name="affineplanetran2solveRight"></a>
-### affineplane.tran2.solveRight(ta, tc)
-
-Given the transforms A and C, find the transform B, where A * B = C.
-Given that A is invertible, then B = iA * C.
-
-<p style="display: inline">Parameters:</p>
-
-- `ta`
-  - a [tran2](#affineplanetran2)
-- `tc`
-  - a [tran2](#affineplanetran2)
-
-<p style="display: inline">Return:</p>
-
-- a [tran2](#affineplanetran2), a transform
+Alias of [affineplane.tran2.det](#affineplanetran2det)
 
 <a name="affineplanetran2equal"></a>
-### affineplane.tran2.equal(tr, ts)
+## affineplane.tran2.equal(tr, ts)
 
 Are transforms exactly equal?
 Note that due to floating-point arithmetics, computation
 might cause exact equality to be broken.
-See [tran2](#affineplanetran2).almostEqual for relaxed alternative.
+See [affineplane.tran2.almostEqual](#affineplanetran2almostEqual) for relaxed alternative.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2), a transform
-- `ts`
+- *ts*
   - a [tran2](#affineplanetran2), a transform
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a boolean
 
-### affineplane.tran2.equals
+Aliases: [affineplane.tran2.equals](#affineplanetran2equals)
 
-Alias of `affineplane.tran2.equal`.
+<a name="affineplanetran2equals"></a>
+## affineplane.tran2.equals
+
+Alias of [affineplane.tran2.equal](#affineplanetran2equal)
 
 <a name="affineplanetran2fromArray"></a>
-### affineplane.tran2.fromArray(abxy)
+## affineplane.tran2.fromArray(abxy)
 
 Create an affine similarity transform from 4-element array.
 
-<p style="display: inline">Parameters:</p>
+**Parameters:**
+- *abxy*
+  - an array with four number elements `[a, b, x, y]`
 
-- `abxy`
-  - an array with four number elements
-
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), a similarity transform.
 
 <a name="affineplanetran2fromPolar"></a>
-### affineplane.tran2.fromPolar(scale, rotation, tx, ty)
+## affineplane.tran2.fromPolar(scale, rotation, tx, ty)
 
 Create a transform object by using scale magnitude,
 rotation angle, and translation.
 
-<p style="display: inline">Parameters:</p>
-
-- `scale`
+**Parameters:**
+- *scale*
   - a number, the scaling factor
-- `rotation`
+- *rotation*
   - a number, rotation in radians from positive x axis towards pos. y axis.
-- `tx`
+- *tx*
   - optional number, translation toward positive x. Default 0.
-- `ty`
+- *ty*
   - optional number, translation toward positive y. Default 0.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), a transform object
 
 Precondition:
-  scale must be positive
+- scale must be positive
+
+<a name="affineplanetran2fromVector3r"></a>
+## affineplane.tran2.fromVector3r(vec3r, vanishing)
+
+Convert a 3D vector with rotation to a [tran2](#affineplanetran2). Essentially,
+the z-coordinate will be projected to scaling at z=0.
+
+**Parameters:**
+- *vec3r*
+  - a vector3r, a perspective point, a 3D vector with rotation.
+  - Vanishing point and { vec3r.x, vec3r.y } must have the same basis.
+- *vanishing*
+  - a [point2](#affineplanepoint2)
+
+**Returns:**
+- a [tran2](#affineplanetran2)
 
 <a name="affineplanetran2getRotation"></a>
-### affineplane.tran2.getRotation(tr)
+## affineplane.tran2.getRotation(tr)
 
 Get the rotation component of the transform in radians.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number, in radians
 
 <a name="affineplanetran2getScale"></a>
-### affineplane.tran2.getScale(tr)
+## affineplane.tran2.getScale(tr)
 
 Get the scale component of the transformation.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number, the scale multiplier.
 
 <a name="affineplanetran2getTranslation"></a>
-### affineplane.tran2.getTranslation(tr)
+## affineplane.tran2.getTranslation(tr)
 
 Get translation component of the transformation as a vector.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
-### affineplane.tran2.multiply
+<a name="affineplanetran2HALF"></a>
+## affineplane.tran2.HALF
 
-Alias of `affineplane.tran2.compose`.
+Scaling to half size.
+
+<a name="affineplanetran2I"></a>
+## affineplane.tran2.I
+
+Identity transform, a kind of multiplication by 1.
+
+Aliases: [affineplane.tran2.IDENTITY](#affineplanetran2IDENTITY)
+
+<a name="affineplanetran2IDENTITY"></a>
+## affineplane.tran2.IDENTITY
+
+Alias of [affineplane.tran2.I](#affineplanetran2I)
 
 <a name="affineplanetran2inverse"></a>
-### affineplane.tran2.inverse(tr)
+## affineplane.tran2.inverse(tr)
 
 Invert the transform. A transform from B to C
 becomes a transform from C to B.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), inversed transform
 
-### affineplane.tran2.invert
+Aliases: [affineplane.tran2.invert](#affineplanetran2invert)
 
-Alias of `affineplane.tran2.inverse`.
+<a name="affineplanetran2invert"></a>
+## affineplane.tran2.invert(tr)
 
-<a name="affineplanetran2scaleBy"></a>
-### affineplane.tran2.scaleBy(tr, center, multiplier)
+Alias of [affineplane.tran2.inverse](#affineplanetran2inverse)
 
-Scale image of the transform by the given multiplier
-so that the given center point stays fixed.
-The operation is also called homothety.
+<a name="affineplanetran2multiply"></a>
+## affineplane.tran2.multiply
 
-<p style="display: inline">Parameters:</p>
+Alias of [affineplane.tran2.compose](#affineplanetran2compose), [affineplane.tran2.combine](#affineplanetran2combine)
 
-- `tr`
-  - a [tran2](#affineplanetran2), a transform
-- `center`
-  - a [point2](#affineplanepoint2), a point on the image of the transform
-- `multiplier`
-  - a number
+<a name="affineplanetran2rebase"></a>
+## affineplane.tran2.rebase
 
-<p style="display: inline">Return:</p>
+Alias of [affineplane.tran2.changeBasis](#affineplanetran2changeBasis)
 
-- a [tran2](#affineplanetran2), a transform
+<a name="affineplanetran2ROT0"></a>
+## affineplane.tran2.ROT0
 
-<a name="affineplanetran2scaleTo"></a>
-### affineplane.tran2.scaleTo(tr, center, scale)
+Zero angle rotation.
 
-Scale the given transform so that
-1) its scale becomes equal with the given scale, and
-2) its image stays fixed at the given center point.
+<a name="affineplanetran2ROT180"></a>
+## affineplane.tran2.ROT180
 
-<p style="display: inline">Parameters:</p>
+Rotation of 180 degrees.
 
-- `tr`
-  - a [tran2](#affineplanetran2)
-- `center`
-  - a [point2](#affineplanepoint2), a point on the image of the transform
-- `scale`
-  - a number, target scale
+<a name="affineplanetran2ROT270"></a>
+## affineplane.tran2.ROT270
 
-<p style="display: inline">Return:</p>
+Clockwise rotation of 270 degrees.
 
-- a [tran2](#affineplanetran2), a transform
+<a name="affineplanetran2ROT45"></a>
+## affineplane.tran2.ROT45
 
-Throws if the given transform is singular, thus cannot be
-uniquely scaled to the desired scale.
+Clockwise rotation of 45 degrees.
 
-### affineplane.tran2.rebase
+<a name="affineplanetran2ROT90"></a>
+## affineplane.tran2.ROT90
 
-Alias of `affineplane.tran2.changeBasis`.
+Clockwise rotation of 90 degrees.
 
 <a name="affineplanetran2rotateBy"></a>
-### affineplane.tran2.rotateBy(tr, center, radians)
+## affineplane.tran2.rotateBy(tr, center, radians)
 
 Rotate image of the transform by the given radians
 so that the given center point stays fixed.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2), a transform
-- `center`
+- *center*
   - a [point2](#affineplanepoint2), a point on the image of the transform
-- `radians`
+- *radians*
   - a number, angle in radians
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), a transform
 
 <a name="affineplanetran2rotateTo"></a>
-### affineplane.tran2.rotateTo(tr, center, radians)
+## affineplane.tran2.rotateTo(tr, center, radians)
 
 Rotate image of the transform to the given angle
 so that the given center point stays fixed.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2), a transform
-- `center`
+- *center*
   - a [point2](#affineplanepoint2), a point on the image of the transform
-- `radians`
+- *radians*
   - a number, angle to rotate to
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), a transform
 
 <a name="affineplanetran2rotateToOrtho"></a>
-### affineplane.tran2.rotateToOrtho(tr, center)
+## affineplane.tran2.rotateToOrtho(tr, center)
 
 Rotate to nearest orthogonal angle 0, 90, 180, and 270 deg.
 Note that if the given transform represents exact 45, 135, 225, or 315 deg
@@ -1352,34 +1297,99 @@ rotation then the nearest orthogonal angle is arbitrarily either the next
 or previous orthogonal angle due to the variation caused by
 floating-point arithmetics.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2)
-- `center`
+- *center*
   - a [point2](#affineplanepoint2), a point on the image of the transform
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2)
 
-<a name="affineplanetran2toArray"></a>
-### affineplane.tran2.toArray(tr)
+<a name="affineplanetran2scaleBy"></a>
+## affineplane.tran2.scaleBy(tr, center, multiplier)
 
-Return an array representation of the transformation.
-Compatible with [tran2](#affineplanetran2).createFromArray(...)
+Scale image of the transform by the given multiplier
+so that the given center point stays fixed.
+The operation is also called homothety.
 
-<p style="display: inline">Parameters:</p>
+**Parameters:**
+- *tr*
+  - a [tran2](#affineplanetran2), a transform
+- *center*
+  - a [point2](#affineplanepoint2), a point on the image of the transform
+- *multiplier*
+  - a number
 
-- `tr`
+**Returns:**
+- a [tran2](#affineplanetran2), a transform
+
+<a name="affineplanetran2scaleTo"></a>
+## affineplane.tran2.scaleTo(tr, center, scale)
+
+Scale the given transform so that
+1) its scale becomes equal with the given scale, and
+2) its image stays fixed at the given center point.
+
+**Parameters:**
+- *tr*
+  - a [tran2](#affineplanetran2)
+- *center*
+  - a [point2](#affineplanepoint2), a point on the image of the transform
+- *scale*
+  - a number, target scale
+
+**Returns:**
+- a [tran2](#affineplanetran2), a transform
+
+Throws if the given transform is singular, thus cannot be
+uniquely scaled to the desired scale.
+
+<a name="affineplanetran2solveLeft"></a>
+## affineplane.tran2.solveLeft(tb, tc)
+
+Given transforms B, C, find transform A, where AB = C.
+Given that B is invertible, then A = C * iB.
+
+**Parameters:**
+- *tb*
+  - a [tran2](#affineplanetran2)
+- *tc*
   - a [tran2](#affineplanetran2)
 
-<p style="display: inline">Return:</p>
+**Returns:**
+- a [tran2](#affineplanetran2), a transform
 
+<a name="affineplanetran2solveRight"></a>
+## affineplane.tran2.solveRight(ta, tc)
+
+Given the transforms A and C, find the transform B, where A * B = C.
+Given that A is invertible, then B = iA * C.
+
+**Parameters:**
+- *ta*
+  - a [tran2](#affineplanetran2)
+- *tc*
+  - a [tran2](#affineplanetran2)
+
+**Returns:**
+- a [tran2](#affineplanetran2), a transform
+
+<a name="affineplanetran2toArray"></a>
+## affineplane.tran2.toArray(tr)
+
+**Returns:** an array representation of the transformation.
+Compatible with [affineplane.tran2.fromArray](#affineplanetran2fromArray).
+
+**Parameters:**
+- *tr*
+  - a [tran2](#affineplanetran2)
+
+**Returns:**
 - an array, `[a, b, x, y]`
 
 <a name="affineplanetran2toMatrix"></a>
-### affineplane.tran2.toMatrix(tr)
+## affineplane.tran2.toMatrix(tr)
 
 Get the similarity transformation matrix
 in the format common to other APIs, including:
@@ -1387,34 +1397,44 @@ in the format common to other APIs, including:
 - kld-affine
 - MDN documentation in some parts
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - `{ a, b, c, d, e, f }`
 
 <a name="affineplanetran2toString"></a>
-### affineplane.tran2.toString(tr)
+## affineplane.tran2.toString(tr)
 
 Convert the transformation to a string compatible with the CSS
 transform-function data type, for example `matrix(1, 2, -2, 1, 3, 4)`.
-Together with transform.createFromString(...), this method enables [tran2](#affineplanetran2)
+Together with [affineplane.tran2](#affineplanetran2).fromString(...), this method enables [tran2](#affineplanetran2)
 serialization to and from strings.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [proj2](#affineplaneproj2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a string, CSS transform
 
+<a name="affineplanetran2toVector3r"></a>
+## affineplane.tran2.toVector3r(tr, vanishing)
+
+A perspective projection from transformation to vector3r
+
+**Parameters:**
+- *tr*
+  - a [tran2](#affineplanetran2)
+- *vanishing*
+  - a [point2](#affineplanepoint2), the vanishing point.
+
+**Returns:**
+- a vector3r
+
 <a name="affineplanetran2transform"></a>
-### affineplane.tran2.transform(tr, ts)
+## affineplane.tran2.transform(tr, ts)
 
 Multiply transformation matrix tr from
 the left with the given transformation matrix ts.
@@ -1422,74 +1442,67 @@ In other words, transform the image of tr by ts.
 
 For multiplication from right, see compose.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2)
-- `ts`
+- *ts*
   - a [tran2](#affineplanetran2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2)
 
-### affineplane.tran2.transit
-
-Alias of `affineplane.tran2.changeBasis`.
-
 <a name="affineplanetran2translateBy"></a>
-### affineplane.tran2.translateBy(tr, vec)
+## affineplane.tran2.translateBy(tr, vec)
 
 Modify transformation so that its image
 is translated by the given vector.
 In other words it transforms points
 further by the given vector.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2), a transform
-- `vec`
+- *vec*
   - a [vector2](#affineplanevector2), a vector `{ x, y }`
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), a transform
 
 <a name="affineplanetran2translateTo"></a>
-### affineplane.tran2.translateTo(tr, p)
+## affineplane.tran2.translateTo(tr, p)
 
 Modify the transformation so that the result maps `{ x: 0, y: 0 }`
 to the given point.
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - a [tran2](#affineplanetran2), a transform
-- `p`
+- *p*
   - a [point2](#affineplanepoint2), a point `{ x, y }`
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [tran2](#affineplanetran2), a transform
 
 <a name="affineplanetran2validate"></a>
-### affineplane.tran2.validate(tr)
+## affineplane.tran2.validate(tr)
 
 Check if object is a valid [tran2](#affineplanetran2).
 
-<p style="display: inline">Parameters:</p>
-
-- `tr`
+**Parameters:**
+- *tr*
   - an object
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a boolean
 
+<a name="affineplanetran2X2"></a>
+## affineplane.tran2.X2
+
+Scaling to double size.
+
+<a name="affineplanevector2"></a>
 ## affineplane.vector2
 
-Two-dimensional vector.
 Vector is a two dimensional dynamic movent between points.
 
 - [affineplane.vector2.add](#affineplanevector2add)
@@ -1500,15 +1513,11 @@ Vector is a two dimensional dynamic movent between points.
 - [affineplane.vector2.difference](#affineplanevector2difference)
 - [affineplane.vector2.fromArray](#affineplanevector2fromArray)
 - [affineplane.vector2.fromPolar](#affineplanevector2fromPolar)
-- [affineplane.vector2.polar](#affineplanevector2polar)
 - [affineplane.vector2.inverse](#affineplanevector2inverse)
 - [affineplane.vector2.magnitude](#affineplanevector2magnitude)
 - [affineplane.vector2.max](#affineplanevector2max)
 - [affineplane.vector2.mean](#affineplanevector2mean)
 - [affineplane.vector2.min](#affineplanevector2min)
-- [affineplane.vector2.negation](#affineplanevector2negation)
-- [affineplane.vector2.norm](#affineplanevector2norm)
-- [affineplane.vector2.opposite](#affineplanevector2opposite)
 - [affineplane.vector2.project](#affineplanevector2project)
 - [affineplane.vector2.rotateBy](#affineplanevector2rotateBy)
 - [affineplane.vector2.rotateTo](#affineplanevector2rotateTo)
@@ -1517,311 +1526,264 @@ Vector is a two dimensional dynamic movent between points.
 - [affineplane.vector2.toPolar](#affineplanevector2toPolar)
 - [affineplane.vector2.validate](#affineplanevector2validate)
 
+
 <a name="affineplanevector2add"></a>
-### affineplane.vector2.add(v, w)
+## affineplane.vector2.add(v, w)
 
 Add two vectors. See vector.sum to add many vectors.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
-- `w`
+- *w*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2almostEqual"></a>
-### affineplane.vector2.almostEqual(v, w, epsilon)
+## affineplane.vector2.almostEqual(v, w, [epsilon])
 
 Test if two vectors v and w are almost equal by the margin of epsilon.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
-- `w`
+- *w*
   - a [vector2](#affineplanevector2)
-- `epsilon`
-  - optional number, default to [affineplane.EPSILON](#affineplaneEPSILON).
+- *epsilon*
+  - optional number, default to [affineplane.epsilon](#affineplaneepsilon).
   - Set to 0 for strict comparison.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a boolean
 
 <a name="affineplanevector2average"></a>
-### affineplane.vector2.average(vs)
+## affineplane.vector2.average(vs)
 
 Average of the vectors.
 
-<p style="display: inline">Parameters:</p>
-
-- `vs`
+**Parameters:**
+- *vs*
   - an array of [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
+Aliases: [affineplane.vector2.mean](#affineplanevector2mean)
+
 <a name="affineplanevector2copy"></a>
-### affineplane.vector2.copy(v)
+## affineplane.vector2.copy(v)
 
 Copy vector object.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2create"></a>
-### affineplane.vector2.create(x, y)
+## affineplane.vector2.create(x, y)
 
 Create a vector object `{ x, y }`
 
-<p style="display: inline">Parameters:</p>
-
-- `x`
+**Parameters:**
+- *x*
   - a number. The translation along x-axis
-- `y`
+- *y*
   - a number. The translation along y-axis
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2difference"></a>
-### affineplane.vector2.difference(v, w)
+## affineplane.vector2.difference(v, w)
 
-A vector between v and w
+A vector between v and w.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
-- `w`
+- *w*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2fromArray"></a>
-### affineplane.vector2.fromArray(arrp)
+## affineplane.vector2.fromArray(arrp)
 
 Create `{ x, y }` vector from array `[x, y]`
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2fromPolar"></a>
-### affineplane.vector2.fromPolar(magnitude, direction)
+## affineplane.vector2.fromPolar(magnitude, direction)
 
 Create a vector from polar coordinates.
 
-<p style="display: inline">Parameters:</p>
-
-- `magnitude`
+**Parameters:**
+- *magnitude*
   - a number, length of the vector
-- `direction`
+- *direction*
   - a number, angle in radians
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
-### affineplane.vector2.polar
-
-Alias of `affineplane.vector2.fromPolar`.
-
 <a name="affineplanevector2inverse"></a>
-### affineplane.vector2.inverse(v)
+## affineplane.vector2.inverse(v)
 
-Negate the vector.
+Negate the vector. For example `inverse({ x: 1, y: -1 })` returns
+`{ x: -1, y: 1 }`.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2magnitude"></a>
-### affineplane.vector2.magnitude(v)
+## affineplane.vector2.magnitude(v)
 
-The length of 2d vector.
+The length of the vector.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a number
 
 <a name="affineplanevector2max"></a>
-### affineplane.vector2.max(v, w)
+## affineplane.vector2.max(v, w)
 
 Element-wise maximum of two vectors.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
-- `w`
+- *w*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
-### affineplane.vector2.mean
+<a name="affineplanevector2mean"></a>
+## affineplane.vector2.mean(vs)
 
-Alias of `affineplane.vector2.average`.
+Alias of [affineplane.vector2.average](#affineplanevector2average)
 
 <a name="affineplanevector2min"></a>
-### affineplane.vector2.min(v, w)
+## affineplane.vector2.min(v, w)
 
 Element-wise minimum of two vectors
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
-- `w`
+- *w*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
-### affineplane.vector2.negation
-
-Alias of `affineplane.vector2.inverse`.
-
-### affineplane.vector2.norm
-
-Alias of `affineplane.vector2.magnitude`.
-
-### affineplane.vector2.opposite
-
-Alias of `affineplane.vector2.negation`.
-
 <a name="affineplanevector2project"></a>
-### affineplane.vector2.project(v, pr)
+## affineplane.vector2.project(v, pr)
 
 Project a point from a plane to another.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
-- `pr`
+- *pr*
   - a [proj2](#affineplaneproj2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2rotateBy"></a>
-### affineplane.vector2.rotateBy(v, radians)
+## affineplane.vector2.rotateBy(v, radians)
 
 Rotate vector by the given angle.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
-- `radians`
+- *radians*
   - a number, from positive x-axis towards positive y-axis
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2rotateTo"></a>
-### affineplane.vector2.rotateTo(v, radians)
+## affineplane.vector2.rotateTo(v, radians)
 
 Rotate vector so that it points to the given angle.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
-- `radians`
+- *radians*
   - a number from positive x-axis towards positive y-axis
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2sum"></a>
-### affineplane.vector2.sum(vs)
+## affineplane.vector2.sum(vs)
 
-Add an array of vectors together. See vector.add to add two vectors.
+Add an array of vectors together.
+See [affineplane.vector2.add](#affineplanevector2add) to add two vectors together.
 
-<p style="display: inline">Parameters:</p>
-
-- `vs`
+**Parameters:**
+- *vs*
   - an array of [vector2](#affineplanevector2). The array can be empty.
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a [vector2](#affineplanevector2)
 
 <a name="affineplanevector2toArray"></a>
-### affineplane.vector2.toArray(v)
+## affineplane.vector2.toArray(v)
 
 Get the vector object as an array.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - an array `[x, y]`
 
 <a name="affineplanevector2toPolar"></a>
-### affineplane.vector2.toPolar(v)
+## affineplane.vector2.toPolar(v)
 
 Get polar coordinates of a vector.
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - a [vector2](#affineplanevector2)
 
-<p style="display: inline">Return:</p>
-
-- object, polar coordinates `{ magnitude, direction }` where
-  the direction is an angle in radians.
+**Returns:**
+- object, polar coordinates `{ magnitude, direction }` where the direction is an angle in radians.
 
 <a name="affineplanevector2validate"></a>
-### affineplane.vector2.validate(v)
+## affineplane.vector2.validate(v)
 
 Check if object is a valid [vector2](#affineplanevector2).
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - an object
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a boolean
 
+<a name="affineplanevector3"></a>
 ## affineplane.vector3
 
 Three-dimensional vector.
@@ -1832,36 +1794,41 @@ Three-dimensional vector.
 - [affineplane.vector3.toArray](#affineplanevector3toArray)
 - [affineplane.vector3.validate](#affineplanevector3validate)
 
+
 <a name="affineplanevector3add"></a>
-### affineplane.vector3.add(v, w)
+## affineplane.vector3.add(v, w)
+
 
 <a name="affineplanevector3copy"></a>
-### affineplane.vector3.copy(v)
+## affineplane.vector3.copy(v)
+
 
 <a name="affineplanevector3create"></a>
-### affineplane.vector3.create(x, y, z)
+## affineplane.vector3.create(x, y, z)
+
 
 <a name="affineplanevector3toArray"></a>
-### affineplane.vector3.toArray(v)
+## affineplane.vector3.toArray(v)
+
 
 <a name="affineplanevector3validate"></a>
-### affineplane.vector3.validate(v)
+## affineplane.vector3.validate(v)
 
-Check if object is a valid vector3.
+Check if object is a valid [vector3](#affineplanevector3).
 
-<p style="display: inline">Parameters:</p>
-
-- `v`
+**Parameters:**
+- *v*
   - an object
 
-<p style="display: inline">Return:</p>
-
+**Returns:**
 - a boolean
 
+<a name="affineplaneversion"></a>
 ## affineplane.version
 
-Package version string. Uses semantic versioning.
-.
+Package version string, for example `'1.2.3'`. Uses semantic versioning.
 
-
+<p style="text-align: right">
+<a href="#top">&uarr; Back To Top</a>
+</p>
 

@@ -35,7 +35,8 @@
     "genversion": "^3.1.1",
     "nodemon": "^2.0.16",
     "standard": "^16.0.4",
-    "tape": "^5.5.3"
+    "tape": "^5.5.3",
+    "yamdog": "^1.2.0"
   },
   "scripts": {
     "lint": "standard index.js 'lib/**/*.js' 'test/**/*.js'",
@@ -44,7 +45,7 @@
     "test:unit": "node test/index.test.js",
     "test:watch": "nodemon --exec npm run test",
     "gv": "genversion lib/version.js",
-    "build:docs": "node docs/gendocs/index.js",
+    "build:docs": "node docs/generate.js",
     "build:standalone": "browserify index.js --standalone affineplane -o affineplane.js",
     "release": "npm run gv && npm run test && npm run build:docs && npm publish"
   }
