@@ -57,6 +57,7 @@ yamdog.generate({
         pattern: /(^|\s+)vector2($|\W+)/,
         replacement: '$1[vector2](#affineplanevector2)$2'
       },
-    ])
+    ]),
+    yamdog.decorators.toc()
   ]
 })
