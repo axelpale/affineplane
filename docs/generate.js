@@ -40,52 +40,18 @@ yamdog.generate({
         pattern: /(^|\s+){([\w,: ]*)}($|\s+)/,
         replacement: '$1`{$2}`$3'
       },
-      {
-        // Link linear2
-        pattern: /(^|\s+)linear2($|\W+)/,
-        replacement: '$1[linear2](#affineplanelinear2)$2'
-      },
-      {
-        // Link path2
-        pattern: /(^|\s+)path2($|\W+)/,
-        replacement: '$1[path2](#affineplanepath2)$2'
-      },
-      {
-        // Link poly2
-        pattern: /(^|\s+)poly2($|\W+)/,
-        replacement: '$1[poly2](#affineplanepoly2)$2'
-      },
-      {
-        // Link point2
-        pattern: /(^|\s+)point2($|\W+)/,
-        replacement: '$1[point2](#affineplanepoint2)$2'
-      },
-      {
-        // Link proj2
-        pattern: /(^|\s+)proj2($|\W+)/,
-        replacement: '$1[proj2](#affineplaneproj2)$2'
-      },
-      {
-        // Link size2
-        pattern: /(^|\s+)size2($|\W+)/,
-        replacement: '$1[size2](#affineplanesize2)$2'
-      },
-      {
-        // Link tran2
-        pattern: /(^|\s+)tran2($|\W+)/,
-        replacement: '$1[tran2](#affineplanetran2)$2'
-      },
-      {
-        // Link vector2
-        pattern: /(^|\s+)vector2($|\W+)/,
-        replacement: '$1[vector2](#affineplanevector2)$2'
-      },
-      {
-        // Link vector3
-        pattern: /(^|\s+)vector3($|\W+)/,
-        replacement: '$1[vector3](#affineplanevector3)$2'
-      },
     ]),
+    decor.linkKeywords({
+      linear2: '#affineplanelinear2',
+      path2: '#affineplanepath2',
+      poly2: '#affineplanepoly2',
+      point2: '#affineplanepoint2',
+      proj2: '#affineplaneproj2',
+      size2: '#affineplanesize2',
+      tran2: '#affineplanetran2',
+      vector2: '#affineplanevector2',
+      vector3: '#affineplanevector3',
+    }),
     decor.italicSingles(),
     decor.backTopLinks(),
     decor.toc()

@@ -692,7 +692,7 @@ Alias of [affineplane.proj2.point2](#affineplaneproj2point2)
 ## affineplane.proj2.point2(pr, p2)
 
 Project a [point2](#affineplanepoint2) from a plane to another.
-Unlike [vector2](#affineplanevector2), point2 is affected by translation.
+Unlike [vector2](#affineplanevector2), [point2](#affineplanepoint2) is affected by translation.
 
 **Parameters:**
 - *pr*
