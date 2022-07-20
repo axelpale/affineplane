@@ -28,6 +28,8 @@ The functions are grouped in the following submodules.
 - [affineplane.version](#affineplaneversion)
 
 
+Source: [lib/index.js](https://github.com/axelpale/affineplane/blob/main/lib/index.js)
+
 <a name="affineplanedir2"></a>
 ## affineplane.dir2
 
@@ -39,6 +41,8 @@ the coordinate space affects the direction.
 
 - [affineplane.dir2.create](#affineplanedir2create)
 
+
+Source: [dir2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/index.js)
 
 <a name="affineplanedir2create"></a>
 ## affineplane.dir2.create(r)
@@ -52,6 +56,8 @@ Create a new direction.
 **Returns:**
 - a number. The angle in radians between -Pi and +Pi.
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/create.js)
+
 <a name="affineplanedist2"></a>
 ## affineplane.dist2
 
@@ -62,6 +68,8 @@ affects the distance.
 - [affineplane.dist2.changeBasis](#affineplanedist2changeBasis)
 - [affineplane.dist2.create](#affineplanedist2create)
 
+
+Source: [dist2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/index.js)
 
 <a name="affineplanedist2changeBasis"></a>
 ## affineplane.dist2.changeBasis(d, source, target)
@@ -79,6 +87,8 @@ Convert a distance between bases.
 **Returns:**
 - a number, the scalar on the target basis.
 
+Source: [changeBasis.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/changeBasis.js)
+
 <a name="affineplanedist2create"></a>
 ## affineplane.dist2.create(d)
 
@@ -91,11 +101,15 @@ Create a measure. Basically it is just the absolute value of the number.
 **Returns:**
 - a number, always zero or positive.
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/create.js)
+
 <a name="affineplaneepsilon"></a>
 ## affineplane.epsilon
 
 Default margin for non-strict numeric equality.
 For example `0.0000000001`.
+
+Source: [epsilon.js](https://github.com/axelpale/affineplane/blob/main/lib/epsilon.js)
 
 <a name="affineplanelinear2"></a>
 ## affineplane.linear2
@@ -114,6 +128,8 @@ Therefore [vector2](#affineplanevector2) can be linearly transformed.
 - [affineplane.linear2.polar](#affineplanelinear2polar)
 
 
+Source: [linear2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/linear2/index.js)
+
 <a name="affineplanelinear2compose"></a>
 ## affineplane.linear2.compose(tr, ts)
 
@@ -128,6 +144,8 @@ Combine two linear transformations.
 **Returns:**
 - [tran2](#affineplanetran2)
 
+Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/linear2/compose.js)
+
 <a name="affineplanelinear2copy"></a>
 ## affineplane.linear2.copy(lin)
 
@@ -139,6 +157,8 @@ Deep copy [linear2](#affineplanelinear2).
 
 **Returns:**
 - a [linear2](#affineplanelinear2)
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/linear2/copy.js)
 
 <a name="affineplanelinear2create"></a>
 ## affineplane.linear2.create(a, b)
@@ -155,6 +175,8 @@ Create a two-dimensional linear non-reflective similarity transform
 **Returns:**
 - a [linear2](#affineplanelinear2)
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/linear2/create.js)
+
 <a name="affineplanelinear2polar"></a>
 ## affineplane.linear2.polar(scale, rotation)
 
@@ -170,6 +192,8 @@ See also [affineplane.vector2.fromPolar](#affineplanevector2fromPolar).
 **Returns:**
 - [linear2](#affineplanelinear2)
 
+Source: [polar.js](https://github.com/axelpale/affineplane/blob/main/lib/linear2/polar.js)
+
 <a name="affineplanepath2"></a>
 ## affineplane.path2
 
@@ -179,6 +203,8 @@ Does not form a polygon but a sequence of line segments.
 
 - [affineplane.path2.create](#affineplanepath2create)
 
+
+Source: [path2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/index.js)
 
 <a name="affineplanepath2create"></a>
 ## affineplane.path2.create(points)
@@ -191,6 +217,8 @@ Create a path on plane. Deep-clones the points array.
 
 **Returns:**
 - a [path2](#affineplanepath2), array of points
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/create.js)
 
 <a name="affineplanepoint2"></a>
 ## affineplane.point2
@@ -221,6 +249,8 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 - [affineplane.point2.translate](#affineplanepoint2translate)
 
 
+Source: [point2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/index.js)
+
 <a name="affineplanepoint2average"></a>
 ## affineplane.point2.average(ps)
 
@@ -232,6 +262,8 @@ Average of points.
 
 **Returns:**
 - a [point2](#affineplanepoint2)
+
+Source: [average.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/average.js)
 
 <a name="affineplanepoint2changeBasis"></a>
 ## affineplane.point2.changeBasis(p, source, target)
@@ -249,6 +281,8 @@ Convert a point between bases.
 **Returns:**
 - a [point2](#affineplanepoint2), the same point but represented on the targer basis.
 
+Source: [changeBasis.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/changeBasis.js)
+
 <a name="affineplanepoint2copy"></a>
 ## affineplane.point2.copy(p)
 
@@ -260,6 +294,8 @@ Copy point object.
 
 **Returns:**
 - a [point2](#affineplanepoint2)
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/copy.js)
 
 <a name="affineplanepoint2create"></a>
 ## affineplane.point2.create(x, y)
@@ -275,10 +311,14 @@ Create a [point2](#affineplanepoint2) object: `{ x, y }`
 **Returns:**
 - a [point2](#affineplanepoint2)
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/create.js)
+
 <a name="affineplanepoint2delta"></a>
 ## affineplane.point2.delta
 
 Alias for [affineplane.point2.difference](#affineplanepoint2difference)
+
+Source: [point2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/index.js)
 
 <a name="affineplanepoint2difference"></a>
 ## affineplane.point2.difference(p, q)
@@ -294,6 +334,8 @@ A vector from point p to point q.
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
+
 <a name="affineplanepoint2distance"></a>
 ## affineplane.point2.distance(p, q)
 
@@ -307,6 +349,8 @@ Distance between two points.
 
 **Returns:**
 - a number, a distance from p to q (= distance from q to p)
+
+Source: [distance.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/distance.js)
 
 <a name="affineplanepoint2equal"></a>
 ## affineplane.point2.equal(p, q)
@@ -322,10 +366,14 @@ Test if points p, q are equal.
 **Returns:**
 - a boolean
 
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/equal.js)
+
 <a name="affineplanepoint2equals"></a>
 ## affineplane.point2.equals
 
 Alias for [affineplane.point2.equal](#affineplanepoint2equal)
+
+Source: [point2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/index.js)
 
 <a name="affineplanepoint2fromArray"></a>
 ## affineplane.point2.fromArray(arrp)
@@ -339,15 +387,21 @@ Create `{ x, y }` point from array `[x, y]`
 **Returns:**
 - a [point2](#affineplanepoint2)
 
+Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/fromArray.js)
+
 <a name="affineplanepoint2mean"></a>
 ## affineplane.point2.mean
 
 Alias for [affineplane.point2.average](#affineplanepoint2average)
 
+Source: [point2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/index.js)
+
 <a name="affineplanepoint2move"></a>
 ## affineplane.point2.move
 
 Alias for [affineplane.point2.translate](#affineplanepoint2translate)
+
+Source: [point2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/index.js)
 
 <a name="affineplanepoint2offset"></a>
 ## affineplane.point2.offset(p, dx, dy)
@@ -365,6 +419,8 @@ Offset a point by scalars dx dy.
 **Returns:**
 - a [point2](#affineplanepoint2), translated by the vector `{ x: dx, y: dy }`
 
+Source: [offset.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/offset.js)
+
 <a name="affineplanepoint2polarOffset"></a>
 ## affineplane.point2.polarOffset(p, distance, angle)
 
@@ -381,6 +437,8 @@ Create a point away from p at the given distance and angle.
 **Returns:**
 - a [point2](#affineplanepoint2)
 
+Source: [polarOffset.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/polarOffset.js)
+
 <a name="affineplanepoint2project"></a>
 ## affineplane.point2.project(p, pr)
 
@@ -394,6 +452,8 @@ Project a point from a plane to another.
 
 **Returns:**
 - a [point2](#affineplanepoint2)
+
+Source: [project.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/project.js)
 
 <a name="affineplanepoint2rotateBy"></a>
 ## affineplane.point2.rotateBy(p, origin, radians)
@@ -411,6 +471,8 @@ Rotate point about the given center.
 **Returns:**
 - a [point2](#affineplanepoint2)
 
+Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/rotateBy.js)
+
 <a name="affineplanepoint2toArray"></a>
 ## affineplane.point2.toArray(p)
 
@@ -422,6 +484,8 @@ Get the [point2](#affineplanepoint2) object as an array.
 
 **Returns:**
 - an array `[x, y]`
+
+Source: [toArray.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/toArray.js)
 
 <a name="affineplanepoint2transform"></a>
 ## affineplane.point2.transform(p, tr)
@@ -437,6 +501,8 @@ Transform a point.
 **Returns:**
 - a [point2](#affineplanepoint2), the transformed point
 
+Source: [transform.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/transform.js)
+
 <a name="affineplanepoint2translate"></a>
 ## affineplane.point2.translate(p, vec)
 
@@ -451,6 +517,8 @@ Translate the point by the given vector.
 **Returns:**
 - a [point2](#affineplanepoint2)
 
+Source: [translate.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/translate.js)
+
 <a name="affineplanepoint3"></a>
 ## affineplane.point3
 
@@ -458,6 +526,8 @@ Three-dimensional point.
 
 - [affineplane.point3.create](#affineplanepoint3create)
 
+
+Source: [point3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/index.js)
 
 <a name="affineplanepoint3create"></a>
 ## affineplane.point3.create(x, y, z)
@@ -467,6 +537,8 @@ Create a three-dimensional point `{x, y, z}`
 **Returns:**
 - a point3
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/create.js)
+
 <a name="affineplanepoly2"></a>
 ## affineplane.poly2
 
@@ -475,6 +547,8 @@ A closed sequence of points `[{ x, y }, { x, y }, ...]`
 
 - [affineplane.poly2.create](#affineplanepoly2create)
 
+
+Source: [poly2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/poly2/index.js)
 
 <a name="affineplanepoly2create"></a>
 ## affineplane.poly2.create(points)
@@ -487,6 +561,8 @@ Create a polygon on plane. Deep-clones the points array.
 
 **Returns:**
 - a [poly2](#affineplanepoly2), array of points
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/poly2/create.js)
 
 <a name="affineplaneproj2"></a>
 ## affineplane.proj2
@@ -531,6 +607,8 @@ the projection from A to B is equivalent to the location of A on B.
 - [affineplane.proj2.vector2](#affineplaneproj2vector2)
 
 
+Source: [proj2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/index.js)
+
 <a name="affineplaneproj2between"></a>
 ## affineplane.proj2.between(source, target)
 
@@ -548,15 +626,21 @@ and the source projection.
 **Returns:**
 - a [proj2](#affineplaneproj2)
 
+Source: [between.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/between.js)
+
 <a name="affineplaneproj2clone"></a>
 ## affineplane.proj2.clone
 
 Alias of [affineplane.proj2.copy](#affineplaneproj2copy)
 
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/copy.js)
+
 <a name="affineplaneproj2combine"></a>
 ## affineplane.proj2.combine(p, q)
 
 Alias of [affineplane.proj2.compose](#affineplaneproj2compose)
+
+Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/compose.js)
 
 <a name="affineplaneproj2compose"></a>
 ## affineplane.proj2.compose(p, q)
@@ -574,6 +658,8 @@ Combine two projections.
 
 Aliases: [affineplane.proj2.combine](#affineplaneproj2combine)
 
+Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/compose.js)
+
 <a name="affineplaneproj2copy"></a>
 ## affineplane.proj2.copy(pr)
 
@@ -587,6 +673,8 @@ Deep-copy the projection object.
 - a [proj2](#affineplaneproj2), a projection
 
 Aliases: [affineplane.proj2.clone](#affineplaneproj2clone)
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/copy.js)
 
 <a name="affineplaneproj2create"></a>
 ## affineplane.proj2.create(a, b, x, y)
@@ -606,6 +694,8 @@ Create a projection between two-dimensional planes: source and target.
 **Returns:**
 - a [proj2](#affineplaneproj2), a projection object
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/create.js)
+
 <a name="affineplaneproj2dir2"></a>
 ## affineplane.proj2.dir2(pr, r)
 
@@ -622,10 +712,14 @@ Project a direction angle from a plane to another.
 
 Aliases: [affineplane.proj2.direction](#affineplaneproj2direction)
 
+Source: [dir2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/dir2.js)
+
 <a name="affineplaneproj2direction"></a>
 ## affineplane.proj2.direction(pr, r)
 
 Alias of [affineplane.proj2.dir2](#affineplaneproj2dir2)
+
+Source: [dir2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/dir2.js)
 
 <a name="affineplaneproj2dist2"></a>
 ## affineplane.proj2.dist2(pr, d)
@@ -643,10 +737,14 @@ Project a one-dimensional distance.
 
 Aliases: [affineplane.proj2.distance](#affineplaneproj2distance)
 
+Source: [dist2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/dist2.js)
+
 <a name="affineplaneproj2distance"></a>
 ## affineplane.proj2.distance(pr, d)
 
 Alias of [affineplane.proj2.dist2](#affineplaneproj2dist2)
+
+Source: [dist2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/dist2.js)
 
 <a name="affineplaneproj2inverse"></a>
 ## affineplane.proj2.inverse(pr)
@@ -663,10 +761,14 @@ becomes a projection from plane Q to plane P.
 
 Aliases: [affineplane.proj2.invert](#affineplaneproj2invert)
 
+Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/inverse.js)
+
 <a name="affineplaneproj2invert"></a>
 ## affineplane.proj2.invert(pr)
 
 Alias of [affineplane.proj2.inverse](#affineplaneproj2inverse)
+
+Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/inverse.js)
 
 <a name="affineplaneproj2linear2"></a>
 ## affineplane.proj2.linear2(pr, lin)
@@ -683,10 +785,14 @@ Use to represent the linear transformation on another plane.
 **Returns:**
 - a [linear2](#affineplanelinear2), the same transformation represented on the target plane
 
+Source: [linear2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/linear2.js)
+
 <a name="affineplaneproj2point"></a>
 ## affineplane.proj2.point
 
 Alias of [affineplane.proj2.point2](#affineplaneproj2point2)
+
+Source: [point2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/point2.js)
 
 <a name="affineplaneproj2point2"></a>
 ## affineplane.proj2.point2(pr, p2)
@@ -705,6 +811,8 @@ Unlike [vector2](#affineplanevector2), [point2](#affineplanepoint2) is affected 
 
 Aliases: [affineplane.proj2.point](#affineplaneproj2point)
 
+Source: [point2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/point2.js)
+
 <a name="affineplaneproj2size2"></a>
 ## affineplane.proj2.size2(pr, size)
 
@@ -720,6 +828,8 @@ Only the scale change affects the size.
 **Returns:**
 - a number, the same size on the target plane.
 
+Source: [size2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/size2.js)
+
 <a name="affineplaneproj2tran2"></a>
 ## affineplane.proj2.tran2(pr, tr)
 
@@ -734,6 +844,8 @@ happen on the plane, and thus are automorphisms.
 
 **Returns:**
 - a [tran2](#affineplanetran2), the same transformation on the target plane.
+
+Source: [tran2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/tran2.js)
 
 <a name="affineplaneproj2vector2"></a>
 ## affineplane.proj2.vector2(pr, v2)
@@ -751,6 +863,8 @@ only scaling and rotation do.
 **Returns:**
 - a [vector2](#affineplanevector2), the same vector represented on the target plane,
 
+Source: [vector2.js](https://github.com/axelpale/affineplane/blob/main/lib/proj2/vector2.js)
+
 <a name="affineplaneproj3"></a>
 ## affineplane.proj3
 
@@ -759,11 +873,15 @@ Orthogonal perspective projection between parallel 2D planes.
 - [affineplane.proj3.create](#affineplaneproj3create)
 
 
+Source: [proj3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/proj3/index.js)
+
 <a name="affineplaneproj3create"></a>
 ## affineplane.proj3.create(a, b, x, y, z)
 
 **Returns:**
 - a proj3
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/proj3/create.js)
 
 <a name="affineplanesize2"></a>
 ## affineplane.size2
@@ -775,6 +893,8 @@ Two-dimensional rectangular size, consisting of width and height.
 - [affineplane.size2.create](#affineplanesize2create)
 - [affineplane.size2.scaleBy](#affineplanesize2scaleBy)
 
+
+Source: [size2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/index.js)
 
 <a name="affineplanesize2area"></a>
 ## affineplane.size2.area(sz)
@@ -788,6 +908,8 @@ the total number of pixels.
 
 **Returns:**
 - a number
+
+Source: [area.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/area.js)
 
 <a name="affineplanesize2atNorm"></a>
 ## affineplane.size2.atNorm(sz, nw, nh)
@@ -805,6 +927,8 @@ Find a point on the area.
 **Returns:**
 - a [point2](#affineplanepoint2)
 
+Source: [atNorm.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/atNorm.js)
+
 <a name="affineplanesize2create"></a>
 ## affineplane.size2.create(width, height)
 
@@ -819,6 +943,8 @@ Create a [size2](#affineplanesize2) object.
 **Returns:**
 - a [size2](#affineplanesize2)
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/create.js)
+
 <a name="affineplanesize2scaleBy"></a>
 ## affineplane.size2.scaleBy(sz, multiplier)
 
@@ -832,6 +958,8 @@ Ratio-preserving scale. Multiplies all dimensions uniformly.
 
 **Returns:**
 - a [size2](#affineplanesize2)
+
+Source: [scaleBy.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/scaleBy.js)
 
 <a name="affineplanetran2"></a>
 ## affineplane.tran2
@@ -894,6 +1022,8 @@ Aliases: [affineplane.tran2](#affineplanetran2)
 - [affineplane.tran2.X2](#affineplanetran2X2)
 
 
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
+
 <a name="affineplanetran2"></a>
 ## affineplane.tran2
 
@@ -945,6 +1075,8 @@ Aliases: [affineplane.tran2](#affineplanetran2)
 - [affineplane.tran2.X2](#affineplanetran2X2)
 
 
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
+
 <a name="affineplanetran2almostEqual"></a>
 ## affineplane.tran2.almostEqual(tr, ts, [epsilon])
 
@@ -967,10 +1099,14 @@ Manhattan Distance to compute the difference.
 
 Aliases: [affineplane.tran2.almostEquals](#affineplanetran2almostEquals)
 
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/almostEqual.js)
+
 <a name="affineplanetran2almostEquals"></a>
 ## affineplane.tran2.almostEquals
 
 Alias of [affineplane.tran2.almostEqual](#affineplanetran2almostEqual)
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/almostEqual.js)
 
 <a name="affineplanetran2changeBasis"></a>
 ## affineplane.tran2.changeBasis(tr, sourceBasis, targetBasis)
@@ -992,15 +1128,21 @@ Convert transformation from a basis to another.
 
 Aliases: [affineplane.tran2.rebase](#affineplanetran2rebase)
 
+Source: [changeBasis.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/changeBasis.js)
+
 <a name="affineplanetran2clone"></a>
 ## affineplane.tran2.clone
 
 Alias of [affineplane.tran2.copy](#affineplanetran2copy)
 
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/copy.js)
+
 <a name="affineplanetran2combine"></a>
 ## affineplane.tran2.combine
 
 Alias of [affineplane.tran2.compose](#affineplanetran2compose), [affineplane.tran2.multiply](#affineplanetran2multiply)
+
+Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/compose.js)
 
 <a name="affineplanetran2compose"></a>
 ## affineplane.tran2.compose(tr, ts)
@@ -1020,6 +1162,8 @@ In other words, transform the image of ts by tr.
 
 Aliases: [affineplane.tran2.combine](#affineplanetran2combine), [affineplane.tran2.multiply](#affineplanetran2multiply)
 
+Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/compose.js)
+
 <a name="affineplanetran2copy"></a>
 ## affineplane.tran2.copy(tr)
 
@@ -1031,6 +1175,8 @@ Aliases: [affineplane.tran2.combine](#affineplanetran2combine), [affineplane.tra
 - a [tran2](#affineplanetran2), a transform
 
 Aliases: [affineplane.tran2.clone](#affineplanetran2clone)
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/copy.js)
 
 <a name="affineplanetran2create"></a>
 ## affineplane.tran2.create(a, b, x, y)
@@ -1050,6 +1196,8 @@ Create a 2D non-reflective similarity transform object.
 **Returns:**
 - a [tran2](#affineplanetran2), a transform object
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/create.js)
+
 <a name="affineplanetran2det"></a>
 ## affineplane.tran2.det(tr)
 
@@ -1067,10 +1215,14 @@ problematic due to floating point arithmetics.
 
 Aliases: [affineplane.tran2.determinant](#affineplanetran2determinant)
 
+Source: [det.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/det.js)
+
 <a name="affineplanetran2determinant"></a>
 ## affineplane.tran2.determinant(tr)
 
 Alias of [affineplane.tran2.det](#affineplanetran2det)
+
+Source: [det.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/det.js)
 
 <a name="affineplanetran2equal"></a>
 ## affineplane.tran2.equal(tr, ts)
@@ -1091,10 +1243,14 @@ See [affineplane.tran2.almostEqual](#affineplanetran2almostEqual) for relaxed al
 
 Aliases: [affineplane.tran2.equals](#affineplanetran2equals)
 
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/equal.js)
+
 <a name="affineplanetran2equals"></a>
 ## affineplane.tran2.equals
 
 Alias of [affineplane.tran2.equal](#affineplanetran2equal)
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/equal.js)
 
 <a name="affineplanetran2fromArray"></a>
 ## affineplane.tran2.fromArray(abxy)
@@ -1107,6 +1263,8 @@ Create an affine similarity transform from 4-element array.
 
 **Returns:**
 - a [tran2](#affineplanetran2), a similarity transform.
+
+Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/fromArray.js)
 
 <a name="affineplanetran2fromPolar"></a>
 ## affineplane.tran2.fromPolar(scale, rotation, tx, ty)
@@ -1130,6 +1288,8 @@ rotation angle, and translation.
 Precondition:
 - scale must be positive
 
+Source: [fromPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/fromPolar.js)
+
 <a name="affineplanetran2fromVector3r"></a>
 ## affineplane.tran2.fromVector3r(vec3r, vanishing)
 
@@ -1146,6 +1306,8 @@ the z-coordinate will be projected to scaling at z=0.
 **Returns:**
 - a [tran2](#affineplanetran2)
 
+Source: [fromVector3r.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/fromVector3r.js)
+
 <a name="affineplanetran2getRotation"></a>
 ## affineplane.tran2.getRotation(tr)
 
@@ -1157,6 +1319,8 @@ Get the rotation component of the transform in radians.
 
 **Returns:**
 - a number, in radians
+
+Source: [getRotation.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/getRotation.js)
 
 <a name="affineplanetran2getScale"></a>
 ## affineplane.tran2.getScale(tr)
@@ -1170,6 +1334,8 @@ Get the scale component of the transformation.
 **Returns:**
 - a number, the scale multiplier.
 
+Source: [getScale.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/getScale.js)
+
 <a name="affineplanetran2getTranslation"></a>
 ## affineplane.tran2.getTranslation(tr)
 
@@ -1182,10 +1348,14 @@ Get translation component of the transformation as a vector.
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [getTranslation.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/getTranslation.js)
+
 <a name="affineplanetran2HALF"></a>
 ## affineplane.tran2.HALF
 
 Scaling to half size.
+
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
 
 <a name="affineplanetran2I"></a>
 ## affineplane.tran2.I
@@ -1194,10 +1364,14 @@ Identity transform, a kind of multiplication by 1.
 
 Aliases: [affineplane.tran2.IDENTITY](#affineplanetran2IDENTITY)
 
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
+
 <a name="affineplanetran2IDENTITY"></a>
 ## affineplane.tran2.IDENTITY
 
 Alias of [affineplane.tran2.I](#affineplanetran2I)
+
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
 
 <a name="affineplanetran2inverse"></a>
 ## affineplane.tran2.inverse(tr)
@@ -1214,45 +1388,63 @@ becomes a transform from C to B.
 
 Aliases: [affineplane.tran2.invert](#affineplanetran2invert)
 
+Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/inverse.js)
+
 <a name="affineplanetran2invert"></a>
 ## affineplane.tran2.invert(tr)
 
 Alias of [affineplane.tran2.inverse](#affineplanetran2inverse)
+
+Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/inverse.js)
 
 <a name="affineplanetran2multiply"></a>
 ## affineplane.tran2.multiply
 
 Alias of [affineplane.tran2.compose](#affineplanetran2compose), [affineplane.tran2.combine](#affineplanetran2combine)
 
+Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/compose.js)
+
 <a name="affineplanetran2rebase"></a>
 ## affineplane.tran2.rebase
 
 Alias of [affineplane.tran2.changeBasis](#affineplanetran2changeBasis)
+
+Source: [changeBasis.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/changeBasis.js)
 
 <a name="affineplanetran2ROT0"></a>
 ## affineplane.tran2.ROT0
 
 Zero angle rotation.
 
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
+
 <a name="affineplanetran2ROT180"></a>
 ## affineplane.tran2.ROT180
 
 Rotation of 180 degrees.
+
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
 
 <a name="affineplanetran2ROT270"></a>
 ## affineplane.tran2.ROT270
 
 Clockwise rotation of 270 degrees.
 
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
+
 <a name="affineplanetran2ROT45"></a>
 ## affineplane.tran2.ROT45
 
 Clockwise rotation of 45 degrees.
 
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
+
 <a name="affineplanetran2ROT90"></a>
 ## affineplane.tran2.ROT90
 
 Clockwise rotation of 90 degrees.
+
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
 
 <a name="affineplanetran2rotateBy"></a>
 ## affineplane.tran2.rotateBy(tr, center, radians)
@@ -1271,6 +1463,8 @@ so that the given center point stays fixed.
 **Returns:**
 - a [tran2](#affineplanetran2), a transform
 
+Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/rotateBy.js)
+
 <a name="affineplanetran2rotateTo"></a>
 ## affineplane.tran2.rotateTo(tr, center, radians)
 
@@ -1287,6 +1481,8 @@ so that the given center point stays fixed.
 
 **Returns:**
 - a [tran2](#affineplanetran2), a transform
+
+Source: [rotateTo.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/rotateTo.js)
 
 <a name="affineplanetran2rotateToOrtho"></a>
 ## affineplane.tran2.rotateToOrtho(tr, center)
@@ -1306,6 +1502,8 @@ floating-point arithmetics.
 **Returns:**
 - a [tran2](#affineplanetran2)
 
+Source: [rotateToOrtho.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/rotateToOrtho.js)
+
 <a name="affineplanetran2scaleBy"></a>
 ## affineplane.tran2.scaleBy(tr, center, multiplier)
 
@@ -1323,6 +1521,8 @@ The operation is also called homothety.
 
 **Returns:**
 - a [tran2](#affineplanetran2), a transform
+
+Source: [scaleBy.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/scaleBy.js)
 
 <a name="affineplanetran2scaleTo"></a>
 ## affineplane.tran2.scaleTo(tr, center, scale)
@@ -1345,6 +1545,8 @@ Scale the given transform so that
 Throws if the given transform is singular, thus cannot be
 uniquely scaled to the desired scale.
 
+Source: [scaleTo.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/scaleTo.js)
+
 <a name="affineplanetran2solveLeft"></a>
 ## affineplane.tran2.solveLeft(tb, tc)
 
@@ -1359,6 +1561,8 @@ Given that B is invertible, then A = C * iB.
 
 **Returns:**
 - a [tran2](#affineplanetran2), a transform
+
+Source: [solveLeft.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/solveLeft.js)
 
 <a name="affineplanetran2solveRight"></a>
 ## affineplane.tran2.solveRight(ta, tc)
@@ -1375,6 +1579,8 @@ Given that A is invertible, then B = iA * C.
 **Returns:**
 - a [tran2](#affineplanetran2), a transform
 
+Source: [solveRight.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/solveRight.js)
+
 <a name="affineplanetran2toArray"></a>
 ## affineplane.tran2.toArray(tr)
 
@@ -1387,6 +1593,8 @@ Compatible with [affineplane.tran2.fromArray](#affineplanetran2fromArray).
 
 **Returns:**
 - an array, `[a, b, x, y]`
+
+Source: [toArray.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/toArray.js)
 
 <a name="affineplanetran2toMatrix"></a>
 ## affineplane.tran2.toMatrix(tr)
@@ -1404,6 +1612,8 @@ in the format common to other APIs, including:
 **Returns:**
 - `{ a, b, c, d, e, f }`
 
+Source: [toMatrix.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/toMatrix.js)
+
 <a name="affineplanetran2toString"></a>
 ## affineplane.tran2.toString(tr)
 
@@ -1419,6 +1629,8 @@ serialization to and from strings.
 **Returns:**
 - a string, CSS transform
 
+Source: [toString.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/toString.js)
+
 <a name="affineplanetran2toVector3r"></a>
 ## affineplane.tran2.toVector3r(tr, vanishing)
 
@@ -1432,6 +1644,8 @@ A perspective projection from transformation to vector3r
 
 **Returns:**
 - a vector3r
+
+Source: [toVector3r.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/toVector3r.js)
 
 <a name="affineplanetran2transform"></a>
 ## affineplane.tran2.transform(tr, ts)
@@ -1451,6 +1665,8 @@ For multiplication from right, see compose.
 **Returns:**
 - a [tran2](#affineplanetran2)
 
+Source: [transform.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/transform.js)
+
 <a name="affineplanetran2translateBy"></a>
 ## affineplane.tran2.translateBy(tr, vec)
 
@@ -1468,6 +1684,8 @@ further by the given vector.
 **Returns:**
 - a [tran2](#affineplanetran2), a transform
 
+Source: [translateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/translateBy.js)
+
 <a name="affineplanetran2translateTo"></a>
 ## affineplane.tran2.translateTo(tr, p)
 
@@ -1483,6 +1701,8 @@ to the given point.
 **Returns:**
 - a [tran2](#affineplanetran2), a transform
 
+Source: [translateTo.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/translateTo.js)
+
 <a name="affineplanetran2validate"></a>
 ## affineplane.tran2.validate(tr)
 
@@ -1495,10 +1715,14 @@ Check if object is a valid [tran2](#affineplanetran2).
 **Returns:**
 - a boolean
 
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/validate.js)
+
 <a name="affineplanetran2X2"></a>
 ## affineplane.tran2.X2
 
 Scaling to double size.
+
+Source: [tran2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/tran2/index.js)
 
 <a name="affineplanevector2"></a>
 ## affineplane.vector2
@@ -1527,6 +1751,8 @@ Vector is a two dimensional dynamic movent between points.
 - [affineplane.vector2.validate](#affineplanevector2validate)
 
 
+Source: [vector2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/index.js)
+
 <a name="affineplanevector2add"></a>
 ## affineplane.vector2.add(v, w)
 
@@ -1540,6 +1766,8 @@ Add two vectors. See vector.sum to add many vectors.
 
 **Returns:**
 - a [vector2](#affineplanevector2)
+
+Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/add.js)
 
 <a name="affineplanevector2almostEqual"></a>
 ## affineplane.vector2.almostEqual(v, w, [epsilon])
@@ -1558,6 +1786,8 @@ Test if two vectors v and w are almost equal by the margin of epsilon.
 **Returns:**
 - a boolean
 
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/almostEqual.js)
+
 <a name="affineplanevector2average"></a>
 ## affineplane.vector2.average(vs)
 
@@ -1572,6 +1802,8 @@ Average of the vectors.
 
 Aliases: [affineplane.vector2.mean](#affineplanevector2mean)
 
+Source: [average.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/average.js)
+
 <a name="affineplanevector2copy"></a>
 ## affineplane.vector2.copy(v)
 
@@ -1583,6 +1815,8 @@ Copy vector object.
 
 **Returns:**
 - a [vector2](#affineplanevector2)
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/copy.js)
 
 <a name="affineplanevector2create"></a>
 ## affineplane.vector2.create(x, y)
@@ -1598,6 +1832,8 @@ Create a vector object `{ x, y }`
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/create.js)
+
 <a name="affineplanevector2difference"></a>
 ## affineplane.vector2.difference(v, w)
 
@@ -1612,6 +1848,8 @@ A vector between v and w.
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/difference.js)
+
 <a name="affineplanevector2fromArray"></a>
 ## affineplane.vector2.fromArray(arrp)
 
@@ -1619,6 +1857,8 @@ Create `{ x, y }` vector from array `[x, y]`
 
 **Returns:**
 - a [vector2](#affineplanevector2)
+
+Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/fromArray.js)
 
 <a name="affineplanevector2fromPolar"></a>
 ## affineplane.vector2.fromPolar(magnitude, direction)
@@ -1634,6 +1874,8 @@ Create a vector from polar coordinates.
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [fromPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/fromPolar.js)
+
 <a name="affineplanevector2inverse"></a>
 ## affineplane.vector2.inverse(v)
 
@@ -1647,6 +1889,8 @@ Negate the vector. For example `inverse({ x: 1, y: -1 })` returns
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/inverse.js)
+
 <a name="affineplanevector2magnitude"></a>
 ## affineplane.vector2.magnitude(v)
 
@@ -1658,6 +1902,8 @@ The length of the vector.
 
 **Returns:**
 - a number
+
+Source: [magnitude.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/magnitude.js)
 
 <a name="affineplanevector2max"></a>
 ## affineplane.vector2.max(v, w)
@@ -1673,10 +1919,14 @@ Element-wise maximum of two vectors.
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [max.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/max.js)
+
 <a name="affineplanevector2mean"></a>
 ## affineplane.vector2.mean(vs)
 
 Alias of [affineplane.vector2.average](#affineplanevector2average)
+
+Source: [average.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/average.js)
 
 <a name="affineplanevector2min"></a>
 ## affineplane.vector2.min(v, w)
@@ -1692,6 +1942,8 @@ Element-wise minimum of two vectors
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [min.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/min.js)
+
 <a name="affineplanevector2project"></a>
 ## affineplane.vector2.project(v, pr)
 
@@ -1705,6 +1957,8 @@ Project a point from a plane to another.
 
 **Returns:**
 - a [vector2](#affineplanevector2)
+
+Source: [project.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/project.js)
 
 <a name="affineplanevector2rotateBy"></a>
 ## affineplane.vector2.rotateBy(v, radians)
@@ -1720,6 +1974,8 @@ Rotate vector by the given angle.
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/rotateBy.js)
+
 <a name="affineplanevector2rotateTo"></a>
 ## affineplane.vector2.rotateTo(v, radians)
 
@@ -1734,6 +1990,8 @@ Rotate vector so that it points to the given angle.
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [rotateTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/rotateTo.js)
+
 <a name="affineplanevector2sum"></a>
 ## affineplane.vector2.sum(vs)
 
@@ -1747,6 +2005,8 @@ See [affineplane.vector2.add](#affineplanevector2add) to add two vectors togethe
 **Returns:**
 - a [vector2](#affineplanevector2)
 
+Source: [sum.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/sum.js)
+
 <a name="affineplanevector2toArray"></a>
 ## affineplane.vector2.toArray(v)
 
@@ -1758,6 +2018,8 @@ Get the vector object as an array.
 
 **Returns:**
 - an array `[x, y]`
+
+Source: [toArray.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/toArray.js)
 
 <a name="affineplanevector2toPolar"></a>
 ## affineplane.vector2.toPolar(v)
@@ -1771,6 +2033,8 @@ Get polar coordinates of a vector.
 **Returns:**
 - object, polar coordinates `{ magnitude, direction }` where the direction is an angle in radians.
 
+Source: [toPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/toPolar.js)
+
 <a name="affineplanevector2validate"></a>
 ## affineplane.vector2.validate(v)
 
@@ -1782,6 +2046,8 @@ Check if object is a valid [vector2](#affineplanevector2).
 
 **Returns:**
 - a boolean
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vector2/validate.js)
 
 <a name="affineplanevector3"></a>
 ## affineplane.vector3
@@ -1795,21 +2061,27 @@ Three-dimensional vector.
 - [affineplane.vector3.validate](#affineplanevector3validate)
 
 
+Source: [vector3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vector3/index.js)
+
 <a name="affineplanevector3add"></a>
 ## affineplane.vector3.add(v, w)
 
+Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/vector3/add.js)
 
 <a name="affineplanevector3copy"></a>
 ## affineplane.vector3.copy(v)
 
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/vector3/copy.js)
 
 <a name="affineplanevector3create"></a>
 ## affineplane.vector3.create(x, y, z)
 
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/vector3/create.js)
 
 <a name="affineplanevector3toArray"></a>
 ## affineplane.vector3.toArray(v)
 
+Source: [toArray.js](https://github.com/axelpale/affineplane/blob/main/lib/vector3/toArray.js)
 
 <a name="affineplanevector3validate"></a>
 ## affineplane.vector3.validate(v)
@@ -1823,6 +2095,8 @@ Check if object is a valid [vector3](#affineplanevector3).
 **Returns:**
 - a boolean
 
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vector3/validate.js)
+
 <a name="affineplaneversion"></a>
 ## affineplane.version
 
@@ -1832,3 +2106,5 @@ Package version string, for example `'1.2.3'`. Uses semantic versioning.
 <a href="#top">&uarr; Back To Top</a>
 </p>
 
+
+Source: [lib/index.js](https://github.com/axelpale/affineplane/blob/main/lib/index.js)

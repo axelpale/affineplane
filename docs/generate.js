@@ -54,6 +54,10 @@ yamdog.generate({
     }),
     decor.italicSingles(),
     decor.backTopLinks(),
-    decor.toc()
+    decor.toc(),
+    decor.sourceLinks({
+      basePath: path.resolve(__dirname, '..'),
+      baseUrl: 'https://github.com/axelpale/affineplane/blob/main/'
+    }),
   ]
 })
