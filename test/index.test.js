@@ -1,9 +1,4 @@
 const test = require('tape')
-const EPSILON = require('../lib/epsilon')
-const tran2 = require('../lib/tran2')
-const vector2 = require('../lib/vector2')
-const tran2AlmostEqual = tran2.almostEqual
-const vector2AlmostEqual = vector2.almostEqual
 
 // Units
 
@@ -19,43 +14,10 @@ const units = {
 
 // Custom assertations
 
-test.Test.prototype.almostEqual = function (actual, expected, message) {
-  const isAlmost = Math.abs(actual - expected) < EPSILON
-  this._assert(isAlmost, {
-    message: message || 'should be almost equal',
-    operator: 'almostEqual',
-    actual: actual,
-    expected: expected
-  })
-}
-
-test.Test.prototype.notAlmostEqual = function (actual, expected, message) {
-  const isAlmost = Math.abs(actual - expected) < EPSILON
-  this._assert(!isAlmost, {
-    message: message || 'should not be almost equal',
-    operator: 'notAlmostEqual',
-    actual: actual,
-    expected: 'not ' + expected
-  })
-}
-
-test.Test.prototype.transformEqual = function (actual, expected, message) {
-  this._assert(tran2AlmostEqual(actual, expected), {
-    message: message || 'tran2 should have correct elements',
-    operator: 'transformEqual',
-    actual: actual,
-    expected: expected
-  })
-}
-
-test.Test.prototype.vectorEqual = function (actual, expected, message) {
-  this._assert(vector2AlmostEqual(actual, expected), {
-    message: message || 'vector2 should have correct elements',
-    operator: 'vectorEqual',
-    actual: actual,
-    expected: expected
-  })
-}
+test.Test.prototype.almostEqual = require('./utils/almostEqual')
+test.Test.prototype.notAlmostEqual = require('./utils/notAlmostEqual')
+test.Test.prototype.transformEqual = require('./utils/transformEqual')
+test.Test.prototype.vectorEqual = require('./utils/vectorEqual')
 
 // Run test suite
 
