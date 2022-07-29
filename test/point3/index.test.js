@@ -3,6 +3,7 @@ const units = {
   average: require('./average.test'),
   copy: require('./copy.test'),
   difference: require('./difference.test'),
+  distance: require('./distance.test'),
   validate: require('./validate.test')
 }
 
