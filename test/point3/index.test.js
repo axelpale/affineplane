@@ -2,7 +2,8 @@
 const units = {
   average: require('./average.test'),
   copy: require('./copy.test'),
-  difference: require('./difference.test')
+  difference: require('./difference.test'),
+  validate: require('./validate.test')
 }
 
 module.exports = (t) => {
