@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  difference: require('./difference.test'),
   validate: require('./validate.test')
 }
 
