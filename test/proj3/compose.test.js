@@ -12,20 +12,23 @@ module.exports = (ts) => {
       tz: 10
     })
     const prb = affineplane.helm3.from({
-      scale: 1,
+      scale: 2,
       angle: Math.PI,
-      tx: 100,
-      ty: 1000,
-      tz: 10
+      tx: 50,
+      ty: 2000,
+      tz: -20
     })
 
+    const prc = proj3.compose(pra, prb)
 
-    // // The rotation must be compensated to preserve the angle.
-    // const deg270 = -PI / 2
-    // t.equal(proj2.dir2(pr, 0), deg270, 'zero angle')
-    // t.equal(proj2.dir2(pr, 4 * PI), deg270, 'two rounds')
-    // t.equal(proj2.dir2(pr, -2 * PI), deg270, 'negative round')
-    //
-    // t.end()
+    t.ok(proj3.almostEqual(prc, {
+      scale: 2,
+      angle: 0,
+      tx: 150,
+      ty: 3000,
+      tz: -10
+    }), 'proj3 almost equal')
+
+    t.end()
   })
 }

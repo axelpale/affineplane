@@ -1,6 +1,6 @@
 // A unit for each method.
 const units = {
-  compose: require('./compose.test'),
+  compose: require('./compose.test')
 }
 
 module.exports = (t) => {
