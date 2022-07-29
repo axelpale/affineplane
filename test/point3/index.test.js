@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
-  average: require('./average.test')
+  average: require('./average.test'),
+  copy: require('./copy.test')
 }
 
 module.exports = (t) => {
