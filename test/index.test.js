@@ -7,7 +7,7 @@ const units = {
   'affineplane.proj2': require('./proj2/index.test'),
   'affineplane.dir2': require('./dir2/index.test'),
   'affineplane.point2': require('./point2/index.test'),
-  'affineplane.tran2': require('./tran2/index.test'),
+  'affineplane.helm2': require('./helm2/index.test'),
   'affineplane.vector2': require('./vector2/index.test'),
   'affineplane.version': require('./version/index.test')
 }
