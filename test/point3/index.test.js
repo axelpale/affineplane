@@ -7,6 +7,7 @@ const units = {
   equal: require('./equal.test'),
   fromArray: require('./fromArray.test'),
   offset: require('./offset.test'),
+  polarOffset: require('./polarOffset.test'),
   validate: require('./validate.test')
 }
 
