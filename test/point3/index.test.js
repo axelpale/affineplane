@@ -4,6 +4,7 @@ const units = {
   copy: require('./copy.test'),
   difference: require('./difference.test'),
   distance: require('./distance.test'),
+  equal: require('./equal.test'),
   validate: require('./validate.test')
 }
 
