@@ -6,6 +6,7 @@ const units = {
   distance: require('./distance.test'),
   equal: require('./equal.test'),
   fromArray: require('./fromArray.test'),
+  offset: require('./offset.test'),
   validate: require('./validate.test')
 }
 
