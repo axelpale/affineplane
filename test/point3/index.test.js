@@ -5,6 +5,7 @@ const units = {
   difference: require('./difference.test'),
   distance: require('./distance.test'),
   equal: require('./equal.test'),
+  fromArray: require('./fromArray.test'),
   validate: require('./validate.test')
 }
 
