@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  fromPolar: require('./fromPolar.test'),
   fromSpherical: require('./fromSpherical.test'),
   inverse: require('./inverse.test'),
   magnitude: require('./magnitude.test'),
