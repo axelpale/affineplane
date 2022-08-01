@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  almostEqual: require('./almostEqual.test'),
   average: require('./average.test'),
   copy: require('./copy.test'),
   difference: require('./difference.test'),
