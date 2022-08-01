@@ -2,7 +2,8 @@
 const units = {
   fromPolar: require('./fromPolar.test'),
   inverse: require('./inverse.test'),
-  magnitude: require('./magnitude.test')
+  magnitude: require('./magnitude.test'),
+  rotateBy: require('./rotateBy.test')
 }
 
 module.exports = (t) => {
