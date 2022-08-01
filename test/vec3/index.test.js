@@ -4,7 +4,8 @@ const units = {
   inverse: require('./inverse.test'),
   magnitude: require('./magnitude.test'),
   rotateBy: require('./rotateBy.test'),
-  rotateTo: require('./rotateTo.test')
+  rotateTo: require('./rotateTo.test'),
+  sum: require('./sum.test')
 }
 
 module.exports = (t) => {
