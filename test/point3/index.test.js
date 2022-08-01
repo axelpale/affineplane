@@ -10,6 +10,7 @@ const units = {
   polarOffset: require('./polarOffset.test'),
   rotateBy: require('./rotateBy.test'),
   toArray: require('./toArray.test'),
+  translate: require('./translate.test'),
   validate: require('./validate.test')
 }
 
