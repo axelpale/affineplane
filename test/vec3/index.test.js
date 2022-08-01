@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  fromPolar: require('./fromPolar.test'),
   inverse: require('./inverse.test')
 }
 
