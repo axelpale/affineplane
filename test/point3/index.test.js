@@ -8,6 +8,7 @@ const units = {
   fromArray: require('./fromArray.test'),
   offset: require('./offset.test'),
   polarOffset: require('./polarOffset.test'),
+  rotateBy: require('./rotateBy.test'),
   validate: require('./validate.test')
 }
 
