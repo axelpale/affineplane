@@ -2,7 +2,8 @@
 const units = {
   almostEqual: require('./almostEqual.test'),
   copy: require('./copy.test'),
-  create: require('./create.test')
+  create: require('./create.test'),
+  validate: require('./validate.test')
 }
 
 module.exports = (t) => {
