@@ -1,6 +1,6 @@
 // A unit for each method.
 const units = {
-  equal: require('./equal.test')
+  inverse: require('./inverse.test')
 }
 
 module.exports = (t) => {
