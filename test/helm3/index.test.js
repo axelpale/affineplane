@@ -4,6 +4,7 @@ const units = {
   compose: require('./compose.test'),
   copy: require('./copy.test'),
   create: require('./create.test'),
+  det: require('./det.test'),
   equal: require('./equal.test'),
   toMatrix: require('./toMatrix.test'),
   validate: require('./validate.test')
