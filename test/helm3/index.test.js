@@ -3,6 +3,7 @@ const units = {
   almostEqual: require('./almostEqual.test'),
   copy: require('./copy.test'),
   create: require('./create.test'),
+  equal: require('./equal.test'),
   validate: require('./validate.test')
 }
 
