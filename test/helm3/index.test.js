@@ -4,6 +4,7 @@ const units = {
   copy: require('./copy.test'),
   create: require('./create.test'),
   equal: require('./equal.test'),
+  toMatrix: require('./toMatrix.test'),
   validate: require('./validate.test')
 }
 
