@@ -6,7 +6,9 @@ const units = {
   create: require('./create.test'),
   det: require('./det.test'),
   equal: require('./equal.test'),
+  fromArray: require('./fromArray.test'),
   inverse: require('./inverse.test'),
+  toArray: require('./toArray.test'),
   toMatrix: require('./toMatrix.test'),
   validate: require('./validate.test')
 }
