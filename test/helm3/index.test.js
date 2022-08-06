@@ -10,6 +10,7 @@ const units = {
   inverse: require('./inverse.test'),
   toArray: require('./toArray.test'),
   toMatrix: require('./toMatrix.test'),
+  translateBy: require('./translateBy.test'),
   validate: require('./validate.test')
 }
 
