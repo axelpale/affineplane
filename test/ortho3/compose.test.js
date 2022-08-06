@@ -1,5 +1,5 @@
 const affineplane = require('../../index')
-const proj3 = affineplane.proj3
+const ortho3 = affineplane.ortho3
 
 module.exports = (ts) => {
   ts.test('case: basic compose', (t) => {
@@ -19,15 +19,15 @@ module.exports = (ts) => {
       tz: -20
     })
 
-    const prc = proj3.compose(pra, prb)
+    const prc = ortho3.compose(pra, prb)
 
-    t.ok(proj3.almostEqual(prc, {
+    t.ok(ortho3.almostEqual(prc, {
       scale: 2,
       angle: 0,
       tx: 150,
       ty: 3000,
       tz: -10
-    }), 'proj3 almost equal')
+    }), 'ortho3 almost equal')
 
     t.end()
   })

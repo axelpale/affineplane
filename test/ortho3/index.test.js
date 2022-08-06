@@ -5,6 +5,6 @@ const units = {
 
 module.exports = (t) => {
   Object.keys(units).forEach((unitName) => {
-    t.test('affineplane.proj3.' + unitName, units[unitName])
+    t.test('affineplane.ortho3.' + unitName, units[unitName])
   })
 }
