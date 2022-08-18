@@ -6,6 +6,7 @@ const units = {
   copy: require('./copy.test'),
   create: require('./create.test'),
   // difference: require('./difference.test'),
+  dot: require('./dot.test'),
   // equal: require('./equal.test'),
   // fromPolar: require('./fromPolar.test'),
   // inverse: require('./inverse.test'),
