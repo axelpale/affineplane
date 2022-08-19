@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
   difference: require('./difference.test'),
+  homothety: require('./homothety.test'),
   projectToLine: require('./projectToLine.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
