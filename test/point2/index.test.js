@@ -2,7 +2,8 @@
 const units = {
   difference: require('./difference.test'),
   projectToLine: require('./projectToLine.test'),
-  transit: require('./transit.test'),
+  transitFrom: require('./transitFrom.test'),
+  transitTo: require('./transitTo.test'),
   validate: require('./validate.test')
 }
 
