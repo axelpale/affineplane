@@ -11,6 +11,8 @@ const units = {
   polarOffset: require('./polarOffset.test'),
   rotateBy: require('./rotateBy.test'),
   toArray: require('./toArray.test'),
+  transitFrom: require('./transitFrom.test'),
+  transitTo: require('./transitTo.test'),
   translate: require('./translate.test'),
   validate: require('./validate.test')
 }
