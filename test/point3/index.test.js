@@ -7,6 +7,7 @@ const units = {
   distance: require('./distance.test'),
   equal: require('./equal.test'),
   fromArray: require('./fromArray.test'),
+  homothety: require('./homothety.test'),
   offset: require('./offset.test'),
   polarOffset: require('./polarOffset.test'),
   rotateBy: require('./rotateBy.test'),
