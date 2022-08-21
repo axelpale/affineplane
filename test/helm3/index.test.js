@@ -9,6 +9,7 @@ const units = {
   fromArray: require('./fromArray.test'),
   fromFeats: require('./fromFeats.test'),
   inverse: require('./inverse.test'),
+  projectToPlane: require('./projectToPlane.test'),
   toArray: require('./toArray.test'),
   toMatrix: require('./toMatrix.test'),
   transitFrom: require('./transitFrom.test'),
