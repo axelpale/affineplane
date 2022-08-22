@@ -15,6 +15,8 @@ const units = {
   // min: require('./min.test'),
   rotateBy: require('./rotateBy.test'),
   // rotateTo: require('./rotateTo.test'),
+  scaleBy: require('./scaleBy.test'),
+  scaleTo: require('./scaleTo.test'),
   sum: require('./sum.test'),
   toPolar: require('./toPolar.test'),
   validate: require('./validate.test')
