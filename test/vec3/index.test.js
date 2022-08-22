@@ -6,6 +6,8 @@ const units = {
   magnitude: require('./magnitude.test'),
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),
+  scaleBy: require('./scaleBy.test'),
+  scaleTo: require('./scaleTo.test'),
   sum: require('./sum.test'),
   toPolar: require('./toPolar.test'),
   toSpherical: require('./toSpherical.test')
