@@ -23,7 +23,8 @@ const center = {
   y: Math.round(h / 2),
   z: 0
 }
-const viewingDistance = 150
+const viewingDistance = 200
+const focalLength = 300
 const pointSize = 4
 const cubeSize = 50
 
@@ -34,7 +35,7 @@ const drawPoint = (ctx, p) => {
   // The point is projected into 2D.
 
   // Project
-  const plane = { a: 1, b: 0, x: 0, y: 0, z: 0}
+  const plane = { a: 1, b: 0, x: 0, y: 0, z: focalLength - viewingDistance }
   const camera = { x: center.x, y: center.y, z: -viewingDistance }
   const p2 = point3.projectToPlane(p, plane, camera)
 
@@ -55,6 +56,11 @@ const drawLineSegment = (ctx, p, q) => {
 
 const drawCube = (ctx, p, size) => {
   // Drag cube at point p.
+  //
+  // Parameters:
+  //   ctx: canvas drawing context
+  //   p: point2, the center of the cube.
+  //   size: number, the length of the cube edge.
   //
   const u = size / 2 // unit
   const p000 = point3.offset(p, -u, -u, -u)
