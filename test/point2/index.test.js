@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  average: require('./average.test'),
   difference: require('./difference.test'),
   homothety: require('./homothety.test'),
   projectToLine: require('./projectToLine.test'),
