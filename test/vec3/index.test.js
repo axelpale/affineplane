@@ -10,7 +10,8 @@ const units = {
   scaleTo: require('./scaleTo.test'),
   sum: require('./sum.test'),
   toPolar: require('./toPolar.test'),
-  toSpherical: require('./toSpherical.test')
+  toSpherical: require('./toSpherical.test'),
+  validate: require('./validate.test')
 }
 
 module.exports = (t) => {
