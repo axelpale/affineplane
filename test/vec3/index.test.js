@@ -4,6 +4,7 @@ const units = {
   fromSpherical: require('./fromSpherical.test'),
   inverse: require('./inverse.test'),
   magnitude: require('./magnitude.test'),
+  projectToPlane: require('./projectToPlane.test'),
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),
   scaleBy: require('./scaleBy.test'),
