@@ -1,5 +1,4 @@
 const point3 = require('../../lib/point3')
-const plane3 = require('../../lib/plane3')
 
 module.exports = (ts) => {
   ts.test('case: basic orthogonal projection to plane', (t) => {
@@ -45,5 +44,4 @@ module.exports = (ts) => {
 
     t.end()
   })
-
 }
