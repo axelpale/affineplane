@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
   create: require('./create.test'),
+  invert: require('./invert.test'),
   projectToPlane: require('./projectToPlane.test'),
   validate: require('./validate.test')
 }

@@ -1,4 +1,4 @@
-// Light-weight test suite because
+// Light-weight tests because
 // plane2.validate is helm2.validate
 // which has wider test suite.
 //
