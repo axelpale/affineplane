@@ -1,5 +1,4 @@
 const vec3 = require('../../lib/vec3')
-const plane3 = require('../../lib/plane3')
 
 module.exports = (ts) => {
   ts.test('case: basic orthogonal projection to plane', (t) => {
