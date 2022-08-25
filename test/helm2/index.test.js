@@ -14,6 +14,7 @@ const units = {
   projectToPlane: require('./projectToPlane.test'),
   rotateBy: require('./rotateBy.test'),
   scaleBy: require('./scaleBy.test'),
+  setDilation: require('./setDilation.test'),
   setRotation: require('./setRotation.test'),
   setTranslation: require('./setTranslation.test'),
   toArray: require('./toArray.test'),
