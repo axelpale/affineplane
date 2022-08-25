@@ -1,39 +1,35 @@
-const helm2 = require('../../index').helm2
-const scaleBy = helm2.scaleBy
-const IDENTITY = helm2.IDENTITY
-const HALF = helm2.HALF
-const X2 = helm2.X2
+const helm2 = require('../../lib/helm2')
 
 module.exports = (ts) => {
   ts.test('case: basic scalings', (t) => {
-    const c1 = { x: 0, y: 0 }
-    t.transformEqual(scaleBy(IDENTITY, c1, 2), X2)
-    t.transformEqual(scaleBy(IDENTITY, c1, 0.5), HALF)
+    let tr
 
-    const c2 = { x: 100, y: 100 }
-    t.transformEqual(
-      scaleBy({ a: 1, b: 0, x: 0, y: 0 }, c2, 0.5),
-      { a: 0.5, b: 0, x: 50, y: 50 },
-      'identical translation and scale center'
+    tr = { a: 1, b: 0, x: 0, y: 0 }
+    t.almostEqual(
+      helm2.scaleBy(tr, 2),
+      { a: 2, b: 0, x: 0, y: 0 },
+      'double'
     )
 
-    const c3 = { x: 100, y: 100 }
-    t.transformEqual(
-      scaleBy({ a: 1, b: 0, x: 100, y: 100 }, c3, 0.5),
-      { a: 0.5, b: 0, x: 100, y: 100 },
-      'identical translation and scale center'
+    tr = { a: 0, b: 2, x: 2, y: 3 }
+    t.almostEqual(
+      helm2.scaleBy(tr, 2),
+      { a: 0, b: 4, x: 4, y: 6 },
+      'preserve rotation'
     )
 
     t.end()
   })
 
   ts.test('case: prevent negative scale', (t) => {
+    const tr = { a: 1, b: 0, x: 0, y: 0 }
+
     t.throws(() => {
-      scaleBy(IDENTITY, { x: 0, y: 0 }, 0)
+      helm2.scaleBy(tr, 0)
     }, Error, 'detect zero')
 
     t.throws(() => {
-      scaleBy(IDENTITY, { x: 0, y: 0 }, -1)
+      helm2.scaleBy(tr, -1)
     }, Error, 'detect negative')
 
     t.end()
