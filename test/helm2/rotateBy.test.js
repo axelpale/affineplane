@@ -5,7 +5,7 @@ module.exports = (ts) => {
     let helm, angle
 
     helm = helm2.ROT180
-    angle = Math.PI
+    angle = Math.PI // +180deg
     t.almostEqual(
       helm2.rotateBy(helm, angle),
       helm2.ROT180,
@@ -17,11 +17,11 @@ module.exports = (ts) => {
     t.almostEqual(
       helm2.rotateBy(helm, angle),
       helm2.IDENTITY,
-      'trivial'
+      'trivial zero rotation'
     )
 
     helm = { a: 0, b: 2, x: 2, y: 2 }
-    angle = Math.PI / 2
+    angle = Math.PI / 2 // +90deg
     t.almostEqual(
       helm2.rotateBy(helm, angle),
       { a: 0, b: 2, x: -2, y: 2 },
