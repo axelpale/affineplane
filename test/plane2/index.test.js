@@ -6,6 +6,8 @@ const units = {
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),
   rotateToOrtho: require('./rotateToOrtho.test'),
+  scaleBy: require('./scaleBy.test'),
+  scaleTo: require('./scaleTo.test'),
   translateBy: require('./translateBy.test'),
   translateTo: require('./translateTo.test'),
   validate: require('./validate.test')
