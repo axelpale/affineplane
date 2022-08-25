@@ -9,6 +9,7 @@ const units = {
   rotateToOrtho: require('./rotateToOrtho.test'),
   scaleBy: require('./scaleBy.test'),
   scaleTo: require('./scaleTo.test'),
+  transform: require('./transform.test'),
   translateBy: require('./translateBy.test'),
   translateTo: require('./translateTo.test'),
   validate: require('./validate.test')
