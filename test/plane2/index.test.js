@@ -3,6 +3,7 @@ const units = {
   create: require('./create.test'),
   invert: require('./invert.test'),
   projectToPlane: require('./projectToPlane.test'),
+  rotateBy: require('./rotateBy.test'),
   validate: require('./validate.test')
 }
 
