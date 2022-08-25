@@ -3,11 +3,9 @@ const helm2 = require('../../lib/helm2')
 
 module.exports = (ts) => {
   ts.test('case: smoke', (t) => {
-    let plane, center, angle
-
-    plane = { a: 1, b: 0, x: 0, y: 0 }
-    center = { x: 0, y: 0 }
-    angle = Math.PI / 2
+    const plane = { a: 1, b: 0, x: 0, y: 0 }
+    const center = { x: 0, y: 0 }
+    const angle = Math.PI / 2
     t.almostEqual(
       plane2.rotateBy(plane, center, angle),
       { a: 0, b: 1, x: 0, y: 0 },

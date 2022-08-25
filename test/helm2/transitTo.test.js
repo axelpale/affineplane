@@ -24,10 +24,8 @@ module.exports = (ts) => {
   })
 
   ts.test('case: helm2 transit symmetry', (t) => {
-    let tr, plane
-
-    tr = { a: 1, b: 2, x: 3, y: 4 }
-    plane = { a: 3, b: 4, x: 5, y: 6 }
+    const tr = { a: 1, b: 2, x: 3, y: 4 }
+    const plane = { a: 3, b: 4, x: 5, y: 6 }
     t.almostEqual(
       helm2.transitFrom(helm2.transitTo(tr, plane), plane),
       tr,
