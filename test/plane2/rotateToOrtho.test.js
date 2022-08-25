@@ -1,6 +1,7 @@
-const helm2 = require('../../index').helm2
-const rotateToOrtho = helm2.rotateToOrtho
-// const getRotation = helm2.getRotation
+const plane2 = require('../../lib/plane2')
+const helm2 = require('../../lib/helm2')
+
+const rotateToOrtho = plane2.rotateToOrtho
 
 const IDENTITY = helm2.IDENTITY
 const ROT0 = helm2.ROT0
@@ -12,12 +13,12 @@ const ROT270 = helm2.ROT270
 module.exports = (ts) => {
   ts.test('case: already ortho', (t) => {
     const c0 = { x: 0, y: 0 }
-    t.transformEqual(rotateToOrtho(ROT180, c0), ROT180)
-    t.transformEqual(rotateToOrtho(IDENTITY, c0), IDENTITY)
+    t.almostEqual(rotateToOrtho(ROT180, c0), ROT180)
+    t.almostEqual(rotateToOrtho(IDENTITY, c0), IDENTITY)
 
     const c1 = { x: 100, y: 100 }
-    t.transformEqual(rotateToOrtho(ROT90, c1), ROT90)
-    t.transformEqual(rotateToOrtho(ROT270, c1), ROT270)
+    t.almostEqual(rotateToOrtho(ROT90, c1), ROT90)
+    t.almostEqual(rotateToOrtho(ROT270, c1), ROT270)
 
     t.end()
   })
@@ -31,15 +32,15 @@ module.exports = (ts) => {
     const ROTNEG40 = helm2.inverse(ROT40)
 
     const c0 = { x: 0, y: 0 }
-    t.transformEqual(rotateToOrtho(ROT50, c0), ROT90, 'snap 50 to 90')
-    t.transformEqual(rotateToOrtho(ROT45, c0), ROT90, 'snap 45 to 90')
-    t.transformEqual(rotateToOrtho(ROT40, c0), ROT0, 'snap 40 to 0')
-    t.transformEqual(rotateToOrtho(ROTNEG40, c0), ROT0, 'snap -40 to 0')
+    t.almostEqual(rotateToOrtho(ROT50, c0), ROT90, 'snap 50 to 90')
+    t.almostEqual(rotateToOrtho(ROT45, c0), ROT90, 'snap 45 to 90')
+    t.almostEqual(rotateToOrtho(ROT40, c0), ROT0, 'snap 40 to 0')
+    t.almostEqual(rotateToOrtho(ROTNEG40, c0), ROT0, 'snap -40 to 0')
 
     const c1 = { x: 100, y: 100 }
-    t.transformEqual(
+    t.almostEqual(
       rotateToOrtho(ROT45, c1),
-      helm2.rotateBy(ROT45, c1, DEG45),
+      plane2.rotateBy(ROT45, c1, DEG45),
       'snap 45 to 90 around point'
     )
 
@@ -56,14 +57,14 @@ module.exports = (ts) => {
     const ROT140 = helm2.fromPolar(1, DEG140)
 
     const c0 = { x: 0, y: 0 }
-    t.transformEqual(rotateToOrtho(ROT130, c0), ROT90, 'snap 130 to 90')
-    t.transformEqual(rotateToOrtho(ROT135, c0), ROT90, 'snap 135 to 90')
-    t.transformEqual(rotateToOrtho(ROT140, c0), ROT180, 'snap 140 to 180')
+    t.almostEqual(rotateToOrtho(ROT130, c0), ROT90, 'snap 130 to 90')
+    t.almostEqual(rotateToOrtho(ROT135, c0), ROT90, 'snap 135 to 90')
+    t.almostEqual(rotateToOrtho(ROT140, c0), ROT180, 'snap 140 to 180')
 
     const c1 = { x: -100, y: -100 }
-    t.transformEqual(
+    t.almostEqual(
       rotateToOrtho(ROT130, c1),
-      helm2.rotateBy(ROT130, c1, -DEG40),
+      plane2.rotateBy(ROT130, c1, -DEG40),
       'snap 130 to 90 around point'
     )
 

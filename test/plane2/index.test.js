@@ -5,6 +5,7 @@ const units = {
   projectToPlane: require('./projectToPlane.test'),
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),
+  rotateToOrtho: require('./rotateToOrtho.test'),
   validate: require('./validate.test')
 }
 
