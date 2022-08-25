@@ -7,7 +7,7 @@ const units = {
   fromPolar: require('./fromPolar.test'),
   equal: require('./equal.test'),
   getRotation: require('./getRotation.test'),
-  getScale: require('./getScale.test'),
+  getDilation: require('./getDilation.test'),
   getTranslation: require('./getTranslation.test'),
   inverse: require('./inverse.test'),
   multiply: require('./multiply.test'),
