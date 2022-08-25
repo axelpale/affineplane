@@ -2,6 +2,7 @@
 const units = {
   addDilation: require('./addDilation.test'),
   addRotation: require('./addRotation.test'),
+  addTranslation: require('./addTranslation.test'),
   almostEqual: require('./almostEqual.test'),
   copy: require('./copy.test'),
   create: require('./create.test'),
