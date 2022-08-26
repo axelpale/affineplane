@@ -1,5 +1,7 @@
 // A unit for each method.
 const units = {
+  addDilation: require('./addDilation.test'),
+  addRotation: require('./addRotation.test'),
   addTranslation: require('./addTranslation.test'),
   almostEqual: require('./almostEqual.test'),
   compose: require('./compose.test'),
