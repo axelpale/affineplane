@@ -4,7 +4,6 @@ const test = require('tape')
 
 const units = {
   'affineplane.epsilon': require('./epsilon/index.test'),
-  'affineplane.proj2': require('./proj2/index.test'),
   'affineplane.dir2': require('./dir2/index.test'),
   'affineplane.helm2': require('./helm2/index.test'),
   'affineplane.helm3': require('./helm3/index.test'),
