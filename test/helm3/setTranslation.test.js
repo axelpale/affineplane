@@ -8,7 +8,7 @@ module.exports = (ts) => {
     vec = { x: 0, y: 0, z: 0 }
     t.almostEqual(
       helm3.setTranslation(tr, vec),
-      { a: 1, b: 2, x: 0, y: 0, z: 0},
+      { a: 1, b: 2, x: 0, y: 0, z: 0 },
       'zero translation'
     )
 

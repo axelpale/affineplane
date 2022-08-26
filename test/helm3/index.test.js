@@ -16,7 +16,6 @@ const units = {
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   translateBy: require('./translateBy.test'),
-  translateTo: require('./translateTo.test'),
   validate: require('./validate.test')
 }
 
