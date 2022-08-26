@@ -10,8 +10,6 @@ module.exports = function (actual, expected) {
   //
   const type = typeof expected
 
-  let assertion
-
   if (type === 'number') {
     return Math.abs(actual - expected) < EPSILON
   }
