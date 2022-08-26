@@ -4,6 +4,8 @@ const units = {
   create: require('./create.test'),
   invert: require('./invert.test'),
   projectToPlane: require('./projectToPlane.test'),
+  rotateBy: require('./rotateBy.test'),
+  scaleBy: require('./scaleBy.test'),
   transform: require('./transform.test'),
   translateBy: require('./translateBy.test'),
   translateTo: require('./translateTo.test'),
