@@ -20,6 +20,7 @@ const units = {
   setDilation: require('./setDilation.test'),
   setRotation: require('./setRotation.test'),
   setTranslation: require('./setTranslation.test'),
+  snapRotation: require('./snapRotation.test'),
   toArray: require('./toArray.test'),
   toMatrix: require('./toMatrix.test'),
   toString: require('./toString.test'),
