@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  addTranslation: require('./addTranslation.test'),
   almostEqual: require('./almostEqual.test'),
   compose: require('./compose.test'),
   copy: require('./copy.test'),
@@ -15,7 +16,6 @@ const units = {
   toMatrix: require('./toMatrix.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
-  translateBy: require('./translateBy.test'),
   validate: require('./validate.test')
 }
 
