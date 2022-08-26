@@ -2,6 +2,7 @@
 const units = {
   compose: require('./compose.test'),
   create: require('./create.test'),
+  getScale: require('./getScale.test'),
   invert: require('./invert.test'),
   projectToPlane: require('./projectToPlane.test'),
   rotateBy: require('./rotateBy.test'),
