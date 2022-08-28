@@ -19,24 +19,24 @@ With [npm](https://www.npmjs.com/package/affineplane) or [yarn](https://yarnpkg.
 
 Shapes with position in space:
 
-- [dir2](docs/API.md#affineplanedir2), direction on a plane, `number` in radians
-- [dist2](docs/API.md#affineplanedist2), distance between two locations on a plane, `number`
-- [line2](docs/API.md#affineplaneline2), a line in 2D, `{origin,span}`
-- [line3](docs/API.md#affineplaneline3), a line in 3D, `{origin,span}`
-- [plane2](docs/API.md#affineplaneplane2), a plane in 2D, `{a,b,x,y}`
-- [plane3](docs/API.md#affineplaneplane3), a xy plane in 3D, `{a,b,x,y,z}`
-- [point2](docs/API.md#affineplanepoint2), a location on a plane, `{x,y}`
-- [point3](docs/API.md#affineplanepoint3), a location in a 3D space, `{x,y,z}`
-- [size2](docs/API.md#affineplanesize2), a rectangle size on a plane, `{w,h}`
+- [dir2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir2), direction on a plane, `number` in radians
+- [dist2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist2), distance between two locations on a plane, `number`
+- [line2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneline2), a line in 2D, `{origin,span}`
+- [line3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneline3), a line in 3D, `{origin,span}`
+- [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2), a plane in 2D, `{a,b,x,y}`
+- [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3), a xy plane in 3D, `{a,b,x,y,z}`
+- [point2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2), a location on a plane, `{x,y}`
+- [point3](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint3), a location in a 3D space, `{x,y,z}`
+- [size2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesize2), a rectangle size on a plane, `{w,h}`
 
 Movements of shapes:
 
-- [helm2](docs/API.md#affineplanehelm2), a [helmert](https://en.wikipedia.org/wiki/Helmert_transformation) transformation in 2D, `{a,b,x,y}`
-- [helm3](docs/API.md#affineplanehelm3), a [helmert](https://en.wikipedia.org/wiki/Helmert_transformation) in 2D with 3D translation, `{a,b,x,y,z}`
-- [vec2](docs/API.md#affineplanevector2), a vector in 2D, `{x,y}`
-- [vec3](docs/API.md#affineplanevector2), a vector in 3D, `{x,y,z}`
+- [helm2](https://axelpale.github.io/affineplane/docs/API.html#affineplanehelm2), a [helmert](https://en.wikipedia.org/wiki/Helmert_transformation) transformation in 2D, `{a,b,x,y}`
+- [helm3](https://axelpale.github.io/affineplane/docs/API.html#affineplanehelm3), a [helmert](https://en.wikipedia.org/wiki/Helmert_transformation) in 2D with 3D translation, `{a,b,x,y,z}`
+- [vec2](https://axelpale.github.io/affineplane/docs/API.html#affineplanevector2), a vector in 2D, `{x,y}`
+- [vec3](https://axelpale.github.io/affineplane/docs/API.html#affineplanevector2), a vector in 3D, `{x,y,z}`
 
-See [API docs](docs/API.md) for more.
+See [API docs](https://axelpale.github.io/affineplane/docs/API.html) for more.
 
 ## Using data structures and functions
 
@@ -47,7 +47,7 @@ Instead of classes, affineplane functions operate on plain objects. The availabl
     const po = aff.point2.offset(point, 3, 0)
     // po equals { x: 5, y: 5 }
 
-The functions are grouped in *namespaces*, each focusing on a certain geometry. A common theme of the lib is to explicitly distinguish static shapes from their dynamic movements, like [point2](docs/API.md#affineplanepoint2) from [vec2](docs/API.md#affineplanevec2) because they behave differently. For example, while a point has a location in space, a vector does not. On the other hand, two vectors can be added together but the same cannot be done for two points. Thus it is best to keep the concepts separate. For details on the topic and its foundations, see [Difference between points and vectors](docs/FOOTNOTES.md#difference-between-points-and-vectors).
+The functions are grouped in *namespaces*, each focusing on a certain geometry. A common theme of the lib is to explicitly distinguish static shapes from their dynamic movements, like [point2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2) from [vec2](https://axelpale.github.io/affineplane/docs/API.html#affineplanevec2) because they behave differently. For example, while a point has a location in space, a vector does not. On the other hand, two vectors can be added together but the same cannot be done for two points. Thus it is best to keep the concepts separate. For details on the topic and its foundations, see [Difference between points and vectors](docs/FOOTNOTES.md#difference-between-points-and-vectors).
 
 ## Transitions and change of basis
 
@@ -55,7 +55,7 @@ In affineplane, we distinguish geometry, say a point, from its representation, l
 
 ![Projection between planes for a point](docs/projection-between-planes-point-2d.png)
 
-We cannot represent geometry without a frame of reference. However, we can _transit_ it from one reference basis to another. In the case of affineplane, the reference is a 2D plane. A point `{x,y}` is a point on the plane at coordinates (x,y). To transit the point to another plane, we can use [point2.transitTo](docs/API.md#affineplaneplane2transitto) function.
+We cannot represent geometry without a frame of reference. However, we can _transit_ it from one reference basis to another. In the case of affineplane, the reference is a 2D plane. A point `{x,y}` is a point on the plane at coordinates (x,y). To transit the point to another plane, we can use [point2.transitTo](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2transitto) function.
 
     // Create a point and a plane, both relative to a reference plane.
     const p = { x: 4, y: 2 }
@@ -75,7 +75,7 @@ Effectively, the `x,y` part defines the position of the plane origin with respec
 
 (image of a plane here)
 
-The following snippet transits a vector from a source plane to the reference plane by using [point2.transitFrom](docs/API.md#affineplaneplane2transitfrom). The source has scale of 2, angle of +90 degrees, and 100 units of translation along x-axis. Let us see how it affects the vector:
+The following snippet transits a vector from a source plane to the reference plane by using [point2.transitFrom](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2transitfrom). The source has scale of 2, angle of +90 degrees, and 100 units of translation along x-axis. Let us see how it affects the vector:
 
     const v = { x: 5, y: 2 }
     const plane = { a: 0, b: 2, x: 100, y: 0 }
