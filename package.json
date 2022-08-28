@@ -9,6 +9,7 @@
     "2d",
     "space",
     "geometry",
+    "tensor",
     "scale",
     "rotate",
     "translate",
@@ -17,7 +18,8 @@
     "nonreflective",
     "similarity",
     "helmert",
-    "perspective"
+    "perspective",
+    "projection"
   ],
   "homepage": "https://github.com/axelpale/affineplane",
   "main": "index.js",
