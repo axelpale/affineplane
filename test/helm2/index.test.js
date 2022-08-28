@@ -7,6 +7,7 @@ const units = {
   copy: require('./copy.test'),
   create: require('./create.test'),
   fromArray: require('./fromArray.test'),
+  fromFeatures: require('./fromFeatures.test'),
   fromPolar: require('./fromPolar.test'),
   equal: require('./equal.test'),
   getRotation: require('./getRotation.test'),

@@ -1,20 +1,20 @@
-const helm3 = require('../../index').helm3
+const helm2 = require('../../index').helm2
 
 module.exports = (ts) => {
   ts.test('case: happy', (t) => {
     t.deepEqual(
-      helm3.fromFeatures({ dilation: 2 }),
-      helm3.X2,
+      helm2.fromFeatures({ dilation: 2 }),
+      helm2.X2,
       'recreate X2'
     )
 
     t.almostEqual(
-      helm3.fromFeatures({
+      helm2.fromFeatures({
         dilation: Math.sqrt(2),
         rotation: Math.PI / 4,
-        translation: { x: 1, y: 1, z: 1 }
+        translation: { x: 1, y: 1 }
       }),
-      helm3.UNIT,
+      helm2.UNIT,
       'recreate UNIT'
     )
 
