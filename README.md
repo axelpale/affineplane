@@ -49,13 +49,21 @@ Instead of classes, affineplane functions operate on plain objects. The availabl
 
 The functions are grouped in *namespaces*, each focusing on a certain geometry. A common theme of the lib is to explicitly distinguish static shapes from their dynamic movements, like [point2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2) from [vec2](https://axelpale.github.io/affineplane/docs/API.html#affineplanevec2) because they behave differently. For example, while a point has a location in space, a vector does not. On the other hand, two vectors can be added together but the same cannot be done for two points. Thus it is best to keep the concepts separate. For details on the topic and its foundations, see [Difference between points and vectors](docs/FOOTNOTES.md#difference-between-points-and-vectors).
 
+## Coordinate systems and directions
+
+Affineplane uses right-handed coordinate system where the axes are perpendicular to each other. All rotations happen around z-axis and the rotation angle grows from the positive x-axis towards positive y-axis. Because affineplane is primarily intented for web applications, it is customary that, under zero rotation, the x-axis grows right, y-axis grows down, and z-axis grows away from the viewer, as illustrated below.
+
+![Right-handed coordinate system](docs/coordinates-directions-3d.png)
+
+Each shape has a position which we can represent in a coordinate system. We call the used coordinate system the *reference basis* or the *frame of reference*, usually the *reference plane* in 2D case or the *reference space* in 3D case. The reference basis is not absolute, global, or fixed. Instead, it is just the basis to which the coordinates are currently related. To switch geometry to use another reference basis, we must perform a *change of basis*, also known as *transit*.
+
 ## Transitions and change of basis
 
 In affineplane, we distinguish geometry, say a point, from its representation, like `{x,y}`. While the representation depends on the frame of reference, like a plane origin, the geometry itself does not. To illustrate this, the image below shows how the same point has different coordinates depending on which plane to choose for the reference.
 
 ![Projection between planes for a point](docs/projection-between-planes-point-2d.png)
 
-We cannot represent geometry without a frame of reference. However, we can _transit_ it from one reference basis to another. In the case of affineplane, the reference is a 2D plane. A point `{x,y}` is a point on the plane at coordinates (x,y). To transit the point to another plane, we can use [point2.transitTo](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2transitto) function.
+We cannot represent geometry without a frame of reference. However, we can _transit_ it from one reference basis to another. In the case of affineplane, the reference is usually a 2D plane. A point `{x,y}` is a point on the plane at coordinates (x,y). To transit the point to another plane, we can use [point2.transitTo](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2transitto) function.
 
     // Create a point and a plane, both relative to a reference plane.
     const p = { x: 4, y: 2 }
