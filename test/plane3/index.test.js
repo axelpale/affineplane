@@ -2,6 +2,7 @@
 const units = {
   compose: require('./compose.test'),
   create: require('./create.test'),
+  difference: require('./difference.test'),
   fromFeatures: require('./fromFeatures.test'),
   invert: require('./invert.test'),
   projectToPlane: require('./projectToPlane.test'),
