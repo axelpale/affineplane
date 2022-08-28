@@ -1,60 +1,31 @@
 const test = require('tape')
-const EPSILON = require('../lib/epsilon')
-const tran2 = require('../lib/tran2')
-const vector2 = require('../lib/vector2')
-const tran2AlmostEqual = tran2.almostEqual
-const vector2AlmostEqual = vector2.almostEqual
 
 // Units
 
 const units = {
   'affineplane.epsilon': require('./epsilon/index.test'),
-  'affineplane.proj2': require('./proj2/index.test'),
   'affineplane.dir2': require('./dir2/index.test'),
-  'affineplane.tran2': require('./tran2/index.test'),
-  'affineplane.vector2': require('./vector2/index.test'),
+  'affineplane.dist2': require('./dist2/index.test'),
+  'affineplane.helm2': require('./helm2/index.test'),
+  'affineplane.helm3': require('./helm3/index.test'),
+  'affineplane.line2': require('./line2/index.test'),
+  'affineplane.line3': require('./line3/index.test'),
+  'affineplane.plane2': require('./plane2/index.test'),
+  'affineplane.plane3': require('./plane3/index.test'),
+  'affineplane.point2': require('./point2/index.test'),
+  'affineplane.point3': require('./point3/index.test'),
+  'affineplane.size2': require('./size2/index.test'),
+  'affineplane.vec2': require('./vec2/index.test'),
+  'affineplane.vec3': require('./vec3/index.test'),
   'affineplane.version': require('./version/index.test')
 }
 
 // Custom assertations
 
-test.Test.prototype.almostEqual = function (actual, expected, message) {
-  const isAlmost = Math.abs(actual - expected) < EPSILON
-  this._assert(isAlmost, {
-    message: message || 'should be almost equal',
-    operator: 'almostEqual',
-    actual: actual,
-    expected: expected
-  })
-}
-
-test.Test.prototype.notAlmostEqual = function (actual, expected, message) {
-  const isAlmost = Math.abs(actual - expected) < EPSILON
-  this._assert(!isAlmost, {
-    message: message || 'should not be almost equal',
-    operator: 'notAlmostEqual',
-    actual: actual,
-    expected: 'not ' + expected
-  })
-}
-
-test.Test.prototype.transformEqual = function (actual, expected, message) {
-  this._assert(tran2AlmostEqual(actual, expected), {
-    message: message || 'tran2 should have correct elements',
-    operator: 'transformEqual',
-    actual: actual,
-    expected: expected
-  })
-}
-
-test.Test.prototype.vectorEqual = function (actual, expected, message) {
-  this._assert(vector2AlmostEqual(actual, expected), {
-    message: message || 'vector2 should have correct elements',
-    operator: 'vectorEqual',
-    actual: actual,
-    expected: expected
-  })
-}
+test.Test.prototype.almostEqual = require('./utils/almostEqual')
+test.Test.prototype.notAlmostEqual = require('./utils/notAlmostEqual')
+test.Test.prototype.transformEqual = require('./utils/transformEqual')
+test.Test.prototype.vectorEqual = require('./utils/vectorEqual')
 
 // Run test suite
 

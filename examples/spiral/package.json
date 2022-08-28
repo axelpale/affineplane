@@ -1,7 +1,7 @@
 {
   "name": "affineplane-examples-spiral",
   "version": "1.0.0",
-  "description": "",
+  "description": "Example",
   "keywords": [],
   "homepage": "https://github.com/axelpale/affineplane",
   "main": "index.js",
@@ -15,6 +15,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "standard": "^17.0.0",
     "webpack": "^5.44.0",
     "webpack-cli": "^4.7.2"
   },
