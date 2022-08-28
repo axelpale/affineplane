@@ -4,6 +4,7 @@ const units = {
   create: require('./create.test'),
   difference: require('./difference.test'),
   fromFeatures: require('./fromFeatures.test'),
+  getScale: require('./getScale.test'),
   invert: require('./invert.test'),
   projectToPlane: require('./projectToPlane.test'),
   rotateBy: require('./rotateBy.test'),
