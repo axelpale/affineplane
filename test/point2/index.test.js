@@ -4,7 +4,7 @@ const units = {
   difference: require('./difference.test'),
   homothety: require('./homothety.test'),
   projectToLine: require('./projectToLine.test'),
-  projectToPlane: require('./projectToPlane.test'),
+  projectTo: require('./projectTo.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test')

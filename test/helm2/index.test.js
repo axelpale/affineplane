@@ -15,7 +15,7 @@ const units = {
   getTranslation: require('./getTranslation.test'),
   inverse: require('./inverse.test'),
   multiply: require('./multiply.test'),
-  projectToPlane: require('./projectToPlane.test'),
+  projectTo: require('./projectTo.test'),
   rotateBy: require('./rotateBy.test'),
   scaleBy: require('./scaleBy.test'),
   setDilation: require('./setDilation.test'),

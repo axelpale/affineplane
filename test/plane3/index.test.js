@@ -6,7 +6,7 @@ const units = {
   fromFeatures: require('./fromFeatures.test'),
   getScale: require('./getScale.test'),
   invert: require('./invert.test'),
-  projectToPlane: require('./projectToPlane.test'),
+  projectTo: require('./projectTo.test'),
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),
   scaleBy: require('./scaleBy.test'),

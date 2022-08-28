@@ -96,10 +96,10 @@ Affineplane provides orthogonal and perspective projections between parallel pla
 
     const p = { x: 4, y: 2, z: 4 }
     const image = { a: 1, b: 0, x: 0, y: 0, z: 2 }
-    const portho = aff.point2.projectToPlane(p, image)
+    const portho = aff.point2.projectTo(p, image)
     // portho equals { x: 4, y: 2 }
     const camera = { x: 0, y: 0, z: 0 }
-    const ppersp = aff.point2.projectToPlane(p, image, camera)
+    const ppersp = aff.point2.projectTo(p, image, camera)
     // ppersp equals { x: 2, y: 1 }
 
 In the snippet above, the image plane to project to is otherwise equivalent to the reference plane but two units off along z axis. The depth offset does not affect the result orthogonal projection which is the same point but missing the z dimension. With perspective projection and camera at z=0, however, the point moves towards the camera.
