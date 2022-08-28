@@ -2,7 +2,7 @@
 const units = {
   fromPolar: require('./fromPolar.test'),
   fromSpherical: require('./fromSpherical.test'),
-  inverse: require('./inverse.test'),
+  invert: require('./invert.test'),
   magnitude: require('./magnitude.test'),
   projectTo: require('./projectTo.test'),
   rotateBy: require('./rotateBy.test'),
