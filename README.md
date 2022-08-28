@@ -1,7 +1,7 @@
 # affineplane
 
-[![NPM Version](https://img.shields.io/npm/v/tapspace.svg?colorB=7fcd0f)](https://www.npmjs.com/package/tapspace)
-[![License](https://img.shields.io/npm/l/yamdog)](#license)
+[![NPM Version](https://img.shields.io/npm/v/affineplane.svg?colorB=7fcd0f)](https://www.npmjs.com/package/affineplane)
+[![License](https://img.shields.io/npm/l/affineplane)](#license)
 ![Dependency status](https://img.shields.io/badge/dependencies-none-lightgrey)
 
 A functional 2D plane geometry and dynamics library for spatial 2D and 3D applications. Designed especially for scaleable and rotatable [affine geometry](https://en.wikipedia.org/wiki/Affine_space) where parallel 2D planes float in 3D space and undergo [perspective projections](https://en.wikipedia.org/wiki/3D_projection) and [basis changes](https://en.wikipedia.org/wiki/Change_of_basis). Written in JavaScript (ECMAScript 6) with a functional, immutable, class-free style.
