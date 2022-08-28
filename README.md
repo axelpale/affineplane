@@ -69,20 +69,22 @@ We cannot represent geometry without a frame of reference. However, we can _tran
     const ppp = aff.point2.transitFrom(pp, plane)
     // ppp equals { x: 4, y: 2 }
 
-In affineplane, we define a plane using Helmert transformation `{a,b,x,y}`. Such transformation can represent uniform scaling, rotation around z axis, and translation along x and y axis. The transformation here acts as the [passive transit](https://en.wikipedia.org/wiki/Active_and_passive_transformation) from the plane coordinates back to its reference plane coordinates. It does not change the geometry, only the frame of reference.
+In affineplane, we define a plane using Helmert transformation `{a,b,x,y}`. Such transformation can represent uniform scaling, rotation around z-axis, and translation along x- and y-axis. The transformation here acts as the [passive transit](https://en.wikipedia.org/wiki/Active_and_passive_transformation) from the plane coordinates back to its reference plane coordinates. It does not change the geometry, only the frame of reference.
 
 Effectively, the `x,y` part defines the position of the plane origin with respect to the reference origin. The `a,b` part defines the plane basis vectors, giving the scale and angle, in terms of the reference basis. See the illustration below for an example.
 
 (image of a plane here)
 
-The following snippet transits a vector from a source plane to the reference plane. The source has scale of 2, angle of +90 degrees, and 100 units of translation along x axis. Let us see how it affects the vector:
+The following snippet transits a vector from a source plane to the reference plane by using [point2.transitFrom](docs/API.md#affineplaneplane2transitfrom). The source has scale of 2, angle of +90 degrees, and 100 units of translation along x-axis. Let us see how it affects the vector:
 
     const v = { x: 5, y: 2 }
     const plane = { a: 0, b: 2, x: 100, y: 0 }
     const vv = aff.vec2.transitFrom(v, plane)
     // vv equals { x: -4, y: 10 }
 
-Due to the scale, one unit of length on the plane is two units on the reference plane. Therefore the coordinate numbers double. Due to the plane angle, the coordinate directions rotate. The plane translation did not affect the coordinates, however, because unlike points, vectors have only length and direction, thus nothing to translate. Also note that while the coordinates changed, the vector in question did not. It is still the same vector, only represented in different frame of reference. In the illustration below you can see that regardless of where you place the vector v, its components stay the same.
+Due to the scale, one unit of length on the plane is equal to two units on the reference plane. Therefore the coordinate numbers double. Due to the plane angle, the coordinate directions rotate. The translation of 100 units did not affect the coordinates, however, because unlike points, vectors have only length and direction, thus nothing to translate.
+
+Also note that while the coordinates changed, the vector in question did not. It is still the same vector, only represented in a different frame of reference. In the illustration below you can see that regardless of where you place the vector **v**, its components stay the same.
 
 ![Projection between planes for a vector](docs/projection-between-planes-vector-2d.png)
 
@@ -102,7 +104,7 @@ Affineplane provides orthogonal and perspective projections between parallel pla
     const ppersp = aff.point2.projectTo(p, image, camera)
     // ppersp equals { x: 2, y: 1 }
 
-In the snippet above, the image plane to project to is otherwise equivalent to the reference plane but two units off along z axis. The depth offset does not affect the result orthogonal projection which is the same point but missing the z dimension. With perspective projection and camera at z=0, however, the point moves towards the camera.
+In the snippet above, the image plane to project to is otherwise equivalent to the reference plane but two units off along z-axis. The depth offset does not affect the result orthogonal projection which is the same point but missing the z dimension. With perspective projection and camera at z=0, however, the point moves towards the camera.
 
 Note that in affineplane the camera always points towards positive z-axis and is orthogonal to the reference plane. In other words the positive z-axis points away from the viewer.
 
