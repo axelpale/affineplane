@@ -17,69 +17,96 @@ With [npm](https://www.npmjs.com/package/affineplane) or [yarn](https://yarnpkg.
 
 ## Geometry
 
-Shapes:
+Shapes with position in space:
 
-- [dir2](docs/API.md#affineplanedir2), direction on a plane, `number` in rad
+- [dir2](docs/API.md#affineplanedir2), direction on a plane, `number` in radians
 - [dist2](docs/API.md#affineplanedist2), distance between two locations on a plane, `number`
+- [line2](docs/API.md#affineplaneline2), a line in 2D, `{origin,span}`
+- [line3](docs/API.md#affineplaneline3), a line in 3D, `{origin,span}`
+- [plane2](docs/API.md#affineplaneplane2), a plane in 2D, `{a,b,x,y}`
+- [plane3](docs/API.md#affineplaneplane3), a xy plane in 3D, `{a,b,x,y,z}`
 - [point2](docs/API.md#affineplanepoint2), a location on a plane, `{x,y}`
 - [point3](docs/API.md#affineplanepoint3), a location in a 3D space, `{x,y,z}`
 - [size2](docs/API.md#affineplanesize2), a rectangle size on a plane, `{w,h}`
 
-Movements:
+Movements of shapes:
 
-- [linear2](docs/API.md#affineplanelinear2), a linear transformation on a plane, `{a,b}`
-- [tran2](docs/API.md#affineplanetran2), a [helmert](https://en.wikipedia.org/wiki/Helmert_transformation) transformation on a plane, `{a,b,x,y}`
-- [vector2](docs/API.md#affineplanevector2), a displacement on a plane, `{x,y}`
-- [vector3](docs/API.md#affineplanevector2), a displacement in a 3D space, `{x,y,z}`
-
-Projections:
-
-- [proj2](docs/API.md#affineplaneproj2), projection between parallel planes, `{a,b,x,y}`
-- [proj3](docs/API.md#affineplaneproj3), perspective projection between parallel planes, `{a,b,x,y,z}`
+- [helm2](docs/API.md#affineplanehelm2), a [helmert](https://en.wikipedia.org/wiki/Helmert_transformation) transformation in 2D, `{a,b,x,y}`
+- [helm3](docs/API.md#affineplanehelm3), a [helmert](https://en.wikipedia.org/wiki/Helmert_transformation) in 2D with 3D translation, `{a,b,x,y,z}`
+- [vec2](docs/API.md#affineplanevector2), a vector in 2D, `{x,y}`
+- [vec3](docs/API.md#affineplanevector2), a vector in 3D, `{x,y,z}`
 
 See [API docs](docs/API.md) for more.
 
 ## Using data structures and functions
 
-Instead of classes, affineplane provides functions that operate on plain objects. The available functions are pure, in a sense that they never modify the input, do not cause side effects, have no hidden state, and they always return new objects computed from the input.
+Instead of classes, affineplane functions operate on plain objects. The available functions are pure, in a sense that they never modify the input, do not cause side effects, have no hidden state, and they always return new objects computed from the input. For example:
 
     const aff = require('affineplane')
-    const p = aff.point2.create(2, 5)
-    const po = aff.point2.offset(3, 0)
+    const point = aff.point2.create(2, 5)
+    const po = aff.point2.offset(point, 3, 0)
     // po equals { x: 5, y: 5 }
 
-The functions are grouped in *namespaces*, each focusing on a certain geometry. A common theme of the lib is to explicitly distinguish static shapes from their dynamic movements, like [point2](docs/API.md#affineplanepoint2) from [vector2](docs/API.md#affineplanevector2). Otherwise, in our experience, it is all too easy to mix these concepts in the code which can break the math especially when projecting the geometry between planes.
+The functions are grouped in *namespaces*, each focusing on a certain geometry. A common theme of the lib is to explicitly distinguish static shapes from their dynamic movements, like [point2](docs/API.md#affineplanepoint2) from [vec2](docs/API.md#affineplanevec2) because they behave differently. For example, while a point has a location in space, a vector does not. On the other hand, two vectors can be added together but the same cannot be done for two points. Thus it is best to keep the concepts separate. For details on the topic and its foundations, see [Difference between points and vectors](#difference-between-points-and-vectors).
 
-## Projecting between planes
+## Transitions and change of basis
 
-In affineplane, we separate geometry, say a point, from its representation, like `{x,y}`. While the representation depends on the frame of reference, meaning the plane and its coordinate system, the geometry itself does not. To illustrate this, the image below shows how the same point has different coordinates depending on which plane to choose for the reference.
+In affineplane, we distinguish geometry, say a point, from its representation, like `{x,y}`. While the representation depends on the frame of reference, like a plane origin, the geometry itself does not. To illustrate this, the image below shows how the same point has different coordinates depending on which plane to choose for the reference.
 
 ![Projection between planes for a point](docs/projection-between-planes-point-2d.png)
 
-We cannot represent geometry without a frame of reference. However, we can _project_ it from one to another. In the case of affineplane, the reference is a 2D plane. A point `{x,y}` is a point on the plane at coordinates (x,y). To project the point to another plane, we only need to know the projection between the planes.
+We cannot represent geometry without a frame of reference. However, we can _transit_ it from one reference basis to another. In the case of affineplane, the reference is a 2D plane. A point `{x,y}` is a point on the plane at coordinates (x,y). To transit the point to another plane, we can use [point2.transitTo](docs/API.md#affineplaneplane2transitto) function.
 
-    const p = aff.point2.create(2, 5)
-    const projection = aff.proj2.create(1, 0, 10, 10)
-    const pp = aff.proj2.point2(projection, p)
-    // pp equals { x: 12, y: 15 }
+    // Create a point and a plane, both relative to a reference plane.
+    const p = { x: 4, y: 2 }
+    const plane = aff.plane2.fromFeatures({
+      origin: { x: 1, y: 0 }
+    })
+    // Represent the point on the plane.
+    const pp = aff.point2.transitTo(p, plane)
+    // pp equals { x: 3, y: 2 }
+    // Transit back to original reference plane
+    const ppp = aff.point2.transitFrom(pp, plane)
+    // ppp equals { x: 4, y: 2 }
 
-In affineplane, we define a plane using Helmert transformation `{a,b,x,y}`. Such transformation can represent uniform scaling, rotation around z axis, and translation along x and y axis. The transformation acts as the projection from the plane to its reference plane. To project geometry between two planes, we first need to find the projection between the planes and then project the geometry. You can projections for various geometries in the [proj2](docs/API.md#affineplaneproj2) namespace.
+In affineplane, we define a plane using Helmert transformation `{a,b,x,y}`. Such transformation can represent uniform scaling, rotation around z axis, and translation along x and y axis. The transformation here acts as the [passive transit](https://en.wikipedia.org/wiki/Active_and_passive_transformation) from the plane coordinates back to its reference plane coordinates. It does not change the geometry, only the frame of reference.
 
-    const planeA = aff.proj2.create(2, 0, 10, 0)
-    const planeB = aff.proj2.create(1, 0, 100, 0)
-    const prAB = aff.proj2.between(planeA, planeB)
-    // prAB equals { a: 2, b: 0, x: -90, y: 0 }
-    const vA = aff.vector2.create(2, 4)
-    const vB = aff.proj2.vector2(prAB, vA)
-    // vB equals { x: 4, y: 8 }
+Effectively, the `x,y` part defines the position of the plane origin with respect to the reference origin. The `a,b` part defines the plane basis vectors, giving the scale and angle, in terms of the reference basis. See the illustration below for an example.
 
-In the snippet above, two planes are created with projections to their common reference plane. The plane A has the scale factor of 2 and 10 units of translation along x axis with respect to the reference. The plane B differs from the reference only by 100 units of translation along x axis. We compute the projection from A to B and then apply it to the vector vA on the plane A to produce the same vector represented on the plane B.
+(image of a plane here)
 
-Because vectors, unlike points, have length and direction but no location, the translation does not affect them. In the illustration below you can see that regardless of where you place the vector v, its components stay the same.
+The following snippet transits a vector from a source plane to the reference plane. The source has scale of 2, angle of +90 degrees, and 100 units of translation along x axis. Let us see how it affects the vector:
+
+    const v = { x: 5, y: 2 }
+    const plane = { a: 0, b: 2, x: 100, y: 0 }
+    const vv = aff.vec2.transitFrom(v, plane)
+    // vv equals { x: -4, y: 10 }
+
+Due to the scale, one unit of length on the plane is two units on the reference plane. Therefore the coordinate numbers double. Due to the plane angle, the coordinate directions rotate. The plane translation did not affect the coordinates, however, because unlike points, vectors have only length and direction, thus nothing to translate. Also note that while the coordinates changed, the vector in question did not. It is still the same vector, only represented in different frame of reference. In the illustration below you can see that regardless of where you place the vector v, its components stay the same.
 
 ![Projection between planes for a vector](docs/projection-between-planes-vector-2d.png)
 
-The difference between points and vectors is important to understand when using or developing affineplane. Thus the topic and its foundations are further discussed below in detail.
+Transitions never lose information and therefore can be done in both directions. Next we discuss projections that do not have this property.
+
+## Projections
+
+A projection maps geometry from a source plane to an image plane. Unlike transitions, projections may lose information and therefore can be performed only in one direction. For example when you project a 3D point onto a 2D surface, information is lost and you cannot project the point back because you do not know the distance.
+
+Affineplane provides orthogonal and perspective projections between parallel planes. Perspective projections require you to specify a camera location. Orthogonal projections do not require camera but can be thought as perspective projections with camera at infinity. The following snippet gives examples of both orthogonal and perspective projections.
+
+    const p = { x: 4, y: 2, z: 4 }
+    const image = { a: 1, b: 0, x: 0, y: 0, z: 2 }
+    const portho = aff.point2.projectToPlane(p, image)
+    // portho equals { x: 4, y: 2 }
+    const camera = { x: 0, y: 0, z: 0 }
+    const ppersp = aff.point2.projectToPlane(p, image, camera)
+    // ppersp equals { x: 2, y: 1 }
+
+In the snippet above, the image plane to project to is otherwise equivalent to the reference plane but two units off along z axis. The depth offset does not affect the result orthogonal projection which is the same point but missing the z dimension. With perspective projection and camera at z=0, however, the point moves towards the camera.
+
+Note that in affineplane the camera always points towards positive z-axis and is orthogonal to the reference plane. In other words the positive z-axis points away from the viewer.
+
+Vectors and other movements can only be projected orthogonally. This is because perspective projection would require them to have known positions relative to the camera.
 
 ## Difference between points and vectors
 
