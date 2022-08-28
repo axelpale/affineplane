@@ -73,7 +73,7 @@ In affineplane, we define a plane using Helmert transformation `{a,b,x,y}`. Such
 
 Effectively, the `x,y` part defines the position of the plane origin with respect to the reference origin. The `a,b` part defines the plane basis vectors, giving the scale and angle, in terms of the reference basis. See the illustration below for an example.
 
-(image of a plane here)
+![Helmert transform as a point and basis vectors](docs/geometry-helmert-transform-2d.png)
 
 The following snippet transits a vector from a source plane to the reference plane by using [point2.transitFrom](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2transitfrom). The source has scale of 2, angle of +90 degrees, and 100 units of translation along x-axis. Let us see how it affects the vector:
 
@@ -94,7 +94,7 @@ Transitions never lose information and therefore can be done in both directions.
 
 A projection maps geometry from a source plane to an image plane. Unlike transitions, projections may lose information and therefore can be performed only in one direction. For example when you project a 3D point onto a 2D surface, information is lost and you cannot project the point back because you do not know the distance.
 
-Affineplane provides orthogonal and perspective projections between parallel planes. Perspective projections require you to specify a camera location. Orthogonal projections do not require camera but can be thought as perspective projections with camera at infinity. The following snippet gives examples of both orthogonal and perspective projections.
+Affineplane provides orthogonal and perspective projections between parallel planes. Perspective projections require you to specify a camera location. Orthogonal projections do not require camera but can be thought as perspective projections with camera at infinity. The following snippet gives examples of both orthogonal and perspective projections. See also the illustration below for visual aid.
 
     const p = { x: 4, y: 2, z: 4 }
     const image = { a: 1, b: 0, x: 0, y: 0, z: 2 }
@@ -106,6 +106,8 @@ Affineplane provides orthogonal and perspective projections between parallel pla
 
 In the snippet above, the image plane to project to is otherwise equivalent to the reference plane but two units off along z-axis. The depth offset does not affect the result orthogonal projection which is the same point but missing the z dimension. With perspective projection and camera at z=0, however, the point moves towards the camera.
 
+![Perspective projection](docs/projection-perspective-3d.png)
+
 Note that in affineplane the camera always points towards positive z-axis and is orthogonal to the reference plane. In other words the positive z-axis points away from the viewer.
 
 Vectors and other movements can only be projected orthogonally. This is because perspective projection would require them to have known positions relative to the camera.
@@ -114,7 +116,7 @@ Vectors and other movements can only be projected orthogonally. This is because 
 
 Affineplane is very loose on types and requires you to ensure you feed the functions what they minimally expect. This has a benefit: you can input objects that have extra properties; only the properties affineplane understands are used. For example `{ color: 'ff00ff', x: 2, y: 3 }` is a valid affineplane point2.
 
-To check validity of an object, each geometry type has `validate` function. We could have included validity checking into each function but that would have caused excess of checking for this kind of low-level math functions. Instead, use `validate` when you need it.
+To check validity of an object, each geometry type has `validate` function, for example [point2.validate](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2validate). We could have included validity checking into each function but that would have caused excess of checking for this kind of low-level math functions. Instead, use `validate` when you need it.
 
 We might have TypeScript bindings in the future.
 
