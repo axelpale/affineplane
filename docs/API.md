@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.0.0
+# Affineplane API Documentation v2.1.0
 
 Welcome to affineplane API reference documentation.
 
@@ -1807,6 +1807,7 @@ is located +20 units along x-axis of the reference plane.
 - [affineplane.plane2.equal](#affineplaneplane2equal)
 - [affineplane.plane2.fromFeatures](#affineplaneplane2fromFeatures)
 - [affineplane.plane2.getScale](#affineplaneplane2getScale)
+- [affineplane.plane2.IDENTITY](#affineplaneplane2IDENTITY)
 - [affineplane.plane2.invert](#affineplaneplane2invert)
 - [affineplane.plane2.projectTo](#affineplaneplane2projectTo)
 - [affineplane.plane2.rotateBy](#affineplaneplane2rotateBy)
@@ -1934,6 +1935,13 @@ The length of the vector.
 - a number, the scale multiplier with respect to the reference plane.
 
 Source: [getScale.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/getScale.js)
+
+<a name="affineplaneplane2IDENTITY"></a>
+## affineplane.plane2.IDENTITY
+
+The identity plane is identical to its reference plane.
+
+Source: [plane2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/index.js)
 
 <a name="affineplaneplane2invert"></a>
 ## affineplane.plane2.invert(plane)
@@ -2210,9 +2218,11 @@ relative to its reference plane.
 - [affineplane.plane3.equal](#affineplaneplane3equal)
 - [affineplane.plane3.fromFeatures](#affineplaneplane3fromFeatures)
 - [affineplane.plane3.getScale](#affineplaneplane3getScale)
+- [affineplane.plane3.IDENTITY](#affineplaneplane3IDENTITY)
 - [affineplane.plane3.invert](#affineplaneplane3invert)
 - [affineplane.plane3.rotateBy](#affineplaneplane3rotateBy)
 - [affineplane.plane3.rotateTo](#affineplaneplane3rotateTo)
+- [affineplane.plane3.rotateToOrtho](#affineplaneplane3rotateToOrtho)
 - [affineplane.plane3.scaleBy](#affineplaneplane3scaleBy)
 - [affineplane.plane3.scaleTo](#affineplaneplane3scaleTo)
 - [affineplane.plane3.transform](#affineplaneplane3transform)
@@ -2338,6 +2348,13 @@ The length of the basis vector, the scale multiplier.
 
 Source: [getScale.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/getScale.js)
 
+<a name="affineplaneplane3IDENTITY"></a>
+## affineplane.plane3.IDENTITY
+
+The identity plane is identical to its reference plane.
+
+Source: [plane3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/index.js)
+
 <a name="affineplaneplane3invert"></a>
 ## affineplane.plane3.invert(plane)
 
@@ -2392,6 +2409,31 @@ stays fixed during the operation.
 - a [plane3](#affineplaneplane3), the plane after rotation.
 
 Source: [rotateTo.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/rotateTo.js)
+
+<a name="affineplaneplane3rotateToOrtho"></a>
+## affineplane.plane3.rotateToOrtho(plane, center)
+
+Rotate plane to nearest orthogonal angle 0, 90, 180, and 270 deg
+with respect to the reference plane. The rotation happens on xy-plane,
+around the line parallel to z-axis and travelling through the given point.
+
+**Parameters:**
+- *plane*
+  - a [plane3](#affineplaneplane3) to rotate.
+- *center*
+  - a [point3](#affineplanepoint3), a point in the reference space.
+  - Determines the rotation center.
+
+**Returns:**
+- a [plane2](#affineplaneplane2)
+
+Note that if the plane is at the middle of two ortho angles,
+namely at 45, 135, 225, or 315 deg, then
+the nearest orthogonal angle is arbitrarily either the next
+or previous orthogonal angle due to the small variations
+caused by floating-point arithmetics.
+
+Source: [rotateToOrtho.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/rotateToOrtho.js)
 
 <a name="affineplaneplane3scaleBy"></a>
 ## affineplane.plane3.scaleBy(plane, center, multiplier)
