@@ -1,6 +1,6 @@
 {
   "name": "affineplane",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Affine plane geometry library",
   "keywords": [
     "affine",
