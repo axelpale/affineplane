@@ -6,7 +6,7 @@
 
 A functional 2D plane geometry and dynamics library for spatial 2D and 3D applications. Designed especially for scaleable and rotatable [affine geometry](https://en.wikipedia.org/wiki/Affine_space) where parallel 2D planes float in 3D space and undergo [perspective projections](https://en.wikipedia.org/wiki/3D_projection) and [basis changes](https://en.wikipedia.org/wiki/Change_of_basis). Written in JavaScript (ECMAScript 6) with a functional, immutable, class-free style.
 
-[Install](#install) - [Geometry](#geometry) - [Usage](#using-data-structures-and-functions) - [API Docs](https://axelpale.github.io/affineplane/docs/API.html) - [Contribute](#contribute)
+[Install](#install) - [Geometry](#geometry) - [Usage](#using-data-structures-and-functions) - [API Docs](https://axelpale.github.io/affineplane/docs/API.html) - [Contribute](#contribute) - [Github](https://github.com/axelpale/affineplane)
 
 ![affineplane social banner](docs/affineplane-social-banner.jpg)
 
