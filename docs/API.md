@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.1.0
+# Affineplane API Documentation v2.2.0
 
 Welcome to affineplane API reference documentation.
 
@@ -1802,6 +1802,7 @@ is located +20 units along x-axis of the reference plane.
 
 - [affineplane.plane2.between](#affineplaneplane2between)
 - [affineplane.plane2.compose](#affineplaneplane2compose)
+- [affineplane.plane2.copy](#affineplaneplane2copy)
 - [affineplane.plane2.create](#affineplaneplane2create)
 - [affineplane.plane2.difference](#affineplaneplane2difference)
 - [affineplane.plane2.equal](#affineplaneplane2equal)
@@ -1847,6 +1848,20 @@ Combine two planes together.
 - a [plane2](#affineplaneplane2) on the reference plane
 
 Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/compose.js)
+
+<a name="affineplaneplane2copy"></a>
+## affineplane.plane2.copy(plane)
+
+Clone the plane object.
+
+**Parameters:**
+- *plane*
+  - a [plane2](#affineplaneplane2)
+
+**Returns:**
+- a [plane2](#affineplaneplane2)
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/copy.js)
 
 <a name="affineplaneplane2create"></a>
 ## affineplane.plane2.create(origin, span)
@@ -2213,6 +2228,7 @@ relative to its reference plane.
 
 - [affineplane.plane3.between](#affineplaneplane3between)
 - [affineplane.plane3.compose](#affineplaneplane3compose)
+- [affineplane.plane3.copy](#affineplaneplane3copy)
 - [affineplane.plane3.create](#affineplaneplane3create)
 - [affineplane.plane3.difference](#affineplaneplane3difference)
 - [affineplane.plane3.equal](#affineplaneplane3equal)
@@ -2257,6 +2273,20 @@ Combine two planes together.
 - a [plane3](#affineplaneplane3) on the reference plane. This plane maps from plane B to the reference plane.
 
 Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/compose.js)
+
+<a name="affineplaneplane3copy"></a>
+## affineplane.plane3.copy(plane)
+
+Clone the plane object.
+
+**Parameters:**
+- *plane*
+  - a [plane3](#affineplaneplane3)
+
+**Returns:**
+- a [plane3](#affineplaneplane3)
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/copy.js)
 
 <a name="affineplaneplane3create"></a>
 ## affineplane.plane3.create(origin, span)
