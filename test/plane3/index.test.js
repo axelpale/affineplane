@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
   compose: require('./compose.test'),
+  copy: require('./copy.test'),
   create: require('./create.test'),
   difference: require('./difference.test'),
   fromFeatures: require('./fromFeatures.test'),
