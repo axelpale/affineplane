@@ -6,7 +6,7 @@ module.exports = function (actual, expected, message) {
   this._assert(helm2AlmostEqual(actual, expected), {
     message: message || 'helm2 should have correct elements',
     operator: 'transformEqual',
-    actual: actual,
-    expected: expected
+    actual,
+    expected
   })
 }

@@ -6,7 +6,7 @@ module.exports = function (actual, expected, message) {
   this._assert(vec2AlmostEqual(actual, expected), {
     message: message || 'vec2 should have correct elements',
     operator: 'vectorEqual',
-    actual: actual,
-    expected: expected
+    actual,
+    expected
   })
 }

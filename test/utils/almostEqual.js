@@ -10,7 +10,7 @@ module.exports = function (actual, expected, message) {
   this._assert(assertion, {
     message: message || 'should be almost equal',
     operator: 'almostEqual',
-    actual: actual,
-    expected: expected
+    actual,
+    expected
   })
 }
