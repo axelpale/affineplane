@@ -26,7 +26,7 @@ Shapes with position in space:
 - [line2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneline2), a line in 2D, `{origin,span}`
 - [line3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneline3), a line in 3D, `{origin,span}`
 - [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2), a plane in 2D, `{a,b,x,y}`
-- [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3), a xy plane in 3D, `{a,b,x,y,z}`
+- [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3), an xy-plane in 3D, `{a,b,x,y,z}`
 - [point2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2), a location on a plane, `{x,y}`
 - [point3](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint3), a location in a 3D space, `{x,y,z}`
 - [size2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesize2), a rectangle size on a plane, `{w,h}`
@@ -65,7 +65,7 @@ In affineplane, we distinguish geometry, say a point, from its representation, l
 
 ![Projection between planes for a point](docs/projection-between-planes-point-2d.png)
 
-We cannot represent geometry without a frame of reference. However, we can _transit_ it from one reference basis to another. In the case of affineplane, the reference is usually a 2D plane. A point `{x,y}` is a point on the plane at coordinates (x,y). To transit the point to another plane, we can use [point2.transitTo](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2transitto) function.
+We cannot represent geometry without a frame of reference. However, we can _transit_ it from one reference basis to another. In the case of affineplane, the reference is usually a 2D plane. A point `{x,y}` is a point on the plane at coordinates (x,y). To transit the point to another plane, we use [point2.transitTo](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2transitto) function.
 
     // Create a point and a plane, both relative to a reference plane.
     const p = { x: 4, y: 2 }
@@ -79,9 +79,11 @@ We cannot represent geometry without a frame of reference. However, we can _tran
     const ppp = aff.point2.transitFrom(pp, plane)
     // ppp equals { x: 4, y: 2 }
 
-In affineplane, we define a plane using Helmert transformation `{a,b,x,y}`. Such transformation can represent uniform scaling, rotation around z-axis, and translation along x- and y-axis. The transformation here acts as the [passive transit](https://en.wikipedia.org/wiki/Active_and_passive_transformation) from the plane coordinates back to its reference plane coordinates. It does not change the geometry, only the frame of reference.
+In affineplane, we model a plane, such as [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2) or [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3), using a Helmert transformation. Such transformation can represent uniform scaling, rotation around z-axis, and translation along x-, y-, and z-axis. For a plane, these properties define how to transit geometry from the coordinate system of the plane to the coordinate system of the reference. In other words, they effectively define the position of the plane with respect to the reference space.
 
-Effectively, the `x,y` part defines the position of the plane origin with respect to the reference origin. The `a,b` part defines the plane basis vectors, giving the scale and angle, in terms of the reference basis. See the illustration below for an example.
+We call this transformation from a plane to its reference a *transition*. We treat transitions as [*passive transformations*](https://en.wikipedia.org/wiki/Active_and_passive_transformation) in a sense that they do not change the geometry, only the frame of reference. On the contrary, *active transformations* act on the geometry but keep the reference as is. While [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2) and [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3) are passive, see [helm2](https://axelpale.github.io/affineplane/docs/API.html#affineplanehelm2) and [helm3](https://axelpale.github.io/affineplane/docs/API.html#affineplanehelm3) for active variants of the same transformation.
+
+The [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2) represent the transition as an object `{a,b,x,y}` and [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3) as `{a,b,x,y,z}`. The `x,y,z` part of the object defines the position of the plane origin with respect to the reference origin. The `a,b` part defines the plane basis vector, where the vector length gives the scale and direction the angle in terms of the reference basis. See the illustration below for an example.
 
 ![Helmert transform as a point and basis vectors](docs/geometry-helmert-transform-2d.png)
 
@@ -114,17 +116,17 @@ Affineplane provides orthogonal and perspective projections between parallel pla
     const ppersp = aff.point2.projectTo(p, image, camera)
     // ppersp equals { x: 2, y: 1 }
 
-In the snippet above, the image plane to project to is otherwise equivalent to the reference plane but two units off along z-axis. The depth offset does not affect the result orthogonal projection which is the same point but missing the z dimension. With perspective projection and camera at z=0, however, the point moves towards the camera.
+In the snippet above, the image plane onto project to is otherwise equivalent to the reference plane but two units off along z-axis. The depth offset does not affect the orthogonal projection which results the same point but without z-axis property. In contrast, the perspective projection and camera at z=0 map the point closer to the camera as illustrated below.
 
 ![Perspective projection](docs/projection-perspective-3d.png)
 
-Note that in affineplane the camera always points towards positive z-axis and is orthogonal to the reference plane. In other words the positive z-axis points away from the viewer.
+Note that the projections features of affineplane are highly limited. The camera always points towards positive z-axis and its line of sight is orthogonal to the planes. In other words the positive z-axis points away from the viewer.
 
-Vectors and other movements can only be projected orthogonally. This is because perspective projection would require them to have known positions relative to the camera.
+Vectors and other movements can only be projected orthogonally. This is because perspective projection would require them to have known positions relative to the camera, which they do not have.
 
 ## Type safety
 
-Affineplane is very loose on types and requires you to ensure you feed the functions what they minimally expect. This has a benefit: you can input objects that have extra properties; only the properties affineplane understands are used. For example `{ color: 'ff00ff', x: 2, y: 3 }` is a valid affineplane point2.
+Affineplane is very loose on types and requires you to ensure you feed the functions what they minimally expect. This has a benefit: you can input objects that have extra properties. For example `{ color: 'ff00ff', x: 2, y: 3 }` is a valid affineplane [point2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2). Note that while all affineplane operations return new objects, the extra properties are not carried to them.
 
 To check validity of an object, each geometry type has `validate` function, for example [point2.validate](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2validate). We could have included validity checking into each function but that would have caused excess of checking for this kind of low-level math functions. Instead, use `validate` when you need it.
 
