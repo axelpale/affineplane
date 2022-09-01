@@ -5,6 +5,7 @@ const units = {
   average: require('./average.test'),
   copy: require('./copy.test'),
   create: require('./create.test'),
+  cross: require('./cross.test'),
   // difference: require('./difference.test'),
   dot: require('./dot.test'),
   // equal: require('./equal.test'),
