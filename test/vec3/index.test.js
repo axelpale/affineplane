@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  cross: require('./cross.test'),
   dot: require('./dot.test'),
   fromPolar: require('./fromPolar.test'),
   fromSpherical: require('./fromSpherical.test'),
