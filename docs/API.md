@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.2.0
+# Affineplane API Documentation v2.3.0
 
 Welcome to affineplane API reference documentation.
 
@@ -3463,6 +3463,7 @@ Aliases: [affineplane.vector2](#affineplanevector2)
 - [affineplane.vec2.average](#affineplanevec2average)
 - [affineplane.vec2.copy](#affineplanevec2copy)
 - [affineplane.vec2.create](#affineplanevec2create)
+- [affineplane.vec2.cross](#affineplanevec2cross)
 - [affineplane.vec2.difference](#affineplanevec2difference)
 - [affineplane.vec2.dot](#affineplanevec2dot)
 - [affineplane.vec2.fromArray](#affineplanevec2fromArray)
@@ -3568,6 +3569,24 @@ Create a vector object `{ x, y }`.
 - a [vec2](#affineplanevec2)
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/create.js)
+
+<a name="affineplanevec2cross"></a>
+## affineplane.vec2.cross(v, w)
+
+The magnitude of cross product of two 2D vectors. While in 3D,
+the cross product returns a perpendicular vector, in 2D we must
+settle for a scalar result, the length of that 3D vector.
+
+**Parameters:**
+- *v*
+  - a [vec2](#affineplanevec2)
+- *w*
+  - a [vec2](#affineplanevec2)
+
+**Returns:**
+- a number
+
+Source: [cross.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/cross.js)
 
 <a name="affineplanevec2difference"></a>
 ## affineplane.vec2.difference(v, w)
@@ -3911,8 +3930,10 @@ Aliases: [affineplane.vector3](#affineplanevector3)
 - [affineplane.vec3.average](#affineplanevec3average)
 - [affineplane.vec3.copy](#affineplanevec3copy)
 - [affineplane.vec3.create](#affineplanevec3create)
+- [affineplane.vec3.cross](#affineplanevec3cross)
 - [affineplane.vec3.diff](#affineplanevec3diff)
 - [affineplane.vec3.difference](#affineplanevec3difference)
+- [affineplane.vec3.dot](#affineplanevec3dot)
 - [affineplane.vec3.equal](#affineplanevec3equal)
 - [affineplane.vec3.fromArray](#affineplanevec3fromArray)
 - [affineplane.vec3.fromPolar](#affineplanevec3fromPolar)
@@ -4013,6 +4034,24 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/cop
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/create.js)
 
+<a name="affineplanevec3cross"></a>
+## affineplane.vec3.cross(v, w)
+
+The cross product of two 3D vectors. Returns a vector perpendicular
+to the given vectors. In other words, the result will be normal
+to the plane span by the given vectors.
+
+**Parameters:**
+- *v*
+  - a [vec3](#affineplanevec3)
+- *w*
+  - a [vec3](#affineplanevec3)
+
+**Returns:**
+- a [vec3](#affineplanevec3)
+
+Source: [cross.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/cross.js)
+
 <a name="affineplanevec3diff"></a>
 ## affineplane.vec3.diff(v, w)
 
@@ -4039,6 +4078,22 @@ from the end of v to the end of w.
 Aliases: [affineplane.vec3.diff](#affineplanevec3diff)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/difference.js)
+
+<a name="affineplanevec3dot"></a>
+## affineplane.vec3.dot(v, w)
+
+Dot product of two vectors.
+
+**Parameters:**
+- *v*
+  - a [vec3](#affineplanevec3)
+- *w*
+  - a [vec3](#affineplanevec3)
+
+**Returns:**
+- a number
+
+Source: [dot.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/dot.js)
 
 <a name="affineplanevec3equal"></a>
 ## affineplane.vec3.equal(v, w)
