@@ -23,6 +23,7 @@ const units = {
   toPolar: require('./toPolar.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
+  unit: require('./unit.test'),
   validate: require('./validate.test')
 }
 
