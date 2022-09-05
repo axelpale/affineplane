@@ -1,7 +1,7 @@
 <a name="top"></a>
 # Affineplane API Documentation v2.3.0
 
-Welcome to affineplane API reference documentation.
+Welcome to affineplane API reference documentation. See also [Usage](https://axelpale.github.io/affineplane/) and [GitHub](https://github.com/axelpale/affineplane) for introduction and source code. The docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
 
 <a name="affineplane"></a>
@@ -3485,6 +3485,7 @@ Aliases: [affineplane.vector2](#affineplanevector2)
 - [affineplane.vec2.toPolar](#affineplanevec2toPolar)
 - [affineplane.vec2.transitFrom](#affineplanevec2transitFrom)
 - [affineplane.vec2.transitTo](#affineplanevec2transitTo)
+- [affineplane.vec2.unit](#affineplanevec2unit)
 - [affineplane.vec2.validate](#affineplanevec2validate)
 
 
@@ -3904,6 +3905,22 @@ Translation of the plane does not affect the vector.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/transitTo.js)
 
+<a name="affineplanevec2unit"></a>
+## affineplane.vec2.unit(v)
+
+Get unit vector parallel to the given vector.
+The magnitude of unit vector is equal to one.
+If zero vector is given, assume direction towards positive x.
+
+**Parameters:**
+- *v*
+  - a [vec2](#affineplanevec2)
+
+**Returns:**
+- a [vec2](#affineplanevec2), magnitude of one.
+
+Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/unit.js)
+
 <a name="affineplanevec2validate"></a>
 ## affineplane.vec2.validate(v)
 
@@ -3952,6 +3969,7 @@ Aliases: [affineplane.vector3](#affineplanevector3)
 - [affineplane.vec3.toSpherical](#affineplanevec3toSpherical)
 - [affineplane.vec3.transitFrom](#affineplanevec3transitFrom)
 - [affineplane.vec3.transitTo](#affineplanevec3transitTo)
+- [affineplane.vec3.unit](#affineplanevec3unit)
 - [affineplane.vec3.validate](#affineplanevec3validate)
 
 
@@ -4401,6 +4419,22 @@ without losing information.
 - a [vec3](#affineplanevec3), represented on the target plane.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/transitTo.js)
+
+<a name="affineplanevec3unit"></a>
+## affineplane.vec3.unit(v)
+
+Get unit vector parallel to the given vector.
+The magnitude of unit vector is equal to one.
+If zero vector is given, assume direction towards positive x.
+
+**Parameters:**
+- *v*
+  - a [vec3](#affineplanevec3)
+
+**Returns:**
+- a [vec3](#affineplanevec3), magnitude of one.
+
+Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/unit.js)
 
 <a name="affineplanevec3validate"></a>
 ## affineplane.vec3.validate(v)
