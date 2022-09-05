@@ -2,6 +2,7 @@
 const units = {
   cross: require('./cross.test'),
   dot: require('./dot.test'),
+  equal: require('./equal.test'),
   fromPolar: require('./fromPolar.test'),
   fromSpherical: require('./fromSpherical.test'),
   invert: require('./invert.test'),
