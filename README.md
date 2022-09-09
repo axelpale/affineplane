@@ -127,11 +127,11 @@ Vectors and other movements can only be projected orthogonally. This is because 
 
 ## Type safety
 
-Affineplane is very loose on types and requires you to ensure you feed the functions what they minimally expect. This has a benefit: you can input objects that have extra properties. For example `{ color: 'ff00ff', x: 2, y: 3 }` is a valid affineplane [point2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2). Note that while all affineplane operations return new objects, the extra properties are not carried to them.
+Affineplane is very loose on types and requires you to ensure you feed the functions what they minimally expect. This has two benefits: the functions are fast and you can input objects that have extra properties. For example `{ color: 'ff00ff', x: 2, y: 3 }` is a valid affineplane [point2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2). Note that while all affineplane operations return new objects, the extra properties are not carried to them.
 
 To check validity of an object, each geometry type has `validate` function, for example [point2.validate](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2validate). We could have included validity checking into each function but that would have caused excess of checking for this kind of low-level math functions. Instead, use `validate` when you need it.
 
-We might have TypeScript bindings in the future.
+To avoid unefficient type checking, optional parameters and default values are used sparsingly. Keep this in mind especially when making contributions.
 
 ## Contribute
 
