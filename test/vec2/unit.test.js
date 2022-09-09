@@ -10,7 +10,7 @@ module.exports = (ts) => {
     )
 
     t.almostEqual(
-      vec2.unit({ x: 3, y: 4 }), // orig.len. 5
+      vec2.normalize({ x: 3, y: 4 }), // orig.len. 5
       { x: 3 / 5, y: 4 / 5 },
       'direction does not change'
     )
