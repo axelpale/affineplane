@@ -54,7 +54,7 @@ The functions are grouped in *namespaces*, each focusing on a certain geometry. 
 
 ## Coordinate systems and directions
 
-Affineplane uses right-handed coordinate system where the axes are perpendicular to each other. All rotations happen around z-axis and the rotation angle grows from the positive x-axis towards positive y-axis. Because affineplane is primarily intented for web applications, it is customary that, under zero rotation, the x-axis grows right, y-axis grows down, and z-axis grows away from the viewer, as illustrated below.
+Affineplane uses right-handed, orthonormal coordinate system. Due to orthonormality the axes are perpendicular to each other. All rotations happen around z-axis and the rotation angle grows from the positive x-axis towards positive y-axis. Because affineplane is primarily intented for web applications, it is customary that, under zero rotation, the x-axis grows right, y-axis grows down, and z-axis grows away from the viewer, as illustrated below.
 
 ![Right-handed coordinate system](docs/coordinates-directions-3d.png)
 
