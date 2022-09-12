@@ -1,7 +1,9 @@
 <a name="top"></a>
 # Affineplane API Documentation v2.4.0
 
-Welcome to affineplane API reference documentation. See also [Usage](https://axelpale.github.io/affineplane/) and [GitHub](https://github.com/axelpale/affineplane) for introduction and source code. The docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
+Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
+
+See also [Usage](https://axelpale.github.io/affineplane/) and [GitHub](https://github.com/axelpale/affineplane) for introduction and source code.
 
 
 <a name="affineplane"></a>
@@ -45,7 +47,7 @@ and Pi (inclusive).
 When a direction is transited between planes, only the rotation of
 the coordinate space affects the direction.
 
-![Direction angle](docs/geometry_direction.png)
+![Direction angle](geometry_direction.png)
 
 - [affineplane.dir2.create](#affineplanedir2create)
 - [affineplane.dir2.transitFrom](#affineplanedir2transitfrom)
@@ -112,7 +114,7 @@ If transited between planes, only a change in the coordinate scale
 affects the distance. Rotation or translation of the plane does not
 change the distance measure.
 
-![Distance transited between planes](docs/projection_distance_2d.png)
+![Distance transited between planes](projection_distance_2d.png)
 
 - [affineplane.dist2.create](#affineplanedist2create)
 - [affineplane.dist2.transitFrom](#affineplanedist2transitfrom)
@@ -2644,7 +2646,7 @@ Due to affinity, two points cannot be added together,
 although the distance between and their mean can be computed.
 An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 
-![A point](docs/geometry_point.png)
+![A point](geometry_point.png)
 
 - [affineplane.point2.average](#affineplanepoint2average)
 - [affineplane.point2.copy](#affineplanepoint2copy)
@@ -3493,7 +3495,7 @@ Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/siz
 
 Vector is a two dimensional dynamic movent between points.
 
-![A vector](docs/geometry_vector.png)
+![A vector](geometry_vector.png)
 
 Aliases: [affineplane.vector2](#affineplanevector2)
 
@@ -3663,7 +3665,7 @@ The direction of the vector does not change.
 **Returns:**
 - a [vec2](#affineplanevec2)
 
-Throws:
+**Throws:**
 - if zero divisor
 
 Source: [divide.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/divide.js)
@@ -4253,7 +4255,7 @@ Create a [vec3](#affineplanevec3) from an array `[x, y, z]`.
 **Returns:**
 - a [vec3](#affineplanevec3)
 
-Throws
+**Throws:**
 - if arrv has less than three elements.
 
 Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/fromArray.js)
