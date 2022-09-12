@@ -13,7 +13,7 @@ module.exports = (ts) => {
     )
 
     t.almostEqual(
-      vec2.difference(
+      vec2.subtract(
         { x: 1, y: 0 },
         { x: 2, y: 1 }
       ),
