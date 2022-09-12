@@ -13,7 +13,11 @@ yamdog.generate({
   // Main title of the document
   title: 'Affineplane API Documentation v' + version,
   // Introduction; the initial paragraph
-  intro: 'Welcome to affineplane API reference documentation.',
+  intro: 'Welcome to affineplane API reference documentation. ' +
+    'See also [Usage](https://axelpale.github.io/affineplane/) and ' +
+    '[GitHub](https://github.com/axelpale/affineplane) for ' +
+    'introduction and source code. The docs are generated with ' +
+    '[yamdog](https://axelpale.github.io/yamdog/).',
   // Styling; decorate the docs
   decorators: [
     decor.aliases(),

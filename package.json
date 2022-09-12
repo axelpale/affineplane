@@ -1,6 +1,6 @@
 {
   "name": "affineplane",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Affine plane geometry library",
   "keywords": [
     "affine",
@@ -39,7 +39,7 @@
     "standard": "^17.0.0",
     "tap-spec": "^5.0.0",
     "tape": "^5.6.0",
-    "yamdog": "^1.3.1"
+    "yamdog": "^1.4.0"
   },
   "scripts": {
     "lint": "standard index.js 'lib/**/*.js' 'test/**/*.js'",

@@ -1,7 +1,10 @@
 // A unit for each method.
 const units = {
   cross: require('./cross.test'),
+  difference: require('./difference.test'),
+  divide: require('./divide.test'),
   dot: require('./dot.test'),
+  equal: require('./equal.test'),
   fromPolar: require('./fromPolar.test'),
   fromSpherical: require('./fromSpherical.test'),
   invert: require('./invert.test'),
@@ -16,6 +19,7 @@ const units = {
   toSpherical: require('./toSpherical.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
+  unit: require('./unit.test'),
   validate: require('./validate.test')
 }
 
