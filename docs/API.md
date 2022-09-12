@@ -45,6 +45,8 @@ and Pi (inclusive).
 When a direction is transited between planes, only the rotation of
 the coordinate space affects the direction.
 
+![Direction angle](docs/geometry_direction.png)
+
 - [affineplane.dir2.create](#affineplanedir2create)
 - [affineplane.dir2.transitFrom](#affineplanedir2transitfrom)
 - [affineplane.dir2.transitTo](#affineplanedir2transitto)
@@ -109,6 +111,8 @@ The distance measure is a directionless, always positive number.
 If transited between planes, only a change in the coordinate scale
 affects the distance. Rotation or translation of the plane does not
 change the distance measure.
+
+![Distance transited between planes](docs/projection_distance_2d.png)
 
 - [affineplane.dist2.create](#affineplanedist2create)
 - [affineplane.dist2.transitFrom](#affineplanedist2transitfrom)
@@ -2640,10 +2644,13 @@ Due to affinity, two points cannot be added together,
 although the distance between and their mean can be computed.
 An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 
+![A point](docs/geometry_point.png)
+
 - [affineplane.point2.average](#affineplanepoint2average)
 - [affineplane.point2.copy](#affineplanepoint2copy)
 - [affineplane.point2.create](#affineplanepoint2create)
 - [affineplane.point2.delta](#affineplanepoint2delta)
+- [affineplane.point2.diff](#affineplanepoint2diff)
 - [affineplane.point2.difference](#affineplanepoint2difference)
 - [affineplane.point2.distance](#affineplanepoint2distance)
 - [affineplane.point2.equal](#affineplanepoint2equal)
@@ -2715,7 +2722,14 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/point2
 <a name="affineplanepoint2delta"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[delta](#affineplanepoint2delta)
 
-Alias of [affineplane.point2.difference](#affineplanepoint2difference)
+Alias of [affineplane.point2.difference](#affineplanepoint2difference), [affineplane.point2.diff](#affineplanepoint2diff)
+
+Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
+
+<a name="affineplanepoint2diff"></a>
+## [affineplane](#affineplane).[point2](#affineplanepoint2).[diff](#affineplanepoint2diff)
+
+Alias of [affineplane.point2.difference](#affineplanepoint2difference), [affineplane.point2.delta](#affineplanepoint2delta)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
 
@@ -2733,7 +2747,7 @@ A vector from point p to point q.
 **Returns:**
 - a [vec2](#affineplanevec2)
 
-Aliases: [affineplane.point2.delta](#affineplanepoint2delta)
+Aliases: [affineplane.point2.diff](#affineplanepoint2diff), [affineplane.point2.delta](#affineplanepoint2delta)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
 
@@ -3004,6 +3018,7 @@ Three-dimensional point { x, y, z }.
 - [affineplane.point3.copy](#affineplanepoint3copy)
 - [affineplane.point3.create](#affineplanepoint3create)
 - [affineplane.point3.delta](#affineplanepoint3delta)
+- [affineplane.point3.diff](#affineplanepoint3diff)
 - [affineplane.point3.difference](#affineplanepoint3difference)
 - [affineplane.point3.distance](#affineplanepoint3distance)
 - [affineplane.point3.equal](#affineplanepoint3equal)
@@ -3080,7 +3095,14 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/point3
 <a name="affineplanepoint3delta"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[delta](#affineplanepoint3delta)
 
-Alias of [affineplane.point3.difference](#affineplanepoint3difference)
+Alias of [affineplane.point3.difference](#affineplanepoint3difference), [affineplane.point3.diff](#affineplanepoint3diff)
+
+Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
+
+<a name="affineplanepoint3diff"></a>
+## [affineplane](#affineplane).[point3](#affineplanepoint3).[diff](#affineplanepoint3diff)
+
+Alias of [affineplane.point3.difference](#affineplanepoint3difference), [affineplane.point3.delta](#affineplanepoint3delta)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
 
@@ -3098,7 +3120,7 @@ A vector from point p to point q.
 **Returns:**
 - a [vec3](#affineplanevec3)
 
-Aliases: [affineplane.point3.delta](#affineplanepoint3delta)
+Aliases: [affineplane.point3.diff](#affineplanepoint3diff), [affineplane.point3.delta](#affineplanepoint3delta)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
 
@@ -3471,6 +3493,8 @@ Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/siz
 
 Vector is a two dimensional dynamic movent between points.
 
+![A vector](docs/geometry_vector.png)
+
 Aliases: [affineplane.vector2](#affineplanevector2)
 
 - [affineplane.vec2.add](#affineplanevec2add)
@@ -3480,6 +3504,7 @@ Aliases: [affineplane.vector2](#affineplanevector2)
 - [affineplane.vec2.create](#affineplanevec2create)
 - [affineplane.vec2.cross](#affineplanevec2cross)
 - [affineplane.vec2.difference](#affineplanevec2difference)
+- [affineplane.vec2.divide](#affineplanevec2divide)
 - [affineplane.vec2.dot](#affineplanevec2dot)
 - [affineplane.vec2.equal](#affineplanevec2equal)
 - [affineplane.vec2.fromArray](#affineplanevec2fromarray)
@@ -3609,7 +3634,7 @@ Source: [cross.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/cr
 <a name="affineplanevec2difference"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[difference](#affineplanevec2difference)(v, w)
 
-A vector between v and w.
+A vector between v and w, in other words, v - w.
 
 **Parameters:**
 - *v*
@@ -3621,6 +3646,27 @@ A vector between v and w.
 - a [vec2](#affineplanevec2)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/difference.js)
+
+<a name="affineplanevec2divide"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[divide](#affineplanevec2divide)(vec, divisor)
+
+The division of a vector.
+Equivalent to multiplying the vector by the inverse of the divisor.
+The direction of the vector does not change.
+
+**Parameters:**
+- *vec*
+  - a [vec2](#affineplanevec2)
+- *divisor*
+  - a number
+
+**Returns:**
+- a [vec2](#affineplanevec2)
+
+Throws:
+- if zero divisor
+
+Source: [divide.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/divide.js)
 
 <a name="affineplanevec2dot"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[dot](#affineplanevec2dot)(v, w)
@@ -3994,6 +4040,7 @@ Aliases: [affineplane.vector3](#affineplanevector3)
 - [affineplane.vec3.cross](#affineplanevec3cross)
 - [affineplane.vec3.diff](#affineplanevec3diff)
 - [affineplane.vec3.difference](#affineplanevec3difference)
+- [affineplane.vec3.divide](#affineplanevec3divide)
 - [affineplane.vec3.dot](#affineplanevec3dot)
 - [affineplane.vec3.equal](#affineplanevec3equal)
 - [affineplane.vec3.fromArray](#affineplanevec3fromarray)
@@ -4008,6 +4055,7 @@ Aliases: [affineplane.vector3](#affineplanevector3)
 - [affineplane.vec3.rotateBy](#affineplanevec3rotateby)
 - [affineplane.vec3.scaleBy](#affineplanevec3scaleby)
 - [affineplane.vec3.scaleTo](#affineplanevec3scaleto)
+- [affineplane.vec3.subtract](#affineplanevec3subtract)
 - [affineplane.vec3.sum](#affineplanevec3sum)
 - [affineplane.vec3.toArray](#affineplanevec3toarray)
 - [affineplane.vec3.toPolar](#affineplanevec3topolar)
@@ -4118,16 +4166,16 @@ Source: [cross.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/cr
 <a name="affineplanevec3diff"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[diff](#affineplanevec3diff)(v, w)
 
-Alias of [affineplane.vec3.difference](#affineplanevec3difference)
+Alias of [affineplane.vec3.difference](#affineplanevec3difference), [affineplane.vec3.subtract](#affineplanevec3subtract)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/difference.js)
 
 <a name="affineplanevec3difference"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[difference](#affineplanevec3difference)(v, w)
 
-Get the vector w - v. In other words, if we place v, w
+Get the vector v - w. In other words, if we place v, w
 to begin from the same point then the result is a vector
-from the end of v to the end of w.
+from the end of w to the end of v.
 
 **Parameters:**
 - *v*
@@ -4138,9 +4186,27 @@ from the end of v to the end of w.
 **Returns:**
 - a [vec3](#affineplanevec3)
 
-Aliases: [affineplane.vec3.diff](#affineplanevec3diff)
+Aliases: [affineplane.vec3.diff](#affineplanevec3diff), [affineplane.vec3.subtract](#affineplanevec3subtract)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/difference.js)
+
+<a name="affineplanevec3divide"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[divide](#affineplanevec3divide)(vec, divisor)
+
+The division of a vector.
+Equivalent to multiplying the vector by the inverse of the divisor.
+The direction of the vector does not change.
+
+**Parameters:**
+- *vec*
+  - a [vec3](#affineplanevec3)
+- *divisor*
+  - a number. If zero, will result a vector having infinite length.
+
+**Returns:**
+- a [vec3](#affineplanevec3)
+
+Source: [divide.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/divide.js)
 
 <a name="affineplanevec3dot"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[dot](#affineplanevec3dot)(v, w)
@@ -4368,6 +4434,13 @@ As an exception, zero vector length remains zero.
 - a [vec3](#affineplanevec3)
 
 Source: [scaleTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/scaleTo.js)
+
+<a name="affineplanevec3subtract"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[subtract](#affineplanevec3subtract)
+
+Alias of [affineplane.vec3.difference](#affineplanevec3difference), [affineplane.vec3.diff](#affineplanevec3diff)
+
+Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/difference.js)
 
 <a name="affineplanevec3sum"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[sum](#affineplanevec3sum)(vs)
