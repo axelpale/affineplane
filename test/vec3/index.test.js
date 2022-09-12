@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
   cross: require('./cross.test'),
+  difference: require('./difference.test'),
   dot: require('./dot.test'),
   equal: require('./equal.test'),
   fromPolar: require('./fromPolar.test'),
