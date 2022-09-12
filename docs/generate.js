@@ -36,6 +36,11 @@ yamdog.generate({
         replacement: '**Returns:**'
       },
       {
+        // Normalize throws title
+        pattern: /^throws?:?/i,
+        replacement: '**Throws:**'
+      },
+      {
         // Pretty array literals
         pattern: /(^|\s+)\[([\w,: ]*)\]($|\s+)/,
         replacement: '$1`[$2]`$3'
