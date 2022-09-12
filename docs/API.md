@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.3.0
+# Affineplane API Documentation v2.4.0
 
 Welcome to affineplane API reference documentation. See also [Usage](https://axelpale.github.io/affineplane/) and [GitHub](https://github.com/axelpale/affineplane) for introduction and source code. The docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
