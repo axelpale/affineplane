@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  almostEqual: require('./almostEqual.test'),
   average: require('./average.test'),
   difference: require('./difference.test'),
   homothety: require('./homothety.test'),
