@@ -7,6 +7,7 @@ const units = {
   equal: require('./equal.test'),
   fromPolar: require('./fromPolar.test'),
   fromSpherical: require('./fromSpherical.test'),
+  independent: require('./independent.test'),
   invert: require('./invert.test'),
   magnitude: require('./magnitude.test'),
   projectTo: require('./projectTo.test'),

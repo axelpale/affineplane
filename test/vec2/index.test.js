@@ -11,6 +11,7 @@ const units = {
   dot: require('./dot.test'),
   equal: require('./equal.test'),
   fromPolar: require('./fromPolar.test'),
+  independent: require('./independent.test'),
   inverse: require('./inverse.test'),
   magnitude: require('./magnitude.test'),
   max: require('./max.test'),
