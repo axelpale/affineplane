@@ -23,6 +23,7 @@ const units = {
   scaleTo: require('./scaleTo.test'),
   sum: require('./sum.test'),
   toPolar: require('./toPolar.test'),
+  transformBy: require('./transformBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   unit: require('./unit.test'),

@@ -18,6 +18,7 @@ const units = {
   sum: require('./sum.test'),
   toPolar: require('./toPolar.test'),
   toSpherical: require('./toSpherical.test'),
+  transformBy: require('./transformBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   unit: require('./unit.test'),
