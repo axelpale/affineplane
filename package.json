@@ -9,6 +9,7 @@
     "2d",
     "space",
     "geometry",
+    "metric",
     "tensor",
     "scale",
     "rotate",
