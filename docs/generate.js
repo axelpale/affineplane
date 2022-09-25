@@ -22,7 +22,9 @@ yamdog.generate({
   // Styling; decorate the docs
   decorators: [
     decor.aliases(),
-    decor.alphabetical(),
+    decor.alphabetical({
+      groupCase: true
+    }),
     decor.linkNames(),
     decor.replace([
       {
@@ -68,7 +70,9 @@ yamdog.generate({
     }),
     decor.italicSingles(),
     decor.backTopLinks(),
-    decor.toc(),
+    decor.toc({
+      title: '**Contents:**'
+    }),
     decor.sourceLinks({
       basePath: path.resolve(__dirname, '..'),
       baseUrl: 'https://github.com/axelpale/affineplane/blob/main/'
