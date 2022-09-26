@@ -145,6 +145,12 @@ Run only linter:
 
     $ npm run lint
 
+## See also
+
+List of [2D Geometry Libraries for JavaScript](https://www.akselipalen.com/2021/06/10/2d-geometry-libraries-for-javascript/) for alternative packages that might suit your particular case better.
+
+Interactive transformation matrix visualizers are useful for learning. For example, see [2D Matrix Visualizer](https://web.ma.utexas.edu/users/ysulyma/matrix/) ([alt](https://lmqm.xyz/a/fxh/matrix_visualizer)) by [Yuri Sulyma](https://ysulyma.github.io/) and [Simple 3D Matrix Visualizer](https://harry7557558.github.io/tools/matrixv.html) by [Harry Chen](https://harry7557558.github.io/).
+
 ## License
 
 [MIT](LICENSE)
