@@ -17,11 +17,11 @@ module.exports = (ts) => {
       'half scale'
     )
 
-    plane = { a: 1, b: 0, x: 0, y: 0, z: 0 }
-    center = { x: 100, y: 100 } // note 2d center
+    plane = { a: 1, b: 0, x: 0, y: 0, z: 5 }
+    center = { x: 100, y: 100 } // note 2d center, should preserve z
     t.almostEqual(
       plane3.scaleBy(plane, center, 0.5),
-      { a: 0.5, b: 0, x: 50, y: 50, z: 0 },
+      { a: 0.5, b: 0, x: 50, y: 50, z: 5 },
       'scaling about a point not on plane origin'
     )
 
