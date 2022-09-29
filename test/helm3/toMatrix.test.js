@@ -15,7 +15,7 @@ module.exports = (ts) => {
         b4: 4,
         c1: 0,
         c2: 0,
-        c3: 1,
+        c3: Math.sqrt(5),
         c4: 5,
         d1: 0,
         d2: 0,
