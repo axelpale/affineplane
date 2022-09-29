@@ -23,11 +23,11 @@ module.exports = (ts) => {
       'translation does not affect'
     )
 
-    const singular = { a: 0, b: 0, x: 0, y: 0, z: 0 }
+    const singular = { a: 0, b: 0, x: 5, y: 5, z: 5 }
     t.almostEqual(
       vec3.transformBy({ x: 1, y: -1, z: -2 }, singular),
-      { x: 0, y: 0, z: -2 },
-      'singular transform results zero xy-component'
+      { x: 0, y: 0, z: 0 },
+      'singular transform results zero components, translation does not affect'
     )
 
     t.end()
