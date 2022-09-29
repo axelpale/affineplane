@@ -7,7 +7,7 @@ module.exports = (ts) => {
 
     t.deepEqual(
       plane3.transform(plane, tr),
-      { a: 0, b: 2, x: 0, y: 4, z: 3 },
+      { a: 0, b: 2, x: 0, y: 4, z: 4 },
       'rotate, scale, and translate'
     )
 
