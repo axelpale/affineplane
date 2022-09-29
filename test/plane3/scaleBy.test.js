@@ -26,11 +26,11 @@ module.exports = (ts) => {
     )
 
     plane = { a: 1, b: 0, x: 100, y: 100, z: 10 }
-    center = { x: 100, y: 100, z: 1000 }
+    center = { x: 100, y: 100, z: 0 }
     t.almostEqual(
       plane3.scaleBy(plane, center, 0.5),
-      { a: 0.5, b: 0, x: 100, y: 100, z: 10 },
-      'scaling about plane origin; z has no effect'
+      { a: 0.5, b: 0, x: 100, y: 100, z: 5 },
+      'scaling about plane origin but z offset'
     )
 
     t.end()
