@@ -19,12 +19,25 @@ module.exports = (ts) => {
   })
 
   ts.test('case: basic', (t) => {
-    const plane = { a: 1, b: 0, x: 1, y: 1, z: 1 }
-
+    const planea = { a: 1, b: 0, x: 1, y: 1, z: 1 }
     t.deepEqual(
-      point3.transitFrom({ x: 0, y: 0, z: 0 }, plane),
+      point3.transitFrom({ x: 0, y: 0, z: 0 }, planea),
       { x: 1, y: 1, z: 1 },
       'relative to the reference plane'
+    )
+
+    const planeb = { a: 2, b: 0, x: 1, y: 1, z: 1 }
+    t.deepEqual(
+      point3.transitFrom({ x: 1, y: 1, z: 1 }, planeb),
+      { x: 3, y: 3, z: 3 },
+      'scale and translate'
+    )
+
+    const planec = { a: 0, b: 2, x: 1, y: 1, z: 1 }
+    t.deepEqual(
+      point3.transitFrom({ x: 1, y: 1, z: 1 }, planec),
+      { x: -1, y: 3, z: 3 },
+      'scale, rotate, and translate'
     )
 
     t.end()

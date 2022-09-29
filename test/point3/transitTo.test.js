@@ -27,6 +27,14 @@ module.exports = (ts) => {
       'relative to plane'
     )
 
+    const planeb = { a: 2, b: 0, x: 1, y: 1, z: 1 }
+
+    t.deepEqual(
+      point3.transitTo({ x: 3, y: 3, z: 3 }, planeb),
+      { x: 1, y: 1, z: 1 },
+      'transit to scaled and translated plane'
+    )
+
     t.end()
   })
 }
