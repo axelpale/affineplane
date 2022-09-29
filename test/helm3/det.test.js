@@ -28,7 +28,7 @@ module.exports = (ts) => {
 
     t.equal(
       helm3.det({ a: 3, b: 4, x: 0, y: 0, z: 0 }),
-      25,
+      125, // 5 * 5 * 5
       'L2 norm of linear basis vector'
     )
 
