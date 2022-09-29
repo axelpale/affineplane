@@ -11,6 +11,12 @@ module.exports = (ts) => {
       'rotate, scale, and translate'
     )
 
+    t.deepEqual(
+      plane3.transformBy(plane, tr),
+      plane3.transform(plane, tr),
+      'alias'
+    )
+
     t.end()
   })
 }
