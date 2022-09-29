@@ -14,6 +14,7 @@ const units = {
   scaleBy: require('./scaleBy.test'),
   scaleTo: require('./scaleTo.test'),
   transform: require('./transform.test'),
+  transitFrom: require('./transitFrom.test'),
   translateBy: require('./translateBy.test'),
   translateTo: require('./translateTo.test'),
   validate: require('./validate.test')
