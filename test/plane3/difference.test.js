@@ -7,8 +7,8 @@ module.exports = (ts) => {
 
     t.almostEqual(
       plane3.between(source, target),
-      { a: 0.5, b: 0, x: -0.5, y: -0.5, z: -1 },
-      'source represented on target, z is scale invariant'
+      { a: 0.5, b: 0, x: -0.5, y: -0.5, z: -0.5 },
+      'source represented on target'
     )
 
     t.end()
