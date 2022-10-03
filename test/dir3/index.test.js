@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
-  create: require('./almostEqual.test')
+  almostEqual: require('./almostEqual.test'),
+  fromAngles: require('./fromAngles.test'),
 }
 
 module.exports = (t) => {
