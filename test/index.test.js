@@ -6,6 +6,7 @@ const units = {
   'affineplane.angle': require('./angle/index.test'),
   'affineplane.epsilon': require('./epsilon/index.test'),
   'affineplane.dir2': require('./dir2/index.test'),
+  'affineplane.dir3': require('./dir3/index.test'),
   'affineplane.dist2': require('./dist2/index.test'),
   'affineplane.dist3': require('./dist3/index.test'),
   'affineplane.helm2': require('./helm2/index.test'),
