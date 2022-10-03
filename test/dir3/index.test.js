@@ -2,7 +2,8 @@
 const units = {
   almostEqual: require('./almostEqual.test'),
   fromAngles: require('./fromAngles.test'),
-  fromVector: require('./fromVector.test')
+  fromVector: require('./fromVector.test'),
+  toVector: require('./toVector.test')
 }
 
 module.exports = (t) => {
