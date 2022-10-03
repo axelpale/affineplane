@@ -3,6 +3,7 @@ const test = require('tape')
 // Units
 
 const units = {
+  'affineplane.angle': require('./angle/index.test'),
   'affineplane.epsilon': require('./epsilon/index.test'),
   'affineplane.dir2': require('./dir2/index.test'),
   'affineplane.dist2': require('./dist2/index.test'),
