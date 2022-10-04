@@ -20,8 +20,8 @@ module.exports = (ts) => {
 
   ts.test('case: allow small difference', (t) => {
     const epsilon = 1
-    let d0 = { x: 1, y: 0.5, z: -1 }
-    let d1 = { x: 1, y: 1, z: -1 }
+    const d0 = { x: 1, y: 0.5, z: -1 }
+    const d1 = { x: 1, y: 1, z: -1 }
     t.ok(
       dir3.almostEqual(d0, d1, epsilon),
       'half epsilon difference'
