@@ -34,12 +34,12 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "async": "^3.2.3",
+    "async": "^3.2.4",
     "genversion": "^3.1.1",
-    "nodemon": "^2.0.16",
+    "nodemon": "^2.0.20",
     "standard": "^17.0.0",
-    "tape": "^5.6.0",
     "tap-arc": "^0.3.5",
+    "tape": "^5.6.1",
     "yamdog": "^1.5.0"
   },
   "scripts": {
