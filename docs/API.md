@@ -16,7 +16,9 @@ The functions are grouped in the following submodules.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.angle](#affineplaneangle)
 - [affineplane.dir2](#affineplanedir2)
+- [affineplane.dir3](#affineplanedir3)
 - [affineplane.dist2](#affineplanedist2)
 - [affineplane.dist3](#affineplanedist3)
 - [affineplane.epsilon](#affineplaneepsilon)
@@ -40,15 +42,90 @@ The functions are grouped in the following submodules.
 
 Source: [lib/index.js](https://github.com/axelpale/affineplane/blob/main/lib/index.js)
 
+<a name="affineplaneangle"></a>
+## [affineplane](#affineplane).[angle](#affineplaneangle)
+
+Common utilites to handle angles.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.angle.degToRad](#affineplaneangledegtorad)
+- [affineplane.angle.modulo](#affineplaneanglemodulo)
+- [affineplane.angle.radToDeg](#affineplaneangleradtodeg)
+
+
+Source: [angle/index.js](https://github.com/axelpale/affineplane/blob/main/lib/angle/index.js)
+
+<a name="affineplaneangledegtorad"></a>
+## [affineplane](#affineplane).[angle](#affineplaneangle).[degToRad](#affineplaneangledegtorad)(deg)
+
+Convert angle from degrees to radians, for example 720 becomes 4π.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *deg*
+  - a number, an angle in degrees.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a number, the angle in radians.
+
+
+Source: [degToRad.js](https://github.com/axelpale/affineplane/blob/main/lib/angle/degToRad.js)
+
+<a name="affineplaneanglemodulo"></a>
+## [affineplane](#affineplane).[angle](#affineplaneangle).[modulo](#affineplaneanglemodulo)(r)
+
+Limit an angle between ]-PI, +PI] but preserve the direction.
+This can be used to preprocess user input, for example to normalize
+4*PI as 0.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *r*
+  - angle in radians, allowed to be outside ]-PI, +PI].
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a number, the angle in radians and between ]-PI, +PI]
+
+
+Source: [modulo.js](https://github.com/axelpale/affineplane/blob/main/lib/angle/modulo.js)
+
+<a name="affineplaneangleradtodeg"></a>
+## [affineplane](#affineplane).[angle](#affineplaneangle).[radToDeg](#affineplaneangleradtodeg)(rad)
+
+Convert angle from radians to degrees. For example 4π becomes 720.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rad*
+  - a number, an angle in radians.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a number, the angle in degrees.
+
+
+Source: [radToDeg.js](https://github.com/axelpale/affineplane/blob/main/lib/angle/radToDeg.js)
+
 <a name="affineplanedir2"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2)
 
-Number in ]-π, π]
+A direction on 2D space.
 
-A direction is just an angle number in radians clockwise from
-the positive x-axis around z-axis.
-The direction is capped between -Pi (exclusive) and Pi (inclusive).
-
+A direction is basically a unit vector.
 When a direction is transited between planes, only the rotation of
 the coordinate space affects the direction.
 
@@ -59,17 +136,53 @@ the coordinate space affects the direction.
 
 
 - [affineplane.dir2.create](#affineplanedir2create)
+- [affineplane.dir2.fromPolar](#affineplanedir2frompolar)
+- [affineplane.dir2.fromVector](#affineplanedir2fromvector)
+- [affineplane.dir2.toAngle](#affineplanedir2toangle)
+- [affineplane.dir2.toPolar](#affineplanedir2topolar)
+- [affineplane.dir2.toVector](#affineplanedir2tovector)
 - [affineplane.dir2.transitFrom](#affineplanedir2transitfrom)
 - [affineplane.dir2.transitTo](#affineplanedir2transitto)
 
 
 Source: [dir2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/index.js)
 
-<a name="affineplanedir2create"></a>
-## [affineplane](#affineplane).[dir2](#affineplanedir2).[create](#affineplanedir2create)(r)
+<a name="affineplanedir3"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3)
 
-Create a new direction. Angles outside ]-π,π] are mapped
-within the limits with modulus operators.
+Direction in 3D. Basically a unit vector that carries semantics of direction.
+Under a change of the reference frame, the change in translation and scale
+do not affect the direction, only the change in orientation (=attitude) does.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
+- [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
+- [affineplane.dir3.create](#affineplanedir3create)
+- [affineplane.dir3.fromSpherical](#affineplanedir3fromspherical)
+- [affineplane.dir3.fromVector](#affineplanedir3fromvector)
+- [affineplane.dir3.projectTo](#affineplanedir3projectto)
+- [affineplane.dir3.toSpherical](#affineplanedir3tospherical)
+- [affineplane.dir3.toVector](#affineplanedir3tovector)
+- [affineplane.dir3.transitFrom](#affineplanedir3transitfrom)
+- [affineplane.dir3.transitTo](#affineplanedir3transitto)
+
+
+Source: [dir3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/index.js)
+
+<a name="affineplanedir2create"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[create](#affineplanedir2create)
+
+Alias of [affineplane.dir2.fromPolar](#affineplanedir2frompolar)
+
+Source: [fromPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/fromPolar.js)
+
+<a name="affineplanedir2frompolar"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[fromPolar](#affineplanedir2frompolar)(r)
+
+Create a new direction from an angle.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
@@ -81,22 +194,96 @@ within the limits with modulus operators.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a number. The angle in radians between ]-PI, +PI]
+- a dir2
 
 
-Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/create.js)
+Aliases: [affineplane.dir2.create](#affineplanedir2create)
+
+Source: [fromPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/fromPolar.js)
+
+<a name="affineplanedir2fromvector"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[fromVector](#affineplanedir2fromvector)(v)
+
+Create a new direction from a vector. If given a zero vector, return
+direction towards positive x-axis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *v*
+  - a [vec2](#affineplanevec2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a dir2
+
+
+Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/fromVector.js)
+
+<a name="affineplanedir2toangle"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[toAngle](#affineplanedir2toangle)
+
+Alias of [affineplane.dir2.toPolar](#affineplanedir2topolar)
+
+Source: [toPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/toPolar.js)
+
+<a name="affineplanedir2topolar"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[toPolar](#affineplanedir2topolar)(dir)
+
+Get the direction as angle around z-axis measured from positive x-axis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *dir*
+  - a dir2 object or unit [vec2](#affineplanevec2).
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a number, an angle in radians in ]-π, π].
+
+
+Aliases: [affineplane.dir2.toAngle](#affineplanedir2toangle)
+
+Source: [toPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/toPolar.js)
+
+<a name="affineplanedir2tovector"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[toVector](#affineplanedir2tovector)(dir, magn)
+
+Get a vector from the direction with the given length.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *dir*
+  - a dir2
+- *magn*
+  - a number, the magnitude of the vector to create.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [vec2](#affineplanevec2)
+
+
+Source: [toVector.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/toVector.js)
 
 <a name="affineplanedir2transitfrom"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[transitFrom](#affineplanedir2transitfrom)(dir, source)
 
-Transit a direction angle from the source plane
+Transit a direction from the source plane
 to the reference plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 
 - *dir*
-  - a number, a dir2 angle in radians on the source plane.
+  - a dir2 on the source plane.
 - *source*
   - a [plane2](#affineplaneplane2), the source plane, represented on the reference plane.
 
@@ -104,7 +291,7 @@ to the reference plane.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a number, a dir2 angle, represented on the reference plane.
+- a dir2, represented on the reference plane.
 
 
 Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/transitFrom.js)
@@ -128,10 +315,259 @@ in the coordinate system of the target plane.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a number, a dir2 on the target plane.
+- a dir2 on the target plane.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/transitTo.js)
+
+<a name="affineplanedir3almostequal"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[almostEqual](#affineplanedir3almostequal)(d, dd[, epsilon])
+
+Test if directions are almost equal by the margin of epsilon.
+The directions are compared as two unit vectors.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *d*
+  - a dir2
+- *dd*
+  - a dir2
+- *epsilon*
+  - Optional number, default to [affineplane.epsilon](#affineplaneepsilon).
+  - Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/almostEqual.js)
+
+<a name="affineplanedir3almostequal"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[almostEqual](#affineplanedir3almostequal)(d, dd[, epsilon])
+
+Test if directions are almost equal by the margin of epsilon.
+The directions are compared as two unit vectors.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *d*
+  - a dir3
+- *dd*
+  - a dir3
+- *epsilon*
+  - Optional number, default to [affineplane.epsilon](#affineplaneepsilon).
+  - Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/almostEqual.js)
+
+<a name="affineplanedir3create"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[create](#affineplanedir3create)
+
+Alias of [affineplane.dir3.fromSpherical](#affineplanedir3fromspherical)
+
+Source: [fromSpherical.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/fromSpherical.js)
+
+<a name="affineplanedir3fromspherical"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[fromSpherical](#affineplanedir3fromspherical)(theta, phi)
+
+Create a direction in 3D space from two angles.
+The angles correspond to azimuthal and polar angles in the
+[spherical coordinates system](
+https://en.wikipedia.org/wiki/Spherical_coordinate_system)
+when z-axis is considered the polar axis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *theta*
+  - a number, an angle in radians around z-axis from positive x-axis.
+  - Gives the direction on xy-plane.
+  - In geographical terms, a longitude when z-axis points the north pole.
+  - In spherical coordinate system, this is often called azimuthal angle.
+- *phi*
+  - a number, an angle in radians from the positive z-axis.
+  - The angle π/2 corresponds to a direction perpendicular to z-axis.
+  - In geographical terms, a latitude if measured from the north pole.
+  - In spherical coordinate system, this is often called polar angle.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a dir3
+
+
+<p style="margin-bottom: 0">Examples:</p>
+
+
+- Toward positive x-axis: dir3.fromSpherical(0, π/2)
+- Toward positive y-axis: dir3.fromSpherical(π/2, π/2)
+- Toward positive z-axis: dir3.fromSpherical(0, 0)
+- Toward point (1,1,1): dir3.fromSpherical(π/4, π/4)
+
+
+Aliases: [affineplane.dir3.create](#affineplanedir3create)
+
+Source: [fromSpherical.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/fromSpherical.js)
+
+<a name="affineplanedir3fromvector"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[fromVector](#affineplanedir3fromvector)(vec)
+
+Create a new direction from a vector. If the case of zero vector,
+the default direction towards positive x-axis is returned.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *vec*
+  - a [vec3](#affineplanevec3), represented in the reference frame.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a dir3
+
+
+Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/fromVector.js)
+
+<a name="affineplanedir3projectto"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[projectTo](#affineplanedir3projectto)(dir, plane)
+
+Project a 3D direction onto a 2D plane orthogonally.
+We cannot project 3D directions perspectively because
+they have no fixed position and the perspective position
+depends on the position.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *dir*
+  - a dir3 in the reference space.
+- *plane*
+  - a [plane3](#affineplaneplane3) in the reference space. The image plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a dir2 on the image plane.
+
+
+Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/projectTo.js)
+
+<a name="affineplanedir3tospherical"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[toSpherical](#affineplanedir3tospherical)(dir)
+
+Get theta and phi angles of spherical coordinate system for
+the given direction.
+The two angles are unique for all directions.
+The function is compatible with [affineplane.dir3.fromSpherical](#affineplanedir3fromspherical)
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *dir*
+  - a dir3 object or unit [vec3](#affineplanevec3).
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- an object with properties
+  - *theta*
+    - a number, an angle in radians on the xy-plane when
+    - measured from positive x-axis and around z-axis.
+    - In geographical terms, if z-axis points the north pole, a longitude.
+    - In spherical coordinate system, this is often called azimuthal angle.
+  - *phi*
+    - a number, an angle in radians from the positive z-axis.
+    - In geographical terms, a latitude if measured from the north pole.
+    - In spherical coordinate system, this is often called the polar angle.
+
+
+Source: [toSpherical.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/toSpherical.js)
+
+<a name="affineplanedir3tovector"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[toVector](#affineplanedir3tovector)(dir[, magn])
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *dir*
+  - a dir3
+- *magn*
+  - optional number, default to 1. The magnitude of the vector to create.
+  - Note that a negative magnitude creates a vector to opposite direction.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [vec3](#affineplanevec3)
+
+
+Source: [toVector.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/toVector.js)
+
+<a name="affineplanedir3transitfrom"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[transitFrom](#affineplanedir3transitfrom)(dir, plane)
+
+Represent the direction on the reference plane
+without losing information.
+Note that plane translation or scale does not affect direction.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *dir*
+  - a dir3 on the source plane.
+- *plane*
+  - a [plane3](#affineplaneplane3) on the reference plane. The source plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a dir3, represented on the reference plane.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/transitFrom.js)
+
+<a name="affineplanedir3transitto"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[transitTo](#affineplanedir3transitto)(dir, target)
+
+Transit a dir3 to a target plane.
+In other words, represent the direction
+in the coordinate system of the target plane.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *dir*
+  - a number, a dir3 on the reference plane.
+- *target*
+  - a [plane3](#affineplaneplane3), the target plane, represented on the reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a dir3, represented on the target plane.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/transitTo.js)
 
 <a name="affineplanedist2"></a>
 ## [affineplane](#affineplane).[dist2](#affineplanedist2)
@@ -5840,7 +6276,7 @@ Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/uni
 Project a 3D vector onto a 2D plane orthogonally.
 We cannot project 3D vectors perspectively because
 they have no fixed position and the perspective position
-depends on the position. See [affineplane.line2](#affineplaneline2).projectTo
+depends on the position. See [affineplane.line3](#affineplaneline3).projectTo
 for perspective projection of a vector with fixed position.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
