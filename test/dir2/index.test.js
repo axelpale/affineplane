@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  almostEqual: require('./almostEqual.test'),
   fromPolar: require('./fromPolar.test'),
   fromVector: require('./fromVector.test'),
   transitFrom: require('./transitFrom.test'),
