@@ -6,19 +6,19 @@ module.exports = (ts) => {
   ts.test('case: basic', (t) => {
     let dir, plane
 
-    dir = PI
+    dir = dir2.fromAngle(PI)
     plane = { a: 1, b: 0, x: 0, y: 0 }
-    t.equal(
+    t.almostEqual(
       dir2.transitTo(dir, plane),
       dir,
       'identity plane does not change directions'
     )
 
-    dir = PI
+    dir = dir2.fromAngle(PI)
     plane = { a: 0, b: 2, x: 10, y: 10 }
-    t.equal(
+    t.almostEqual(
       dir2.transitTo(dir, plane),
-      PI / 2,
+      dir2.fromAngle(PI / 2),
       'only plane angle should matter'
     )
 
