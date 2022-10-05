@@ -5,7 +5,8 @@ const units = {
   fromVector: require('./fromVector.test'),
   toSpherical: require('./toSpherical.test'),
   toVector: require('./toVector.test'),
-  transitFrom: require('./transitFrom.test')
+  transitFrom: require('./transitFrom.test'),
+  transitTo: require('./transitTo.test')
 }
 
 module.exports = (t) => {
