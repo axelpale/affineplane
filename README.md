@@ -22,8 +22,10 @@ With [npm](https://www.npmjs.com/package/affineplane) or [yarn](https://yarnpkg.
 
 Shapes with position in space:
 
-- [dir2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir2), direction on a plane, `number` in radians
-- [dist2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist2), distance between two locations on a plane, `number`
+- [dir2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir2), direction in 2D, `{x,y}` of unit length
+- [dir3](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir3), direction in 3D, `{x,y,z}` of unit length
+- [dist2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist2), distance between two points in 2D, `number`
+- [dist3](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist3), distance between two points in 3D, `number`
 - [line2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneline2), a line in 2D, `{origin,span}`
 - [line3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneline3), a line in 3D, `{origin,span}`
 - [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2), a plane in 2D, `{a,b,x,y}`
@@ -84,7 +86,7 @@ In affineplane, we model a plane, such as [plane2](https://axelpale.github.io/af
 
 We call this transformation from a plane to its reference a *transition*. We treat transitions as [*passive transformations*](https://en.wikipedia.org/wiki/Active_and_passive_transformation) in a sense that they do not change the geometry, only the frame of reference. On the contrary, *active transformations* act on the geometry but keep the reference as is. While [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2) and [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3) are passive, see [helm2](https://axelpale.github.io/affineplane/docs/API.html#affineplanehelm2) and [helm3](https://axelpale.github.io/affineplane/docs/API.html#affineplanehelm3) for active variants of the same transformation.
 
-The [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2) represent the transition as an object `{a,b,x,y}` and [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3) as `{a,b,x,y,z}`. The `x,y,z` part of the object defines the position of the plane origin with respect to the reference origin. The `a,b` part defines the plane basis vector, where the vector length gives the scale and direction the angle in terms of the reference basis. See the illustration below for an example.
+The [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2) represent the transition as an object `{a,b,x,y}` and [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3) as `{a,b,x,y,z}`. The `x,y,z` part of the object defines the position of the plane origin with respect to the reference origin. The `a,b` part defines the plane basis vector, where the vector length gives the scale and the direction gives the angle in terms of the reference basis. See the illustration below for an example.
 
 ![Helmert transform as a point and basis vectors](docs/geometry-helmert-transform-2d.png)
 
