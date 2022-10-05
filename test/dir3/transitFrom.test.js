@@ -1,5 +1,4 @@
 const dir3 = require('../../index').dir3
-const PI = Math.PI
 
 module.exports = (ts) => {
   ts.test('case: basic transit from plane', (t) => {
