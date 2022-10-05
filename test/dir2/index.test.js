@@ -3,6 +3,7 @@ const units = {
   almostEqual: require('./almostEqual.test'),
   fromPolar: require('./fromPolar.test'),
   fromVector: require('./fromVector.test'),
+  toPolar: require('./toPolar.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test')
 }
