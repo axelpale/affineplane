@@ -6,8 +6,8 @@ module.exports = (ts) => {
     const target = { a: 2, b: 0, x: 20, y: 30, z: 40 }
     t.deepEqual(
       helm3.transitTo(tr, target),
-      { a: 2, b: 0, x: 10, y: 15, z: 40 },
-      'preserve depth displacement'
+      { a: 2, b: 0, x: 10, y: 15, z: 20 },
+      'preserve translation direction'
     )
 
     t.end()

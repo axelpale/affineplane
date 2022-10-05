@@ -29,8 +29,8 @@ module.exports = (ts) => {
     const planeb = { a: 2, b: 0, x: 1, y: 1, z: 1 }
     t.deepEqual(
       vec3.transitTo({ x: 2, y: 2, z: 2 }, planeb),
-      { x: 1, y: 1, z: 2 },
-      'scaling does not affect z'
+      { x: 1, y: 1, z: 1 },
+      'scaling preserves vector direction'
     )
 
     t.end()

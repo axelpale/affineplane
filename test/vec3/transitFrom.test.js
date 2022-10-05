@@ -34,8 +34,8 @@ module.exports = (ts) => {
     )
     t.deepEqual(
       vec3.transitFrom({ x: 1, y: 0, z: 1 }, planeb),
-      { x: 2, y: 0, z: 1 },
-      'scaling does not affect z'
+      { x: 2, y: 0, z: 2 },
+      'scaling affects also z'
     )
 
     t.end()

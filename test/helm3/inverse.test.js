@@ -9,6 +9,10 @@ module.exports = (ts) => {
     const x2 = inverse(helm3.HALF)
     t.almostEqual(x2, helm3.X2)
 
+    const tr = { a: 2, b: 0, x: 1, y: 2, z: 3 }
+    const itr = { a: 0.5, b: 0, x: -0.5, y: -1, z: -1.5 }
+    t.almostEqual(inverse(tr), itr, 'should invert translation')
+
     t.end()
   })
 
