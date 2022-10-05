@@ -4,6 +4,7 @@ const units = {
   fromPolar: require('./fromPolar.test'),
   fromVector: require('./fromVector.test'),
   toPolar: require('./toPolar.test'),
+  toVector: require('./toVector.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test')
 }
