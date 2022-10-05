@@ -1,7 +1,7 @@
 // A unit for each method.
 const units = {
   almostEqual: require('./almostEqual.test'),
-  fromAngles: require('./fromAngles.test'),
+  fromSpherical: require('./fromSpherical.test'),
   fromVector: require('./fromVector.test'),
   toVector: require('./toVector.test')
 }
