@@ -20,6 +20,7 @@ const units = {
   'affineplane.size2': require('./size2/index.test'),
   'affineplane.vec2': require('./vec2/index.test'),
   'affineplane.vec3': require('./vec3/index.test'),
+  'affineplane.vec4': require('./vec4/index.test'),
   'affineplane.version': require('./version/index.test')
 }
 
