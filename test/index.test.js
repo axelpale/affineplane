@@ -13,6 +13,7 @@ const units = {
   'affineplane.helm3': require('./helm3/index.test'),
   'affineplane.line2': require('./line2/index.test'),
   'affineplane.line3': require('./line3/index.test'),
+  'affineplane.quat4': require('./quat4/index.test'),
   'affineplane.plane2': require('./plane2/index.test'),
   'affineplane.plane3': require('./plane3/index.test'),
   'affineplane.point2': require('./point2/index.test'),
