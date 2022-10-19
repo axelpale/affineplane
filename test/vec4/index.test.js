@@ -1,7 +1,6 @@
 // A unit for each method.
 const units = {
-  add: require('./add.test'),
-  hamilton: require('./hamilton.test')
+  add: require('./add.test')
 }
 
 module.exports = (t) => {
