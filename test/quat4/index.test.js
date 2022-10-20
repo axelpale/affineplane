@@ -2,6 +2,7 @@
 const units = {
   conjugate: require('./conjugate.test'),
   difference: require('./difference.test'),
+  fromVector: require('./fromVector.test'),
   hamilton: require('./hamilton.test')
 }
 
