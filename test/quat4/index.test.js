@@ -3,6 +3,7 @@ const units = {
   add: require('./add.test'),
   conjugate: require('./conjugate.test'),
   difference: require('./difference.test'),
+  fromAxisAngle: require('./fromAxisAngle.test'),
   fromVector: require('./fromVector.test'),
   hamilton: require('./hamilton.test'),
   norm: require('./norm.test')
