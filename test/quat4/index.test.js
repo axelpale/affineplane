@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  conjugate: require('./conjugate.test'),
   hamilton: require('./hamilton.test')
 }
 
