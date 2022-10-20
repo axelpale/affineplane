@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  add: require('./add.test'),
   conjugate: require('./conjugate.test'),
   difference: require('./difference.test'),
   fromVector: require('./fromVector.test'),
