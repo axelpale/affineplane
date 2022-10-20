@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
   conjugate: require('./conjugate.test'),
+  difference: require('./difference.test'),
   hamilton: require('./hamilton.test')
 }
 
