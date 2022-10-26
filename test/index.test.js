@@ -18,6 +18,7 @@ const units = {
   'affineplane.plane3': require('./plane3/index.test'),
   'affineplane.point2': require('./point2/index.test'),
   'affineplane.point3': require('./point3/index.test'),
+  'affineplane.rect2': require('./rect2/index.test'),
   'affineplane.size2': require('./size2/index.test'),
   'affineplane.vec2': require('./vec2/index.test'),
   'affineplane.vec3': require('./vec3/index.test'),
