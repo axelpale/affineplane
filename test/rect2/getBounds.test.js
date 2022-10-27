@@ -3,7 +3,6 @@ const rect2 = affineplane.rect2
 
 module.exports = (ts) => {
   ts.test('case: basic bounds', (t) => {
-
     const r = {
       basis: { a: 1, b: 0, x: 0, y: 0 },
       size: { w: 10, h: 6 }
