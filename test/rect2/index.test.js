@@ -4,6 +4,7 @@ const units = {
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
   getArea: require('./getArea.test'),
+  getBounds: require('./getBounds.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test')
 }
