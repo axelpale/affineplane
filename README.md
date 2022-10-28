@@ -7,7 +7,7 @@
 
 A functional 2D plane geometry and dynamics library for spatial 2D and 3D applications. Designed especially for scaleable and rotatable [affine geometry](https://en.wikipedia.org/wiki/Affine_space) where parallel 2D planes float in 3D space and undergo [perspective projections](https://en.wikipedia.org/wiki/3D_projection) and [basis changes](https://en.wikipedia.org/wiki/Change_of_basis). Written in JavaScript (ECMAScript 6) with a functional, immutable, class-free style.
 
-[Install](#install) - [Geometry](#geometry) - [Usage](#using-data-structures-and-functions) - [API Docs](https://axelpale.github.io/affineplane/docs/API.html) - [Contribute](#contribute) - [Github](https://github.com/axelpale/affineplane)
+[Install](#install) - [Geometry](#geometry) - [Usage](#using-data-structures-and-functions) - [API Docs](https://axelpale.github.io/affineplane/docs/API.html) - [Contribute](#contribute) - [See also](#see-also) - [Github](https://github.com/axelpale/affineplane)
 
 ![affineplane social banner](docs/affineplane-social-banner.jpg)
 
@@ -152,6 +152,8 @@ Run only linter:
 List of [2D Geometry Libraries for JavaScript](https://www.akselipalen.com/2021/06/10/2d-geometry-libraries-for-javascript/) for alternative packages that might suit your particular case better.
 
 Interactive transformation matrix visualizers are useful for learning. For example, see [2D Matrix Visualizer](https://web.ma.utexas.edu/users/ysulyma/matrix/) ([alt](https://lmqm.xyz/a/fxh/matrix_visualizer)) by [Yuri Sulyma](https://ysulyma.github.io/) and [Simple 3D Matrix Visualizer](https://harry7557558.github.io/tools/matrixv.html) by [Harry Chen](https://harry7557558.github.io/).
+
+To wrap your head around 3D rotations and quaternions, see [interactive quaternion rotation videos by Sanderson and Eater](https://eater.net/quaternions/video/intro) featured on [3blue1brown YouTube channel](https://www.youtube.com/watch?v=zjMuIxRvygQ).
 
 ## License
 

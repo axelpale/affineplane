@@ -1,12 +1,13 @@
 {
   "name": "affineplane",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "Affine plane geometry library",
   "keywords": [
     "affine",
     "transformation",
     "plane",
     "2d",
+    "3d",
     "space",
     "geometry",
     "metric",
@@ -46,7 +47,7 @@
     "lint": "standard index.js 'lib/**/*.js' 'test/**/*.js'",
     "lint:fix": "standard --fix index.js 'lib/**/*.js' 'test/**/*.js'",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "tape test/index.test.js | tap-arc",
+    "test:unit": "tape test/index.test.js | tap-arc --pessimistic",
     "test:watch": "nodemon -q --watch lib --watch test --exec 'npm --silent test'",
     "gv": "genversion lib/version.js",
     "build:docs": "node docs/generate.js",

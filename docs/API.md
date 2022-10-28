@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.6.0
+# Affineplane API Documentation v2.7.0
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
@@ -27,14 +27,19 @@ The functions are grouped in the following submodules.
 - [affineplane.line2](#affineplaneline2)
 - [affineplane.line3](#affineplaneline3)
 - [affineplane.path2](#affineplanepath2)
+- [affineplane.path3](#affineplanepath3)
 - [affineplane.plane2](#affineplaneplane2)
 - [affineplane.plane3](#affineplaneplane3)
 - [affineplane.point2](#affineplanepoint2)
 - [affineplane.point3](#affineplanepoint3)
 - [affineplane.poly2](#affineplanepoly2)
+- [affineplane.quat4](#affineplanequat4)
+- [affineplane.rect2](#affineplanerect2)
+- [affineplane.rect3](#affineplanerect3)
 - [affineplane.size2](#affineplanesize2)
 - [affineplane.vec2](#affineplanevec2)
 - [affineplane.vec3](#affineplanevec3)
+- [affineplane.vec4](#affineplanevec4)
 - [affineplane.vector2](#affineplanevector2)
 - [affineplane.vector3](#affineplanevector3)
 - [affineplane.version](#affineplaneversion)
@@ -974,6 +979,8 @@ See [affineplane.plane3](#affineplaneplane3) for a positional variant.
 - [affineplane.helm3.toArray](#affineplanehelm3toarray)
 - [affineplane.helm3.toMatrix](#affineplanehelm3tomatrix)
 - [affineplane.helm3.transitFrom](#affineplanehelm3transitfrom)
+- [affineplane.helm3.transitTo](#affineplanehelm3transitto)
+- [affineplane.helm3.translateBy](#affineplanehelm3translateby)
 - [affineplane.helm3.validate](#affineplanehelm3validate)
 
 
@@ -1938,6 +1945,8 @@ further by the given vector.
 - a [helm3](#affineplanehelm3), a transform
 
 
+Aliases: [affineplane.helm3.translateBy](#affineplanehelm3translateby)
+
 Source: [addTranslation.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/addTranslation.js)
 
 <a name="affineplanehelm3almostequal"></a>
@@ -2504,6 +2513,37 @@ to the reference plane.
 
 Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/transitFrom.js)
 
+<a name="affineplanehelm3transitto"></a>
+## [affineplane](#affineplane).[helm3](#affineplanehelm3).[transitTo](#affineplanehelm3transitto)(tr, target)
+
+Transit a [helm3](#affineplanehelm3) to a target plane.
+In other words, represent the [helm3](#affineplanehelm3)
+in the coordinate system of the plane.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *tr*
+  - a [helm3](#affineplanehelm3) transformation represented on the reference plane.
+- *target*
+  - a [plane3](#affineplaneplane3), the target plane, represented on the reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [helm3](#affineplanehelm3), represented on the target plane.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/transitTo.js)
+
+<a name="affineplanehelm3translateby"></a>
+## [affineplane](#affineplane).[helm3](#affineplanehelm3).[translateBy](#affineplanehelm3translateby)
+
+Alias of [affineplane.helm3.addTranslation](#affineplanehelm3addtranslation)
+
+Source: [addTranslation.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/addTranslation.js)
+
 <a name="affineplanehelm3validate"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[validate](#affineplanehelm3validate)(tr)
 
@@ -2756,10 +2796,55 @@ Does not form a polygon but a sequence of line segments.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.path2.combine](#affineplanepath2combine)
 - [affineplane.path2.create](#affineplanepath2create)
+- [affineplane.path2.transitFrom](#affineplanepath2transitfrom)
+- [affineplane.path2.transitTo](#affineplanepath2transitto)
 
 
 Source: [path2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/index.js)
+
+<a name="affineplanepath3"></a>
+## [affineplane](#affineplane).[path3](#affineplanepath3)
+
+Three-dimensional path; Array of [point3](#affineplanepoint3); Open sequence of points;
+Does not form a polygon but a sequence of line segments.
+`[{ x, y, z }, { x, y, z }, ...]`
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.path3.combine](#affineplanepath3combine)
+- [affineplane.path3.create](#affineplanepath3create)
+- [affineplane.path3.projectTo](#affineplanepath3projectto)
+- [affineplane.path3.transitFrom](#affineplanepath3transitfrom)
+- [affineplane.path3.transitTo](#affineplanepath3transitto)
+
+
+Source: [path3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/index.js)
+
+<a name="affineplanepath2combine"></a>
+## [affineplane](#affineplane).[path2](#affineplanepath2).[combine](#affineplanepath2combine)(pa, pb)
+
+Combine paths together.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *pa*
+  - a [path2](#affineplanepath2)
+- *pb*
+  - a [path2](#affineplanepath2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [path2](#affineplanepath2)
+
+
+Source: [combine.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/combine.js)
 
 <a name="affineplanepath2create"></a>
 ## [affineplane](#affineplane).[path2](#affineplanepath2).[create](#affineplanepath2create)(points)
@@ -2780,6 +2865,161 @@ Create a path on plane. Deep-clones the points array.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/create.js)
+
+<a name="affineplanepath2transitfrom"></a>
+## [affineplane](#affineplane).[path2](#affineplanepath2).[transitFrom](#affineplanepath2transitfrom)(path, source)
+
+Represent a path on the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *path*
+  - a [path2](#affineplanepath2), represented on the source basis.
+- *source*
+  - a [plane2](#affineplaneplane2), the source basis, represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [path2](#affineplanepath2), represented on the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/transitFrom.js)
+
+<a name="affineplanepath2transitto"></a>
+## [affineplane](#affineplane).[path2](#affineplanepath2).[transitTo](#affineplanepath2transitto)(path, target)
+
+Transit a path to the target basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *path*
+  - a [path2](#affineplanepath2), on the reference basis.
+- *target*
+  - a [plane2](#affineplaneplane2), the target basis, represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [path2](#affineplanepath2), represented on the target basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/transitTo.js)
+
+<a name="affineplanepath3combine"></a>
+## [affineplane](#affineplane).[path3](#affineplanepath3).[combine](#affineplanepath3combine)(pa, pb)
+
+Combine paths together.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *pa*
+  - a path3
+- *pb*
+  - a path3
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a path3
+
+
+Source: [combine.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/combine.js)
+
+<a name="affineplanepath3create"></a>
+## [affineplane](#affineplane).[path3](#affineplanepath3).[create](#affineplanepath3create)(points)
+
+Create a path on plane. Deep-clones the points array.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *points*
+  - array of [point3](#affineplanepoint3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a path3, array of points
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/create.js)
+
+<a name="affineplanepath3projectto"></a>
+## [affineplane](#affineplane).[path3](#affineplanepath3).[projectTo](#affineplanepath3projectto)(path, plane[, camera])
+
+Project a 3D path onto a 2D plane orthogonally.
+Project perspectively if a camera position is given.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *path*
+  - a path3, in the reference basis.
+- *plane*
+  - a [plane3](#affineplaneplane3), in the reference basis. The image plane to which to project.
+- *camera*
+  - a [point3](#affineplanepoint3), in the reference basis. The location of the camera.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [path2](#affineplanepath2) on the image plane.
+
+
+Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/projectTo.js)
+
+<a name="affineplanepath3transitfrom"></a>
+## [affineplane](#affineplane).[path3](#affineplanepath3).[transitFrom](#affineplanepath3transitfrom)(path, source)
+
+Represent a path on the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *path*
+  - a path3, represented on the source basis.
+- *source*
+  - a [plane3](#affineplaneplane3), the source basis, represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a path3, represented on the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/transitFrom.js)
+
+<a name="affineplanepath3transitto"></a>
+## [affineplane](#affineplane).[path3](#affineplanepath3).[transitTo](#affineplanepath3transitto)(path, target)
+
+Transit a path to the target basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *path*
+  - a path3, on the reference basis.
+- *target*
+  - a [plane3](#affineplaneplane3), the target basis, represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a path3, represented on the target basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/transitTo.js)
 
 <a name="affineplaneplane2"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2)
@@ -3985,6 +4225,7 @@ translation of the plane on which they are represented.
 - [affineplane.point3.polarOffset](#affineplanepoint3polaroffset)
 - [affineplane.point3.projectTo](#affineplanepoint3projectto)
 - [affineplane.point3.rotateBy](#affineplanepoint3rotateby)
+- [affineplane.point3.round](#affineplanepoint3round)
 - [affineplane.point3.toArray](#affineplanepoint3toarray)
 - [affineplane.point3.transitFrom](#affineplanepoint3transitfrom)
 - [affineplane.point3.transitTo](#affineplanepoint3transitto)
@@ -4371,7 +4612,7 @@ Transform a point.
 Source: [transform.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/transform.js)
 
 <a name="affineplanepoint2transitfrom"></a>
-## [affineplane](#affineplane).[point2](#affineplanepoint2).[transitFrom](#affineplanepoint2transitfrom)(point, plane)
+## [affineplane](#affineplane).[point2](#affineplanepoint2).[transitFrom](#affineplanepoint2transitfrom)(point, source)
 
 Transit a [point2](#affineplanepoint2) from the source plane
 to the reference plane.
@@ -4756,6 +4997,26 @@ Roll is applied before pitch.
 
 Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/rotateBy.js)
 
+<a name="affineplanepoint3round"></a>
+## [affineplane](#affineplane).[point3](#affineplanepoint3).[round](#affineplanepoint3round)(p)
+
+Move point to the closest integer coordinate.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *p*
+  - a [point3](#affineplanepoint3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [point3](#affineplanepoint3), having integer coordinates.
+
+
+Source: [round.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/round.js)
+
 <a name="affineplanepoint3toarray"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[toArray](#affineplanepoint3toarray)(p)
 
@@ -4909,6 +5170,559 @@ Create a polygon on plane. Deep-clones the points array.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/poly2/create.js)
+
+<a name="affineplanequat4"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4)
+
+A quaternion `{ a, b, c, d }`
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.quat4.add](#affineplanequat4add)
+- [affineplane.quat4.conjugate](#affineplanequat4conjugate)
+- [affineplane.quat4.create](#affineplanequat4create)
+- [affineplane.quat4.diff](#affineplanequat4diff)
+- [affineplane.quat4.difference](#affineplanequat4difference)
+- [affineplane.quat4.fromDirectionAndAngle](#affineplanequat4fromdirectionandangle)
+- [affineplane.quat4.fromVector](#affineplanequat4fromvector)
+- [affineplane.quat4.hamilton](#affineplanequat4hamilton)
+- [affineplane.quat4.multiply](#affineplanequat4multiply)
+- [affineplane.quat4.norm](#affineplanequat4norm)
+
+
+Source: [quat4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/index.js)
+
+<a name="affineplanequat4add"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[add](#affineplanequat4add)(q, p)
+
+Add two quaternions together via component-wise addition.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *q*
+  - a quat4
+- *p*
+  - a quat4
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a quat4
+
+
+Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/add.js)
+
+<a name="affineplanequat4conjugate"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[conjugate](#affineplanequat4conjugate)(q)
+
+Get the conjugate of a quaternion.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *q*
+  - a quat4
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a quat4
+
+
+Source: [conjugate.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/conjugate.js)
+
+<a name="affineplanequat4create"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[create](#affineplanequat4create)(a, b, c, d)
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *a*
+  - a number
+- *b*
+  - a number
+- *c*
+  - a number
+- *d*
+  - a number
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a quat4
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/create.js)
+
+<a name="affineplanequat4diff"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[diff](#affineplanequat4diff)
+
+Alias of [affineplane.quat4.difference](#affineplanequat4difference)
+
+Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/difference.js)
+
+<a name="affineplanequat4difference"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[difference](#affineplanequat4difference)(q, p)
+
+Get the quaternion q - p.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *q*
+  - a quat4
+- *p*
+  - a quat4
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a quat4
+
+
+Aliases: [affineplane.quat4.diff](#affineplanequat4diff)
+
+Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/difference.js)
+
+<a name="affineplanequat4fromdirectionandangle"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[fromDirectionAndAngle](#affineplanequat4fromdirectionandangle)(dir, angle)
+
+Construct a unit quaternion from an axis vector and a rotation angle
+around that direction. Note that if this quaternion is later used to
+rotate a 3D vector, the rotation angle will be applied twice to map
+the vector back to 3D.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *dir*
+  - a dir3 or a [vec3](#affineplanevec3)
+- *angle*
+  - a number, an angle in radians
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a quat4
+
+
+Source: [fromAxisAngle.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/fromAxisAngle.js)
+
+<a name="affineplanequat4fromvector"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[fromVector](#affineplanequat4fromvector)(vec)
+
+Construct a vector quaternion i.e. a quaternion with zero scalar part.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *vec*
+  - a [vec3](#affineplanevec3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a quat4
+
+
+Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/fromVector.js)
+
+<a name="affineplanequat4hamilton"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[hamilton](#affineplanequat4hamilton)(q, p)
+
+The Hamilton product of two quaternions.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *q*
+  - a quat4
+- *p*
+  - a quat4
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a quat4
+
+
+Aliases: [affineplane.quat4.multiply](#affineplanequat4multiply)
+
+Source: [hamilton.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/hamilton.js)
+
+<a name="affineplanequat4multiply"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[multiply](#affineplanequat4multiply)
+
+Alias of [affineplane.quat4.hamilton](#affineplanequat4hamilton)
+
+Source: [hamilton.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/hamilton.js)
+
+<a name="affineplanequat4norm"></a>
+## [affineplane](#affineplane).[quat4](#affineplanequat4).[norm](#affineplanequat4norm)(q)
+
+The length of quaternion. Also called the norm.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *q*
+  - a quat4
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a number
+
+
+Source: [norm.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/norm.js)
+
+<a name="affineplanerect2"></a>
+## [affineplane](#affineplane).[rect2](#affineplanerect2)
+
+Rectangle on a two-dimensional plane. A rectangle is an object
+`{ basis: { a, b, x, y }, size: { w, h } }`, where the basis
+is a transformation from rectangle's inner coordinate system
+to the reference coordinate system.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.rect2.at](#affineplanerect2at)
+- [affineplane.rect2.atNorm](#affineplanerect2atnorm)
+- [affineplane.rect2.getArea](#affineplanerect2getarea)
+- [affineplane.rect2.getArea](#affineplanerect2getarea)
+- [affineplane.rect2.getBounds](#affineplanerect2getbounds)
+- [affineplane.rect2.getBounds](#affineplanerect2getbounds)
+- [affineplane.rect2.transitFrom](#affineplanerect2transitfrom)
+- [affineplane.rect2.transitTo](#affineplanerect2transitto)
+
+
+Source: [rect2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/rect2/index.js)
+
+<a name="affineplanerect3"></a>
+## [affineplane](#affineplane).[rect3](#affineplanerect3)
+
+A rectangle, floating in three dimensions. A rect3 is an object
+`{ basis: { a, b, x, y, z }, size: { w, h } }`, where the basis
+is a [helm3](#affineplanehelm3) - a Helmert transformation from rectangle's inner coordinate
+system to the reference coordinate system.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.rect3.at](#affineplanerect3at)
+- [affineplane.rect3.atNorm](#affineplanerect3atnorm)
+- [affineplane.rect3.create](#affineplanerect3create)
+- [affineplane.rect3.transitFrom](#affineplanerect3transitfrom)
+- [affineplane.rect3.transitTo](#affineplanerect3transitto)
+
+
+Source: [rect3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/index.js)
+
+<a name="affineplanerect2at"></a>
+## [affineplane](#affineplane).[rect2](#affineplanerect2).[at](#affineplanerect2at)(rect, rx, ry)
+
+Take a point on the rect, represented on the rects outer basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rect2
+- *rx*
+  - horizontal distance from the top-left corner of the rectangle represented on the rects inner basis
+- *ry*
+  - vertical distance from the top-left corner of the rectangle represented on the rects inner basis
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [point2](#affineplanepoint2) on the outer basis
+
+
+Source: [at.js](https://github.com/axelpale/affineplane/blob/main/lib/rect2/at.js)
+
+<a name="affineplanerect2atnorm"></a>
+## [affineplane](#affineplane).[rect2](#affineplanerect2).[atNorm](#affineplanerect2atnorm)(rect, nw, nh)
+
+Take a point on the rect.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rectangle
+- *nw*
+  - a number, a normalized coordinate along width 0..1
+- *nh*
+  - a number, a normalized coordinate along height 0..1
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a point on the rectangle's outer basis
+
+
+Source: [atNorm.js](https://github.com/axelpale/affineplane/blob/main/lib/rect2/atNorm.js)
+
+<a name="affineplanerect2getarea"></a>
+## [affineplane](#affineplane).[rect2](#affineplanerect2).[getArea](#affineplanerect2getarea)(rect)
+
+Compute rectangle area. This returns the area on the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rect2, on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a number, the area on the reference basis.
+
+
+Source: [getArea.js](https://github.com/axelpale/affineplane/blob/main/lib/rect2/getArea.js)
+
+<a name="affineplanerect2getarea"></a>
+## [affineplane](#affineplane).[rect2](#affineplanerect2).[getArea](#affineplanerect2getarea)(rect)
+
+Compute rectangle area. This returns the area on the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rect2, on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a number, the area on the reference basis.
+
+
+Source: [getArea.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/getArea.js)
+
+<a name="affineplanerect2getbounds"></a>
+## [affineplane](#affineplane).[rect2](#affineplanerect2).[getBounds](#affineplanerect2getbounds)(rect)
+
+Get outer bounds of the given rect. In other words,
+return a rectangle with no rotation and no dilation with respect to
+the reference basis but has translation and size so that it covers
+the given rectangle.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rect2, on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a rect2, on the reference basis.
+
+
+Source: [getBounds.js](https://github.com/axelpale/affineplane/blob/main/lib/rect2/getBounds.js)
+
+<a name="affineplanerect2getbounds"></a>
+## [affineplane](#affineplane).[rect2](#affineplanerect2).[getBounds](#affineplanerect2getbounds)(rect)
+
+Get outer bounds of the given rect. In other words,
+return a rectangle with no rotation and no dilation with respect to
+the reference basis but has translation and size so that it covers
+the given rectangle.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rect2, on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a rect2, on the reference basis.
+
+
+Source: [getBounds.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/getBounds.js)
+
+<a name="affineplanerect2transitfrom"></a>
+## [affineplane](#affineplane).[rect2](#affineplanerect2).[transitFrom](#affineplanerect2transitfrom)(rect, source)
+
+Convert a rectangle from source basis to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rect2, a rectangle on the source basis.
+- *source*
+  - a [plane2](#affineplaneplane2), the source basis represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a rect2, represented on the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/rect2/transitFrom.js)
+
+<a name="affineplanerect2transitto"></a>
+## [affineplane](#affineplane).[rect2](#affineplanerect2).[transitTo](#affineplanerect2transitto)(rect, target)
+
+Convert a rectangle from the reference basis to the target basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rectangle on the reference basis.
+- *target*
+  - a [plane2](#affineplaneplane2), the target basis represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a rect2, represented on the target basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/rect2/transitTo.js)
+
+<a name="affineplanerect3at"></a>
+## [affineplane](#affineplane).[rect3](#affineplanerect3).[at](#affineplanerect3at)(rect, rx, ry)
+
+Take a point on the rect, represented on the rects outer basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rect2
+- *rx*
+  - horizontal distance from the top-left corner of the rectangle represented on the rects inner basis
+- *ry*
+  - vertical distance from the top-left corner of the rectangle represented on the rects inner basis
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [point3](#affineplanepoint3), represented on the outer basis.
+
+
+Source: [at.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/at.js)
+
+<a name="affineplanerect3atnorm"></a>
+## [affineplane](#affineplane).[rect3](#affineplanerect3).[atNorm](#affineplanerect3atnorm)(rect, nw, nh)
+
+Take a point on the rect.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rectangle
+- *nw*
+  - a number, a normalized coordinate along width 0..1
+- *nh*
+  - a number, a normalized coordinate along height 0..1
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [point3](#affineplanepoint3), in the rectangle's outer basis
+
+
+Source: [atNorm.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/atNorm.js)
+
+<a name="affineplanerect3create"></a>
+## [affineplane](#affineplane).[rect3](#affineplanerect3).[create](#affineplanerect3create)(basis, size)
+
+Construct a rect3 object from basis and size.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *basis*
+  - a basis3
+- *size*
+  - a [size2](#affineplanesize2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a rect3
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/create.js)
+
+<a name="affineplanerect3transitfrom"></a>
+## [affineplane](#affineplane).[rect3](#affineplanerect3).[transitFrom](#affineplanerect3transitfrom)(rect, source)
+
+Convert a rectangle from source basis to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rect3, a rectangle on the source basis.
+- *source*
+  - a basis3, the source basis represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a rect3, represented on the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/transitFrom.js)
+
+<a name="affineplanerect3transitto"></a>
+## [affineplane](#affineplane).[rect3](#affineplanerect3).[transitTo](#affineplanerect3transitto)(rect, target)
+
+Convert a rectangle from the reference basis to the target basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *rect*
+  - a rectangle on the reference basis.
+- *target*
+  - a basis3, the target basis represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a rect3, represented on the target basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/transitTo.js)
 
 <a name="affineplanesize2"></a>
 ## [affineplane](#affineplane).[size2](#affineplanesize2)
@@ -5152,8 +5966,10 @@ Aliases: [affineplane.vector3](#affineplanevector3)
 - [affineplane.vec3.invert](#affineplanevec3invert)
 - [affineplane.vec3.magnitude](#affineplanevec3magnitude)
 - [affineplane.vec3.negate](#affineplanevec3negate)
+- [affineplane.vec3.norm](#affineplanevec3norm)
 - [affineplane.vec3.normalize](#affineplanevec3normalize)
 - [affineplane.vec3.projectTo](#affineplanevec3projectto)
+- [affineplane.vec3.rotateAroundAxis](#affineplanevec3rotatearoundaxis)
 - [affineplane.vec3.rotateBy](#affineplanevec3rotateby)
 - [affineplane.vec3.rotateBy](#affineplanevec3rotateby)
 - [affineplane.vec3.scaleBy](#affineplanevec3scaleby)
@@ -5171,6 +5987,23 @@ Aliases: [affineplane.vector3](#affineplanevector3)
 
 
 Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/index.js)
+
+<a name="affineplanevec4"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4)
+
+A vec4 is a 4D vector { x, y, z, w }.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.vec4.add](#affineplanevec4add)
+- [affineplane.vec4.create](#affineplanevec4create)
+- [affineplane.vec4.norm](#affineplanevec4norm)
+- [affineplane.vec4.scaleBy](#affineplanevec4scaleby)
+
+
+Source: [vec4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/index.js)
 
 <a name="affineplanevec2add"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[add](#affineplanevec2add)(v, w)
@@ -6254,6 +7087,8 @@ The euclidean length of the vector.
 - a number
 
 
+Aliases: [affineplane.vec3.norm](#affineplanevec3norm)
+
 Source: [magnitude.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/magnitude.js)
 
 <a name="affineplanevec3negate"></a>
@@ -6262,6 +7097,13 @@ Source: [magnitude.js](https://github.com/axelpale/affineplane/blob/main/lib/vec
 Alias of [affineplane.vec3.invert](#affineplanevec3invert)
 
 Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/invert.js)
+
+<a name="affineplanevec3norm"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[norm](#affineplanevec3norm)
+
+Alias of [affineplane.vec3.magnitude](#affineplanevec3magnitude)
+
+Source: [magnitude.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/magnitude.js)
 
 <a name="affineplanevec3normalize"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[normalize](#affineplanevec3normalize)
@@ -6278,14 +7120,16 @@ We cannot project 3D vectors perspectively because
 they have no fixed position and the perspective position
 depends on the position. See [affineplane.line3](#affineplaneline3).projectTo
 for perspective projection of a vector with fixed position.
+See [affineplane.path3.projectTo](#affineplanepath3projectto) for perspective projection of
+a sequence of points.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 
 - *vec*
-  - a [vec3](#affineplanevec3) in the reference space.
+  - a [vec3](#affineplanevec3), in the reference basis.
 - *plane*
-  - a [plane3](#affineplaneplane3) in the reference space. The image plane.
+  - a [plane3](#affineplaneplane3), in the reference basis. The image plane to which to project.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
@@ -6295,6 +7139,35 @@ for perspective projection of a vector with fixed position.
 
 
 Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/projectTo.js)
+
+<a name="affineplanevec3rotatearoundaxis"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[rotateAroundAxis](#affineplanevec3rotatearoundaxis)(v, axis, angle)
+
+Rotate a vector by the given radian angle around the specified axis vector.
+The method uses [Rodriques' rotation formula](
+https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula) under
+the hood. If you need to rotate multiple vectors simultaneously,
+it is probably better to construct a rotation matrix first and apply
+it to each vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *v*
+  - a [vec3](#affineplanevec3)
+- *axis*
+  - a [vec3](#affineplanevec3), must not be zero vector
+- *angle*
+  - a number, an angle in radians. Right-hand rotation around the given axis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [vec3](#affineplanevec3)
+
+
+Source: [rotateAroundAxis.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/rotateAroundAxis.js)
 
 <a name="affineplanevec3rotateby"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[rotateBy](#affineplanevec3rotateby)(v, roll[, pitch])
@@ -6608,6 +7481,94 @@ Check if object is a valid [vec3](#affineplanevec3).
 
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/validate.js)
+
+<a name="affineplanevec4add"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4).[add](#affineplanevec4add)(v, w)
+
+Add two vectors together via component-wise addition.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *v*
+  - a vec4
+- *w*
+  - a vec4
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a vec4
+
+
+Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/add.js)
+
+<a name="affineplanevec4create"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4).[create](#affineplanevec4create)(x, y, z, w)
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *x*
+  - a number
+- *y*
+  - a number
+- *z*
+  - a number
+- *w*
+  - a number
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a vec4
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/create.js)
+
+<a name="affineplanevec4norm"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4).[norm](#affineplanevec4norm)(v)
+
+The length of 4D vector. Also called the norm.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *v*
+  - a vec4
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a number
+
+
+Source: [norm.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/norm.js)
+
+<a name="affineplanevec4scaleby"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4).[scaleBy](#affineplanevec4scaleby)(v, m)
+
+Scalar multiplication of a vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *v*
+  - a vec4
+- *m*
+  - a number, a multiplier
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a vec4
+
+
+Source: [scaleBy.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/scaleBy.js)
 
 <a name="affineplanevector2"></a>
 ## [affineplane](#affineplane).[vector2](#affineplanevector2)

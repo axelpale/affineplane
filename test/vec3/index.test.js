@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  add: require('./add.test'),
   cross: require('./cross.test'),
   difference: require('./difference.test'),
   divide: require('./divide.test'),
@@ -11,6 +12,7 @@ const units = {
   invert: require('./invert.test'),
   magnitude: require('./magnitude.test'),
   projectTo: require('./projectTo.test'),
+  rotateAroundAxis: require('./rotateAroundAxis.test'),
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),
   scaleBy: require('./scaleBy.test'),
