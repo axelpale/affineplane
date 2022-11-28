@@ -9,6 +9,7 @@ const units = {
   fromArray: require('./fromArray.test'),
   fromFeatures: require('./fromFeatures.test'),
   fromPolar: require('./fromPolar.test'),
+  fromVector: require('./fromVector.test'),
   equal: require('./equal.test'),
   getRotation: require('./getRotation.test'),
   getDilation: require('./getDilation.test'),
