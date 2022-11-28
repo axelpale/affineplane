@@ -4,6 +4,7 @@ const units = {
   average: require('./average.test'),
   copy: require('./copy.test'),
   difference: require('./difference.test'),
+  direction: require('./direction.test'),
   distance: require('./distance.test'),
   equal: require('./equal.test'),
   fromArray: require('./fromArray.test'),
