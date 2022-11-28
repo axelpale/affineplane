@@ -9,7 +9,7 @@ See also [Usage](https://axelpale.github.io/affineplane/) and [GitHub](https://g
 <a name="affineplane"></a>
 ## [affineplane](#affineplane)
 
-The [affineplane](#affineplane) module provides functions for affine 2D geometry.
+The [affineplane](#affineplane) module provides functions for affine 2D and 3D geometry.
 The functions are grouped in the following submodules.
 
 
@@ -151,31 +151,6 @@ the coordinate space affects the direction.
 
 
 Source: [dir2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/index.js)
-
-<a name="affineplanedir3"></a>
-## [affineplane](#affineplane).[dir3](#affineplanedir3)
-
-Direction in 3D. Basically a unit vector that carries semantics of direction.
-Under a change of the reference frame, the change in translation and scale
-do not affect the direction, only the change in orientation (=attitude) does.
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
-- [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
-- [affineplane.dir3.create](#affineplanedir3create)
-- [affineplane.dir3.fromSpherical](#affineplanedir3fromspherical)
-- [affineplane.dir3.fromVector](#affineplanedir3fromvector)
-- [affineplane.dir3.projectTo](#affineplanedir3projectto)
-- [affineplane.dir3.toSpherical](#affineplanedir3tospherical)
-- [affineplane.dir3.toVector](#affineplanedir3tovector)
-- [affineplane.dir3.transitFrom](#affineplanedir3transitfrom)
-- [affineplane.dir3.transitTo](#affineplanedir3transitto)
-
-
-Source: [dir3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/index.js)
 
 <a name="affineplanedir2create"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[create](#affineplanedir2create)
@@ -324,6 +299,31 @@ in the coordinate system of the target plane.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/transitTo.js)
+
+<a name="affineplanedir3"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3)
+
+Direction in 3D. Basically a unit vector that carries semantics of direction.
+Under a change of the reference frame, the change in translation and scale
+do not affect the direction, only the change in orientation (=attitude) does.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
+- [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
+- [affineplane.dir3.create](#affineplanedir3create)
+- [affineplane.dir3.fromSpherical](#affineplanedir3fromspherical)
+- [affineplane.dir3.fromVector](#affineplanedir3fromvector)
+- [affineplane.dir3.projectTo](#affineplanedir3projectto)
+- [affineplane.dir3.toSpherical](#affineplanedir3tospherical)
+- [affineplane.dir3.toVector](#affineplanedir3tovector)
+- [affineplane.dir3.transitFrom](#affineplanedir3transitfrom)
+- [affineplane.dir3.transitTo](#affineplanedir3transitto)
+
+
+Source: [dir3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/index.js)
 
 <a name="affineplanedir3almostequal"></a>
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[almostEqual](#affineplanedir3almostequal)(d, dd[, epsilon])
@@ -595,27 +595,6 @@ change the distance measure.
 
 Source: [dist2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/index.js)
 
-<a name="affineplanedist3"></a>
-## [affineplane](#affineplane).[dist3](#affineplanedist3)
-
-The distance measure is a directionless, always positive number.
-If transited between planes, only a change in the coordinate scale
-affects the distance. Rotation or translation of the plane does not
-change the distance measure.
-
-![Distance transited between planes](projection_distance_2d.png)
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.dist3.create](#affineplanedist3create)
-- [affineplane.dist3.transitFrom](#affineplanedist3transitfrom)
-- [affineplane.dist3.transitTo](#affineplanedist3transitto)
-
-
-Source: [dist3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/index.js)
-
 <a name="affineplanedist2create"></a>
 ## [affineplane](#affineplane).[dist2](#affineplanedist2).[create](#affineplanedist2create)(d)
 
@@ -682,6 +661,27 @@ in the coordinate system of the plane.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/transitTo.js)
+
+<a name="affineplanedist3"></a>
+## [affineplane](#affineplane).[dist3](#affineplanedist3)
+
+The distance measure is a directionless, always positive number.
+If transited between planes, only a change in the coordinate scale
+affects the distance. Rotation or translation of the plane does not
+change the distance measure.
+
+![Distance transited between planes](projection_distance_2d.png)
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.dist3.create](#affineplanedist3create)
+- [affineplane.dist3.transitFrom](#affineplanedist3transitfrom)
+- [affineplane.dist3.transitTo](#affineplanedist3transitto)
+
+
+Source: [dist3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/index.js)
 
 <a name="affineplanedist3create"></a>
 ## [affineplane](#affineplane).[dist3](#affineplanedist3).[create](#affineplanedist3create)(d)
@@ -803,8 +803,10 @@ See [affineplane.plane2](#affineplaneplane2) for a positional variant.
 - [affineplane.helm2.equal](#affineplanehelm2equal)
 - [affineplane.helm2.equals](#affineplanehelm2equals)
 - [affineplane.helm2.fromArray](#affineplanehelm2fromarray)
+- [affineplane.helm2.fromBasisVector](#affineplanehelm2frombasisvector)
 - [affineplane.helm2.fromFeatures](#affineplanehelm2fromfeatures)
 - [affineplane.helm2.fromPolar](#affineplanehelm2frompolar)
+- [affineplane.helm2.fromVector](#affineplanehelm2fromvector)
 - [affineplane.helm2.getDilation](#affineplanehelm2getdilation)
 - [affineplane.helm2.getRotation](#affineplanehelm2getrotation)
 - [affineplane.helm2.getScale](#affineplanehelm2getscale)
@@ -915,76 +917,6 @@ Source: [helm2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/h
 Scaling to double size.
 
 Source: [helm2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/index.js)
-
-<a name="affineplanehelm3"></a>
-## [affineplane](#affineplane).[helm3](#affineplanehelm3)
-
-Functions for a special 3D affine transformation that consists of
-a translation in 3D, rotation around z-axis, and uniform scaling,
-alias dilation.
-In other words, the transformation is a 3D Helmert transformation
-with a limited ability to rotate only about z-axis.
-
-A [helm3](#affineplanehelm3) is an object `{ a, b, x, y, z }`
-
-Like [vec3](#affineplanevec3) and unlike [point3](#affineplanepoint3), [helm3](#affineplanehelm3) represents movement.
-Therefore it has no single position in space,
-and is not affected by plane translations.
-See [affineplane.plane3](#affineplaneplane3) for a positional variant.
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.helm3.HALF](#affineplanehelm3half)
-- [affineplane.helm3.I](#affineplanehelm3i)
-- [affineplane.helm3.IDENTITY](#affineplanehelm3identity)
-- [affineplane.helm3.ROT0](#affineplanehelm3rot0)
-- [affineplane.helm3.ROT180](#affineplanehelm3rot180)
-- [affineplane.helm3.ROT270](#affineplanehelm3rot270)
-- [affineplane.helm3.ROT45](#affineplanehelm3rot45)
-- [affineplane.helm3.ROT90](#affineplanehelm3rot90)
-- [affineplane.helm3.SINGULAR](#affineplanehelm3singular)
-- [affineplane.helm3.UNIT](#affineplanehelm3unit)
-- [affineplane.helm3.X2](#affineplanehelm3x2)
-- [affineplane.helm3.ZERO](#affineplanehelm3zero)
-- [affineplane.helm3.addDilation](#affineplanehelm3adddilation)
-- [affineplane.helm3.addRotation](#affineplanehelm3addrotation)
-- [affineplane.helm3.addTranslation](#affineplanehelm3addtranslation)
-- [affineplane.helm3.almostEqual](#affineplanehelm3almostequal)
-- [affineplane.helm3.almostEquals](#affineplanehelm3almostequals)
-- [affineplane.helm3.clone](#affineplanehelm3clone)
-- [affineplane.helm3.combine](#affineplanehelm3combine)
-- [affineplane.helm3.compose](#affineplanehelm3compose)
-- [affineplane.helm3.copy](#affineplanehelm3copy)
-- [affineplane.helm3.create](#affineplanehelm3create)
-- [affineplane.helm3.det](#affineplanehelm3det)
-- [affineplane.helm3.determinant](#affineplanehelm3determinant)
-- [affineplane.helm3.equal](#affineplanehelm3equal)
-- [affineplane.helm3.equals](#affineplanehelm3equals)
-- [affineplane.helm3.fromArray](#affineplanehelm3fromarray)
-- [affineplane.helm3.fromFeatures](#affineplanehelm3fromfeatures)
-- [affineplane.helm3.getDilation](#affineplanehelm3getdilation)
-- [affineplane.helm3.getRotation](#affineplanehelm3getrotation)
-- [affineplane.helm3.getScale](#affineplanehelm3getscale)
-- [affineplane.helm3.getTranslation](#affineplanehelm3gettranslation)
-- [affineplane.helm3.inverse](#affineplanehelm3inverse)
-- [affineplane.helm3.invert](#affineplanehelm3invert)
-- [affineplane.helm3.projectTo](#affineplanehelm3projectto)
-- [affineplane.helm3.rotateBy](#affineplanehelm3rotateby)
-- [affineplane.helm3.scaleBy](#affineplanehelm3scaleby)
-- [affineplane.helm3.setDilation](#affineplanehelm3setdilation)
-- [affineplane.helm3.setRotation](#affineplanehelm3setrotation)
-- [affineplane.helm3.setTranslation](#affineplanehelm3settranslation)
-- [affineplane.helm3.toArray](#affineplanehelm3toarray)
-- [affineplane.helm3.toMatrix](#affineplanehelm3tomatrix)
-- [affineplane.helm3.transitFrom](#affineplanehelm3transitfrom)
-- [affineplane.helm3.transitTo](#affineplanehelm3transitto)
-- [affineplane.helm3.translateBy](#affineplanehelm3translateby)
-- [affineplane.helm3.validate](#affineplanehelm3validate)
-
-
-Source: [helm3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/index.js)
 
 <a name="affineplanehelm3half"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[HALF](#affineplanehelm3half)
@@ -1171,7 +1103,7 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/co
 <a name="affineplanehelm2combine"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[combine](#affineplanehelm2combine)
 
-Alias of [affineplane.helm2.compose](#affineplanehelm2compose), [affineplane.helm2.multiply](#affineplanehelm2multiply)
+Alias of [affineplane.helm2.compose](#affineplanehelm2compose)
 
 Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/compose.js)
 
@@ -1333,6 +1265,28 @@ Create an affine similarity transform from 4-element array.
 
 Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/fromArray.js)
 
+<a name="affineplanehelm2frombasisvector"></a>
+## [affineplane](#affineplane).[helm2](#affineplanehelm2).[fromBasisVector](#affineplanehelm2frombasisvector)(vec)
+
+Create a linear transformation from the basis vector for x-axis.
+This uniquely determines the basis vector for y-axis, at
+90 degrees clock-wise.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *vec*
+  - a [vec2](#affineplanevec2), the basis vector for x-axis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [helm2](#affineplanehelm2), but with zero translation.
+
+
+Source: [fromBasisVector.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/fromBasisVector.js)
+
 <a name="affineplanehelm2fromfeatures"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[fromFeatures](#affineplanehelm2fromfeatures)(feats)
 
@@ -1391,6 +1345,26 @@ rotation angle, and translation.
 
 
 Source: [fromPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/fromPolar.js)
+
+<a name="affineplanehelm2fromvector"></a>
+## [affineplane](#affineplane).[helm2](#affineplanehelm2).[fromVector](#affineplanehelm2fromvector)(vec)
+
+Create a [helm2](#affineplanehelm2) transformation from a translation vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *vec*
+  - a [vec2](#affineplanevec2), the displacement vector
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [helm2](#affineplanehelm2)
+
+
+Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/fromVector.js)
 
 <a name="affineplanehelm2getdilation"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[getDilation](#affineplanehelm2getdilation)(tr)
@@ -1494,7 +1468,7 @@ Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2
 <a name="affineplanehelm2multiply"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[multiply](#affineplanehelm2multiply)
 
-Alias of [affineplane.helm2.compose](#affineplanehelm2compose), [affineplane.helm2.combine](#affineplanehelm2combine)
+Alias of [affineplane.helm2.compose](#affineplanehelm2compose)
 
 Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/compose.js)
 
@@ -1876,6 +1850,78 @@ Check if object is a valid [helm2](#affineplanehelm2).
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/validate.js)
 
+<a name="affineplanehelm3"></a>
+## [affineplane](#affineplane).[helm3](#affineplanehelm3)
+
+Functions for a special 3D affine transformation that consists of
+a translation in 3D, rotation around z-axis, and uniform scaling,
+alias dilation.
+In other words, the transformation is a 3D Helmert transformation
+with a limited ability to rotate only about z-axis.
+
+A [helm3](#affineplanehelm3) is an object `{ a, b, x, y, z }`
+
+Like [vec3](#affineplanevec3) and unlike [point3](#affineplanepoint3), [helm3](#affineplanehelm3) represents movement.
+Therefore it has no single position in space,
+and is not affected by plane translations.
+See [affineplane.plane3](#affineplaneplane3) for a positional variant.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.helm3.HALF](#affineplanehelm3half)
+- [affineplane.helm3.I](#affineplanehelm3i)
+- [affineplane.helm3.IDENTITY](#affineplanehelm3identity)
+- [affineplane.helm3.ROT0](#affineplanehelm3rot0)
+- [affineplane.helm3.ROT180](#affineplanehelm3rot180)
+- [affineplane.helm3.ROT270](#affineplanehelm3rot270)
+- [affineplane.helm3.ROT45](#affineplanehelm3rot45)
+- [affineplane.helm3.ROT90](#affineplanehelm3rot90)
+- [affineplane.helm3.SINGULAR](#affineplanehelm3singular)
+- [affineplane.helm3.UNIT](#affineplanehelm3unit)
+- [affineplane.helm3.X2](#affineplanehelm3x2)
+- [affineplane.helm3.ZERO](#affineplanehelm3zero)
+- [affineplane.helm3.addDilation](#affineplanehelm3adddilation)
+- [affineplane.helm3.addRotation](#affineplanehelm3addrotation)
+- [affineplane.helm3.addTranslation](#affineplanehelm3addtranslation)
+- [affineplane.helm3.almostEqual](#affineplanehelm3almostequal)
+- [affineplane.helm3.almostEquals](#affineplanehelm3almostequals)
+- [affineplane.helm3.clone](#affineplanehelm3clone)
+- [affineplane.helm3.combine](#affineplanehelm3combine)
+- [affineplane.helm3.compose](#affineplanehelm3compose)
+- [affineplane.helm3.copy](#affineplanehelm3copy)
+- [affineplane.helm3.create](#affineplanehelm3create)
+- [affineplane.helm3.det](#affineplanehelm3det)
+- [affineplane.helm3.determinant](#affineplanehelm3determinant)
+- [affineplane.helm3.equal](#affineplanehelm3equal)
+- [affineplane.helm3.equals](#affineplanehelm3equals)
+- [affineplane.helm3.fromArray](#affineplanehelm3fromarray)
+- [affineplane.helm3.fromBasisVector](#affineplanehelm3frombasisvector)
+- [affineplane.helm3.fromFeatures](#affineplanehelm3fromfeatures)
+- [affineplane.helm3.fromVector](#affineplanehelm3fromvector)
+- [affineplane.helm3.getDilation](#affineplanehelm3getdilation)
+- [affineplane.helm3.getRotation](#affineplanehelm3getrotation)
+- [affineplane.helm3.getScale](#affineplanehelm3getscale)
+- [affineplane.helm3.getTranslation](#affineplanehelm3gettranslation)
+- [affineplane.helm3.inverse](#affineplanehelm3inverse)
+- [affineplane.helm3.invert](#affineplanehelm3invert)
+- [affineplane.helm3.projectTo](#affineplanehelm3projectto)
+- [affineplane.helm3.rotateBy](#affineplanehelm3rotateby)
+- [affineplane.helm3.scaleBy](#affineplanehelm3scaleby)
+- [affineplane.helm3.setDilation](#affineplanehelm3setdilation)
+- [affineplane.helm3.setRotation](#affineplanehelm3setrotation)
+- [affineplane.helm3.setTranslation](#affineplanehelm3settranslation)
+- [affineplane.helm3.toArray](#affineplanehelm3toarray)
+- [affineplane.helm3.toMatrix](#affineplanehelm3tomatrix)
+- [affineplane.helm3.transitFrom](#affineplanehelm3transitfrom)
+- [affineplane.helm3.transitTo](#affineplanehelm3transitto)
+- [affineplane.helm3.translateBy](#affineplanehelm3translateby)
+- [affineplane.helm3.validate](#affineplanehelm3validate)
+
+
+Source: [helm3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/index.js)
+
 <a name="affineplanehelm3adddilation"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[addDilation](#affineplanehelm3adddilation)(tr, delta)
 
@@ -2160,6 +2206,30 @@ Create an affine similarity transform from 5-element array.
 
 Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/fromArray.js)
 
+<a name="affineplanehelm3frombasisvector"></a>
+## [affineplane](#affineplane).[helm3](#affineplanehelm3).[fromBasisVector](#affineplanehelm3frombasisvector)(vec)
+
+Create a linear transformation from the basis vector for x-axis.
+This basis vector is limited to 2D and does not have z-component.
+This uniquely determines the basis vector for y-axis, at
+90 degrees clock-wise, and consequently the z-axis according to the
+right-hand rule.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *vec*
+  - a [vec2](#affineplanevec2), the basis vector for x-axis in the xy-plane of the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a helm2z, but with zero translation.
+
+
+Source: [fromBasisVector.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/fromBasisVector.js)
+
 <a name="affineplanehelm3fromfeatures"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[fromFeatures](#affineplanehelm3fromfeatures)(feats)
 
@@ -2185,6 +2255,26 @@ Create a [helm3](#affineplanehelm3) transformation from human-readable features.
 
 
 Source: [fromFeatures.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/fromFeatures.js)
+
+<a name="affineplanehelm3fromvector"></a>
+## [affineplane](#affineplane).[helm3](#affineplanehelm3).[fromVector](#affineplanehelm3fromvector)(vec)
+
+Create a [helm3](#affineplanehelm3) transformation from a translation vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *vec*
+  - a [vec3](#affineplanevec3), the displacement vector
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [helm3](#affineplanehelm3)
+
+
+Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/fromVector.js)
 
 <a name="affineplanehelm3getdilation"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[getDilation](#affineplanehelm3getdilation)(tr)
@@ -2583,26 +2673,6 @@ A [line2](#affineplaneline2) is an object `{ origin: {x,y}, span: {x,y} }`
 
 Source: [line2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/line2/index.js)
 
-<a name="affineplaneline3"></a>
-## [affineplane](#affineplane).[line3](#affineplaneline3)
-
-Directed line object in 3D,
-Represented as an origin point and a spanning vector.
-
-A [line2](#affineplaneline2) is an object `{ origin: {x,y,z}, span: {x,y,z} }`
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.line3.at](#affineplaneline3at)
-- [affineplane.line3.create](#affineplaneline3create)
-- [affineplane.line3.fromPoints](#affineplaneline3frompoints)
-- [affineplane.line3.validate](#affineplaneline3validate)
-
-
-Source: [line3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/line3/index.js)
-
 <a name="affineplaneline2at"></a>
 ## [affineplane](#affineplane).[line2](#affineplaneline2).[at](#affineplaneline2at)(line, c)
 
@@ -2693,6 +2763,26 @@ that are valid [point2](#affineplanepoint2) and [vec2](#affineplanevec2), respec
 
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/line2/validate.js)
+
+<a name="affineplaneline3"></a>
+## [affineplane](#affineplane).[line3](#affineplaneline3)
+
+Directed line object in 3D,
+Represented as an origin point and a spanning vector.
+
+A [line2](#affineplaneline2) is an object `{ origin: {x,y,z}, span: {x,y,z} }`
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.line3.at](#affineplaneline3at)
+- [affineplane.line3.create](#affineplaneline3create)
+- [affineplane.line3.fromPoints](#affineplaneline3frompoints)
+- [affineplane.line3.validate](#affineplaneline3validate)
+
+
+Source: [line3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/line3/index.js)
 
 <a name="affineplaneline3at"></a>
 ## [affineplane](#affineplane).[line3](#affineplaneline3).[at](#affineplaneline3at)(line, c)
@@ -2804,26 +2894,6 @@ Does not form a polygon but a sequence of line segments.
 
 Source: [path2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/index.js)
 
-<a name="affineplanepath3"></a>
-## [affineplane](#affineplane).[path3](#affineplanepath3)
-
-Three-dimensional path; Array of [point3](#affineplanepoint3); Open sequence of points;
-Does not form a polygon but a sequence of line segments.
-`[{ x, y, z }, { x, y, z }, ...]`
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.path3.combine](#affineplanepath3combine)
-- [affineplane.path3.create](#affineplanepath3create)
-- [affineplane.path3.projectTo](#affineplanepath3projectto)
-- [affineplane.path3.transitFrom](#affineplanepath3transitfrom)
-- [affineplane.path3.transitTo](#affineplanepath3transitto)
-
-
-Source: [path3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/index.js)
-
 <a name="affineplanepath2combine"></a>
 ## [affineplane](#affineplane).[path2](#affineplanepath2).[combine](#affineplanepath2combine)(pa, pb)
 
@@ -2909,6 +2979,26 @@ Transit a path to the target basis.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/transitTo.js)
+
+<a name="affineplanepath3"></a>
+## [affineplane](#affineplane).[path3](#affineplanepath3)
+
+Three-dimensional path; Array of [point3](#affineplanepoint3); Open sequence of points;
+Does not form a polygon but a sequence of line segments.
+`[{ x, y, z }, { x, y, z }, ...]`
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.path3.combine](#affineplanepath3combine)
+- [affineplane.path3.create](#affineplanepath3create)
+- [affineplane.path3.projectTo](#affineplanepath3projectto)
+- [affineplane.path3.transitFrom](#affineplanepath3transitfrom)
+- [affineplane.path3.transitTo](#affineplanepath3transitto)
+
+
+Source: [path3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/index.js)
 
 <a name="affineplanepath3combine"></a>
 ## [affineplane](#affineplane).[path3](#affineplanepath3).[combine](#affineplanepath3combine)(pa, pb)
@@ -3051,6 +3141,7 @@ is located +20 units along x-axis of the reference plane.
 - [affineplane.plane2.difference](#affineplaneplane2difference)
 - [affineplane.plane2.equal](#affineplaneplane2equal)
 - [affineplane.plane2.fromFeatures](#affineplaneplane2fromfeatures)
+- [affineplane.plane2.fromHelmert](#affineplaneplane2fromhelmert)
 - [affineplane.plane2.getScale](#affineplaneplane2getscale)
 - [affineplane.plane2.invert](#affineplaneplane2invert)
 - [affineplane.plane2.projectTo](#affineplaneplane2projectto)
@@ -3075,59 +3166,6 @@ Source: [plane2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/
 The identity plane is identical to its reference plane.
 
 Source: [plane2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/index.js)
-
-<a name="affineplaneplane3"></a>
-## [affineplane](#affineplane).[plane3](#affineplaneplane3)
-
-A [plane3](#affineplaneplane3) does not model any possible plane in 3D space, but is limited
-to xy planes perpendicular to z-axis and with a known z position.
-Additionally, [plane3](#affineplaneplane3) models orientation
-around z-axis and uniform scale in all three dimensions.
-
-In other words, a plane is a helmert transform (helm3)
-from the plane coordinates to a reference
-coordinate system. Unlike [helm3](#affineplanehelm3), the [plane3](#affineplaneplane3)
-has position in the space.
-Therefore it can be projected perspectively.
-
-The plane is represented with an object `{ a, b, x, y, z }`
-
-For example `{ a: 1, b: 0, x: 0, y: 0, z: 0 }` is an exact
-copy of its reference plane. For another example
-`{ a: 1, b: 0, x: 20, y: 0, z: 0 }` is +20 units along x-axis
-relative to its reference plane.
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.plane3.IDENTITY](#affineplaneplane3identity)
-- [affineplane.plane3.between](#affineplaneplane3between)
-- [affineplane.plane3.compose](#affineplaneplane3compose)
-- [affineplane.plane3.copy](#affineplaneplane3copy)
-- [affineplane.plane3.create](#affineplaneplane3create)
-- [affineplane.plane3.difference](#affineplaneplane3difference)
-- [affineplane.plane3.equal](#affineplaneplane3equal)
-- [affineplane.plane3.fromFeatures](#affineplaneplane3fromfeatures)
-- [affineplane.plane3.getNormal](#affineplaneplane3getnormal)
-- [affineplane.plane3.getScale](#affineplaneplane3getscale)
-- [affineplane.plane3.invert](#affineplaneplane3invert)
-- [affineplane.plane3.projectTo](#affineplaneplane3projectto)
-- [affineplane.plane3.rotateBy](#affineplaneplane3rotateby)
-- [affineplane.plane3.rotateTo](#affineplaneplane3rotateto)
-- [affineplane.plane3.rotateToOrtho](#affineplaneplane3rotatetoortho)
-- [affineplane.plane3.scaleBy](#affineplaneplane3scaleby)
-- [affineplane.plane3.scaleTo](#affineplaneplane3scaleto)
-- [affineplane.plane3.transform](#affineplaneplane3transform)
-- [affineplane.plane3.transformBy](#affineplaneplane3transformby)
-- [affineplane.plane3.transitFrom](#affineplaneplane3transitfrom)
-- [affineplane.plane3.transitTo](#affineplaneplane3transitto)
-- [affineplane.plane3.translateBy](#affineplaneplane3translateby)
-- [affineplane.plane3.translateTo](#affineplaneplane3translateto)
-- [affineplane.plane3.validate](#affineplaneplane3validate)
-
-
-Source: [plane3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/index.js)
 
 <a name="affineplaneplane3identity"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[IDENTITY](#affineplaneplane3identity)
@@ -3282,6 +3320,32 @@ Create a plane from human readable features.
 
 
 Source: [fromFeatures.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/fromFeatures.js)
+
+<a name="affineplaneplane2fromhelmert"></a>
+## [affineplane](#affineplane).[plane2](#affineplaneplane2).[fromHelmert](#affineplaneplane2fromhelmert)(tr, origin)
+
+Create a plane by transforming an identity plane about
+the given transform origin. For example, you can create
+a plane that has been rotated around a point (100, 100).
+The choice of transform origin does not affect scale or rotation
+of the created plane but does affect its translative component.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *tr*
+  - a [helm2](#affineplanehelm2) on the reference plane
+- *origin*
+  - a [point2](#affineplanepoint2) on the reference plane
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [plane2](#affineplaneplane2) on the reference plane
+
+
+Source: [fromHelmert.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/fromHelmert.js)
 
 <a name="affineplaneplane2getscale"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[getScale](#affineplaneplane2getscale)(plane)
@@ -3486,22 +3550,19 @@ becomes the desired scale.
 Source: [scaleTo.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/scaleTo.js)
 
 <a name="affineplaneplane2transform"></a>
-## [affineplane](#affineplane).[plane2](#affineplaneplane2).[transform](#affineplaneplane2transform)(plane, tr)
+## [affineplane](#affineplane).[plane2](#affineplaneplane2).[transform](#affineplaneplane2transform)(plane, tr[, origin])
 
-Transform the plane with a helmert transformation.
-Basically, the plane is a transformation from its internal
-coordinate system to the reference coordinate system.
-The returned plane is the result when the plane matrix
-is multiplied from left by the given transform matrix.
-For multiplication from right, see [affineplane.plane2.compose](#affineplaneplane2compose).
+Transform the plane with a helmert transformation applied at origin.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 
 - *plane*
-  - a [plane2](#affineplaneplane2) on the reference plane
+  - a [plane2](#affineplaneplane2) on the reference basis
 - *tr*
-  - a [helm2](#affineplanehelm2) on the reference plane
+  - a [helm2](#affineplanehelm2) on the reference basis
+- *origin*
+  - optional [point2](#affineplanepoint2) on the reference basis. Default `{x:0,y:0}`. The transformation will be applied to the plane at this point.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
@@ -3627,6 +3688,60 @@ Check if object is a valid [plane2](#affineplaneplane2).
 
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/validate.js)
+
+<a name="affineplaneplane3"></a>
+## [affineplane](#affineplane).[plane3](#affineplaneplane3)
+
+A [plane3](#affineplaneplane3) does not model any possible plane in 3D space, but is limited
+to xy planes perpendicular to z-axis and with a known z position.
+Additionally, [plane3](#affineplaneplane3) models orientation
+around z-axis and uniform scale in all three dimensions.
+
+In other words, a plane is a helmert transform (helm3)
+from the plane coordinates to a reference
+coordinate system. Unlike [helm3](#affineplanehelm3), the [plane3](#affineplaneplane3)
+has position in the space.
+Therefore it can be projected perspectively.
+
+The plane is represented with an object `{ a, b, x, y, z }`
+
+For example `{ a: 1, b: 0, x: 0, y: 0, z: 0 }` is an exact
+copy of its reference plane. For another example
+`{ a: 1, b: 0, x: 20, y: 0, z: 0 }` is +20 units along x-axis
+relative to its reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.plane3.IDENTITY](#affineplaneplane3identity)
+- [affineplane.plane3.between](#affineplaneplane3between)
+- [affineplane.plane3.compose](#affineplaneplane3compose)
+- [affineplane.plane3.copy](#affineplaneplane3copy)
+- [affineplane.plane3.create](#affineplaneplane3create)
+- [affineplane.plane3.difference](#affineplaneplane3difference)
+- [affineplane.plane3.equal](#affineplaneplane3equal)
+- [affineplane.plane3.fromFeatures](#affineplaneplane3fromfeatures)
+- [affineplane.plane3.fromHelmert](#affineplaneplane3fromhelmert)
+- [affineplane.plane3.getNormal](#affineplaneplane3getnormal)
+- [affineplane.plane3.getScale](#affineplaneplane3getscale)
+- [affineplane.plane3.invert](#affineplaneplane3invert)
+- [affineplane.plane3.projectTo](#affineplaneplane3projectto)
+- [affineplane.plane3.rotateBy](#affineplaneplane3rotateby)
+- [affineplane.plane3.rotateTo](#affineplaneplane3rotateto)
+- [affineplane.plane3.rotateToOrtho](#affineplaneplane3rotatetoortho)
+- [affineplane.plane3.scaleBy](#affineplaneplane3scaleby)
+- [affineplane.plane3.scaleTo](#affineplaneplane3scaleto)
+- [affineplane.plane3.transform](#affineplaneplane3transform)
+- [affineplane.plane3.transformBy](#affineplaneplane3transformby)
+- [affineplane.plane3.transitFrom](#affineplaneplane3transitfrom)
+- [affineplane.plane3.transitTo](#affineplaneplane3transitto)
+- [affineplane.plane3.translateBy](#affineplaneplane3translateby)
+- [affineplane.plane3.translateTo](#affineplaneplane3translateto)
+- [affineplane.plane3.validate](#affineplaneplane3validate)
+
+
+Source: [plane3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/index.js)
 
 <a name="affineplaneplane3between"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[between](#affineplaneplane3between)
@@ -3776,6 +3891,34 @@ Create a plane from human readable features.
 
 
 Source: [fromFeatures.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/fromFeatures.js)
+
+<a name="affineplaneplane3fromhelmert"></a>
+## [affineplane](#affineplane).[plane3](#affineplaneplane3).[fromHelmert](#affineplaneplane3fromhelmert)(tr, origin)
+
+Create a plane by applying a transformation to an identity plane
+at the given transform origin. For example, you can create
+a plane that has been scaled about a point (100, 100, 100).
+The choice of transform origin does not affect scale or rotation
+of the created plane but does affect its translative component.
+Note that any rotation is performed around such a line that is
+parallel to z-axis and goes through the given origin point.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *tr*
+  - a helm2z on the reference plane
+- *origin*
+  - a [point3](#affineplanepoint3) on the reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [plane3](#affineplaneplane3) on the reference plane
+
+
+Source: [fromHelmert.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/fromHelmert.js)
 
 <a name="affineplaneplane3getnormal"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[getNormal](#affineplaneplane3getnormal)(plane)
@@ -4004,28 +4147,25 @@ Scale a plane to the given scale towards the center point.
 Source: [scaleTo.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/scaleTo.js)
 
 <a name="affineplaneplane3transform"></a>
-## [affineplane](#affineplane).[plane3](#affineplaneplane3).[transform](#affineplaneplane3transform)(plane, tr)
+## [affineplane](#affineplane).[plane3](#affineplaneplane3).[transform](#affineplaneplane3transform)(plane, tr[, origin])
 
-Transform the plane with a helmert transformation.
-Basically, the plane is a transformation from its internal
-coordinate system to the reference coordinate system.
-The returned plane is the result when the plane matrix
-is multiplied from left by the given transform matrix.
-For multiplication from right, see [affineplane.plane3.compose](#affineplaneplane3compose).
+Transform the plane with a helmert transformation applied at origin.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 
 - *plane*
-  - a [plane3](#affineplaneplane3) in the reference space
+  - a [plane3](#affineplaneplane3) on the reference basis
 - *tr*
-  - a [helm2](#affineplanehelm2) or [helm3](#affineplanehelm3) in the reference space
+  - a [helm2](#affineplanehelm2) or [helm3](#affineplanehelm3) on the reference basis
+- *origin*
+  - optional [point3](#affineplanepoint3) on the reference basis. Default `{x:0,y:0,z:0}`. The transformation will be applied to the plane at this point.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a [plane3](#affineplaneplane3) in the reference space
+- a [plane3](#affineplaneplane3) on the reference basis
 
 
 Aliases: [affineplane.plane3.transformBy](#affineplaneplane3transformby)
@@ -4177,6 +4317,7 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 - [affineplane.point2.delta](#affineplanepoint2delta)
 - [affineplane.point2.diff](#affineplanepoint2diff)
 - [affineplane.point2.difference](#affineplanepoint2difference)
+- [affineplane.point2.direction](#affineplanepoint2direction)
 - [affineplane.point2.distance](#affineplanepoint2distance)
 - [affineplane.point2.equal](#affineplanepoint2equal)
 - [affineplane.point2.equals](#affineplanepoint2equals)
@@ -4197,44 +4338,6 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 
 
 Source: [point2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/index.js)
-
-<a name="affineplanepoint3"></a>
-## [affineplane](#affineplane).[point3](#affineplanepoint3)
-
-Three-dimensional point { x, y, z }. Unlike vectors, points model
-locations in space and therefore are affected by scale, orientation, and
-translation of the plane on which they are represented.
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.point3.almostEqual](#affineplanepoint3almostequal)
-- [affineplane.point3.average](#affineplanepoint3average)
-- [affineplane.point3.copy](#affineplanepoint3copy)
-- [affineplane.point3.create](#affineplanepoint3create)
-- [affineplane.point3.delta](#affineplanepoint3delta)
-- [affineplane.point3.diff](#affineplanepoint3diff)
-- [affineplane.point3.difference](#affineplanepoint3difference)
-- [affineplane.point3.distance](#affineplanepoint3distance)
-- [affineplane.point3.equal](#affineplanepoint3equal)
-- [affineplane.point3.equals](#affineplanepoint3equals)
-- [affineplane.point3.fromArray](#affineplanepoint3fromarray)
-- [affineplane.point3.mean](#affineplanepoint3mean)
-- [affineplane.point3.offset](#affineplanepoint3offset)
-- [affineplane.point3.polarOffset](#affineplanepoint3polaroffset)
-- [affineplane.point3.projectTo](#affineplanepoint3projectto)
-- [affineplane.point3.rotateBy](#affineplanepoint3rotateby)
-- [affineplane.point3.round](#affineplanepoint3round)
-- [affineplane.point3.toArray](#affineplanepoint3toarray)
-- [affineplane.point3.transitFrom](#affineplanepoint3transitfrom)
-- [affineplane.point3.transitTo](#affineplanepoint3transitto)
-- [affineplane.point3.translate](#affineplanepoint3translate)
-- [affineplane.point3.translateBy](#affineplanepoint3translateby)
-- [affineplane.point3.validate](#affineplanepoint3validate)
-
-
-Source: [point3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/index.js)
 
 <a name="affineplanepoint2almostequal"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[almostEqual](#affineplanepoint2almostequal)(p, q[, epsilon])
@@ -4327,14 +4430,14 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/point2
 <a name="affineplanepoint2delta"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[delta](#affineplanepoint2delta)
 
-Alias of [affineplane.point2.difference](#affineplanepoint2difference), [affineplane.point2.diff](#affineplanepoint2diff)
+Alias of [affineplane.point2.difference](#affineplanepoint2difference)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
 
 <a name="affineplanepoint2diff"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[diff](#affineplanepoint2diff)
 
-Alias of [affineplane.point2.difference](#affineplanepoint2difference), [affineplane.point2.delta](#affineplanepoint2delta)
+Alias of [affineplane.point2.difference](#affineplanepoint2difference)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
 
@@ -4361,6 +4464,28 @@ A vector from point p to point q.
 Aliases: [affineplane.point2.diff](#affineplanepoint2diff), [affineplane.point2.delta](#affineplanepoint2delta)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
+
+<a name="affineplanepoint2direction"></a>
+## [affineplane](#affineplane).[point2](#affineplanepoint2).[direction](#affineplanepoint2direction)(p, q)
+
+Get direction from point to point.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *p*
+  - a [point2](#affineplanepoint2), the direction origin
+- *q*
+  - a [point2](#affineplanepoint2), the direction target
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a dir2, a unit vector. If no direction can be computed, for example in the case where the points are equal, then the direction will be `{ x: 1, y: 0 }`
+
+
+Source: [direction.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/direction.js)
 
 <a name="affineplanepoint2distance"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[distance](#affineplanepoint2distance)(p, q)
@@ -4703,6 +4828,45 @@ Valid [point2](#affineplanepoint2) has x and y properties that are valid numbers
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/validate.js)
 
+<a name="affineplanepoint3"></a>
+## [affineplane](#affineplane).[point3](#affineplanepoint3)
+
+Three-dimensional point { x, y, z }. Unlike vectors, points model
+locations in space and therefore are affected by scale, orientation, and
+translation of the plane on which they are represented.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.point3.almostEqual](#affineplanepoint3almostequal)
+- [affineplane.point3.average](#affineplanepoint3average)
+- [affineplane.point3.copy](#affineplanepoint3copy)
+- [affineplane.point3.create](#affineplanepoint3create)
+- [affineplane.point3.delta](#affineplanepoint3delta)
+- [affineplane.point3.diff](#affineplanepoint3diff)
+- [affineplane.point3.difference](#affineplanepoint3difference)
+- [affineplane.point3.direction](#affineplanepoint3direction)
+- [affineplane.point3.distance](#affineplanepoint3distance)
+- [affineplane.point3.equal](#affineplanepoint3equal)
+- [affineplane.point3.equals](#affineplanepoint3equals)
+- [affineplane.point3.fromArray](#affineplanepoint3fromarray)
+- [affineplane.point3.mean](#affineplanepoint3mean)
+- [affineplane.point3.offset](#affineplanepoint3offset)
+- [affineplane.point3.polarOffset](#affineplanepoint3polaroffset)
+- [affineplane.point3.projectTo](#affineplanepoint3projectto)
+- [affineplane.point3.rotateBy](#affineplanepoint3rotateby)
+- [affineplane.point3.round](#affineplanepoint3round)
+- [affineplane.point3.toArray](#affineplanepoint3toarray)
+- [affineplane.point3.transitFrom](#affineplanepoint3transitfrom)
+- [affineplane.point3.transitTo](#affineplanepoint3transitto)
+- [affineplane.point3.translate](#affineplanepoint3translate)
+- [affineplane.point3.translateBy](#affineplanepoint3translateby)
+- [affineplane.point3.validate](#affineplanepoint3validate)
+
+
+Source: [point3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/index.js)
+
 <a name="affineplanepoint3almostequal"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[almostEqual](#affineplanepoint3almostequal)(p, q[, epsilon])
 
@@ -4778,14 +4942,14 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/point3
 <a name="affineplanepoint3delta"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[delta](#affineplanepoint3delta)
 
-Alias of [affineplane.point3.difference](#affineplanepoint3difference), [affineplane.point3.diff](#affineplanepoint3diff)
+Alias of [affineplane.point3.difference](#affineplanepoint3difference)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
 
 <a name="affineplanepoint3diff"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[diff](#affineplanepoint3diff)
 
-Alias of [affineplane.point3.difference](#affineplanepoint3difference), [affineplane.point3.delta](#affineplanepoint3delta)
+Alias of [affineplane.point3.difference](#affineplanepoint3difference)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
 
@@ -4812,6 +4976,28 @@ A vector from point p to point q.
 Aliases: [affineplane.point3.diff](#affineplanepoint3diff), [affineplane.point3.delta](#affineplanepoint3delta)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
+
+<a name="affineplanepoint3direction"></a>
+## [affineplane](#affineplane).[point3](#affineplanepoint3).[direction](#affineplanepoint3direction)(p, q)
+
+Get direction from point to point.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *p*
+  - a [point3](#affineplanepoint3), the direction origin
+- *q*
+  - a [point3](#affineplanepoint3), the direction target
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a dir3, a unit vector. If no direction can be computed, for example in the case where the points are equal, then the direction will be `{ x: 1, y: 0, z: 0 }`
+
+
+Source: [direction.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/direction.js)
 
 <a name="affineplanepoint3distance"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[distance](#affineplanepoint3distance)(p, q)
@@ -5411,27 +5597,6 @@ to the reference coordinate system.
 
 Source: [rect2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/rect2/index.js)
 
-<a name="affineplanerect3"></a>
-## [affineplane](#affineplane).[rect3](#affineplanerect3)
-
-A rectangle, floating in three dimensions. A rect3 is an object
-`{ basis: { a, b, x, y, z }, size: { w, h } }`, where the basis
-is a [helm3](#affineplanehelm3) - a Helmert transformation from rectangle's inner coordinate
-system to the reference coordinate system.
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.rect3.at](#affineplanerect3at)
-- [affineplane.rect3.atNorm](#affineplanerect3atnorm)
-- [affineplane.rect3.create](#affineplanerect3create)
-- [affineplane.rect3.transitFrom](#affineplanerect3transitfrom)
-- [affineplane.rect3.transitTo](#affineplanerect3transitto)
-
-
-Source: [rect3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/index.js)
-
 <a name="affineplanerect2at"></a>
 ## [affineplane](#affineplane).[rect2](#affineplanerect2).[at](#affineplanerect2at)(rect, rx, ry)
 
@@ -5609,6 +5774,27 @@ Convert a rectangle from the reference basis to the target basis.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/rect2/transitTo.js)
+
+<a name="affineplanerect3"></a>
+## [affineplane](#affineplane).[rect3](#affineplanerect3)
+
+A rectangle, floating in three dimensions. A rect3 is an object
+`{ basis: { a, b, x, y, z }, size: { w, h } }`, where the basis
+is a [helm3](#affineplanehelm3) - a Helmert transformation from rectangle's inner coordinate
+system to the reference coordinate system.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.rect3.at](#affineplanerect3at)
+- [affineplane.rect3.atNorm](#affineplanerect3atnorm)
+- [affineplane.rect3.create](#affineplanerect3create)
+- [affineplane.rect3.transitFrom](#affineplanerect3transitfrom)
+- [affineplane.rect3.transitTo](#affineplanerect3transitto)
+
+
+Source: [rect3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/index.js)
 
 <a name="affineplanerect3at"></a>
 ## [affineplane](#affineplane).[rect3](#affineplanerect3).[at](#affineplanerect3at)(rect, rx, ry)
@@ -5918,6 +6104,7 @@ Aliases: [affineplane.vector2](#affineplanevector2)
 - [affineplane.vec2.norm](#affineplanevec2norm)
 - [affineplane.vec2.normalize](#affineplanevec2normalize)
 - [affineplane.vec2.projectTo](#affineplanevec2projectto)
+- [affineplane.vec2.projectToVector](#affineplanevec2projecttovector)
 - [affineplane.vec2.rotateBy](#affineplanevec2rotateby)
 - [affineplane.vec2.rotateTo](#affineplanevec2rotateto)
 - [affineplane.vec2.scaleBy](#affineplanevec2scaleby)
@@ -5933,77 +6120,6 @@ Aliases: [affineplane.vector2](#affineplanevector2)
 
 
 Source: [vec2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/index.js)
-
-<a name="affineplanevec3"></a>
-## [affineplane](#affineplane).[vec3](#affineplanevec3)
-
-Three-dimensional vector, representing 3D movement of geometry.
-Vectors have no position in space, only direction and magnitude,
-and therefore their coordinates are affected only by plane scale
-and rotation when represented on different plane.
-
-Aliases: [affineplane.vector3](#affineplanevector3)
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.vec3.add](#affineplanevec3add)
-- [affineplane.vec3.almostEqual](#affineplanevec3almostequal)
-- [affineplane.vec3.average](#affineplanevec3average)
-- [affineplane.vec3.copy](#affineplanevec3copy)
-- [affineplane.vec3.create](#affineplanevec3create)
-- [affineplane.vec3.cross](#affineplanevec3cross)
-- [affineplane.vec3.diff](#affineplanevec3diff)
-- [affineplane.vec3.difference](#affineplanevec3difference)
-- [affineplane.vec3.divide](#affineplanevec3divide)
-- [affineplane.vec3.dot](#affineplanevec3dot)
-- [affineplane.vec3.equal](#affineplanevec3equal)
-- [affineplane.vec3.fromArray](#affineplanevec3fromarray)
-- [affineplane.vec3.fromPolar](#affineplanevec3frompolar)
-- [affineplane.vec3.fromSpherical](#affineplanevec3fromspherical)
-- [affineplane.vec3.independent](#affineplanevec3independent)
-- [affineplane.vec3.invert](#affineplanevec3invert)
-- [affineplane.vec3.magnitude](#affineplanevec3magnitude)
-- [affineplane.vec3.negate](#affineplanevec3negate)
-- [affineplane.vec3.norm](#affineplanevec3norm)
-- [affineplane.vec3.normalize](#affineplanevec3normalize)
-- [affineplane.vec3.projectTo](#affineplanevec3projectto)
-- [affineplane.vec3.rotateAroundAxis](#affineplanevec3rotatearoundaxis)
-- [affineplane.vec3.rotateBy](#affineplanevec3rotateby)
-- [affineplane.vec3.rotateBy](#affineplanevec3rotateby)
-- [affineplane.vec3.scaleBy](#affineplanevec3scaleby)
-- [affineplane.vec3.scaleTo](#affineplanevec3scaleto)
-- [affineplane.vec3.subtract](#affineplanevec3subtract)
-- [affineplane.vec3.sum](#affineplanevec3sum)
-- [affineplane.vec3.toArray](#affineplanevec3toarray)
-- [affineplane.vec3.toPolar](#affineplanevec3topolar)
-- [affineplane.vec3.toSpherical](#affineplanevec3tospherical)
-- [affineplane.vec3.transformBy](#affineplanevec3transformby)
-- [affineplane.vec3.transitFrom](#affineplanevec3transitfrom)
-- [affineplane.vec3.transitTo](#affineplanevec3transitto)
-- [affineplane.vec3.unit](#affineplanevec3unit)
-- [affineplane.vec3.validate](#affineplanevec3validate)
-
-
-Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/index.js)
-
-<a name="affineplanevec4"></a>
-## [affineplane](#affineplane).[vec4](#affineplanevec4)
-
-A vec4 is a 4D vector { x, y, z, w }.
-
-
-<p style="margin-bottom: 0"><strong>Contents:</strong></p>
-
-
-- [affineplane.vec4.add](#affineplanevec4add)
-- [affineplane.vec4.create](#affineplanevec4create)
-- [affineplane.vec4.norm](#affineplanevec4norm)
-- [affineplane.vec4.scaleBy](#affineplanevec4scaleby)
-
-
-Source: [vec4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/index.js)
 
 <a name="affineplanevec2add"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[add](#affineplanevec2add)(v, w)
@@ -6257,15 +6373,15 @@ Create `{ x, y }` vector from array `[x, y]`.
 Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/fromArray.js)
 
 <a name="affineplanevec2frompolar"></a>
-## [affineplane](#affineplane).[vec2](#affineplanevec2).[fromPolar](#affineplanevec2frompolar)(magnitude, direction)
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[fromPolar](#affineplanevec2frompolar)(radius, direction)
 
 Create a vector from polar coordinates.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 
-- *magnitude*
-  - a number, length of the vector
+- *radius*
+  - a number, radial length from the origin
 - *direction*
   - a number, angle in radians
 
@@ -6445,6 +6561,30 @@ Otherwise, project orthogonally.
 
 Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/projectTo.js)
 
+<a name="affineplanevec2projecttovector"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[projectToVector](#affineplanevec2projecttovector)(v, w)
+
+Project a vector onto the line specified by another vector.
+In other words, get the component of a vector that is
+parallel with another vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *v*
+  - a [vec2](#affineplanevec2) to be projected.
+- *w*
+  - a [vec2](#affineplanevec2), defines the line to project to.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [vec2](#affineplanevec2), parallel with w.
+
+
+Source: [projectToVector.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/projectToVector.js)
+
 <a name="affineplanevec2rotateby"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[rotateBy](#affineplanevec2rotateby)(v, radians)
 
@@ -6593,7 +6733,13 @@ Get polar coordinates of a vector.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- object, polar coordinates `{ magnitude, direction }` where the direction is an angle in radians.
+- an object with properties:
+  - *radius*
+    - a number, the radial distance, the distance from z-axis.
+  - *magnitude*
+    - alias for radius. Will be removed in [affineplane](#affineplane) v3.
+  - *direction*
+    - a number, the azimuth angle in radians.
 
 
 Source: [toPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/toPolar.js)
@@ -6713,6 +6859,61 @@ Check if object is a valid [vec2](#affineplanevec2).
 
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/validate.js)
+
+<a name="affineplanevec3"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3)
+
+Three-dimensional vector, representing 3D movement of geometry.
+Vectors have no position in space, only direction and magnitude,
+and therefore their coordinates are affected only by plane scale
+and rotation when represented on different plane.
+
+Aliases: [affineplane.vector3](#affineplanevector3)
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.vec3.add](#affineplanevec3add)
+- [affineplane.vec3.almostEqual](#affineplanevec3almostequal)
+- [affineplane.vec3.average](#affineplanevec3average)
+- [affineplane.vec3.copy](#affineplanevec3copy)
+- [affineplane.vec3.create](#affineplanevec3create)
+- [affineplane.vec3.cross](#affineplanevec3cross)
+- [affineplane.vec3.diff](#affineplanevec3diff)
+- [affineplane.vec3.difference](#affineplanevec3difference)
+- [affineplane.vec3.divide](#affineplanevec3divide)
+- [affineplane.vec3.dot](#affineplanevec3dot)
+- [affineplane.vec3.equal](#affineplanevec3equal)
+- [affineplane.vec3.fromArray](#affineplanevec3fromarray)
+- [affineplane.vec3.fromPolar](#affineplanevec3frompolar)
+- [affineplane.vec3.fromSpherical](#affineplanevec3fromspherical)
+- [affineplane.vec3.independent](#affineplanevec3independent)
+- [affineplane.vec3.invert](#affineplanevec3invert)
+- [affineplane.vec3.magnitude](#affineplanevec3magnitude)
+- [affineplane.vec3.negate](#affineplanevec3negate)
+- [affineplane.vec3.norm](#affineplanevec3norm)
+- [affineplane.vec3.normalize](#affineplanevec3normalize)
+- [affineplane.vec3.projectTo](#affineplanevec3projectto)
+- [affineplane.vec3.projectToVector](#affineplanevec3projecttovector)
+- [affineplane.vec3.rotateAroundAxis](#affineplanevec3rotatearoundaxis)
+- [affineplane.vec3.rotateBy](#affineplanevec3rotateby)
+- [affineplane.vec3.rotateBy](#affineplanevec3rotateby)
+- [affineplane.vec3.scaleBy](#affineplanevec3scaleby)
+- [affineplane.vec3.scaleTo](#affineplanevec3scaleto)
+- [affineplane.vec3.subtract](#affineplanevec3subtract)
+- [affineplane.vec3.sum](#affineplanevec3sum)
+- [affineplane.vec3.toArray](#affineplanevec3toarray)
+- [affineplane.vec3.toPolar](#affineplanevec3topolar)
+- [affineplane.vec3.toSpherical](#affineplanevec3tospherical)
+- [affineplane.vec3.transformBy](#affineplanevec3transformby)
+- [affineplane.vec3.transitFrom](#affineplanevec3transitfrom)
+- [affineplane.vec3.transitTo](#affineplanevec3transitto)
+- [affineplane.vec3.unit](#affineplanevec3unit)
+- [affineplane.vec3.validate](#affineplanevec3validate)
+
+
+Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/index.js)
 
 <a name="affineplanevec3add"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[add](#affineplanevec3add)(v, w)
@@ -6848,7 +7049,7 @@ Source: [cross.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/cr
 <a name="affineplanevec3diff"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[diff](#affineplanevec3diff)(v, w)
 
-Alias of [affineplane.vec3.difference](#affineplanevec3difference), [affineplane.vec3.subtract](#affineplanevec3subtract)
+Alias of [affineplane.vec3.difference](#affineplanevec3difference)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/difference.js)
 
@@ -6974,7 +7175,7 @@ Create a [vec3](#affineplanevec3) from an array `[x, y, z]`.
 Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/fromArray.js)
 
 <a name="affineplanevec3frompolar"></a>
-## [affineplane](#affineplane).[vec3](#affineplanevec3).[fromPolar](#affineplanevec3frompolar)(magnitude, direction, depth)
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[fromPolar](#affineplanevec3frompolar)(radius, direction, depth)
 
 Create a vector from cylindrical polar coordinates.
 See also [affineplane.vec3.toPolar](#affineplanevec3topolar).
@@ -6982,7 +7183,7 @@ See also [affineplane.vec3.toPolar](#affineplanevec3topolar).
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 
-- *magnitude*
+- *radius*
   - a number, the radial distance from z-axis.
 - *direction*
   - a number, the azimuth angle in radians.
@@ -7140,6 +7341,30 @@ a sequence of points.
 
 Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/projectTo.js)
 
+<a name="affineplanevec3projecttovector"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[projectToVector](#affineplanevec3projecttovector)(v, w)
+
+Project a vector onto the line specified by another vector.
+In other words, get the component of a vector that is
+parallel with another vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *v*
+  - a [vec3](#affineplanevec3) to be projected.
+- *w*
+  - a [vec3](#affineplanevec3), defines the line to project to.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [vec3](#affineplanevec3), parallel with w.
+
+
+Source: [projectToVector.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/projectToVector.js)
+
 <a name="affineplanevec3rotatearoundaxis"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[rotateAroundAxis](#affineplanevec3rotatearoundaxis)(v, axis, angle)
 
@@ -7271,7 +7496,7 @@ Source: [scaleTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/
 <a name="affineplanevec3subtract"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[subtract](#affineplanevec3subtract)
 
-Alias of [affineplane.vec3.difference](#affineplanevec3difference), [affineplane.vec3.diff](#affineplanevec3diff)
+Alias of [affineplane.vec3.difference](#affineplanevec3difference)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/difference.js)
 
@@ -7332,12 +7557,14 @@ Get cylindrical polar coordinates of a vector.
 
 
 - object with properties
-  - *magnitude*
+  - *radius*
     - a number, the radial distance, the distance from z-axis.
   - *direction*
     - a number, the azimuth angle in radians.
   - *depth*
     - a number, the z coordinate, the axial position.
+  - *magnitude*
+    - alias for radius, will be removed in [affineplane](#affineplane) v3
 
 
 Source: [toPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/toPolar.js)
@@ -7481,6 +7708,23 @@ Check if object is a valid [vec3](#affineplanevec3).
 
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/validate.js)
+
+<a name="affineplanevec4"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4)
+
+A vec4 is a 4D vector { x, y, z, w }.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.vec4.add](#affineplanevec4add)
+- [affineplane.vec4.create](#affineplanevec4create)
+- [affineplane.vec4.norm](#affineplanevec4norm)
+- [affineplane.vec4.scaleBy](#affineplanevec4scaleby)
+
+
+Source: [vec4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/index.js)
 
 <a name="affineplanevec4add"></a>
 ## [affineplane](#affineplane).[vec4](#affineplanevec4).[add](#affineplanevec4add)(v, w)
