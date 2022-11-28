@@ -17,6 +17,7 @@ const units = {
   max: require('./max.test'),
   min: require('./min.test'),
   projectTo: require('./projectTo.test'),
+  projectToVector: require('./projectToVector.test'),
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),
   scaleBy: require('./scaleBy.test'),

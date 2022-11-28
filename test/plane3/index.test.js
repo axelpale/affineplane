@@ -5,6 +5,7 @@ const units = {
   create: require('./create.test'),
   difference: require('./difference.test'),
   fromFeatures: require('./fromFeatures.test'),
+  fromHelmert: require('./fromHelmert.test'),
   getNormal: require('./getNormal.test'),
   getScale: require('./getScale.test'),
   invert: require('./invert.test'),
