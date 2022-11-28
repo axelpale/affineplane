@@ -3,6 +3,7 @@ const units = {
   almostEqual: require('./almostEqual.test'),
   average: require('./average.test'),
   difference: require('./difference.test'),
+  direction: require('./direction.test'),
   homothety: require('./homothety.test'),
   projectToLine: require('./projectToLine.test'),
   projectTo: require('./projectTo.test'),
