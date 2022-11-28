@@ -10,6 +10,7 @@ const units = {
   det: require('./det.test'),
   equal: require('./equal.test'),
   fromArray: require('./fromArray.test'),
+  fromBasisVector: require('./fromBasisVector.test'),
   fromFeatures: require('./fromFeatures.test'),
   fromVector: require('./fromVector.test'),
   getDilation: require('./getDilation.test'),
