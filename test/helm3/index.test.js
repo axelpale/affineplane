@@ -11,6 +11,7 @@ const units = {
   equal: require('./equal.test'),
   fromArray: require('./fromArray.test'),
   fromFeatures: require('./fromFeatures.test'),
+  fromVector: require('./fromVector.test'),
   getDilation: require('./getDilation.test'),
   getRotation: require('./getRotation.test'),
   getTranslation: require('./getTranslation.test'),
