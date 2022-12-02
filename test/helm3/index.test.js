@@ -12,6 +12,7 @@ const units = {
   fromArray: require('./fromArray.test'),
   fromBasisVector: require('./fromBasisVector.test'),
   fromFeatures: require('./fromFeatures.test'),
+  fromPlane: require('./fromPlane.test'),
   fromVector: require('./fromVector.test'),
   getDilation: require('./getDilation.test'),
   getRotation: require('./getRotation.test'),
