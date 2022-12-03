@@ -9,6 +9,7 @@ const units = {
   fromArray: require('./fromArray.test'),
   fromBasisVector: require('./fromBasisVector.test'),
   fromFeatures: require('./fromFeatures.test'),
+  fromPlane: require('./fromPlane.test'),
   fromPolar: require('./fromPolar.test'),
   fromVector: require('./fromVector.test'),
   equal: require('./equal.test'),
