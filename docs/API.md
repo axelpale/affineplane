@@ -2155,7 +2155,7 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/co
 
 Create a new [helm3](#affineplanehelm3) object.
 
-<p style="margin-bottom: 0">**Parameters:**ters</p>
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 
 - *a*
@@ -2853,7 +2853,7 @@ with a spanning vector from p to q.
 Source: [fromPoints.js](https://github.com/axelpale/affineplane/blob/main/lib/line2/fromPoints.js)
 
 <a name="affineplaneline2validate"></a>
-## [affineplane](#affineplane).[line2](#affineplaneline2).[validate](#affineplaneline2validate)(l)
+## [affineplane](#affineplane).[line2](#affineplaneline2).[validate](#affineplaneline2validate)(obj)
 
 Check if the object is a valid [line2](#affineplaneline2).
 Valid [line2](#affineplaneline2) has origin and span properties
@@ -2862,8 +2862,8 @@ that are valid [point2](#affineplanepoint2) and [vec2](#affineplanevec2), respec
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 
-- *l*
-  - an object
+- *obj*
+  - an object, the line candidate.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
@@ -2990,7 +2990,8 @@ Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/line
 
 Two-dimensional path; Array of [point2](#affineplanepoint2); Open sequence of points;
 Does not form a polygon but a sequence of line segments.
-`[{ x, y }, { x, y }, ...]`
+
+Example: `[{ x, y }, { x, y }, ...]`
 
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
@@ -3095,7 +3096,8 @@ Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/pat
 
 Three-dimensional path; Array of [point3](#affineplanepoint3); Open sequence of points;
 Does not form a polygon but a sequence of line segments.
-`[{ x, y, z }, { x, y, z }, ...]`
+
+Example: `[{ x, y, z }, { x, y, z }, ...]`
 
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
@@ -3226,13 +3228,14 @@ Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/pat
 
 A 2D euclidean plane.
 
-A plane is a 2d helmert transform (helm2)
+A plane is a 2D Helmert transformation
 from the plane coordinates to a reference
 coordinate system called the *reference plane*.
 The transform defines the scale and angle of the plane
 and its origin position on the reference.
 
-The plane is represented with an object `{ a, b, x, y }`
+The plane is represented with an object `{ a, b, x, y }`.
+See the illustration below for visual explanation of these properties.
 
 For example `{ a: 1, b: 0, x: 0, y: 0 }` defines a plane
 is an exact copy of its reference plane. For another example
@@ -3391,6 +3394,9 @@ Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/pl
 
 <a name="affineplaneplane2equal"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[equal](#affineplaneplane2equal)(p1, p2)
+
+Test if two planes are strictly equal in their properties.
+See [affineplane.plane2](#affineplaneplane2).almostEqual for a relaxed alternative.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
@@ -4014,7 +4020,8 @@ Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/pl
 <a name="affineplaneplane3equal"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[equal](#affineplaneplane3equal)(p1, p2)
 
-Test if two planes are equal.
+Test if two planes are strictly equal in their properties.
+See [affineplane.plane3](#affineplaneplane3).almostEqual for a relaxed alternative.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
