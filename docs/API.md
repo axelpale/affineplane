@@ -52,6 +52,8 @@ Source: [lib/index.js](https://github.com/axelpale/affineplane/blob/main/lib/ind
 
 Common utilites to handle angles.
 
+![Angle](geometry_angle.png)
+
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
@@ -133,8 +135,6 @@ A direction on 2D space.
 A direction is basically a unit vector.
 When a direction is transited between planes, only the rotation of
 the coordinate space affects the direction.
-
-![Direction angle](geometry_direction.png)
 
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
@@ -3238,6 +3238,8 @@ For example `{ a: 1, b: 0, x: 0, y: 0 }` defines a plane
 is an exact copy of its reference plane. For another example
 `{ a: 1, b: 0, x: 20, y: 0 }` defines a plane which
 is located +20 units along x-axis of the reference plane.
+
+![Basis and its properties](geometry_basis_2d.png)
 
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
