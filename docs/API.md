@@ -174,7 +174,7 @@ Create a new direction from an angle.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir2
+- a [dir2](#affineplanedir2)
 
 
 Aliases: [affineplane.dir2.create](#affineplanedir2create)
@@ -184,7 +184,9 @@ Source: [fromPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/dir
 <a name="affineplanedir2fromvector"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[fromVector](#affineplanedir2fromvector)(v)
 
-Create a new direction from a vector. If given a zero vector, return
+Create a new direction from a vector.
+Basically, extract an unit vector from the given vector.
+If given a zero vector, return a
 direction towards positive x-axis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
@@ -197,7 +199,7 @@ direction towards positive x-axis.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir2
+- a [dir2](#affineplanedir2)
 
 
 Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/fromVector.js)
@@ -218,7 +220,7 @@ Get the direction as angle around z-axis measured from positive x-axis.
 
 
 - *dir*
-  - a dir2 object or unit [vec2](#affineplanevec2).
+  - a [dir2](#affineplanedir2) object or unit [vec2](#affineplanevec2).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
@@ -240,7 +242,7 @@ Get a vector from the direction with the given length.
 
 
 - *dir*
-  - a dir2
+  - a [dir2](#affineplanedir2)
 - *magn*
   - a number, the magnitude of the vector to create.
 
@@ -263,7 +265,7 @@ to the reference plane.
 
 
 - *dir*
-  - a dir2 on the source plane.
+  - a [dir2](#affineplanedir2) on the source plane.
 - *source*
   - a [plane2](#affineplaneplane2), the source plane, represented on the reference plane.
 
@@ -271,7 +273,7 @@ to the reference plane.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir2, represented on the reference plane.
+- a [dir2](#affineplanedir2), represented on the reference plane.
 
 
 Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/transitFrom.js)
@@ -279,7 +281,7 @@ Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/d
 <a name="affineplanedir2transitto"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[transitTo](#affineplanedir2transitto)(dir, target)
 
-Transit a dir2 to a target plane.
+Transit a [dir2](#affineplanedir2) to a target plane.
 In other words, represent the direction
 in the coordinate system of the target plane.
 
@@ -287,7 +289,7 @@ in the coordinate system of the target plane.
 
 
 - *dir*
-  - a number, a dir2 on the reference plane.
+  - a number, a [dir2](#affineplanedir2) on the reference plane.
 - *target*
   - a [plane2](#affineplaneplane2), the target plane, represented on the reference plane.
 
@@ -295,7 +297,7 @@ in the coordinate system of the target plane.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir2 on the target plane.
+- a [dir2](#affineplanedir2) on the target plane.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/transitTo.js)
@@ -335,9 +337,9 @@ The directions are compared as two unit vectors.
 
 
 - *d*
-  - a dir2
+  - a [dir2](#affineplanedir2)
 - *dd*
-  - a dir2
+  - a [dir2](#affineplanedir2)
 - *epsilon*
   - Optional number, default to [affineplane.epsilon](#affineplaneepsilon).
   - Set to 0 for strict comparison.
@@ -361,9 +363,9 @@ The directions are compared as two unit vectors.
 
 
 - *d*
-  - a dir3
+  - a [dir3](#affineplanedir3)
 - *dd*
-  - a dir3
+  - a [dir3](#affineplanedir3)
 - *epsilon*
   - Optional number, default to [affineplane.epsilon](#affineplaneepsilon).
   - Set to 0 for strict comparison.
@@ -411,16 +413,16 @@ when z-axis is considered the polar axis.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir3
+- a [dir3](#affineplanedir3)
 
 
 <p style="margin-bottom: 0">Examples:</p>
 
 
-- Toward positive x-axis: dir3.fromSpherical(0, π/2)
-- Toward positive y-axis: dir3.fromSpherical(π/2, π/2)
-- Toward positive z-axis: dir3.fromSpherical(0, 0)
-- Toward point (1,1,1): dir3.fromSpherical(π/4, π/4)
+- Toward positive x-axis: [dir3](#affineplanedir3).fromSpherical(0, π/2)
+- Toward positive y-axis: [dir3](#affineplanedir3).fromSpherical(π/2, π/2)
+- Toward positive z-axis: [dir3](#affineplanedir3).fromSpherical(0, 0)
+- Toward point (1,1,1): [dir3](#affineplanedir3).fromSpherical(π/4, π/4)
 
 
 Aliases: [affineplane.dir3.create](#affineplanedir3create)
@@ -430,8 +432,10 @@ Source: [fromSpherical.js](https://github.com/axelpale/affineplane/blob/main/lib
 <a name="affineplanedir3fromvector"></a>
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[fromVector](#affineplanedir3fromvector)(vec)
 
-Create a new direction from a vector. If the case of zero vector,
-the default direction towards positive x-axis is returned.
+Create a new direction from a vector.
+Basically extract an unit vector from the vector.
+If the case of zero vector, return the default direction
+towards positive x-axis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
@@ -443,7 +447,7 @@ the default direction towards positive x-axis is returned.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir3
+- a [dir3](#affineplanedir3)
 
 
 Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/fromVector.js)
@@ -460,7 +464,7 @@ depends on the position.
 
 
 - *dir*
-  - a dir3 in the reference space.
+  - a [dir3](#affineplanedir3) in the reference space.
 - *plane*
   - a [plane3](#affineplaneplane3) in the reference space. The image plane.
 
@@ -468,7 +472,7 @@ depends on the position.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir2 on the image plane.
+- a [dir2](#affineplanedir2) on the image plane.
 
 
 Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/projectTo.js)
@@ -485,7 +489,7 @@ The function is compatible with [affineplane.dir3.fromSpherical](#affineplanedir
 
 
 - *dir*
-  - a dir3 object or unit [vec3](#affineplanevec3).
+  - a [dir3](#affineplanedir3) object or unit [vec3](#affineplanevec3).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
@@ -512,7 +516,7 @@ Source: [toSpherical.js](https://github.com/axelpale/affineplane/blob/main/lib/d
 
 
 - *dir*
-  - a dir3
+  - a [dir3](#affineplanedir3)
 - *magn*
   - optional number, default to 1. The magnitude of the vector to create.
   - Note that a negative magnitude creates a vector to opposite direction.
@@ -537,7 +541,7 @@ Note that plane translation or scale does not affect direction.
 
 
 - *dir*
-  - a dir3 on the source plane.
+  - a [dir3](#affineplanedir3) on the source plane.
 - *plane*
   - a [plane3](#affineplaneplane3) on the reference plane. The source plane.
 
@@ -545,7 +549,7 @@ Note that plane translation or scale does not affect direction.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir3, represented on the reference plane.
+- a [dir3](#affineplanedir3), represented on the reference plane.
 
 
 Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/transitFrom.js)
@@ -553,7 +557,7 @@ Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/d
 <a name="affineplanedir3transitto"></a>
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[transitTo](#affineplanedir3transitto)(dir, target)
 
-Transit a dir3 to a target plane.
+Transit a [dir3](#affineplanedir3) to a target plane.
 In other words, represent the direction
 in the coordinate system of the target plane.
 
@@ -561,7 +565,7 @@ in the coordinate system of the target plane.
 
 
 - *dir*
-  - a number, a dir3 on the reference plane.
+  - a number, a [dir3](#affineplanedir3) on the reference plane.
 - *target*
   - a [plane3](#affineplaneplane3), the target plane, represented on the reference plane.
 
@@ -569,7 +573,7 @@ in the coordinate system of the target plane.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir3, represented on the target plane.
+- a [dir3](#affineplanedir3), represented on the target plane.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/transitTo.js)
@@ -625,7 +629,7 @@ to the reference plane.
 
 
 - *dist*
-  - a number, a dist2 distance measure on the source plane.
+  - a number, a [dist2](#affineplanedist2) distance measure on the source plane.
 - *source*
   - a [plane2](#affineplaneplane2), the source plane, represented on the reference plane.
 
@@ -633,7 +637,7 @@ to the reference plane.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a number, a dist2, represented on the reference plane.
+- a number, a [dist2](#affineplanedist2), represented on the reference plane.
 
 
 Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/transitFrom.js)
@@ -641,7 +645,7 @@ Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/d
 <a name="affineplanedist2transitto"></a>
 ## [affineplane](#affineplane).[dist2](#affineplanedist2).[transitTo](#affineplanedist2transitto)(dist, target)
 
-Transit a dist2 to a target plane.
+Transit a [dist2](#affineplanedist2) to a target plane.
 In other words, represent the distance
 in the coordinate system of the plane.
 
@@ -649,7 +653,7 @@ in the coordinate system of the plane.
 
 
 - *dist*
-  - a number, a dist2 on the reference plane.
+  - a number, a [dist2](#affineplanedist2) on the reference plane.
 - *target*
   - a [plane2](#affineplaneplane2), the target plane, represented on the reference plane.
 
@@ -657,7 +661,7 @@ in the coordinate system of the plane.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a number, a dist2 on the target plane.
+- a number, a [dist2](#affineplanedist2) on the target plane.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/transitTo.js)
@@ -713,7 +717,7 @@ to the reference plane.
 
 
 - *dist*
-  - a number, a dist3 distance measure on the source plane.
+  - a number, a [dist3](#affineplanedist3) distance measure on the source plane.
 - *source*
   - a [plane3](#affineplaneplane3), the source plane, represented on the reference plane.
 
@@ -721,7 +725,7 @@ to the reference plane.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a number, a dist3, represented on the reference plane.
+- a number, a [dist3](#affineplanedist3), represented on the reference plane.
 
 
 Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/transitFrom.js)
@@ -729,7 +733,7 @@ Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/d
 <a name="affineplanedist3transitto"></a>
 ## [affineplane](#affineplane).[dist3](#affineplanedist3).[transitTo](#affineplanedist3transitto)(dist, target)
 
-Transit a dist3 to a target plane.
+Transit a [dist3](#affineplanedist3) to a target plane.
 In other words, represent the distance
 in the coordinate system of the plane.
 
@@ -737,7 +741,7 @@ in the coordinate system of the plane.
 
 
 - *dist*
-  - a number, a dist3 on the reference plane.
+  - a number, a [dist3](#affineplanedist3) on the reference plane.
 - *target*
   - a [plane3](#affineplaneplane3), the target plane, represented on the reference plane.
 
@@ -745,7 +749,7 @@ in the coordinate system of the plane.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a number, a dist3 on the target plane.
+- a number, a [dist3](#affineplanedist3) on the target plane.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/transitTo.js)
@@ -805,6 +809,7 @@ See [affineplane.plane2](#affineplaneplane2) for a positional variant.
 - [affineplane.helm2.fromArray](#affineplanehelm2fromarray)
 - [affineplane.helm2.fromBasisVector](#affineplanehelm2frombasisvector)
 - [affineplane.helm2.fromFeatures](#affineplanehelm2fromfeatures)
+- [affineplane.helm2.fromPlane](#affineplanehelm2fromplane)
 - [affineplane.helm2.fromPolar](#affineplanehelm2frompolar)
 - [affineplane.helm2.fromVector](#affineplanehelm2fromvector)
 - [affineplane.helm2.getDilation](#affineplanehelm2getdilation)
@@ -813,6 +818,7 @@ See [affineplane.plane2](#affineplaneplane2) for a positional variant.
 - [affineplane.helm2.getTranslation](#affineplanehelm2gettranslation)
 - [affineplane.helm2.inverse](#affineplanehelm2inverse)
 - [affineplane.helm2.invert](#affineplanehelm2invert)
+- [affineplane.helm2.limitDilation](#affineplanehelm2limitdilation)
 - [affineplane.helm2.multiply](#affineplanehelm2multiply)
 - [affineplane.helm2.projectTo](#affineplanehelm2projectto)
 - [affineplane.helm2.rotateBy](#affineplanehelm2rotateby)
@@ -1313,6 +1319,32 @@ Create a [helm2](#affineplanehelm2) transformation from human-readable features.
 
 Source: [fromFeatures.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/fromFeatures.js)
 
+<a name="affineplanehelm2fromplane"></a>
+## [affineplane](#affineplane).[helm2](#affineplanehelm2).[fromPlane](#affineplanehelm2fromplane)(plane, origin)
+
+Capture a Helmert transform from a plane.
+In other words, convert a passive affine transformation to an active one.
+The result answers to the task: create such Helmert transformation
+so that when applied to an identity plane at the given origin,
+it transforms the plane so that the result is equal to the given plane.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *plane*
+  - a [plane2](#affineplaneplane2) on the reference plane
+- *origin*
+  - a [point2](#affineplanepoint2) on the reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [helm2](#affineplanehelm2) on the reference plane
+
+
+Source: [fromPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/fromPlane.js)
+
 <a name="affineplanehelm2frompolar"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[fromPolar](#affineplanehelm2frompolar)(scale, rotation[, tx[, ty]])
 
@@ -1464,6 +1496,31 @@ Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2
 Alias of [affineplane.helm2.inverse](#affineplanehelm2inverse)
 
 Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/inverse.js)
+
+<a name="affineplanehelm2limitdilation"></a>
+## [affineplane](#affineplane).[helm2](#affineplanehelm2).[limitDilation](#affineplanehelm2limitdilation)(tr, min, max)
+
+Limit the dilating/scaling component of the transformation between
+min and max (inclusive).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *tr*
+  - a [helm2](#affineplanehelm2), in the reference basis.
+- *min*
+  - a number, the minimum dilation relative to the reference basis. Must be positive.
+- *max*
+  - a number, the maximum dilation relative to the reference basis. Must be positive.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [helm2](#affineplanehelm2)
+
+
+Source: [limitDilation.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/limitDilation.js)
 
 <a name="affineplanehelm2multiply"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[multiply](#affineplanehelm2multiply)
@@ -1899,6 +1956,7 @@ See [affineplane.plane3](#affineplaneplane3) for a positional variant.
 - [affineplane.helm3.fromArray](#affineplanehelm3fromarray)
 - [affineplane.helm3.fromBasisVector](#affineplanehelm3frombasisvector)
 - [affineplane.helm3.fromFeatures](#affineplanehelm3fromfeatures)
+- [affineplane.helm3.fromPlane](#affineplanehelm3fromplane)
 - [affineplane.helm3.fromVector](#affineplanehelm3fromvector)
 - [affineplane.helm3.getDilation](#affineplanehelm3getdilation)
 - [affineplane.helm3.getRotation](#affineplanehelm3getrotation)
@@ -1906,6 +1964,7 @@ See [affineplane.plane3](#affineplaneplane3) for a positional variant.
 - [affineplane.helm3.getTranslation](#affineplanehelm3gettranslation)
 - [affineplane.helm3.inverse](#affineplanehelm3inverse)
 - [affineplane.helm3.invert](#affineplanehelm3invert)
+- [affineplane.helm3.limitDilation](#affineplanehelm3limitdilation)
 - [affineplane.helm3.projectTo](#affineplanehelm3projectto)
 - [affineplane.helm3.rotateBy](#affineplanehelm3rotateby)
 - [affineplane.helm3.scaleBy](#affineplanehelm3scaleby)
@@ -2256,6 +2315,32 @@ Create a [helm3](#affineplanehelm3) transformation from human-readable features.
 
 Source: [fromFeatures.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/fromFeatures.js)
 
+<a name="affineplanehelm3fromplane"></a>
+## [affineplane](#affineplane).[helm3](#affineplanehelm3).[fromPlane](#affineplanehelm3fromplane)(plane, origin)
+
+Capture a Helmert transform from a plane.
+In other words, convert a passive affine transformation to an active one.
+The result answers to the task: create such Helmert transformation
+so that when applied to an identity plane at the given origin,
+it transforms the plane so that the result is equal to the given plane.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *plane*
+  - a [plane3](#affineplaneplane3) on the reference plane
+- *origin*
+  - a [point3](#affineplanepoint3) on the reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [helm3](#affineplanehelm3) on the reference plane
+
+
+Source: [fromPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/fromPlane.js)
+
 <a name="affineplanehelm3fromvector"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[fromVector](#affineplanehelm3fromvector)(vec)
 
@@ -2375,6 +2460,31 @@ Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3
 Alias of [affineplane.helm3.inverse](#affineplanehelm3inverse)
 
 Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/inverse.js)
+
+<a name="affineplanehelm3limitdilation"></a>
+## [affineplane](#affineplane).[helm3](#affineplanehelm3).[limitDilation](#affineplanehelm3limitdilation)(tr, min, max)
+
+Limit the dilating/scaling component of the transformation between
+min and max (inclusive).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *tr*
+  - a [helm3](#affineplanehelm3), in the reference basis.
+- *min*
+  - a number, the minimum dilation measured in the reference basis. Must be positive.
+- *max*
+  - a number, the maximum dilation measured in the reference basis. Must be positive.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [helm3](#affineplanehelm3)
+
+
+Source: [limitDilation.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/limitDilation.js)
 
 <a name="affineplanehelm3projectto"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[projectTo](#affineplanehelm3projectto)(tr, plane)
@@ -3009,15 +3119,15 @@ Combine paths together.
 
 
 - *pa*
-  - a path3
+  - a [path3](#affineplanepath3)
 - *pb*
-  - a path3
+  - a [path3](#affineplanepath3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a path3
+- a [path3](#affineplanepath3)
 
 
 Source: [combine.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/combine.js)
@@ -3037,7 +3147,7 @@ Create a path on plane. Deep-clones the points array.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a path3, array of points
+- a [path3](#affineplanepath3), array of points
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/create.js)
@@ -3052,7 +3162,7 @@ Project perspectively if a camera position is given.
 
 
 - *path*
-  - a path3, in the reference basis.
+  - a [path3](#affineplanepath3), in the reference basis.
 - *plane*
   - a [plane3](#affineplaneplane3), in the reference basis. The image plane to which to project.
 - *camera*
@@ -3076,7 +3186,7 @@ Represent a path on the reference basis.
 
 
 - *path*
-  - a path3, represented on the source basis.
+  - a [path3](#affineplanepath3), represented on the source basis.
 - *source*
   - a [plane3](#affineplaneplane3), the source basis, represented on the reference basis.
 
@@ -3084,7 +3194,7 @@ Represent a path on the reference basis.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a path3, represented on the reference basis.
+- a [path3](#affineplanepath3), represented on the reference basis.
 
 
 Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/transitFrom.js)
@@ -3098,7 +3208,7 @@ Transit a path to the target basis.
 
 
 - *path*
-  - a path3, on the reference basis.
+  - a [path3](#affineplanepath3), on the reference basis.
 - *target*
   - a [plane3](#affineplaneplane3), the target basis, represented on the reference basis.
 
@@ -3106,7 +3216,7 @@ Transit a path to the target basis.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a path3, represented on the target basis.
+- a [path3](#affineplanepath3), represented on the target basis.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/transitTo.js)
@@ -3144,6 +3254,7 @@ is located +20 units along x-axis of the reference plane.
 - [affineplane.plane2.fromHelmert](#affineplaneplane2fromhelmert)
 - [affineplane.plane2.getScale](#affineplaneplane2getscale)
 - [affineplane.plane2.invert](#affineplaneplane2invert)
+- [affineplane.plane2.limitScale](#affineplaneplane2limitscale)
 - [affineplane.plane2.projectTo](#affineplaneplane2projectto)
 - [affineplane.plane2.rotateBy](#affineplaneplane2rotateby)
 - [affineplane.plane2.rotateTo](#affineplaneplane2rotateto)
@@ -3151,6 +3262,7 @@ is located +20 units along x-axis of the reference plane.
 - [affineplane.plane2.scaleBy](#affineplaneplane2scaleby)
 - [affineplane.plane2.scaleTo](#affineplaneplane2scaleto)
 - [affineplane.plane2.transform](#affineplaneplane2transform)
+- [affineplane.plane2.transformInside](#affineplaneplane2transforminside)
 - [affineplane.plane2.transitFrom](#affineplaneplane2transitfrom)
 - [affineplane.plane2.transitTo](#affineplaneplane2transitto)
 - [affineplane.plane2.translateBy](#affineplaneplane2translateby)
@@ -3390,6 +3502,31 @@ represented in the coordinates of the given plane.
 
 Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/invert.js)
 
+<a name="affineplaneplane2limitscale"></a>
+## [affineplane](#affineplane).[plane2](#affineplaneplane2).[limitScale](#affineplaneplane2limitscale)(plane, min, max)
+
+Limit the scale the plane transformation between
+min and max (inclusive).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *plane*
+  - a [plane2](#affineplaneplane2), in the reference basis.
+- *min*
+  - a number, the minimum scale measured in the reference basis. Must be positive.
+- *max*
+  - a number, the maximum scale measured in the reference basis. Must be positive.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [plane2](#affineplaneplane2)
+
+
+Source: [limitScale.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/limitScale.js)
+
 <a name="affineplaneplane2projectto"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[projectTo](#affineplaneplane2projectto)(plane, target[, camera])
 
@@ -3573,6 +3710,32 @@ Transform the plane with a helmert transformation applied at origin.
 
 Source: [transform.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/transform.js)
 
+<a name="affineplaneplane2transforminside"></a>
+## [affineplane](#affineplane).[plane2](#affineplaneplane2).[transformInside](#affineplaneplane2transforminside)(plane, tr[, origin])
+
+Transform the plane with a Helmert transformation applied at the origin.
+Same as [affineplane.plane2.transform](#affineplaneplane2transform) except the transform and the origin
+are represented on the plane instead of the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *plane*
+  - a [plane2](#affineplaneplane2) on the reference basis
+- *tr*
+  - a [helm2](#affineplanehelm2) on the plane
+- *origin*
+  - optional [point2](#affineplanepoint2) on the plane. Default `{x:0,y:0}`. The transformation will be applied to the plane at this point.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [plane2](#affineplaneplane2) on the reference plane
+
+
+Source: [transformInside.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/transformInside.js)
+
 <a name="affineplaneplane2transitfrom"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[transitFrom](#affineplaneplane2transitfrom)(plane, source)
 
@@ -3726,6 +3889,7 @@ relative to its reference plane.
 - [affineplane.plane3.getNormal](#affineplaneplane3getnormal)
 - [affineplane.plane3.getScale](#affineplaneplane3getscale)
 - [affineplane.plane3.invert](#affineplaneplane3invert)
+- [affineplane.plane3.limitScale](#affineplaneplane3limitscale)
 - [affineplane.plane3.projectTo](#affineplaneplane3projectto)
 - [affineplane.plane3.rotateBy](#affineplaneplane3rotateby)
 - [affineplane.plane3.rotateTo](#affineplaneplane3rotateto)
@@ -3734,6 +3898,7 @@ relative to its reference plane.
 - [affineplane.plane3.scaleTo](#affineplaneplane3scaleto)
 - [affineplane.plane3.transform](#affineplaneplane3transform)
 - [affineplane.plane3.transformBy](#affineplaneplane3transformby)
+- [affineplane.plane3.transformInside](#affineplaneplane3transforminside)
 - [affineplane.plane3.transitFrom](#affineplaneplane3transitfrom)
 - [affineplane.plane3.transitTo](#affineplaneplane3transitto)
 - [affineplane.plane3.translateBy](#affineplaneplane3translateby)
@@ -3978,6 +4143,31 @@ Source: [getScale.js](https://github.com/axelpale/affineplane/blob/main/lib/plan
 
 Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/invert.js)
 
+<a name="affineplaneplane3limitscale"></a>
+## [affineplane](#affineplane).[plane3](#affineplaneplane3).[limitScale](#affineplaneplane3limitscale)(plane, min, max)
+
+Limit the scale the plane transformation between
+min and max (inclusive).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *plane*
+  - a [plane3](#affineplaneplane3), in the reference basis.
+- *min*
+  - a number, the minimum scale measured in the reference basis. Must be positive.
+- *max*
+  - a number, the maximum scale measured in the reference basis. Must be positive.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [plane3](#affineplaneplane3)
+
+
+Source: [limitScale.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/limitScale.js)
+
 <a name="affineplaneplane3projectto"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[projectTo](#affineplaneplane3projectto)(plane, target[, camera])
 
@@ -4178,6 +4368,32 @@ Source: [transform.js](https://github.com/axelpale/affineplane/blob/main/lib/pla
 Alias of [affineplane.plane3.transform](#affineplaneplane3transform)
 
 Source: [transform.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/transform.js)
+
+<a name="affineplaneplane3transforminside"></a>
+## [affineplane](#affineplane).[plane3](#affineplaneplane3).[transformInside](#affineplaneplane3transforminside)(plane, tr[, origin])
+
+Transform the plane with a Helmert transformation applied at the origin.
+Same as [affineplane.plane3.transform](#affineplaneplane3transform) except the transform and the origin
+are represented on the plane instead of the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *plane*
+  - a [plane3](#affineplaneplane3) on the reference basis
+- *tr*
+  - a [helm3](#affineplanehelm3) on the plane
+- *origin*
+  - optional [point3](#affineplanepoint3) on the plane. Default `{x:0,y:0,z:0}`. The transformation will be applied to the plane at this point.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a [plane3](#affineplaneplane3) on the reference plane
+
+
+Source: [transformInside.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/transformInside.js)
 
 <a name="affineplaneplane3transitfrom"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[transitFrom](#affineplaneplane3transitfrom)(plane, source)
@@ -4482,7 +4698,7 @@ Get direction from point to point.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir2, a unit vector. If no direction can be computed, for example in the case where the points are equal, then the direction will be `{ x: 1, y: 0 }`
+- a [dir2](#affineplanedir2), a unit vector. If no direction can be computed, for example in the case where the points are equal, then the direction will be `{ x: 1, y: 0 }`
 
 
 Source: [direction.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/direction.js)
@@ -4994,7 +5210,7 @@ Get direction from point to point.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a dir3, a unit vector. If no direction can be computed, for example in the case where the points are equal, then the direction will be `{ x: 1, y: 0, z: 0 }`
+- a [dir3](#affineplanedir3), a unit vector. If no direction can be computed, for example in the case where the points are equal, then the direction will be `{ x: 1, y: 0, z: 0 }`
 
 
 Source: [direction.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/direction.js)
@@ -5389,15 +5605,15 @@ Add two quaternions together via component-wise addition.
 
 
 - *q*
-  - a quat4
+  - a [quat4](#affineplanequat4)
 - *p*
-  - a quat4
+  - a [quat4](#affineplanequat4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a quat4
+- a [quat4](#affineplanequat4)
 
 
 Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/add.js)
@@ -5411,13 +5627,13 @@ Get the conjugate of a quaternion.
 
 
 - *q*
-  - a quat4
+  - a [quat4](#affineplanequat4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a quat4
+- a [quat4](#affineplanequat4)
 
 
 Source: [conjugate.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/conjugate.js)
@@ -5441,7 +5657,7 @@ Source: [conjugate.js](https://github.com/axelpale/affineplane/blob/main/lib/qua
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a quat4
+- a [quat4](#affineplanequat4)
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/create.js)
@@ -5462,15 +5678,15 @@ Get the quaternion q - p.
 
 
 - *q*
-  - a quat4
+  - a [quat4](#affineplanequat4)
 - *p*
-  - a quat4
+  - a [quat4](#affineplanequat4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a quat4
+- a [quat4](#affineplanequat4)
 
 
 Aliases: [affineplane.quat4.diff](#affineplanequat4diff)
@@ -5489,7 +5705,7 @@ the vector back to 3D.
 
 
 - *dir*
-  - a dir3 or a [vec3](#affineplanevec3)
+  - a [dir3](#affineplanedir3) or a [vec3](#affineplanevec3)
 - *angle*
   - a number, an angle in radians
 
@@ -5497,7 +5713,7 @@ the vector back to 3D.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a quat4
+- a [quat4](#affineplanequat4)
 
 
 Source: [fromAxisAngle.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/fromAxisAngle.js)
@@ -5517,7 +5733,7 @@ Construct a vector quaternion i.e. a quaternion with zero scalar part.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a quat4
+- a [quat4](#affineplanequat4)
 
 
 Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/fromVector.js)
@@ -5531,15 +5747,15 @@ The Hamilton product of two quaternions.
 
 
 - *q*
-  - a quat4
+  - a [quat4](#affineplanequat4)
 - *p*
-  - a quat4
+  - a [quat4](#affineplanequat4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a quat4
+- a [quat4](#affineplanequat4)
 
 
 Aliases: [affineplane.quat4.multiply](#affineplanequat4multiply)
@@ -5562,7 +5778,7 @@ The length of quaternion. Also called the norm.
 
 
 - *q*
-  - a quat4
+  - a [quat4](#affineplanequat4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
@@ -7712,7 +7928,7 @@ Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3
 <a name="affineplanevec4"></a>
 ## [affineplane](#affineplane).[vec4](#affineplanevec4)
 
-A vec4 is a 4D vector { x, y, z, w }.
+A [vec4](#affineplanevec4) is a 4D vector { x, y, z, w }.
 
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
@@ -7735,15 +7951,15 @@ Add two vectors together via component-wise addition.
 
 
 - *v*
-  - a vec4
+  - a [vec4](#affineplanevec4)
 - *w*
-  - a vec4
+  - a [vec4](#affineplanevec4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a vec4
+- a [vec4](#affineplanevec4)
 
 
 Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/add.js)
@@ -7767,7 +7983,7 @@ Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/add.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a vec4
+- a [vec4](#affineplanevec4)
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/create.js)
@@ -7781,7 +7997,7 @@ The length of 4D vector. Also called the norm.
 
 
 - *v*
-  - a vec4
+  - a [vec4](#affineplanevec4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
@@ -7801,7 +8017,7 @@ Scalar multiplication of a vector.
 
 
 - *v*
-  - a vec4
+  - a [vec4](#affineplanevec4)
 - *m*
   - a number, a multiplier
 
@@ -7809,7 +8025,7 @@ Scalar multiplication of a vector.
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
 
-- a vec4
+- a [vec4](#affineplanevec4)
 
 
 Source: [scaleBy.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/scaleBy.js)
