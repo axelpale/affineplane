@@ -8,6 +8,7 @@ const units = {
   fromHelmert: require('./fromHelmert.test'),
   getScale: require('./getScale.test'),
   invert: require('./invert.test'),
+  limitScale: require('./limitScale.test'),
   projectTo: require('./projectTo.test'),
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),
