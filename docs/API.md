@@ -3249,6 +3249,7 @@ is located +20 units along x-axis of the reference plane.
 
 
 - [affineplane.plane2.IDENTITY](#affineplaneplane2identity)
+- [affineplane.plane2.almostEqual](#affineplaneplane2almostequal)
 - [affineplane.plane2.between](#affineplaneplane2between)
 - [affineplane.plane2.compose](#affineplaneplane2compose)
 - [affineplane.plane2.copy](#affineplaneplane2copy)
@@ -3290,6 +3291,30 @@ Source: [plane2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/
 The identity plane is identical to its reference plane.
 
 Source: [plane3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/index.js)
+
+<a name="affineplaneplane2almostequal"></a>
+## [affineplane](#affineplane).[plane2](#affineplaneplane2).[almostEqual](#affineplaneplane2almostequal)(pa, pb[, tolerance])
+
+Test if two planes are almost equal.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *pa*
+  - a [plane2](#affineplaneplane2)
+- *pb*
+  - a [plane2](#affineplaneplane2)
+- *tolerance*
+  - optional number, default to [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/almostEqual.js)
 
 <a name="affineplaneplane2between"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[between](#affineplaneplane2between)
@@ -3396,7 +3421,7 @@ Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/pl
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[equal](#affineplaneplane2equal)(p1, p2)
 
 Test if two planes are strictly equal in their properties.
-See [affineplane.plane2](#affineplaneplane2).almostEqual for a relaxed alternative.
+See [affineplane.plane2.almostEqual](#affineplaneplane2almostequal) for a relaxed alternative.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
@@ -3886,6 +3911,7 @@ relative to its reference plane.
 
 
 - [affineplane.plane3.IDENTITY](#affineplaneplane3identity)
+- [affineplane.plane3.almostEqual](#affineplaneplane3almostequal)
 - [affineplane.plane3.between](#affineplaneplane3between)
 - [affineplane.plane3.compose](#affineplaneplane3compose)
 - [affineplane.plane3.copy](#affineplaneplane3copy)
@@ -3915,6 +3941,30 @@ relative to its reference plane.
 
 
 Source: [plane3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/index.js)
+
+<a name="affineplaneplane3almostequal"></a>
+## [affineplane](#affineplane).[plane3](#affineplaneplane3).[almostEqual](#affineplaneplane3almostequal)(pa, pb[, tolerance])
+
+Test if two planes are almost equal.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+
+- *pa*
+  - a [plane3](#affineplaneplane3)
+- *pb*
+  - a [plane3](#affineplaneplane3)
+- *tolerance*
+  - optional number, default to [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/almostEqual.js)
 
 <a name="affineplaneplane3between"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[between](#affineplaneplane3between)
@@ -4021,7 +4071,7 @@ Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/pl
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[equal](#affineplaneplane3equal)(p1, p2)
 
 Test if two planes are strictly equal in their properties.
-See [affineplane.plane3](#affineplaneplane3).almostEqual for a relaxed alternative.
+See [affineplane.plane3.almostEqual](#affineplaneplane3almostequal) for a relaxed alternative.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
