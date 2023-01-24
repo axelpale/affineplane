@@ -5,6 +5,7 @@ const test = require('tape')
 const units = {
   'affineplane.angle': require('./angle/index.test'),
   'affineplane.box2': require('./box2/index.test'),
+  'affineplane.box3': require('./box3/index.test'),
   'affineplane.epsilon': require('./epsilon/index.test'),
   'affineplane.dir2': require('./dir2/index.test'),
   'affineplane.dir3': require('./dir3/index.test'),
