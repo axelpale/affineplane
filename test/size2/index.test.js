@@ -2,7 +2,8 @@
 const units = {
   create: require('./create.test'),
   transitFrom: require('./transitFrom.test'),
-  transitTo: require('./transitTo.test')
+  transitTo: require('./transitTo.test'),
+  validate: require('./validate.test')
 }
 
 module.exports = (t) => {
