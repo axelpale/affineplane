@@ -1,7 +1,9 @@
 // A unit for each method.
 const units = {
   at: require('./at.test'),
-  create: require('./create.test')
+  atNorm: require('./atNorm.test'),
+  create: require('./create.test'),
+  getScale: require('./getScale.test')
 }
 
 module.exports = (t) => {
