@@ -2,6 +2,8 @@
 const units = {
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
+  transitFrom: require('./transitFrom.test'),
+  transitTo: require('./transitTo.test'),
   validate: require('./validate.test'),
   volume: require('./volume.test')
 }
