@@ -8,6 +8,7 @@ const units = {
   getBounds: require('./getBounds.test'),
   getScale: require('./getScale.test'),
   homothety: require('./homothety.test'),
+  projectTo: require('./projectTo.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test')
 }
