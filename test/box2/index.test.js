@@ -4,7 +4,8 @@ const units = {
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
   getArea: require('./getArea.test'),
-  getScale: require('./getScale.test')
+  getScale: require('./getScale.test'),
+  transitFrom: require('./transitFrom.test')
 }
 
 module.exports = (t) => {
