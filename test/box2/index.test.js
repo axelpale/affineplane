@@ -7,6 +7,7 @@ const units = {
   getArea: require('./getArea.test'),
   getBounds: require('./getBounds.test'),
   getScale: require('./getScale.test'),
+  homothety: require('./homothety.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test')
 }
