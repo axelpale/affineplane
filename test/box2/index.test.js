@@ -3,6 +3,7 @@ const units = {
   at: require('./at.test'),
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
+  fromPoints: require('./fromPoints.test'),
   getArea: require('./getArea.test'),
   getBounds: require('./getBounds.test'),
   getScale: require('./getScale.test'),
