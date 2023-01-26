@@ -7,6 +7,7 @@ const units = {
   homothety: require('./homothety.test'),
   projectToLine: require('./projectToLine.test'),
   projectTo: require('./projectTo.test'),
+  transformMany: require('./transformMany.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test')
