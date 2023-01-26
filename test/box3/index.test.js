@@ -1,5 +1,6 @@
 // A unit for each method.
 const units = {
+  almostEqual: require('./almostEqual.test'),
   create: require('./create.test'),
   validate: require('./validate.test')
 }
