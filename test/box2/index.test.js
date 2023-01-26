@@ -9,7 +9,8 @@ const units = {
   homothety: require('./homothety.test'),
   projectTo: require('./projectTo.test'),
   transitFrom: require('./transitFrom.test'),
-  transitTo: require('./transitTo.test')
+  transitTo: require('./transitTo.test'),
+  validate: require('./validate.test')
 }
 
 module.exports = (t) => {
