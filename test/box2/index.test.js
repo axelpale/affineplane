@@ -6,6 +6,7 @@ const units = {
   fromPoints: require('./fromPoints.test'),
   getArea: require('./getArea.test'),
   getBounds: require('./getBounds.test'),
+  getPath: require('./getPath.test'),
   homothety: require('./homothety.test'),
   projectTo: require('./projectTo.test'),
   transitFrom: require('./transitFrom.test'),
