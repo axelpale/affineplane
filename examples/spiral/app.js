@@ -1,6 +1,6 @@
 // Affine geometry example.
 //
-// Here we give an example for point2 and herm2 geometries.
+// Here we give an example for point2 and plane2 geometries.
 //
 //
 
