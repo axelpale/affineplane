@@ -3,7 +3,6 @@ const box2 = affineplane.box2
 
 module.exports = (ts) => {
   ts.test('case: basic box fromPoints', (t) => {
-
     const p = [
       { x: 0, y: 0 },
       { x: 1, y: 0 },
@@ -21,7 +20,7 @@ module.exports = (ts) => {
       { x: -1, y: -2 },
       { x: 1, y: 0 },
       { x: 0, y: 1 },
-      { x: 2, y: 2 },
+      { x: 2, y: 2 }
     ]
     t.deepEqual(
       box2.fromPoints(pp),

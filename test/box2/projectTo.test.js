@@ -22,7 +22,6 @@ module.exports = (ts) => {
   })
 
   ts.test('case: basic perspective projection to plane', (t) => {
-
     const b = { a: 1, b: 0, x: 3, y: 0, w: 2, h: 4 }
     const p = { a: 1, b: 0, x: 0, y: 0, z: 0 }
     const c = { x: 1, y: 1, z: 0 }
