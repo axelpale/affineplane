@@ -9,7 +9,7 @@ module.exports = (ts) => {
       'trivial: point at zero'
     )
 
-    const bb = { a: 2, b: 0, x: 100, y: 200, w: 300, h: 400 }
+    const bb = { a: 1, b: 0, x: 100, y: 200, w: 300, h: 400 }
     const bbmid = box2.atNorm(bb, 0.5, 0.5)
     t.deepEqual(
       box2.homothety(bb, bbmid, 0.5),
@@ -21,10 +21,13 @@ module.exports = (ts) => {
   })
 
   ts.test('case: invalid box homothety', (t) => {
-    t.throws(() => {
-      const bb = { a: 2, b: 0, x: 100, y: 200, w: 300, h: 400 }
-      box2.homothety(bb, { x: 0, y: 0 }, 0)
-    }, 'zero factor makes the box singular')
+    const bb = { a: 1, b: 0, x: 100, y: 200, w: 300, h: 400 }
+
+    t.deepEqual(
+      box2.homothety(bb, { x: 10, y: 20 }, 0),
+      { a: 1, b: 0, x: 10, y: 20, w: 0, h: 0 },
+      'zero factor makes the box point-like'
+    )
 
     t.end()
   })

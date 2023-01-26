@@ -7,11 +7,11 @@ module.exports = (ts) => {
 
     t.deepEqual(box2.getBounds(r), r, 'should be itself')
 
-    const rr = { a: 2, b: 0, x: 200, y: 200, w: 10, h: 6 }
+    const rr = { a: 1, b: 0, x: 200, y: 200, w: 10, h: 6 }
 
     t.deepEqual(
       box2.getBounds(rr),
-      { a: 1, b: 0, x: 200, y: 200, w: 20, h: 12 },
+      { a: 1, b: 0, x: 200, y: 200, w: 10, h: 6 },
       'should match translation'
     )
 

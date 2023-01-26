@@ -26,16 +26,18 @@ module.exports = (ts) => {
     const b = { a: 1, b: 0, x: 3, y: 0, w: 2, h: 4 }
     const p = { a: 1, b: 0, x: 0, y: 0, z: 0 }
     const c = { x: 1, y: 1, z: 0 }
-    t.throws(() => {
-      box2.projectTo(b, p, c)
-    }, 'camera at image depth')
+    t.deepEqual(
+      box2.projectTo(b, p, c),
+      { a: 1, b: 0, x: 1, y: 1, w: 0, h: 0 },
+      'camera at image depth'
+    )
 
     const bb = { a: 1, b: 0, x: 2, y: 0, w: 2, h: 4 }
     const pp = { a: 1, b: 0, x: 0, y: 0, z: -2 }
     const cc = { x: 0, y: 0, z: -4 }
     t.deepEqual(
       box2.projectTo(bb, pp, cc),
-      { a: 0.5, b: 0, x: 1, y: 0, w: 1, h: 2 },
+      { a: 1, b: 0, x: 1, y: 0, w: 1, h: 2 },
       'image plane between the box and the camera'
     )
 
@@ -44,7 +46,7 @@ module.exports = (ts) => {
     const ccc = { x: 0, y: 0, z: -4 }
     t.deepEqual(
       box2.projectTo(bbb, ppp, ccc),
-      { a: 0.25, b: 0, x: 0.5, y: 0, w: 0.5, h: 1 },
+      { a: 1, b: 0, x: 0.5, y: 0, w: 0.5, h: 1 },
       'scaled image plane between the box and the camera'
     )
 

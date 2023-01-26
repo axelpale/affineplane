@@ -13,7 +13,7 @@ module.exports = (ts) => {
       'identity does not change rect'
     )
 
-    box = { a: 2, b: 0, x: 2, y: 0, w: 10, h: 6 }
+    box = { a: 1, b: 0, x: 2, y: 0, w: 10, h: 6 }
     plane = { a: 2, b: 0, x: 0, y: 0 }
     t.deepEqual(
       box2.transitTo(box, plane),

@@ -14,12 +14,12 @@ module.exports = (ts) => {
       'identity does not change box'
     )
 
-    box = { a: 2, b: 0, x: 2, y: 0, w: 10, h: 6 }
+    box = { a: 1, b: 0, x: 2, y: 0, w: 10, h: 6 }
     plane = { a: 2, b: 0, x: 0, y: 0 }
     t.deepEqual(
       box2.transitFrom(box, plane),
-      { a: 4, b: 0, x: 4, y: 0, w: 20, h: 12 },
-      'should scale'
+      { a: 1, b: 0, x: 4, y: 0, w: 20, h: 12 },
+      'origin and size should scale'
     )
 
     t.end()

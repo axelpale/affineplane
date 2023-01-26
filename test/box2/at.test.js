@@ -11,18 +11,18 @@ module.exports = (ts) => {
       'should be at top left corner'
     )
 
-    const bb = { a: 2, b: 0, x: 2, y: 0, w: 10, h: 6 }
+    const bb = { a: 0, b: 1, x: 2, y: 0, w: 10, h: 6 }
 
     t.deepEqual(
       box2.at(bb, 0, 0),
       { x: 2, y: 0 },
-      'scale keeps origin'
+      'rotation keeps origin'
     )
 
     t.deepEqual(
-      box2.at(bb, 1, 1),
-      { x: 4, y: 2 },
-      'should scale'
+      box2.at(bb, 2, 1),
+      { x: 1, y: 2 },
+      'rotation should affect'
     )
 
     t.end()
