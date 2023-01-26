@@ -10,6 +10,7 @@ const units = {
   getBounds: require('./getBounds.test'),
   getPath: require('./getPath.test'),
   getPlane: require('./getPlane.test'),
+  getSize: require('./getSize.test'),
   homothety: require('./homothety.test'),
   projectTo: require('./projectTo.test'),
   transitFrom: require('./transitFrom.test'),
