@@ -8,6 +8,7 @@ const units = {
   getAngle: require('./getAngle.test'),
   getArea: require('./getArea.test'),
   getBounds: require('./getBounds.test'),
+  getMinimumBounds: require('./getMinimumBounds.test'),
   getPath: require('./getPath.test'),
   getPlane: require('./getPlane.test'),
   getSize: require('./getSize.test'),
