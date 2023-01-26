@@ -5,6 +5,7 @@ const units = {
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
   fromPoints: require('./fromPoints.test'),
+  getAngle: require('./getAngle.test'),
   getArea: require('./getArea.test'),
   getBounds: require('./getBounds.test'),
   getPath: require('./getPath.test'),
