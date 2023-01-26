@@ -39,6 +39,7 @@ const units = {
 test.Test.prototype.almostEqual = require('./utils/almostEqual')
 test.Test.prototype.notAlmostEqual = require('./utils/notAlmostEqual')
 test.Test.prototype.transformEqual = require('./utils/transformEqual')
+test.Test.prototype.almostEqualBox = require('./utils/almostEqualBox')
 test.Test.prototype.almostEqualVector = require('./utils/almostEqualVector')
 
 // Run test suite
