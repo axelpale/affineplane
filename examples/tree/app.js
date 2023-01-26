@@ -1,6 +1,6 @@
 // Affine geometry example
 
-const plane = require('../../index')
+const affineplane = require('../../index')
 const loadimages = require('loadimages')
 
 // Setup
@@ -19,15 +19,17 @@ const drawBranch = (ctx, p0, p1, canvasRect, branchImg) => {
   const imgWidth = branchImg.width
   const imgHeight = branchImg.height
 
-  let branchRect = plane.rectangle.create(0, 0, imgWidth, imgHeight)
+  const branchPlane = affineplane.plane2.IDENTITY
+  const branchSize = affineplane.size2.create(imgWidth, imgHeight)
+  let branchRect = affineplane.box2.create(branchPlane, branchSize)
 
-  plane.basis.estimate({
+  affineplane.plane2.estimate({
     source: [
-      plane.rectangle.atTopMid(branchRect),
-      plane.rectangle.atBottomMid(branchRect)
+      affineplane.box2.atNorm(branchRect, 0.5, 0),
+      affineplane.box2.atNorm(branchRect, 0.5, 1)
     ],
     target: [
-      plane.
+      // TODO
     ]
   })
   branchRect = plane.rectangle.transform
