@@ -3,6 +3,7 @@ const units = {
   almostEqual: require('./almostEqual.test'),
   at: require('./at.test'),
   create: require('./create.test'),
+  getAngle: require('./getAngle.test'),
   validate: require('./validate.test')
 }
 
