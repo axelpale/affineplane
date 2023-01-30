@@ -40,8 +40,8 @@
     "nodemon": "^2.0.20",
     "standard": "^17.0.0",
     "tap-arc": "^0.3.5",
-    "tape": "^5.6.1",
-    "yamdog": "^1.6.0"
+    "tape": "^5.6.3",
+    "yamdog": "^2.0.0"
   },
   "scripts": {
     "lint": "standard index.js 'lib/**/*.js' 'test/**/*.js'",
