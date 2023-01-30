@@ -4,6 +4,7 @@ const units = {
   at: require('./at.test'),
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
+  fromPoints: require('./fromPoints.test'),
   getAngle: require('./getAngle.test'),
   getSize: require('./getSize.test'),
   getVolume: require('./getVolume.test'),
