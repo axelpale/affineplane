@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.10.0-alpha
+# Affineplane API Documentation v2.10.0
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
@@ -8831,7 +8831,8 @@ Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/ve
 <a name="affineplaneversion"></a>
 ## [affineplane](#affineplane).[version](#affineplaneversion)
 
-Package version string, for example `'1.2.3'`. Uses semantic versioning.
+Package version string, for example `'1.2.3'`.
+We use [semantic versioning](https://semver.org/).
 
 <p style="text-align: right">
 <a href="#top">&uarr; Back To Top</a>
