@@ -11,7 +11,13 @@ module.exports = (ts) => {
     t.deepEqual(
       point2.homothety({ x: 200, y: 200 }, { x: 0, y: 0 }, 0),
       { x: 0, y: 0 },
-      'zero factor'
+      'zero factor towards zero'
+    )
+
+    t.deepEqual(
+      point2.homothety({ x: 200, y: 200 }, { x: 1, y: 1 }, 0),
+      { x: 1, y: 1 },
+      'zero factor towards non-zero'
     )
 
     t.deepEqual(

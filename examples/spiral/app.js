@@ -1,6 +1,6 @@
 // Affine geometry example.
 //
-// Here we give an example for point2 and herm2 geometries.
+// Here we give an example for point2 and plane2 geometries.
 //
 //
 
@@ -31,10 +31,10 @@ const drawAll = (ctx) => {
 
   let p = affineplane.point2.offset(c, 5, 0)
 
-  // Create a helmert transformation
-  let tr = affineplane.helm2.I
-  tr = affineplane.helm2.rotateBy(tr, c, Math.PI / 6)
-  tr = affineplane.helm2.scaleBy(tr, c, Math.pow(1.618033, 1 / 5))
+  // Create a plane transformation
+  let tr = affineplane.plane2.I
+  tr = affineplane.plane2.rotateBy(tr, c, Math.PI / 6)
+  tr = affineplane.plane2.scaleBy(tr, c, Math.pow(1.618033, 1 / 5))
 
   for (let i = 0; i < 200; i += 1) {
     p = affineplane.point2.transform(p, tr)

@@ -18,6 +18,12 @@ module.exports = (ts) => {
       'recreate UNIT'
     )
 
+    t.deepEqual(
+      helm2.fromFeatures(),
+      helm2.IDENTITY,
+      'default to identity'
+    )
+
     t.end()
   })
 }

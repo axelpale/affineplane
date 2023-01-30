@@ -9,7 +9,7 @@ yamdog.generate({
   // Where to generate
   output: path.resolve(__dirname, 'API.md'),
   // Earmark; include blocks that begin with this name.
-  earmark: 'affineplane',
+  names: ['affineplane'],
   // Main title of the document
   title: 'Affineplane API Documentation v' + version,
   // Introduction; the initial paragraph
@@ -54,6 +54,8 @@ yamdog.generate({
       },
     ]),
     decor.linkKeywords({
+      box2: '#affineplanebox2',
+      box3: '#affineplanebox3',
       dir2: '#affineplanedir2',
       dir3: '#affineplanedir3',
       dist2: '#affineplanedist2',
@@ -66,11 +68,15 @@ yamdog.generate({
       path3: '#affineplanepath3',
       plane2: '#affineplaneplane2',
       plane3: '#affineplaneplane3',
+      basis2: '#affineplaneplane2',
+      basis3: '#affineplaneplane3',
       point2: '#affineplanepoint2',
       point3: '#affineplanepoint3',
       poly2: '#affineplanepoly2',
       quat4: '#affineplanequat4',
+      rot2: '#affineplanerot2',
       size2: '#affineplanesize2',
+      size3: '#affineplanesize3',
       vec2: '#affineplanevec2',
       vec3: '#affineplanevec3',
       vec4: '#affineplanevec4',
