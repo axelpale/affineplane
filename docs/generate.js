@@ -9,7 +9,7 @@ yamdog.generate({
   // Where to generate
   output: path.resolve(__dirname, 'API.md'),
   // Earmark; include blocks that begin with this name.
-  earmark: 'affineplane',
+  names: ['affineplane'],
   // Main title of the document
   title: 'Affineplane API Documentation v' + version,
   // Introduction; the initial paragraph
