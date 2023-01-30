@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.9.0
+# Affineplane API Documentation v2.10.0-alpha
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
@@ -17,6 +17,8 @@ The functions are grouped in the following submodules.
 
 
 - [affineplane.angle](#affineplaneangle)
+- [affineplane.box2](#affineplanebox2)
+- [affineplane.box3](#affineplanebox3)
 - [affineplane.dir2](#affineplanedir2)
 - [affineplane.dir3](#affineplanedir3)
 - [affineplane.dist2](#affineplanedist2)
@@ -26,6 +28,7 @@ The functions are grouped in the following submodules.
 - [affineplane.helm3](#affineplanehelm3)
 - [affineplane.line2](#affineplaneline2)
 - [affineplane.line3](#affineplaneline3)
+- [affineplane.orient2](#affineplaneorient2)
 - [affineplane.path2](#affineplanepath2)
 - [affineplane.path3](#affineplanepath3)
 - [affineplane.plane2](#affineplaneplane2)
@@ -36,7 +39,9 @@ The functions are grouped in the following submodules.
 - [affineplane.quat4](#affineplanequat4)
 - [affineplane.rect2](#affineplanerect2)
 - [affineplane.rect3](#affineplanerect3)
+- [affineplane.rot2](#affineplanerot2)
 - [affineplane.size2](#affineplanesize2)
+- [affineplane.size3](#affineplanesize3)
 - [affineplane.vec2](#affineplanevec2)
 - [affineplane.vec3](#affineplanevec3)
 - [affineplane.vec4](#affineplanevec4)
@@ -72,13 +77,11 @@ Convert angle from degrees to radians, for example 720 becomes 4π.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *deg*
   - a number, an angle in degrees.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the angle in radians.
 
@@ -94,13 +97,11 @@ This can be used to preprocess user input, for example to normalize
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *r*
   - angle in radians, allowed to be outside ]-PI, +PI].
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the angle in radians and between ]-PI, +PI]
 
@@ -114,18 +115,812 @@ Convert angle from radians to degrees. For example 4π becomes 720.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rad*
   - a number, an angle in radians.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a number, the angle in degrees.
 
 
 Source: [radToDeg.js](https://github.com/axelpale/affineplane/blob/main/lib/angle/radToDeg.js)
+
+<a name="affineplanebox2"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2)
+
+Two-dimensional rectangle. Unlike [size2](#affineplanesize2), [box2](#affineplanebox2) has location and orientation
+and thus can be represented in any basis without loss of information.
+
+<p style="margin-bottom: 0">Represented with an object <code>{ a, b, x, y, w, h }</code> where</p>
+
+- `a,b` provide orientation with respect to the reference basis. The norm of vector (a,b) is always 1.
+- `x,y` provide origin position in the reference basis.
+- `w,h` provide box size on the reference basis.
+
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.box2.almostEqual](#affineplanebox2almostequal)
+- [affineplane.box2.at](#affineplanebox2at)
+- [affineplane.box2.atNorm](#affineplanebox2atnorm)
+- [affineplane.box2.create](#affineplanebox2create)
+- [affineplane.box2.fromPoints](#affineplanebox2frompoints)
+- [affineplane.box2.getAngle](#affineplanebox2getangle)
+- [affineplane.box2.getArea](#affineplanebox2getarea)
+- [affineplane.box2.getBasis](#affineplanebox2getbasis)
+- [affineplane.box2.getBounds](#affineplanebox2getbounds)
+- [affineplane.box2.getMinimumBounds](#affineplanebox2getminimumbounds)
+- [affineplane.box2.getPath](#affineplanebox2getpath)
+- [affineplane.box2.getPoints](#affineplanebox2getpoints)
+- [affineplane.box2.getPolygon](#affineplanebox2getpolygon)
+- [affineplane.box2.getSize](#affineplanebox2getsize)
+- [affineplane.box2.homothety](#affineplanebox2homothety)
+- [affineplane.box2.projectTo](#affineplanebox2projectto)
+- [affineplane.box2.scaleBy](#affineplanebox2scaleby)
+- [affineplane.box2.transitFrom](#affineplanebox2transitfrom)
+- [affineplane.box2.transitTo](#affineplanebox2transitto)
+- [affineplane.box2.validate](#affineplanebox2validate)
+
+
+Source: [box2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/index.js)
+
+<a name="affineplanebox2almostequal"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[almostEqual](#affineplanebox2almostequal)(b, bb[, tolerance])
+
+Are two boxes almost equal?
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *b*
+  - a [box2](#affineplanebox2)
+- *bb*
+  - a [box2](#affineplanebox2)
+- *tolerance*
+  - optional number, default is [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/almostEqual.js)
+
+<a name="affineplanebox2at"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[at](#affineplanebox2at)(box, rx, ry)
+
+Take a point on the box, represented in the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2)
+- *rx*
+  - horizontal distance from the top-left corner of the box represented on the box's inner basis. The unit of distance is same in the reference basis.
+- *ry*
+  - vertical distance from the top-left corner of the box represented on the box's inner basis. The unit of distance is same in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point2](#affineplanepoint2) in the reference basis.
+
+
+Source: [at.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/at.js)
+
+<a name="affineplanebox2atnorm"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[atNorm](#affineplanebox2atnorm)(box, nw, nh)
+
+Take a point on the box.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2)
+- *nw*
+  - a number, a normalized coordinate along width 0..1
+- *nh*
+  - a number, a normalized coordinate along height 0..1
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point2](#affineplanepoint2) in the reference basis.
+
+
+Source: [atNorm.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/atNorm.js)
+
+<a name="affineplanebox2create"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[create](#affineplanebox2create)(plane, size)
+
+Create a [box2](#affineplanebox2) object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *plane*
+  - a [plane2](#affineplaneplane2) on the reference basis. Defines the box origin and orientation. Scale is defaulted to 1.
+- *size*
+  - a [size2](#affineplanesize2) on the reference basis. Defines the box size.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2)
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/create.js)
+
+<a name="affineplanebox2frompoints"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[fromPoints](#affineplanebox2frompoints)(points)
+
+Get a rectangular boundary of the given points. In other words,
+compute such a box that has no rotation and no dilation with respect to
+the reference basis but has translation and size so that it covers
+the given points.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *points*
+  - array of [point2](#affineplanepoint2), each in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2), in the reference basis.
+
+
+Source: [fromPoints.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/fromPoints.js)
+
+<a name="affineplanebox2getangle"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getAngle](#affineplanebox2getangle)(box)
+
+Compute box angle in radians with respect to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number, the angle in radians.
+
+
+Source: [getAngle.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getAngle.js)
+
+<a name="affineplanebox2getarea"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getArea](#affineplanebox2getarea)(box)
+
+Compute box area. This returns the area in the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number, the area in the reference basis.
+
+
+Source: [getArea.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getArea.js)
+
+<a name="affineplanebox2getbasis"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getBasis](#affineplanebox2getbasis)(box)
+
+Get the inner basis of the box.
+The scale of the resulting basis is always 1.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2) in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [plane2](#affineplaneplane2) in the reference basis.
+
+
+Source: [getBasis.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getBasis.js)
+
+<a name="affineplanebox2getbounds"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getBounds](#affineplanebox2getbounds)(boxes)
+
+Get outer rectangular boundary of the given box or boxes. In other words,
+compute such a box that has no rotation and no dilation with respect to
+the reference basis but has translation and size so that it covers
+the given box or boxes.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *boxes*
+  - a [box2](#affineplanebox2), in the reference basis.
+  - array of [box2](#affineplanebox2), each in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2), in the reference basis.
+
+
+Source: [getBounds.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getBounds.js)
+
+<a name="affineplanebox2getminimumbounds"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getMinimumBounds](#affineplanebox2getminimumbounds)(boxes)
+
+Find approximate minimum bounding box aka minimum area rectangle (MAR).
+Such MAR contains all the given set of boxes.
+The orientation of the resulting bounding box is not necessarily parallel
+with the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *boxes*
+  - array of [box2](#affineplanebox2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2)
+
+
+Source: [getMinimumBounds.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getMinimumBounds.js)
+
+<a name="affineplanebox2getpath"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getPath](#affineplanebox2getpath)(box)
+
+Get the box corner points as a path. Points are in clock-wise order.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [path2](#affineplanepath2)
+
+
+Aliases: [affineplane.box2.getPoints](#affineplanebox2getpoints), [affineplane.box2.getPolygon](#affineplanebox2getpolygon)
+
+Source: [getPath.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getPath.js)
+
+<a name="affineplanebox2getpoints"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getPoints](#affineplanebox2getpoints)
+
+Alias of [affineplane.box2.getPath](#affineplanebox2getpath)
+
+Source: [getPath.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getPath.js)
+
+<a name="affineplanebox2getpolygon"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getPolygon](#affineplanebox2getpolygon)
+
+Alias of [affineplane.box2.getPath](#affineplanebox2getpath)
+
+Source: [getPath.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getPath.js)
+
+<a name="affineplanebox2getsize"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getSize](#affineplanebox2getsize)(box)
+
+Get the size of the box.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2) in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [size2](#affineplanesize2) in the reference basis.
+
+
+Source: [getSize.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getSize.js)
+
+<a name="affineplanebox2homothety"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[homothety](#affineplanebox2homothety)(box, center, ratio)
+
+Perform homothety about the center. In other words, scale the box
+about the fixed center point.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), the box to be scaled.
+- *center*
+  - a [point2](#affineplanepoint2), the fixed pivot point.
+- *ratio*
+  - a number, the scaling ratio.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2)
+
+
+Aliases: [affineplane.box2.scaleBy](#affineplanebox2scaleby)
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/homothety.js)
+
+<a name="affineplanebox2projectto"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[projectTo](#affineplanebox2projectto)(box, target[, camera])
+
+Project a box onto a target plane in 3d.
+If a camera is given, project perspectively.
+Otherwise, project orthogonally.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2) in the reference basis, assume z=0.
+- *target*
+  - a [plane3](#affineplaneplane3) in the reference basis.
+- *camera*
+  - optional [point3](#affineplanepoint3) in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2) on the target plane.
+
+
+Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/projectTo.js)
+
+<a name="affineplanebox2scaleby"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[scaleBy](#affineplanebox2scaleby)(box, center, ratio)
+
+Alias of [affineplane.box2.homothety](#affineplanebox2homothety)
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/homothety.js)
+
+<a name="affineplanebox2transitfrom"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[transitFrom](#affineplanebox2transitfrom)(box, source)
+
+Convert a box from source basis to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), a box in the source basis.
+- *source*
+  - a [plane2](#affineplaneplane2), the source basis represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2), represented in the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/transitFrom.js)
+
+<a name="affineplanebox2transitto"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[transitTo](#affineplanebox2transitto)(box, target)
+
+Convert a box from the reference basis to the target basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), a rectangle in the reference basis.
+- *target*
+  - a [plane2](#affineplaneplane2), the target basis represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2), represented in the target basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/transitTo.js)
+
+<a name="affineplanebox2validate"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[validate](#affineplanebox2validate)(b)
+
+Check if the object is a valid [box2](#affineplanebox2).
+Valid [box2](#affineplanebox2) has properties a and b that represent valid rotation matrix,
+properties x and y that are valid numbers, and properties w and h that
+represent size.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *b*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid [box2](#affineplanebox2)
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/validate.js)
+
+<a name="affineplanebox3"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3)
+
+Three-dimensional cuboid that has the front face parallel with xy-plane.
+Unlike [size3](#affineplanesize3), [box3](#affineplanebox3) has location and orientation and
+thus can be represented in any basis without loss of information.
+
+<p style="margin-bottom: 0">Represented with an object <code>{ a, b, x, y, z, w, h, d }</code> where</p>
+
+- `a,b` provide orientation on xy-plane with respect to the reference basis.
+- `x,y,z` provide origin position in the reference basis.
+- `w,h,d` provide box size on the reference basis.
+
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.box3.almostEqual](#affineplanebox3almostequal)
+- [affineplane.box3.at](#affineplanebox3at)
+- [affineplane.box3.atNorm](#affineplanebox3atnorm)
+- [affineplane.box3.create](#affineplanebox3create)
+- [affineplane.box3.fromPoints](#affineplanebox3frompoints)
+- [affineplane.box3.getAngle](#affineplanebox3getangle)
+- [affineplane.box3.getBasis](#affineplanebox3getbasis)
+- [affineplane.box3.getBounds](#affineplanebox3getbounds)
+- [affineplane.box3.getMinimumBounds](#affineplanebox3getminimumbounds)
+- [affineplane.box3.getSize](#affineplanebox3getsize)
+- [affineplane.box3.getVolume](#affineplanebox3getvolume)
+- [affineplane.box3.homothety](#affineplanebox3homothety)
+- [affineplane.box3.projectTo](#affineplanebox3projectto)
+- [affineplane.box3.scaleBy](#affineplanebox3scaleby)
+- [affineplane.box3.transitFrom](#affineplanebox3transitfrom)
+- [affineplane.box3.transitTo](#affineplanebox3transitto)
+- [affineplane.box3.validate](#affineplanebox3validate)
+
+
+Source: [box3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/index.js)
+
+<a name="affineplanebox3almostequal"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[almostEqual](#affineplanebox3almostequal)(b, bb[, tolerance])
+
+Are two boxes almost equal?
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *b*
+  - a [box3](#affineplanebox3)
+- *bb*
+  - a [box3](#affineplanebox3)
+- *tolerance*
+  - optional number, default is [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/almostEqual.js)
+
+<a name="affineplanebox3at"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[at](#affineplanebox3at)(box, rx, ry, rz)
+
+Take a point on the box, represented in the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3)
+- *rx*
+  - horizontal distance from the left side of the box represented on the box's inner basis. The unit of distance is same in the reference basis because the box has fixed scale of 1.
+- *ry*
+  - vertical distance from the top side of the box represented on the box's inner basis. The unit of distance is same in the reference basis.
+- *rz*
+  - distal distance from the front side of the box represented on the box's inner basis. The unit of distance is same in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point3](#affineplanepoint3) in the reference basis.
+
+
+Source: [at.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/at.js)
+
+<a name="affineplanebox3atnorm"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[atNorm](#affineplanebox3atnorm)(box, nw, nh, nd)
+
+Take a point on the box with coordinates normalized to box sizes.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3)
+- *nw*
+  - a number, a normalized coordinate 0..1 along width
+- *nh*
+  - a number, a normalized coordinate 0..1 along height
+- *nd*
+  - a number, a normalized coordinate 0..1 along depth
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point3](#affineplanepoint3) in the reference basis.
+
+
+Source: [atNorm.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/atNorm.js)
+
+<a name="affineplanebox3create"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[create](#affineplanebox3create)(basis, size)
+
+Create a [box3](#affineplanebox3) object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *basis*
+  - a [plane3](#affineplaneplane3) on the reference basis. Defines the box origin and orientation.
+- *size*
+  - a [size3](#affineplanesize3) on the reference basis. Defines the box size.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box3](#affineplanebox3)
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/create.js)
+
+<a name="affineplanebox3frompoints"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[fromPoints](#affineplanebox3frompoints)(points)
+
+Get a cuboid boundary of the given points. In other words,
+compute such a 3D box that has no rotation and no dilation with respect to
+the reference basis but has translation and size so that it encloses
+the given points.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *points*
+  - array of [point3](#affineplanepoint3), each in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box3](#affineplanebox3), in the reference basis.
+
+
+Source: [fromPoints.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/fromPoints.js)
+
+<a name="affineplanebox3getangle"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[getAngle](#affineplanebox3getangle)(box)
+
+Compute box angle in radians with respect to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number, the angle in radians.
+
+
+Source: [getAngle.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getAngle.js)
+
+<a name="affineplanebox3getbasis"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[getBasis](#affineplanebox3getbasis)(box)
+
+Get the inner basis of the box.
+The scale of the resulting basis is always 1.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3) in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [plane3](#affineplaneplane3) in the reference basis.
+
+
+Source: [getBasis.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getBasis.js)
+
+<a name="affineplanebox3getbounds"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[getBounds](#affineplanebox3getbounds)(boxes)
+
+Get outer cuboid boundary of the given box or boxes. In other words,
+compute such a box that has no rotation and no dilation with respect to
+the reference basis but has translation and size so that it covers
+all the given boxes.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *boxes*
+  - a [box3](#affineplanebox3), in the reference basis.
+  - array of [box3](#affineplanebox3), each in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box3](#affineplanebox3), in the reference basis.
+
+
+Source: [getBounds.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getBounds.js)
+
+<a name="affineplanebox3getminimumbounds"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[getMinimumBounds](#affineplanebox3getminimumbounds)(boxes)
+
+Find approximate minimum bounding box.
+Such a box contains all the given set of boxes.
+The orientation of the resulting bounding box (on xy-plane) is selected so
+that the box volume is minimal. Thus the orientation is not necessarily
+parallel with the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *boxes*
+  - array of [box3](#affineplanebox3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box3](#affineplanebox3)
+
+
+Source: [getMinimumBounds.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getMinimumBounds.js)
+
+<a name="affineplanebox3getsize"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[getSize](#affineplanebox3getsize)(box)
+
+Get the size of the box.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3) in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [size3](#affineplanesize3) in the reference basis.
+
+
+Source: [getSize.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getSize.js)
+
+<a name="affineplanebox3getvolume"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[getVolume](#affineplanebox3getvolume)(box)
+
+Compute box volume. This returns the volume as a measure
+in the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3), a cuboid in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number, the volume in the reference basis.
+
+
+Source: [getVolume.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getVolume.js)
+
+<a name="affineplanebox3homothety"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[homothety](#affineplanebox3homothety)(box, origin, ratio)
+
+Perform homothety about an origin point. In other words, scale the box
+about the fixed pivot point.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3), the box to be scaled.
+- *origin*
+  - a [point3](#affineplanepoint3), the fixed pivot point.
+- *ratio*
+  - a number, the scaling ratio.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box3](#affineplanebox3)
+
+
+Aliases: [affineplane.box3.scaleBy](#affineplanebox3scaleby)
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/homothety.js)
+
+<a name="affineplanebox3projectto"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[projectTo](#affineplanebox3projectto)(box, target)
+
+Project a 3D box onto a target plane orthogonally along z axis.
+The resulting box is in 2D.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3) in the reference basis.
+- *target*
+  - a [plane3](#affineplaneplane3) in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2) on the target plane.
+
+
+Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/projectTo.js)
+
+<a name="affineplanebox3scaleby"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[scaleBy](#affineplanebox3scaleby)(box, origin, ratio)
+
+Alias of [affineplane.box3.homothety](#affineplanebox3homothety)
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/homothety.js)
+
+<a name="affineplanebox3transitfrom"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[transitFrom](#affineplanebox3transitfrom)(box, source)
+
+Convert a box from source basis to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3), a cuboid in the source basis.
+- *source*
+  - a [plane3](#affineplaneplane3), the source basis represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box3](#affineplanebox3), represented in the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/transitFrom.js)
+
+<a name="affineplanebox3transitto"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[transitTo](#affineplanebox3transitto)(box, target)
+
+Convert a box from the reference basis to the target basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3), a cuboid in the reference basis.
+- *target*
+  - a [plane3](#affineplaneplane3), the target basis represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box3](#affineplanebox3), represented in the target basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/transitTo.js)
+
+<a name="affineplanebox3validate"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[validate](#affineplanebox3validate)(b)
+
+Check if the object is a valid [box3](#affineplanebox3).
+Valid [box3](#affineplanebox3) has properties a and b that represent valid rotation matrix,
+properties x, y, z that are valid numbers, and properties w, h, d that
+represent size.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *b*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid [box2](#affineplanebox2)
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/validate.js)
 
 <a name="affineplanedir2"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2)
@@ -143,6 +938,7 @@ the coordinate space affects the direction.
 - [affineplane.dir2.create](#affineplanedir2create)
 - [affineplane.dir2.fromPolar](#affineplanedir2frompolar)
 - [affineplane.dir2.fromVector](#affineplanedir2fromvector)
+- [affineplane.dir2.projectTo](#affineplanedir2projectto)
 - [affineplane.dir2.toAngle](#affineplanedir2toangle)
 - [affineplane.dir2.toPolar](#affineplanedir2topolar)
 - [affineplane.dir2.toVector](#affineplanedir2tovector)
@@ -166,13 +962,11 @@ Create a new direction from an angle.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *r*
   - a number. The angle in radians.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [dir2](#affineplanedir2)
 
@@ -191,18 +985,37 @@ direction towards positive x-axis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [dir2](#affineplanedir2)
 
 
 Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/fromVector.js)
+
+<a name="affineplanedir2projectto"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[projectTo](#affineplanedir2projectto)(dir, plane)
+
+Project a 2D direction onto a 2D plane. Perspective does not
+affect the direction.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *dir*
+  - a [dir2](#affineplanedir2) in the reference basis.
+- *plane*
+  - a [plane3](#affineplaneplane3) in the reference basis. The image plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [dir2](#affineplanedir2) on the image plane.
+
+
+Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/projectTo.js)
 
 <a name="affineplanedir2toangle"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[toAngle](#affineplanedir2toangle)
@@ -218,13 +1031,11 @@ Get the direction as angle around z-axis measured from positive x-axis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a [dir2](#affineplanedir2) object or unit [vec2](#affineplanevec2).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, an angle in radians in ]-π, π].
 
@@ -240,7 +1051,6 @@ Get a vector from the direction with the given length.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a [dir2](#affineplanedir2)
 - *magn*
@@ -248,7 +1058,6 @@ Get a vector from the direction with the given length.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -263,7 +1072,6 @@ to the reference plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a [dir2](#affineplanedir2) on the source plane.
 - *source*
@@ -271,7 +1079,6 @@ to the reference plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [dir2](#affineplanedir2), represented on the reference plane.
 
@@ -287,7 +1094,6 @@ in the coordinate system of the target plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a number, a [dir2](#affineplanedir2) on the reference plane.
 - *target*
@@ -295,7 +1101,6 @@ in the coordinate system of the target plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [dir2](#affineplanedir2) on the target plane.
 
@@ -335,7 +1140,6 @@ The directions are compared as two unit vectors.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *d*
   - a [dir2](#affineplanedir2)
 - *dd*
@@ -346,7 +1150,6 @@ The directions are compared as two unit vectors.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -361,7 +1164,6 @@ The directions are compared as two unit vectors.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *d*
   - a [dir3](#affineplanedir3)
 - *dd*
@@ -372,7 +1174,6 @@ The directions are compared as two unit vectors.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -397,7 +1198,6 @@ when z-axis is considered the polar axis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *theta*
   - a number, an angle in radians around z-axis from positive x-axis.
   - Gives the direction on xy-plane.
@@ -412,12 +1212,10 @@ when z-axis is considered the polar axis.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [dir3](#affineplanedir3)
 
 
 <p style="margin-bottom: 0">Examples:</p>
-
 
 - Toward positive x-axis: [dir3](#affineplanedir3).fromSpherical(0, π/2)
 - Toward positive y-axis: [dir3](#affineplanedir3).fromSpherical(π/2, π/2)
@@ -439,13 +1237,11 @@ towards positive x-axis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3), represented in the reference frame.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [dir3](#affineplanedir3)
 
@@ -462,7 +1258,6 @@ depends on the position.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a [dir3](#affineplanedir3) in the reference space.
 - *plane*
@@ -470,7 +1265,6 @@ depends on the position.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [dir2](#affineplanedir2) on the image plane.
 
@@ -487,13 +1281,11 @@ The function is compatible with [affineplane.dir3.fromSpherical](#affineplanedir
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a [dir3](#affineplanedir3) object or unit [vec3](#affineplanevec3).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - an object with properties
   - *theta*
@@ -514,7 +1306,6 @@ Source: [toSpherical.js](https://github.com/axelpale/affineplane/blob/main/lib/d
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a [dir3](#affineplanedir3)
 - *magn*
@@ -523,7 +1314,6 @@ Source: [toSpherical.js](https://github.com/axelpale/affineplane/blob/main/lib/d
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -539,7 +1329,6 @@ Note that plane translation or scale does not affect direction.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a [dir3](#affineplanedir3) on the source plane.
 - *plane*
@@ -547,7 +1336,6 @@ Note that plane translation or scale does not affect direction.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [dir3](#affineplanedir3), represented on the reference plane.
 
@@ -563,7 +1351,6 @@ in the coordinate system of the target plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a number, a [dir3](#affineplanedir3) on the reference plane.
 - *target*
@@ -571,7 +1358,6 @@ in the coordinate system of the target plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [dir3](#affineplanedir3), represented on the target plane.
 
@@ -582,8 +1368,8 @@ Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir
 ## [affineplane](#affineplane).[dist2](#affineplanedist2)
 
 The distance measure is a directionless, always positive number.
-If transited between planes, only a change in the coordinate scale
-affects the distance. Rotation or translation of the plane does not
+If transited between bases, only a change in the coordinate scale
+affects the distance. Rotation or translation of the basis does not
 change the distance measure.
 
 ![Distance transited between planes](projection_distance_2d.png)
@@ -592,12 +1378,37 @@ change the distance measure.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.dist2.almostEqual](#affineplanedist2almostequal)
 - [affineplane.dist2.create](#affineplanedist2create)
+- [affineplane.dist2.equal](#affineplanedist2equal)
+- [affineplane.dist2.projectTo](#affineplanedist2projectto)
 - [affineplane.dist2.transitFrom](#affineplanedist2transitfrom)
 - [affineplane.dist2.transitTo](#affineplanedist2transitto)
 
 
 Source: [dist2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/index.js)
+
+<a name="affineplanedist2almostequal"></a>
+## [affineplane](#affineplane).[dist2](#affineplanedist2).[almostEqual](#affineplanedist2almostequal)(c, d[, tolerance])
+
+Test if distances c, d are almost equal by the margin of tolerance.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a number, the [dist2](#affineplanedist2)
+- *d*
+  - a number, the [dist2](#affineplanedist2)
+- *tolerance*
+  - optional number, default is [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/almostEqual.js)
 
 <a name="affineplanedist2create"></a>
 ## [affineplane](#affineplane).[dist2](#affineplanedist2).[create](#affineplanedist2create)(d)
@@ -606,38 +1417,79 @@ Create a measure. Basically it is just the absolute value of the number.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *d*
   - a number
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a number, always zero or positive.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/create.js)
 
-<a name="affineplanedist2transitfrom"></a>
-## [affineplane](#affineplane).[dist2](#affineplanedist2).[transitFrom](#affineplanedist2transitfrom)(dist, source)
+<a name="affineplanedist2equal"></a>
+## [affineplane](#affineplane).[dist2](#affineplanedist2).[equal](#affineplanedist2equal)(c, d)
 
-Transit a distance from the source plane
-to the reference plane.
+Test if distances c, d are strictly equal.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
-- *dist*
-  - a number, a [dist2](#affineplanedist2) distance measure on the source plane.
-- *source*
-  - a [plane2](#affineplaneplane2), the source plane, represented on the reference plane.
+- *c*
+  - a number, the [dist2](#affineplanedist2)
+- *d*
+  - a number, the [dist2](#affineplanedist2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
+- a boolean
 
-- a number, a [dist2](#affineplanedist2), represented on the reference plane.
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/equal.js)
+
+<a name="affineplanedist2projectto"></a>
+## [affineplane](#affineplane).[dist2](#affineplanedist2).[projectTo](#affineplanedist2projectto)(dist, target[, camera])
+
+Project a distance onto a target plane in 3D.
+The distance is assumed to be measured on the reference plane z=0.
+If camera is given, project perspectively.
+Otherwise, project orthogonally.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *dist*
+  - a [dist2](#affineplanedist2) in the reference basis.
+- *target*
+  - a [plane3](#affineplaneplane3) in the reference basis.
+- *camera*
+  - optional [point3](#affineplanepoint3) in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [dist2](#affineplanedist2) on the target plane.
+
+
+Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/projectTo.js)
+
+<a name="affineplanedist2transitfrom"></a>
+## [affineplane](#affineplane).[dist2](#affineplanedist2).[transitFrom](#affineplanedist2transitfrom)(dist, source)
+
+Transit a distance from the source basis
+to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *dist*
+  - a number, a [dist2](#affineplanedist2) distance measure in the source basis.
+- *source*
+  - a [plane2](#affineplaneplane2), the source plane, represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number, a [dist2](#affineplanedist2), represented on the reference basis.
 
 
 Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/transitFrom.js)
@@ -645,23 +1497,21 @@ Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/d
 <a name="affineplanedist2transitto"></a>
 ## [affineplane](#affineplane).[dist2](#affineplanedist2).[transitTo](#affineplanedist2transitto)(dist, target)
 
-Transit a [dist2](#affineplanedist2) to a target plane.
+Transit a [dist2](#affineplanedist2) to another basis.
 In other words, represent the distance
-in the coordinate system of the plane.
+in the coordinate system of the target.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dist*
-  - a number, a [dist2](#affineplanedist2) on the reference plane.
+  - a number, a [dist2](#affineplanedist2) in the reference basis.
 - *target*
-  - a [plane2](#affineplaneplane2), the target plane, represented on the reference plane.
+  - a [plane2](#affineplaneplane2), the target basis, represented in the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
-- a number, a [dist2](#affineplanedist2) on the target plane.
+- a number, a [dist2](#affineplanedist2) in the target basis.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/transitTo.js)
@@ -670,8 +1520,8 @@ Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dis
 ## [affineplane](#affineplane).[dist3](#affineplanedist3)
 
 The distance measure is a directionless, always positive number.
-If transited between planes, only a change in the coordinate scale
-affects the distance. Rotation or translation of the plane does not
+When transited between bases, only a change in the coordinate scale
+affects the distance. Rotation or translation of the basis does not
 change the distance measure.
 
 ![Distance transited between planes](projection_distance_2d.png)
@@ -680,12 +1530,37 @@ change the distance measure.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.dist3.almostEqual](#affineplanedist3almostequal)
 - [affineplane.dist3.create](#affineplanedist3create)
+- [affineplane.dist3.equal](#affineplanedist3equal)
+- [affineplane.dist3.projectTo](#affineplanedist3projectto)
 - [affineplane.dist3.transitFrom](#affineplanedist3transitfrom)
 - [affineplane.dist3.transitTo](#affineplanedist3transitto)
 
 
 Source: [dist3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/index.js)
+
+<a name="affineplanedist3almostequal"></a>
+## [affineplane](#affineplane).[dist3](#affineplanedist3).[almostEqual](#affineplanedist3almostequal)(c, d[, tolerance])
+
+Test if distances c, d are equal by the margin of tolerance.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a number, the [dist3](#affineplanedist3)
+- *d*
+  - a number, the [dist3](#affineplanedist3)
+- *tolerance*
+  - optional number, default is [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/almostEqual.js)
 
 <a name="affineplanedist3create"></a>
 ## [affineplane](#affineplane).[dist3](#affineplanedist3).[create](#affineplanedist3create)(d)
@@ -694,38 +1569,82 @@ Create a measure. Basically it is just the absolute value of the number.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *d*
   - a number
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a number, always zero or positive.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/create.js)
 
-<a name="affineplanedist3transitfrom"></a>
-## [affineplane](#affineplane).[dist3](#affineplanedist3).[transitFrom](#affineplanedist3transitfrom)(dist, source)
+<a name="affineplanedist3equal"></a>
+## [affineplane](#affineplane).[dist3](#affineplanedist3).[equal](#affineplanedist3equal)(c, d)
 
-Transit a distance from the source plane
-to the reference plane.
+Test if distances c, d are strictly equal.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
-- *dist*
-  - a number, a [dist3](#affineplanedist3) distance measure on the source plane.
-- *source*
-  - a [plane3](#affineplaneplane3), the source plane, represented on the reference plane.
+- *c*
+  - a number, the [dist3](#affineplanedist3)
+- *d*
+  - a number, the [dist3](#affineplanedist3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
+- a boolean
 
-- a number, a [dist3](#affineplanedist3), represented on the reference plane.
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/equal.js)
+
+<a name="affineplanedist3projectto"></a>
+## [affineplane](#affineplane).[dist3](#affineplanedist3).[projectTo](#affineplanedist3projectto)(dist, target[, camera])
+
+Project a distance onto a target plane in 3D basis.
+The distance is assumed to be measured
+on the plane z=0 of the reference basis.
+If camera is given, project perspectively.
+Otherwise, project orthogonally.
+Note that when projected perspectively, only the change of scale in
+the perspective projection affects the distance.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *dist*
+  - a [dist3](#affineplanedist3) in the reference basis.
+- *target*
+  - a [plane3](#affineplaneplane3) in the reference basis.
+- *camera*
+  - optional [point3](#affineplanepoint3) in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [dist3](#affineplanedist3) on the target plane.
+
+
+Source: [projectTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/projectTo.js)
+
+<a name="affineplanedist3transitfrom"></a>
+## [affineplane](#affineplane).[dist3](#affineplanedist3).[transitFrom](#affineplanedist3transitfrom)(dist, source)
+
+Transit a distance from the source basis
+to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *dist*
+  - a [dist3](#affineplanedist3), represented in the source basis.
+- *source*
+  - a [plane3](#affineplaneplane3), the source basis, represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [dist3](#affineplanedist3), represented in the reference basis.
 
 
 Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/transitFrom.js)
@@ -733,23 +1652,21 @@ Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/d
 <a name="affineplanedist3transitto"></a>
 ## [affineplane](#affineplane).[dist3](#affineplanedist3).[transitTo](#affineplanedist3transitto)(dist, target)
 
-Transit a [dist3](#affineplanedist3) to a target plane.
+Transit a [dist3](#affineplanedist3) to a target basis.
 In other words, represent the distance
-in the coordinate system of the plane.
+in the coordinate system of the basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dist*
-  - a number, a [dist3](#affineplanedist3) on the reference plane.
+  - a [dist3](#affineplanedist3) in the reference basis.
 - *target*
-  - a [plane3](#affineplaneplane3), the target plane, represented on the reference plane.
+  - a [plane3](#affineplaneplane3), the target basis, represented in the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
-- a number, a [dist3](#affineplanedist3) on the target plane.
+- a [dist3](#affineplanedist3) in the target basis.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/transitTo.js)
@@ -1025,7 +1942,6 @@ The rotation and translation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 - *delta*
@@ -1033,7 +1949,6 @@ The rotation and translation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1048,7 +1963,6 @@ The dilation and translation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 - *rotation*
@@ -1056,7 +1970,6 @@ The dilation and translation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1073,7 +1986,6 @@ Manhattan Distance to compute the difference.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2), a transform
 - *ts*
@@ -1083,7 +1995,6 @@ Manhattan Distance to compute the difference.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -1122,7 +2033,6 @@ In other words, transform the image of ts by tr.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 - *ts*
@@ -1130,7 +2040,6 @@ In other words, transform the image of ts by tr.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1144,13 +2053,11 @@ Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2), a transform
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2), a transform
 
@@ -1166,7 +2073,6 @@ Create a 2D non-reflective similarity transform object.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *a*
   - a number. The diagonal of linear transformation.
 - *b*
@@ -1178,7 +2084,6 @@ Create a 2D non-reflective similarity transform object.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2), a transform object
 
@@ -1195,13 +2100,11 @@ problematic due to floating point arithmetics.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the determinant.
 
@@ -1227,7 +2130,6 @@ See [affineplane.helm2.almostEqual](#affineplanehelm2almostequal) for relaxed al
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2), a transform
 - *ts*
@@ -1235,7 +2137,6 @@ See [affineplane.helm2.almostEqual](#affineplanehelm2almostequal) for relaxed al
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -1258,13 +2159,11 @@ Create an affine similarity transform from 4-element array.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *abxy*
   - an array with four number elements `[a, b, x, y]`
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2), a similarity transform.
 
@@ -1280,13 +2179,11 @@ This uniquely determines the basis vector for y-axis, at
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec2](#affineplanevec2), the basis vector for x-axis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2), but with zero translation.
 
@@ -1300,7 +2197,6 @@ Create a [helm2](#affineplanehelm2) transformation from human-readable features.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *feats*
   - object with properties:
     - *dilation*
@@ -1312,7 +2208,6 @@ Create a [helm2](#affineplanehelm2) transformation from human-readable features.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1330,7 +2225,6 @@ it transforms the plane so that the result is equal to the given plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference plane
 - *origin*
@@ -1338,7 +2232,6 @@ it transforms the plane so that the result is equal to the given plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2) on the reference plane
 
@@ -1353,7 +2246,6 @@ rotation angle, and translation.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *scale*
   - a number, the scaling factor
 - *rotation*
@@ -1366,12 +2258,10 @@ rotation angle, and translation.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [helm2](#affineplanehelm2), a transform object
 
 
 <p style="margin-bottom: 0">Precondition:</p>
-
 
 - scale must be positive
 
@@ -1385,13 +2275,11 @@ Create a [helm2](#affineplanehelm2) transformation from a translation vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec2](#affineplanevec2), the displacement vector
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1405,13 +2293,11 @@ Get the dilation component of the transformation.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the scale multiplier.
 
@@ -1427,13 +2313,11 @@ Get the rotation component of the transform in radians.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, in radians
 
@@ -1454,13 +2338,11 @@ Get translation component of the transformation as a vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -1470,11 +2352,17 @@ Source: [getTranslation.js](https://github.com/axelpale/affineplane/blob/main/li
 <a name="affineplanehelm2inverse"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[inverse](#affineplanehelm2inverse)(tr)
 
+Alias of [affineplane.helm2.invert](#affineplanehelm2invert)
+
+Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/invert.js)
+
+<a name="affineplanehelm2invert"></a>
+## [affineplane](#affineplane).[helm2](#affineplanehelm2).[invert](#affineplanehelm2invert)(tr)
+
 Invert the transform. A transform from B to C
 becomes a transform from C to B.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
 
 - *tr*
   - a [helm2](#affineplanehelm2)
@@ -1482,20 +2370,12 @@ becomes a transform from C to B.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [helm2](#affineplanehelm2), inversed transform
 
 
-Aliases: [affineplane.helm2.invert](#affineplanehelm2invert)
+Aliases: [affineplane.helm2.inverse](#affineplanehelm2inverse)
 
-Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/inverse.js)
-
-<a name="affineplanehelm2invert"></a>
-## [affineplane](#affineplane).[helm2](#affineplanehelm2).[invert](#affineplanehelm2invert)(tr)
-
-Alias of [affineplane.helm2.inverse](#affineplanehelm2inverse)
-
-Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/inverse.js)
+Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/invert.js)
 
 <a name="affineplanehelm2limitdilation"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[limitDilation](#affineplanehelm2limitdilation)(tr, min, max)
@@ -1504,7 +2384,6 @@ Limit the dilating/scaling component of the transformation between
 min and max (inclusive).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
 
 - *tr*
   - a [helm2](#affineplanehelm2), in the reference basis.
@@ -1515,7 +2394,6 @@ min and max (inclusive).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1539,7 +2417,6 @@ Projection only affects the scale of the translation.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2) on the reference plane z=0.
 - *plane*
@@ -1549,7 +2426,6 @@ Projection only affects the scale of the translation.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2) on the projection plane.
 
@@ -1565,7 +2441,6 @@ preserves the scaling and rotating effects.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2), a transform
 - *radians*
@@ -1573,7 +2448,6 @@ preserves the scaling and rotating effects.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2), a transform
 
@@ -1589,7 +2463,6 @@ rotation and translation direction are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2), a transform on the reference plane.
 - *multiplier*
@@ -1597,7 +2470,6 @@ rotation and translation direction are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2), a transform
 
@@ -1612,7 +2484,6 @@ The rotation and translation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 - *dilation*
@@ -1620,7 +2491,6 @@ The rotation and translation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1635,7 +2505,6 @@ The dilation and translation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 - *rotation*
@@ -1643,7 +2512,6 @@ The dilation and translation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1658,7 +2526,6 @@ The dilation and rotation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 - *vec*
@@ -1666,7 +2533,6 @@ The dilation and rotation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1681,7 +2547,6 @@ The dilation and rotation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 - *vec*
@@ -1689,7 +2554,6 @@ The dilation and rotation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1708,13 +2572,11 @@ floating-point arithmetics.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1729,7 +2591,6 @@ Given that B is invertible, then A = C * iB.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tb*
   - a [helm2](#affineplanehelm2)
 - *tc*
@@ -1737,7 +2598,6 @@ Given that B is invertible, then A = C * iB.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2), a transform
 
@@ -1752,7 +2612,6 @@ Given that A is invertible, then B = iA * C.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *ta*
   - a [helm2](#affineplanehelm2)
 - *tc*
@@ -1760,7 +2619,6 @@ Given that A is invertible, then B = iA * C.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2), a transform
 
@@ -1775,13 +2633,11 @@ Compatible with [affineplane.helm2.fromArray](#affineplanehelm2fromarray).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - an array, `[a, b, x, y]`
 
@@ -1799,13 +2655,11 @@ in the format common to other APIs, including:
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - `{ a, b, c, d, e, f }`
 
@@ -1822,13 +2676,11 @@ Together with [affineplane.helm2](#affineplanehelm2).fromString(...), this metho
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a string, CSS transform
 
@@ -1846,7 +2698,6 @@ For multiplication from right, see [affineplane.helm2.compose](#affineplanehelm2
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2)
 - *ts*
@@ -1854,7 +2705,6 @@ For multiplication from right, see [affineplane.helm2.compose](#affineplanehelm2
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2)
 
@@ -1872,7 +2722,6 @@ to the reference plane. Note that:
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2) transformation on the source plane.
 - *plane*
@@ -1880,7 +2729,6 @@ to the reference plane. Note that:
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2), represented on the reference plane.
 
@@ -1894,13 +2742,11 @@ Check if object is a valid [helm2](#affineplanehelm2).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - an object
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -1989,7 +2835,6 @@ The rotation and translation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 - *delta*
@@ -1997,7 +2842,6 @@ The rotation and translation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2012,7 +2856,6 @@ The dilation and translation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 - *rotation*
@@ -2020,7 +2863,6 @@ The dilation and translation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2037,7 +2879,6 @@ further by the given vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3), a transform
 - *vec*
@@ -2045,7 +2886,6 @@ further by the given vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3), a transform
 
@@ -2064,7 +2904,6 @@ Manhattan Distance to compute the difference.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3), a transform
 - *ts*
@@ -2074,7 +2913,6 @@ Manhattan Distance to compute the difference.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean, true if equal
 
@@ -2113,7 +2951,6 @@ In other words, transform the image of ts by tr.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 - *ts*
@@ -2121,7 +2958,6 @@ In other words, transform the image of ts by tr.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2135,13 +2971,11 @@ Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3), a transform
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3), a transform
 
@@ -2157,7 +2991,6 @@ Create a new [helm3](#affineplanehelm3) object.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *a*
   - number, linear transform basis vector element
 - *b*
@@ -2171,7 +3004,6 @@ Create a new [helm3](#affineplanehelm3) object.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2189,13 +3021,11 @@ problematic due to floating point arithmetics.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the determinant.
 
@@ -2221,7 +3051,6 @@ See [affineplane.helm3.almostEqual](#affineplanehelm3almostequal) for a relaxed 
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3), a transform
 - *ts*
@@ -2229,7 +3058,6 @@ See [affineplane.helm3.almostEqual](#affineplanehelm3almostequal) for a relaxed 
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -2252,13 +3080,11 @@ Create an affine similarity transform from 5-element array.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *arr*
   - an array of five numbers `[a, b, x, y, z]`
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2276,13 +3102,11 @@ right-hand rule.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec2](#affineplanevec2), the basis vector for x-axis in the xy-plane of the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a helm2z, but with zero translation.
 
@@ -2296,7 +3120,6 @@ Create a [helm3](#affineplanehelm3) transformation from human-readable features.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *feats*
   - object with properties:
     - *dilation*
@@ -2308,7 +3131,6 @@ Create a [helm3](#affineplanehelm3) transformation from human-readable features.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - [helm3](#affineplanehelm3)
 
@@ -2326,7 +3148,6 @@ it transforms the plane so that the result is equal to the given plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) on the reference plane
 - *origin*
@@ -2334,7 +3155,6 @@ it transforms the plane so that the result is equal to the given plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3) on the reference plane
 
@@ -2348,13 +3168,11 @@ Create a [helm3](#affineplanehelm3) transformation from a translation vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3), the displacement vector
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2368,13 +3186,11 @@ Get the dilation component of the transformation.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the scale multiplier.
 
@@ -2391,13 +3207,11 @@ This is rotation around z-axis to right hand direction.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, angle in radians
 
@@ -2418,13 +3232,11 @@ Get translation component of the transformation as a vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -2434,11 +3246,17 @@ Source: [getTranslation.js](https://github.com/axelpale/affineplane/blob/main/li
 <a name="affineplanehelm3inverse"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[inverse](#affineplanehelm3inverse)(tr)
 
+Alias of [affineplane.helm3.invert](#affineplanehelm3invert)
+
+Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/invert.js)
+
+<a name="affineplanehelm3invert"></a>
+## [affineplane](#affineplane).[helm3](#affineplanehelm3).[invert](#affineplanehelm3invert)(tr)
+
 Invert the transform. A transform from B to C
 becomes a transform from C to B.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
 
 - *tr*
   - a [helm3](#affineplanehelm3)
@@ -2446,20 +3264,12 @@ becomes a transform from C to B.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [helm3](#affineplanehelm3), inversed transform
 
 
-Aliases: [affineplane.helm3.invert](#affineplanehelm3invert)
+Aliases: [affineplane.helm3.inverse](#affineplanehelm3inverse)
 
-Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/inverse.js)
-
-<a name="affineplanehelm3invert"></a>
-## [affineplane](#affineplane).[helm3](#affineplanehelm3).[invert](#affineplanehelm3invert)
-
-Alias of [affineplane.helm3.inverse](#affineplanehelm3inverse)
-
-Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/inverse.js)
+Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/invert.js)
 
 <a name="affineplanehelm3limitdilation"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[limitDilation](#affineplanehelm3limitdilation)(tr, min, max)
@@ -2468,7 +3278,6 @@ Limit the dilating/scaling component of the transformation between
 min and max (inclusive).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
 
 - *tr*
   - a [helm3](#affineplanehelm3), in the reference basis.
@@ -2479,7 +3288,6 @@ min and max (inclusive).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2494,7 +3302,6 @@ The transformation loses z translation.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3) in the reference space.
 - *plane*
@@ -2502,7 +3309,6 @@ The transformation loses z translation.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm2](#affineplanehelm2) on the image plane.
 
@@ -2519,7 +3325,6 @@ the translation along z.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3), a transform
 - *radians*
@@ -2527,7 +3332,6 @@ the translation along z.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3), a transform
 
@@ -2544,7 +3348,6 @@ Note that also translation along z becomes multiplied.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3), a transform on the reference plane.
 - *multiplier*
@@ -2552,7 +3355,6 @@ Note that also translation along z becomes multiplied.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3), a transform
 
@@ -2567,7 +3369,6 @@ The rotation and translation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 - *dilation*
@@ -2575,7 +3376,6 @@ The rotation and translation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2590,7 +3390,6 @@ The dilation and translation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 - *rotation*
@@ -2598,7 +3397,6 @@ The dilation and translation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2613,7 +3411,6 @@ The dilation and rotation properties are preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 - *vec*
@@ -2621,7 +3418,6 @@ The dilation and rotation properties are preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3)
 
@@ -2636,13 +3432,11 @@ Compatible with [affineplane.helm3.fromArray](#affineplanehelm3fromarray).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - an array `[a, b, x, y, z]`
 
@@ -2657,13 +3451,11 @@ using indexing similar to MDN matrix3d article.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - an object with properties:
   - `{ a1, a2, a3, a4, b1, b2, b3, b4, c1, c2, c3, c4 d1, d2, d3, d4 }`
@@ -2690,7 +3482,6 @@ to the reference plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3) transformation on the source plane.
 - *source*
@@ -2699,12 +3490,10 @@ to the reference plane.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [helm3](#affineplanehelm3), represented on the reference plane.
 
 
 <p style="margin-bottom: 0">Invariants:</p>
-
 
 - scale and rotation of the plane affects only the translating property of [helm3](#affineplanehelm3), so that the direction of translation is preserved.
 - translation of the plane does not affect [helm3](#affineplanehelm3) at all.
@@ -2722,7 +3511,6 @@ in the coordinate system of the plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm3](#affineplanehelm3) transformation represented on the reference plane.
 - *target*
@@ -2730,7 +3518,6 @@ in the coordinate system of the plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [helm3](#affineplanehelm3), represented on the target plane.
 
@@ -2751,13 +3538,11 @@ Check if object is a valid [helm3](#affineplanehelm3).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - an object
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean, true if valid [helm3](#affineplanehelm3)
 
@@ -2792,7 +3577,6 @@ from the origin.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *line*
   - a [line2](#affineplaneline2)
 - *c*
@@ -2800,7 +3584,6 @@ from the origin.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2)
 
@@ -2814,7 +3597,6 @@ Create a line from an origin point and a spanning vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *origin*
   - a [point2](#affineplanepoint2)
 - *span*
@@ -2822,7 +3604,6 @@ Create a line from an origin point and a spanning vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [line2](#affineplaneline2)
 
@@ -2837,7 +3618,6 @@ with a spanning vector from p to q.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *q*
@@ -2845,7 +3625,6 @@ with a spanning vector from p to q.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [line2](#affineplaneline2)
 
@@ -2861,13 +3640,11 @@ that are valid [point2](#affineplanepoint2) and [vec2](#affineplanevec2), respec
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *obj*
   - an object, the line candidate.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean, true if valid [line2](#affineplaneline2)
 
@@ -2903,7 +3680,6 @@ from the origin.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *line*
   - a [line3](#affineplaneline3)
 - *c*
@@ -2911,7 +3687,6 @@ from the origin.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3)
 
@@ -2925,7 +3700,6 @@ Create a 3d line from an origin point and a spanning vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *origin*
   - a [point3](#affineplanepoint3)
 - *span*
@@ -2933,7 +3707,6 @@ Create a 3d line from an origin point and a spanning vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [line3](#affineplaneline3)
 
@@ -2948,7 +3721,6 @@ with a spanning vector from p to q.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 - *q*
@@ -2956,7 +3728,6 @@ with a spanning vector from p to q.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [line3](#affineplaneline3)
 
@@ -2972,18 +3743,114 @@ that are valid [point3](#affineplanepoint3) and [vec3](#affineplanevec3), respec
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *line*
   - an object
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a boolean, true if valid [line2](#affineplaneline2)
 
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/line3/validate.js)
+
+<a name="affineplaneorient2"></a>
+## [affineplane](#affineplane).[orient2](#affineplaneorient2)
+
+Orientation in 2D. Represented by an object `{ a, b }`.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.orient2.create](#affineplaneorient2create)
+- [affineplane.orient2.transitFrom](#affineplaneorient2transitfrom)
+- [affineplane.orient2.transitTo](#affineplaneorient2transitto)
+- [affineplane.orient2.validate](#affineplaneorient2validate)
+
+
+Source: [orient2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/orient2/index.js)
+
+<a name="affineplaneorient2create"></a>
+## [affineplane](#affineplane).[orient2](#affineplaneorient2).[create](#affineplaneorient2create)(a, b)
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *a*
+  - a number
+- *b*
+  - a number
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a orient2
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/orient2/create.js)
+
+<a name="affineplaneorient2transitfrom"></a>
+## [affineplane](#affineplane).[orient2](#affineplaneorient2).[transitFrom](#affineplaneorient2transitfrom)(r, source)
+
+Transit an orientation from the source basis
+to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - a orient2 in the source basis.
+- *source*
+  - a [plane2](#affineplaneplane2), the source basis, represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a orient2, represented in the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/orient2/transitFrom.js)
+
+<a name="affineplaneorient2transitto"></a>
+## [affineplane](#affineplane).[orient2](#affineplaneorient2).[transitTo](#affineplaneorient2transitto)(r, target)
+
+Transit a orient2 to a target basis.
+In other words, represent the direction
+in the coordinate system of the target basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - a number, a orient2 in the reference basis.
+- *target*
+  - a [plane2](#affineplaneplane2), the target basis, represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a orient2 in the target basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/orient2/transitTo.js)
+
+<a name="affineplaneorient2validate"></a>
+## [affineplane](#affineplane).[orient2](#affineplaneorient2).[validate](#affineplaneorient2validate)(r)
+
+Check if the object is a valid orient2.
+Valid object has properties a and b
+which represent valid rotation matrix.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/orient2/validate.js)
 
 <a name="affineplanepath2"></a>
 ## [affineplane](#affineplane).[path2](#affineplanepath2)
@@ -3012,7 +3879,6 @@ Combine paths together.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *pa*
   - a [path2](#affineplanepath2)
 - *pb*
@@ -3020,7 +3886,6 @@ Combine paths together.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [path2](#affineplanepath2)
 
@@ -3034,13 +3899,11 @@ Create a path on plane. Deep-clones the points array.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *points*
   - array of [point2](#affineplanepoint2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [path2](#affineplanepath2), array of points
 
@@ -3054,7 +3917,6 @@ Represent a path on the reference basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *path*
   - a [path2](#affineplanepath2), represented on the source basis.
 - *source*
@@ -3062,7 +3924,6 @@ Represent a path on the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [path2](#affineplanepath2), represented on the reference basis.
 
@@ -3076,7 +3937,6 @@ Transit a path to the target basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *path*
   - a [path2](#affineplanepath2), on the reference basis.
 - *target*
@@ -3084,7 +3944,6 @@ Transit a path to the target basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [path2](#affineplanepath2), represented on the target basis.
 
@@ -3119,7 +3978,6 @@ Combine paths together.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *pa*
   - a [path3](#affineplanepath3)
 - *pb*
@@ -3127,7 +3985,6 @@ Combine paths together.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [path3](#affineplanepath3)
 
@@ -3141,13 +3998,11 @@ Create a path on plane. Deep-clones the points array.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *points*
   - array of [point3](#affineplanepoint3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [path3](#affineplanepath3), array of points
 
@@ -3162,7 +4017,6 @@ Project perspectively if a camera position is given.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *path*
   - a [path3](#affineplanepath3), in the reference basis.
 - *plane*
@@ -3172,7 +4026,6 @@ Project perspectively if a camera position is given.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [path2](#affineplanepath2) on the image plane.
 
@@ -3186,7 +4039,6 @@ Represent a path on the reference basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *path*
   - a [path3](#affineplanepath3), represented on the source basis.
 - *source*
@@ -3194,7 +4046,6 @@ Represent a path on the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [path3](#affineplanepath3), represented on the reference basis.
 
@@ -3208,7 +4059,6 @@ Transit a path to the target basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *path*
   - a [path3](#affineplanepath3), on the reference basis.
 - *target*
@@ -3216,7 +4066,6 @@ Transit a path to the target basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [path3](#affineplanepath3), represented on the target basis.
 
@@ -3299,7 +4148,6 @@ Test if two planes are almost equal.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *pa*
   - a [plane2](#affineplaneplane2)
 - *pb*
@@ -3309,7 +4157,6 @@ Test if two planes are almost equal.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -3330,7 +4177,6 @@ Combine two planes together.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *planea*
   - a [plane2](#affineplaneplane2) on the reference plane
 - *planeb*
@@ -3338,7 +4184,6 @@ Combine two planes together.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2) on the reference plane
 
@@ -3352,13 +4197,11 @@ Clone the plane object.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2)
 
@@ -3372,7 +4215,6 @@ Create a [plane2](#affineplaneplane2) from an origin point and a basis vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *origin*
   - a [point2](#affineplanepoint2) on the reference plane.
 - *span*
@@ -3380,7 +4222,6 @@ Create a [plane2](#affineplaneplane2) from an origin point and a basis vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2)
 
@@ -3390,30 +4231,7 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2
 <a name="affineplaneplane2difference"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[difference](#affineplaneplane2difference)(source, target)
 
-Represent a source plane on the target plane.
-In other words, find a transition from a source plane A
-to a target plane B from their transitions to
-an intermediate root plane R.
-
-The result is a combination of the inverse of the target plane
-and the source plane.
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-
-- *source*
-  - a [plane2](#affineplaneplane2), the source plane on the reference plane.
-- *target*
-  - a [plane2](#affineplaneplane2), the target plane on the reference plane.
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-
-- a [plane2](#affineplaneplane2), the source plane on the target plane.
-
-
-Aliases: [affineplane.plane2.between](#affineplaneplane2between)
+Alias of [affineplane.plane2.between](#affineplaneplane2between)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/difference.js)
 
@@ -3425,7 +4243,6 @@ See [affineplane.plane2.almostEqual](#affineplaneplane2almostequal) for a relaxe
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p1*
   - a [plane2](#affineplaneplane2)
 - *p2*
@@ -3433,7 +4250,6 @@ See [affineplane.plane2.almostEqual](#affineplaneplane2almostequal) for a relaxe
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -3447,7 +4263,6 @@ Create a plane from human readable features.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *feats*
   - an object with optional props:
     - *angle*
@@ -3459,7 +4274,6 @@ Create a plane from human readable features.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2)
 
@@ -3477,7 +4291,6 @@ of the created plane but does affect its translative component.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a [helm2](#affineplanehelm2) on the reference plane
 - *origin*
@@ -3485,7 +4298,6 @@ of the created plane but does affect its translative component.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2) on the reference plane
 
@@ -3499,13 +4311,11 @@ The length of the vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference plane
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the scale multiplier with respect to the reference plane.
 
@@ -3522,13 +4332,11 @@ represented in the coordinates of the given plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2), the plane to invert represented on the reference plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2), the reference plane represented on the given plane.
 
@@ -3543,7 +4351,6 @@ min and max (inclusive).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2), in the reference basis.
 - *min*
@@ -3553,7 +4360,6 @@ min and max (inclusive).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2)
 
@@ -3568,7 +4374,6 @@ If camera is given, project perspectively, otherwise orthogonally.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) in the reference space, z=0.
 - *target*
@@ -3578,7 +4383,6 @@ If camera is given, project perspectively, otherwise orthogonally.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2) on the image plane.
 
@@ -3593,7 +4397,6 @@ a center point.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference plane. The plane to rotate.
 - *center*
@@ -3603,7 +4406,6 @@ a center point.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2) on the reference plane after rotation.
 
@@ -3619,7 +4421,6 @@ The center point stays fixed during the operation.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2), the plane to rotate. Represented on the reference plane.
 - *center*
@@ -3629,7 +4430,6 @@ The center point stays fixed during the operation.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2), the plane after rotation.
 
@@ -3644,7 +4444,6 @@ with respect to the reference plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) to rotate.
 - *center*
@@ -3652,7 +4451,6 @@ with respect to the reference plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2)
 
@@ -3675,7 +4473,6 @@ of the new plane are ex_hat = (2,0), ey_hat = (0,2).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference plane
 - *center*
@@ -3685,7 +4482,6 @@ of the new plane are ex_hat = (2,0), ey_hat = (0,2).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2), a scaled plane
 
@@ -3702,7 +4498,6 @@ becomes the desired scale.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference plane
 - *center*
@@ -3712,7 +4507,6 @@ becomes the desired scale.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2), a scaled plane
 
@@ -3726,7 +4520,6 @@ Transform the plane with a helmert transformation applied at origin.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference basis
 - *tr*
@@ -3736,7 +4529,6 @@ Transform the plane with a helmert transformation applied at origin.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2) on the reference plane
 
@@ -3752,7 +4544,6 @@ are represented on the plane instead of the reference basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference basis
 - *tr*
@@ -3762,7 +4553,6 @@ are represented on the plane instead of the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2) on the reference plane
 
@@ -3779,7 +4569,6 @@ of the reference plane instead of the source plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the source plane.
 - *source*
@@ -3787,7 +4576,6 @@ of the reference plane instead of the source plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2), represented on the reference plane.
 
@@ -3803,7 +4591,6 @@ in the coordinate system of the target plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference plane.
 - *target*
@@ -3811,7 +4598,6 @@ in the coordinate system of the target plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2), represented on the target plane.
 
@@ -3827,7 +4613,6 @@ on the reference plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference plane.
 - *vec*
@@ -3835,7 +4620,6 @@ on the reference plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2) on the reference plane.
 
@@ -3850,7 +4634,6 @@ This translates the plane to a new position.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane2](#affineplaneplane2) on the reference plane
 - *p*
@@ -3858,7 +4641,6 @@ This translates the plane to a new position.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2)
 
@@ -3872,13 +4654,11 @@ Check if object is a valid [plane2](#affineplaneplane2).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - an object
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -3949,7 +4729,6 @@ Test if two planes are almost equal.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *pa*
   - a [plane3](#affineplaneplane3)
 - *pb*
@@ -3959,7 +4738,6 @@ Test if two planes are almost equal.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -3980,7 +4758,6 @@ Combine two planes together.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *planea*
   - a [plane3](#affineplaneplane3) on the reference plane. This plane maps from plane A to the reference plane.
 - *planeb*
@@ -3988,7 +4765,6 @@ Combine two planes together.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3) on the reference plane. This plane maps from plane B to the reference plane.
 
@@ -4002,13 +4778,11 @@ Clone the plane object.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3)
 
@@ -4022,7 +4796,6 @@ Create a plane from 3D origin point and 2D basis vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *origin*
   - a [point3](#affineplanepoint3), the position of the plane origin in the reference space.
 - *span*
@@ -4030,7 +4803,6 @@ Create a plane from 3D origin point and 2D basis vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3)
 
@@ -4040,30 +4812,7 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3
 <a name="affineplaneplane3difference"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[difference](#affineplaneplane3difference)(source, target)
 
-Represent a source plane on the target plane.
-In other words, find a transition from a source plane A
-to a target plane B from their transitions to
-an intermediate root plane R.
-
-The result is a combination of the inverse of the target plane
-and the source plane.
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-
-- *source*
-  - a [plane3](#affineplaneplane3), the source plane on the reference plane.
-- *target*
-  - a [plane3](#affineplaneplane3), the target plane on the reference plane.
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-
-- a [plane3](#affineplaneplane3), the source plane on the target plane.
-
-
-Aliases: [affineplane.plane3.between](#affineplaneplane3between)
+Alias of [affineplane.plane3.between](#affineplaneplane3between)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/difference.js)
 
@@ -4075,7 +4824,6 @@ See [affineplane.plane3.almostEqual](#affineplaneplane3almostequal) for a relaxe
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p1*
   - a [plane3](#affineplaneplane3)
 - *p2*
@@ -4083,7 +4831,6 @@ See [affineplane.plane3.almostEqual](#affineplaneplane3almostequal) for a relaxe
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -4097,7 +4844,6 @@ Create a plane from human readable features.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *feats*
   - an object with optional props
     - *angle*
@@ -4109,7 +4855,6 @@ Create a plane from human readable features.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3)
 
@@ -4129,7 +4874,6 @@ parallel to z-axis and goes through the given origin point.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *tr*
   - a helm2z on the reference plane
 - *origin*
@@ -4137,7 +4881,6 @@ parallel to z-axis and goes through the given origin point.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3) on the reference plane
 
@@ -4151,13 +4894,11 @@ Get a unit vector perpendicular to the plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) on the reference plane
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3), the plane normal vector.
 
@@ -4171,13 +4912,11 @@ The length of the basis vector, the scale multiplier.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) on the reference plane
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the scale multiplier with respect to the reference plane.
 
@@ -4189,13 +4928,11 @@ Source: [getScale.js](https://github.com/axelpale/affineplane/blob/main/lib/plan
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3), represented on the reference plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3), the reference plane represented on the given plane.
 
@@ -4210,7 +4947,6 @@ min and max (inclusive).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3), in the reference basis.
 - *min*
@@ -4220,7 +4956,6 @@ min and max (inclusive).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3)
 
@@ -4236,7 +4971,6 @@ If camera is given, project perspectively, otherwise orthogonally.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) in the reference space.
 - *target*
@@ -4246,7 +4980,6 @@ If camera is given, project perspectively, otherwise orthogonally.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2) on the image plane.
 
@@ -4262,7 +4995,6 @@ the given center point. The plane z depth is preserved.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) in the reference space. The plane to rotate.
 - *center*
@@ -4272,7 +5004,6 @@ the given center point. The plane z depth is preserved.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3) on the reference plane after rotation.
 
@@ -4291,7 +5022,6 @@ stays fixed during the operation.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3), the plane to rotate. Represented on the reference plane.
 - *center*
@@ -4301,7 +5031,6 @@ stays fixed during the operation.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3), the plane after rotation.
 
@@ -4317,7 +5046,6 @@ around the line parallel to z-axis and travelling through the given point.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) to rotate.
 - *center*
@@ -4326,7 +5054,6 @@ around the line parallel to z-axis and travelling through the given point.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane2](#affineplaneplane2)
 
@@ -4354,7 +5081,6 @@ meaning that 3 units on P_hat are 6 units on P.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) on the reference plane
 - *center*
@@ -4364,7 +5090,6 @@ meaning that 3 units on P_hat are 6 units on P.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3), a scaled plane
 
@@ -4378,7 +5103,6 @@ Scale a plane to the given scale towards the center point.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) on the reference plane
 - *center*
@@ -4388,7 +5112,6 @@ Scale a plane to the given scale towards the center point.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3), a scaled plane
 
@@ -4402,7 +5125,6 @@ Transform the plane with a helmert transformation applied at origin.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) on the reference basis
 - *tr*
@@ -4412,7 +5134,6 @@ Transform the plane with a helmert transformation applied at origin.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3) on the reference basis
 
@@ -4437,7 +5158,6 @@ are represented on the plane instead of the reference basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) on the reference basis
 - *tr*
@@ -4447,7 +5167,6 @@ are represented on the plane instead of the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3) on the reference plane
 
@@ -4464,7 +5183,6 @@ system of the reference plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3), represented on the source plane.
 - *source*
@@ -4472,7 +5190,6 @@ system of the reference plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3), represented on the reference plane.
 
@@ -4488,7 +5205,6 @@ in the coordinate system of the target plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3), represented on the reference plane.
 - *target*
@@ -4496,7 +5212,6 @@ in the coordinate system of the target plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [plane3](#affineplaneplane3), represented on the target plane.
 
@@ -4512,7 +5227,6 @@ on the reference plane by the given vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - a [plane3](#affineplaneplane3) in the reference space.
 - *vec*
@@ -4521,7 +5235,6 @@ on the reference plane by the given vector.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [plane3](#affineplaneplane3) in the reference space.
 
 
@@ -4529,25 +5242,6 @@ Source: [translateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/p
 
 <a name="affineplaneplane3translateto"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[translateTo](#affineplaneplane3translateto)(plane, p)
-
-Move the plane origin to a new point.
-This translates the plane to a new position.
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-
-- *plane*
-  - a [plane3](#affineplaneplane3)
-- *p*
-  - a [point2](#affineplanepoint2) or [point3](#affineplanepoint3), the new origin position.
-  - If [point2](#affineplanepoint2) is given, plane z depth is preserved in translation.
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-
-- a [plane3](#affineplaneplane3)
-
 
 Source: [translateTo.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/translateTo.js)
 
@@ -4558,13 +5252,11 @@ Check if object is a valid [plane3](#affineplaneplane3).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *plane*
   - an object
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -4597,6 +5289,7 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 - [affineplane.point2.equal](#affineplanepoint2equal)
 - [affineplane.point2.equals](#affineplanepoint2equals)
 - [affineplane.point2.fromArray](#affineplanepoint2fromarray)
+- [affineplane.point2.homothety](#affineplanepoint2homothety)
 - [affineplane.point2.mean](#affineplanepoint2mean)
 - [affineplane.point2.move](#affineplanepoint2move)
 - [affineplane.point2.offset](#affineplanepoint2offset)
@@ -4606,10 +5299,12 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 - [affineplane.point2.rotateBy](#affineplanepoint2rotateby)
 - [affineplane.point2.toArray](#affineplanepoint2toarray)
 - [affineplane.point2.transform](#affineplanepoint2transform)
+- [affineplane.point2.transformMany](#affineplanepoint2transformmany)
 - [affineplane.point2.transitFrom](#affineplanepoint2transitfrom)
 - [affineplane.point2.transitTo](#affineplanepoint2transitto)
 - [affineplane.point2.translate](#affineplanepoint2translate)
 - [affineplane.point2.validate](#affineplanepoint2validate)
+- [affineplane.point2.vectorTo](#affineplanepoint2vectorto)
 
 
 Source: [point2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/index.js)
@@ -4621,7 +5316,6 @@ Test if points are almost equal by the margin of epsilon.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *q*
@@ -4631,7 +5325,6 @@ Test if points are almost equal by the margin of epsilon.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -4645,13 +5338,11 @@ Average of points.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *ps*
   - array of [point2](#affineplanepoint2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2)
 
@@ -4667,13 +5358,11 @@ Copy point object.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2)
 
@@ -4687,7 +5376,6 @@ Create a [point2](#affineplanepoint2) object: `{ x, y }`.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *x*
   - a number. The x coordinate.
 - *y*
@@ -4695,7 +5383,6 @@ Create a [point2](#affineplanepoint2) object: `{ x, y }`.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2)
 
@@ -4723,7 +5410,6 @@ A vector from point p to point q.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *q*
@@ -4732,11 +5418,10 @@ A vector from point p to point q.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [vec2](#affineplanevec2)
 
 
-Aliases: [affineplane.point2.diff](#affineplanepoint2diff), [affineplane.point2.delta](#affineplanepoint2delta)
+Aliases: [affineplane.point2.diff](#affineplanepoint2diff), [affineplane.point2.delta](#affineplanepoint2delta), [affineplane.point2.vectorTo](#affineplanepoint2vectorto)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
 
@@ -4747,7 +5432,6 @@ Get direction from point to point.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2), the direction origin
 - *q*
@@ -4755,7 +5439,6 @@ Get direction from point to point.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [dir2](#affineplanedir2), a unit vector. If no direction can be computed, for example in the case where the points are equal, then the direction will be `{ x: 1, y: 0 }`
 
@@ -4769,7 +5452,6 @@ Distance between two points.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *q*
@@ -4777,7 +5459,6 @@ Distance between two points.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, a distance from p to q (= distance from q to p)
 
@@ -4791,7 +5472,6 @@ Test if points p, q are equal.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *q*
@@ -4799,7 +5479,6 @@ Test if points p, q are equal.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -4822,18 +5501,38 @@ Create `{ x, y }` point from array [x, y].
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *arrp*
   - a two-element array
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [point2](#affineplanepoint2)
 
 
 Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/fromArray.js)
+
+<a name="affineplanepoint2homothety"></a>
+## [affineplane](#affineplane).[point2](#affineplanepoint2).[homothety](#affineplanepoint2homothety)(point, center, ratio)
+
+Perform homothety about the center.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *point*
+  - a [point2](#affineplanepoint2)
+- *center*
+  - a [point2](#affineplanepoint2)
+- *ratio*
+  - a number, the scaling ratio
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point2](#affineplanepoint2)
+
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/homothety.js)
 
 <a name="affineplanepoint2mean"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[mean](#affineplanepoint2mean)
@@ -4856,7 +5555,6 @@ Offset a point by scalars dx dy.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *dx*
@@ -4866,7 +5564,6 @@ Offset a point by scalars dx dy.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2), translated by the vector `{ x: dx, y: dy }`
 
@@ -4880,7 +5577,6 @@ Create a point away from p at the given distance and angle.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *distance*
@@ -4890,7 +5586,6 @@ Create a point away from p at the given distance and angle.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2)
 
@@ -4906,7 +5601,6 @@ Otherwise, project orthogonally.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *point*
   - a [point2](#affineplanepoint2) in the reference space, assume z=0.
 - *plane*
@@ -4916,7 +5610,6 @@ Otherwise, project orthogonally.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2) on the target plane.
 
@@ -4930,7 +5623,6 @@ Project a point orthogonally onto a line.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *line*
@@ -4938,7 +5630,6 @@ Project a point orthogonally onto a line.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2)
 
@@ -4952,7 +5643,6 @@ Rotate point about the given center.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *origin*
@@ -4962,7 +5652,6 @@ Rotate point about the given center.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2)
 
@@ -4976,13 +5665,11 @@ Get the [point2](#affineplanepoint2) object as an array.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - an array `[x, y]`
 
@@ -4996,7 +5683,6 @@ Transform a point.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *tr*
@@ -5005,11 +5691,30 @@ Transform a point.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [point2](#affineplanepoint2), the transformed point
 
 
 Source: [transform.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/transform.js)
+
+<a name="affineplanepoint2transformmany"></a>
+## [affineplane](#affineplane).[point2](#affineplanepoint2).[transformMany](#affineplanepoint2transformmany)(ps, tr)
+
+Transform an array of points.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *ps*
+  - an array, of [point2](#affineplanepoint2)
+- *tr*
+  - a [helm2](#affineplanehelm2), a transform
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- an array of [point2](#affineplanepoint2), each point transformed by tr.
+
+
+Source: [transformMany.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/transformMany.js)
 
 <a name="affineplanepoint2transitfrom"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[transitFrom](#affineplanepoint2transitfrom)(point, source)
@@ -5019,7 +5724,6 @@ to the reference plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *point*
   - a [point2](#affineplanepoint2) on the source plane.
 - *source*
@@ -5027,7 +5731,6 @@ to the reference plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2), represented on the reference plane.
 
@@ -5043,7 +5746,6 @@ in the coordinate system of the plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *point*
   - a [point2](#affineplanepoint2) on the reference plane.
 - *target*
@@ -5051,7 +5753,6 @@ in the coordinate system of the plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2), represented on the target plane.
 
@@ -5065,7 +5766,6 @@ Translate the point by the given vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *vec*
@@ -5073,7 +5773,6 @@ Translate the point by the given vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2)
 
@@ -5090,18 +5789,23 @@ Valid [point2](#affineplanepoint2) has x and y properties that are valid numbers
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - an object
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a boolean, true if valid [point2](#affineplanepoint2)
 
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/validate.js)
+
+<a name="affineplanepoint2vectorto"></a>
+## [affineplane](#affineplane).[point2](#affineplanepoint2).[vectorTo](#affineplanepoint2vectorto)
+
+Alias of [affineplane.point2.difference](#affineplanepoint2difference)
+
+Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
 
 <a name="affineplanepoint3"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3)
@@ -5138,6 +5842,7 @@ translation of the plane on which they are represented.
 - [affineplane.point3.translate](#affineplanepoint3translate)
 - [affineplane.point3.translateBy](#affineplanepoint3translateby)
 - [affineplane.point3.validate](#affineplanepoint3validate)
+- [affineplane.point3.vectorTo](#affineplanepoint3vectorto)
 
 
 Source: [point3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/index.js)
@@ -5149,7 +5854,6 @@ Test if points are almost equal by the margin of epsilon.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 - *q*
@@ -5159,7 +5863,6 @@ Test if points are almost equal by the margin of epsilon.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -5173,13 +5876,11 @@ Average of points.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *ps*
   - array of [point3](#affineplanepoint3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3)
 
@@ -5195,7 +5896,6 @@ Clone [point3](#affineplanepoint3) to a new object.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [point3](#affineplanepoint3)
 
 
@@ -5207,7 +5907,6 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/c
 Create a three-dimensional point `{x, y, z}`.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3)
 
@@ -5235,7 +5934,6 @@ A vector from point p to point q.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 - *q*
@@ -5244,11 +5942,10 @@ A vector from point p to point q.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [vec3](#affineplanevec3)
 
 
-Aliases: [affineplane.point3.diff](#affineplanepoint3diff), [affineplane.point3.delta](#affineplanepoint3delta)
+Aliases: [affineplane.point3.diff](#affineplanepoint3diff), [affineplane.point3.delta](#affineplanepoint3delta), [affineplane.point3.vectorTo](#affineplanepoint3vectorto)
 
 Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
 
@@ -5259,7 +5956,6 @@ Get direction from point to point.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3), the direction origin
 - *q*
@@ -5267,7 +5963,6 @@ Get direction from point to point.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [dir3](#affineplanedir3), a unit vector. If no direction can be computed, for example in the case where the points are equal, then the direction will be `{ x: 1, y: 0, z: 0 }`
 
@@ -5281,7 +5976,6 @@ Euclidean distance between two points.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 - *q*
@@ -5289,7 +5983,6 @@ Euclidean distance between two points.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, a distance from p to q (= distance from q to p)
 
@@ -5303,7 +5996,6 @@ Test if points p, q are equal in value.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 - *q*
@@ -5311,7 +6003,6 @@ Test if points p, q are equal in value.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean, true if equal
 
@@ -5334,13 +6025,11 @@ Create a [point3](#affineplanepoint3) from array `[x, y, z]`.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *arrp*
   - a three-element array
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3)
 
@@ -5361,7 +6050,6 @@ Offset a point by scalars dx, dy, dz.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point2](#affineplanepoint2)
 - *dx*
@@ -5373,7 +6061,6 @@ Offset a point by scalars dx, dy, dz.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3), translated by the vector `{ x: dx, y: dy, z: dz }`
 
@@ -5388,7 +6075,6 @@ and pitch angle.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 - *distance*
@@ -5400,7 +6086,6 @@ and pitch angle.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3)
 
@@ -5414,7 +6099,6 @@ Project a 3D point onto a plane in 3D space.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *point*
   - a [point3](#affineplanepoint3) in the reference space.
 - *plane*
@@ -5424,7 +6108,6 @@ Project a 3D point onto a plane in 3D space.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2) on the target plane.
 
@@ -5439,7 +6122,6 @@ Roll is applied before pitch.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 - *origin*
@@ -5451,7 +6133,6 @@ Roll is applied before pitch.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3)
 
@@ -5465,13 +6146,11 @@ Move point to the closest integer coordinate.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3), having integer coordinates.
 
@@ -5486,13 +6165,11 @@ Compatible with [affineplane.point3.fromArray](#affineplanepoint3fromarray).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - an array `[x, y, z]`
 
@@ -5507,7 +6184,6 @@ without losing information.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *point*
   - a [point3](#affineplanepoint3) on the source plane.
 - *plane*
@@ -5515,7 +6191,6 @@ without losing information.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3), represented on the reference plane.
 
@@ -5530,7 +6205,6 @@ without losing information.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *point*
   - a [point3](#affineplanepoint3) on the reference plane.
 - *plane*
@@ -5538,7 +6212,6 @@ without losing information.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3), represented on the target plane.
 
@@ -5552,7 +6225,6 @@ Translate the point by the given vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - a [point3](#affineplanepoint3)
 - *vec*
@@ -5560,7 +6232,6 @@ Translate the point by the given vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3)
 
@@ -5584,18 +6255,23 @@ Valid [point3](#affineplanepoint3) has props x, y and z that are valid numbers.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *p*
   - an object
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a boolean, true if valid
 
 
 Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/validate.js)
+
+<a name="affineplanepoint3vectorto"></a>
+## [affineplane](#affineplane).[point3](#affineplanepoint3).[vectorTo](#affineplanepoint3vectorto)
+
+Alias of [affineplane.point3.difference](#affineplanepoint3difference)
+
+Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
 
 <a name="affineplanepoly2"></a>
 ## [affineplane](#affineplane).[poly2](#affineplanepoly2)
@@ -5619,13 +6295,11 @@ Create a polygon on plane. Deep-clones the points array.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *points*
   - array of [point2](#affineplanepoint2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [poly2](#affineplanepoly2), array of points
 
@@ -5662,7 +6336,6 @@ Add two quaternions together via component-wise addition.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *q*
   - a [quat4](#affineplanequat4)
 - *p*
@@ -5670,7 +6343,6 @@ Add two quaternions together via component-wise addition.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [quat4](#affineplanequat4)
 
@@ -5684,13 +6356,11 @@ Get the conjugate of a quaternion.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *q*
   - a [quat4](#affineplanequat4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [quat4](#affineplanequat4)
 
@@ -5701,7 +6371,6 @@ Source: [conjugate.js](https://github.com/axelpale/affineplane/blob/main/lib/qua
 ## [affineplane](#affineplane).[quat4](#affineplanequat4).[create](#affineplanequat4create)(a, b, c, d)
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
 
 - *a*
   - a number
@@ -5714,7 +6383,6 @@ Source: [conjugate.js](https://github.com/axelpale/affineplane/blob/main/lib/qua
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [quat4](#affineplanequat4)
 
@@ -5735,7 +6403,6 @@ Get the quaternion q - p.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *q*
   - a [quat4](#affineplanequat4)
 - *p*
@@ -5743,7 +6410,6 @@ Get the quaternion q - p.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [quat4](#affineplanequat4)
 
@@ -5762,7 +6428,6 @@ the vector back to 3D.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *dir*
   - a [dir3](#affineplanedir3) or a [vec3](#affineplanevec3)
 - *angle*
@@ -5770,7 +6435,6 @@ the vector back to 3D.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [quat4](#affineplanequat4)
 
@@ -5784,13 +6448,11 @@ Construct a vector quaternion i.e. a quaternion with zero scalar part.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [quat4](#affineplanequat4)
 
@@ -5804,7 +6466,6 @@ The Hamilton product of two quaternions.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *q*
   - a [quat4](#affineplanequat4)
 - *p*
@@ -5812,7 +6473,6 @@ The Hamilton product of two quaternions.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [quat4](#affineplanequat4)
 
@@ -5835,13 +6495,11 @@ The length of quaternion. Also called the norm.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *q*
   - a [quat4](#affineplanequat4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number
 
@@ -5879,7 +6537,6 @@ Take a point on the rect, represented on the rects outer basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rect2
 - *rx*
@@ -5889,7 +6546,6 @@ Take a point on the rect, represented on the rects outer basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2) on the outer basis
 
@@ -5903,7 +6559,6 @@ Take a point on the rect.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rectangle
 - *nw*
@@ -5913,7 +6568,6 @@ Take a point on the rect.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a point on the rectangle's outer basis
 
@@ -5927,13 +6581,11 @@ Compute rectangle area. This returns the area on the reference basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rect2, on the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the area on the reference basis.
 
@@ -5947,13 +6599,11 @@ Compute rectangle area. This returns the area on the reference basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rect2, on the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number, the area on the reference basis.
 
@@ -5970,13 +6620,11 @@ the given rectangle.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rect2, on the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a rect2, on the reference basis.
 
@@ -5993,13 +6641,11 @@ the given rectangle.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rect2, on the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a rect2, on the reference basis.
 
@@ -6013,7 +6659,6 @@ Convert a rectangle from source basis to the reference basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rect2, a rectangle on the source basis.
 - *source*
@@ -6021,7 +6666,6 @@ Convert a rectangle from source basis to the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a rect2, represented on the reference basis.
 
@@ -6035,7 +6679,6 @@ Convert a rectangle from the reference basis to the target basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rectangle on the reference basis.
 - *target*
@@ -6043,7 +6686,6 @@ Convert a rectangle from the reference basis to the target basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a rect2, represented on the target basis.
 
@@ -6078,7 +6720,6 @@ Take a point on the rect, represented on the rects outer basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rect2
 - *rx*
@@ -6088,7 +6729,6 @@ Take a point on the rect, represented on the rects outer basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3), represented on the outer basis.
 
@@ -6102,7 +6742,6 @@ Take a point on the rect.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rectangle
 - *nw*
@@ -6112,7 +6751,6 @@ Take a point on the rect.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point3](#affineplanepoint3), in the rectangle's outer basis
 
@@ -6126,15 +6764,13 @@ Construct a rect3 object from basis and size.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *basis*
-  - a basis3
+  - a [basis3](#affineplaneplane3)
 - *size*
   - a [size2](#affineplanesize2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a rect3
 
@@ -6148,15 +6784,13 @@ Convert a rectangle from source basis to the reference basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rect3, a rectangle on the source basis.
 - *source*
-  - a basis3, the source basis represented on the reference basis.
+  - a [basis3](#affineplaneplane3), the source basis represented on the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a rect3, represented on the reference basis.
 
@@ -6170,20 +6804,70 @@ Convert a rectangle from the reference basis to the target basis.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *rect*
   - a rectangle on the reference basis.
 - *target*
-  - a basis3, the target basis represented on the reference basis.
+  - a [basis3](#affineplaneplane3), the target basis represented on the reference basis.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a rect3, represented on the target basis.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/rect3/transitTo.js)
+
+<a name="affineplanerot2"></a>
+## [affineplane](#affineplane).[rot2](#affineplanerot2)
+
+Rotation in 2D. Represented by object `{ a, b }`.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.rot2.create](#affineplanerot2create)
+- [affineplane.rot2.validate](#affineplanerot2validate)
+
+
+Source: [rot2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/rot2/index.js)
+
+<a name="affineplanerot2create"></a>
+## [affineplane](#affineplane).[rot2](#affineplanerot2).[create](#affineplanerot2create)(a, b)
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *a*
+  - a number
+- *b*
+  - a number
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [rot2](#affineplanerot2)
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/rot2/create.js)
+
+<a name="affineplanerot2validate"></a>
+## [affineplane](#affineplane).[rot2](#affineplanerot2).[validate](#affineplanerot2validate)(r)
+
+Check if the object is a valid [rot2](#affineplanerot2). Valid object has properties a and b
+which represent valid rotation matrix.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/rot2/validate.js)
 
 <a name="affineplanesize2"></a>
 ## [affineplane](#affineplane).[size2](#affineplanesize2)
@@ -6202,6 +6886,7 @@ Represented with an object `{ w, h }`.
 - [affineplane.size2.scaleBy](#affineplanesize2scaleby)
 - [affineplane.size2.transitFrom](#affineplanesize2transitfrom)
 - [affineplane.size2.transitTo](#affineplanesize2transitto)
+- [affineplane.size2.validate](#affineplanesize2validate)
 
 
 Source: [size2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/index.js)
@@ -6214,13 +6899,11 @@ the total number of pixels.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *sz*
   - a [size2](#affineplanesize2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number
 
@@ -6234,7 +6917,6 @@ Find a point on the area.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *sz*
   - a [size2](#affineplanesize2)
 - *nw*
@@ -6244,7 +6926,6 @@ Find a point on the area.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [point2](#affineplanepoint2)
 
@@ -6258,7 +6939,6 @@ Create a [size2](#affineplanesize2) object.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *width*
   - a number
 - *height*
@@ -6266,7 +6946,6 @@ Create a [size2](#affineplanesize2) object.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [size2](#affineplanesize2)
 
@@ -6276,10 +6955,9 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/
 <a name="affineplanesize2scaleby"></a>
 ## [affineplane](#affineplane).[size2](#affineplanesize2).[scaleBy](#affineplanesize2scaleby)(sz, multiplier)
 
-Ratio-preserving scale. Multiplies all dimensions uniformly.
+Scale and preserve aspect ratio. Multiplies all dimensions uniformly.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
 
 - *sz*
   - a [size2](#affineplanesize2)
@@ -6288,7 +6966,6 @@ Ratio-preserving scale. Multiplies all dimensions uniformly.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [size2](#affineplanesize2)
 
@@ -6303,7 +6980,6 @@ to the reference plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *size*
   - a [size2](#affineplanesize2) on the source plane.
 - *source*
@@ -6311,7 +6987,6 @@ to the reference plane.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [size2](#affineplanesize2), represented on the reference plane.
 
@@ -6327,7 +7002,6 @@ in the coordinate system of the target plane.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *size*
   - a [size2](#affineplanesize2) on the reference plane.
 - *target*
@@ -6336,11 +7010,198 @@ in the coordinate system of the target plane.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [size2](#affineplanesize2) on the target plane.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/transitTo.js)
+
+<a name="affineplanesize2validate"></a>
+## [affineplane](#affineplane).[size2](#affineplanesize2).[validate](#affineplanesize2validate)(s)
+
+Check if the object is a valid [size2](#affineplanesize2).
+Valid [size2](#affineplanesize2) has properties w,h that are valid numbers.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/validate.js)
+
+<a name="affineplanesize3"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3)
+
+Three-dimensional cuboid size, consisting of width, height, and depth.
+
+Represented with an object `{ w, h, d }`.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.size3.atNorm](#affineplanesize3atnorm)
+- [affineplane.size3.create](#affineplanesize3create)
+- [affineplane.size3.scaleBy](#affineplanesize3scaleby)
+- [affineplane.size3.transitFrom](#affineplanesize3transitfrom)
+- [affineplane.size3.transitTo](#affineplanesize3transitto)
+- [affineplane.size3.validate](#affineplanesize3validate)
+- [affineplane.size3.volume](#affineplanesize3volume)
+
+
+Source: [size3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/index.js)
+
+<a name="affineplanesize3atnorm"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3).[atNorm](#affineplanesize3atnorm)(sz, nw, nh, nd)
+
+Find a point in the volume.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sz*
+  - a [size3](#affineplanesize3)
+- *nw*
+  - a normalized width in 0..1
+- *nh*
+  - a normalized height
+- *nd*
+  - a normalized depth
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point3](#affineplanepoint3)
+
+
+Source: [atNorm.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/atNorm.js)
+
+<a name="affineplanesize3create"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3).[create](#affineplanesize3create)(width, height, depth)
+
+Create a [size3](#affineplanesize3) object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *width*
+  - a number
+- *height*
+  - a number
+- *depth*
+  - a number
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [size3](#affineplanesize3)
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/create.js)
+
+<a name="affineplanesize3scaleby"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3).[scaleBy](#affineplanesize3scaleby)(sz, multiplier)
+
+Scale and preserve aspect ratio. Multiplies all dimensions uniformly.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sz*
+  - a [size3](#affineplanesize3)
+- *multiplier*
+  - a number
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [size3](#affineplanesize3)
+
+
+Source: [scaleBy.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/scaleBy.js)
+
+<a name="affineplanesize3transitfrom"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3).[transitFrom](#affineplanesize3transitfrom)(size, source)
+
+Transit a size from the source basis
+to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *size*
+  - a [size3](#affineplanesize3) on the source basis.
+- *source*
+  - a [plane3](#affineplaneplane3), the source basis, represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [size3](#affineplanesize3), represented on the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/transitFrom.js)
+
+<a name="affineplanesize3transitto"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3).[transitTo](#affineplanesize3transitto)(size, target)
+
+Transit a [size3](#affineplanesize3) to a target basis.
+In other words, represent the size
+in the coordinate system of the target.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *size*
+  - a [size3](#affineplanesize3) on the reference basis.
+- *target*
+  - a [plane3](#affineplaneplane3), the target basis, represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [size3](#affineplanesize3) on the target basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/transitTo.js)
+
+<a name="affineplanesize3validate"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3).[validate](#affineplanesize3validate)(s)
+
+Check if the object is a valid [size3](#affineplanesize3).
+Valid [size3](#affineplanesize3) has properties w,h,d that are valid numbers.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/validate.js)
+
+<a name="affineplanesize3volume"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3).[volume](#affineplanesize3volume)(sz)
+
+Volume. If your w, h, and d are in pixels, this gives you
+the total number of voxels.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sz*
+  - a [size3](#affineplanesize3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number
+
+
+Source: [volume.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/volume.js)
 
 <a name="affineplanevec2"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2)
@@ -6403,7 +7264,6 @@ Add two vectors. See vector.sum to add many vectors.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *w*
@@ -6411,7 +7271,6 @@ Add two vectors. See vector.sum to add many vectors.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6425,7 +7284,6 @@ Test if two vectors v and w are almost equal by the margin of epsilon.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *w*
@@ -6435,7 +7293,6 @@ Test if two vectors v and w are almost equal by the margin of epsilon.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -6449,13 +7306,11 @@ Arithmetic mean of an array of vectors.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vs*
   - an array of [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6471,13 +7326,11 @@ Copy vector object.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6491,7 +7344,6 @@ Create a vector object `{ x, y }`.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *x*
   - a number. The translation along x-axis
 - *y*
@@ -6499,7 +7351,6 @@ Create a vector object `{ x, y }`.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6515,7 +7366,6 @@ settle for a scalar result, the length of that 3D vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *w*
@@ -6523,7 +7373,6 @@ settle for a scalar result, the length of that 3D vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number
 
@@ -6537,7 +7386,6 @@ A vector between v and w, in other words, v - w.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *w*
@@ -6545,7 +7393,6 @@ A vector between v and w, in other words, v - w.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6561,7 +7408,6 @@ The direction of the vector does not change.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec2](#affineplanevec2)
 - *divisor*
@@ -6570,12 +7416,10 @@ The direction of the vector does not change.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Throws:</strong></p>
-
 
 - if zero divisor
 
@@ -6590,7 +7434,6 @@ also called the scalar product.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *w*
@@ -6598,7 +7441,6 @@ also called the scalar product.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number
 
@@ -6612,7 +7454,6 @@ Test if vectors v,w are equal
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *w*
@@ -6620,7 +7461,6 @@ Test if vectors v,w are equal
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -6634,13 +7474,11 @@ Create `{ x, y }` vector from array `[x, y]`.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *arrp*
   - an array
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6654,7 +7492,6 @@ Create a vector from polar coordinates.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *radius*
   - a number, radial length from the origin
 - *direction*
@@ -6662,7 +7499,6 @@ Create a vector from polar coordinates.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6678,7 +7514,6 @@ within the margin of [affineplane.epsilon](#affineplaneepsilon).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *w*
@@ -6686,7 +7521,6 @@ within the margin of [affineplane.epsilon](#affineplaneepsilon).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean, true if vectors are independent.
 
@@ -6701,20 +7535,18 @@ Negate the vector. For example `inverse({ x: 1, y: -1 })` returns
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [vec2](#affineplanevec2)
 
 
 Aliases: [affineplane.vec2.negate](#affineplanevec2negate)
 
-Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/inverse.js)
+Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/invert.js)
 
 <a name="affineplanevec2magnitude"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[magnitude](#affineplanevec2magnitude)(v)
@@ -6723,13 +7555,11 @@ The length of the vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number
 
@@ -6745,7 +7575,6 @@ Element-wise maximum of two vectors.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *w*
@@ -6753,7 +7582,6 @@ Element-wise maximum of two vectors.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6774,7 +7602,6 @@ Element-wise minimum of two vectors
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *w*
@@ -6782,7 +7609,6 @@ Element-wise minimum of two vectors
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6794,7 +7620,7 @@ Source: [min.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/min.
 
 Alias of [affineplane.vec2.invert](#affineplanevec2invert)
 
-Source: [inverse.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/inverse.js)
+Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/invert.js)
 
 <a name="affineplanevec2norm"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[norm](#affineplanevec2norm)
@@ -6819,7 +7645,6 @@ Otherwise, project orthogonally.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2) in the reference space, z=0.
 - *plane*
@@ -6829,7 +7654,6 @@ Otherwise, project orthogonally.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2) on the projection plane.
 
@@ -6845,7 +7669,6 @@ parallel with another vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2) to be projected.
 - *w*
@@ -6853,7 +7676,6 @@ parallel with another vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2), parallel with w.
 
@@ -6867,7 +7689,6 @@ Rotate vector by the given angle.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *radians*
@@ -6875,7 +7696,6 @@ Rotate vector by the given angle.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6889,7 +7709,6 @@ Rotate vector so that it points to the given angle.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 - *radians*
@@ -6897,7 +7716,6 @@ Rotate vector so that it points to the given angle.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6913,7 +7731,6 @@ The direction of the vector does not change.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec2](#affineplanevec2)
 - *multiplier*
@@ -6921,7 +7738,6 @@ The direction of the vector does not change.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6937,7 +7753,6 @@ As an exception, zero vector length remains zero.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec2](#affineplanevec2), non-zero vector.
 - *magnitude*
@@ -6945,7 +7760,6 @@ As an exception, zero vector length remains zero.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6960,13 +7774,11 @@ See [affineplane.vec2.add](#affineplanevec2add) to add two vectors together.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vs*
   - an array of [vec2](#affineplanevec2). The array can be empty.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2)
 
@@ -6980,13 +7792,11 @@ Get the vector object as an array.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - an array `[x, y]`
 
@@ -7000,13 +7810,11 @@ Get polar coordinates of a vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - an object with properties:
   - *radius*
@@ -7026,7 +7834,6 @@ Transform a vector. Translation does not affect the vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec2](#affineplanevec2)
 - *tr*
@@ -7034,7 +7841,6 @@ Transform a vector. Translation does not affect the vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2), the transformed vector
 
@@ -7051,7 +7857,6 @@ only scaling and rotation do.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec2](#affineplanevec2) on the source plane.
 - *plane*
@@ -7059,7 +7864,6 @@ only scaling and rotation do.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2), represented on the target plane.
 
@@ -7076,7 +7880,6 @@ Translation of the plane does not affect the vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec2](#affineplanevec2) on the reference plane.
 - *plane*
@@ -7084,7 +7887,6 @@ Translation of the plane does not affect the vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2), represented on the target plane.
 
@@ -7100,13 +7902,11 @@ If zero vector is given, assume direction towards positive x.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2), magnitude of one.
 
@@ -7122,13 +7922,11 @@ Check if object is a valid [vec2](#affineplanevec2).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - an object
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -7195,7 +7993,6 @@ Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/ve
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *w*
@@ -7203,7 +8000,6 @@ Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/ve
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7217,7 +8013,6 @@ Test if vectors are almost equal by the margin of epsilon.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *w*
@@ -7228,7 +8023,6 @@ Test if vectors are almost equal by the margin of epsilon.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -7242,13 +8036,11 @@ Arithmetic mean of an array of vectors.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vs*
   - array of [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7262,13 +8054,11 @@ Clone the vector object.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7280,7 +8070,6 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/cop
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *x*
   - a number
 - *y*
@@ -7290,7 +8079,6 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/cop
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7306,7 +8094,6 @@ to the plane span by the given vectors.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *w*
@@ -7314,7 +8101,6 @@ to the plane span by the given vectors.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7337,7 +8123,6 @@ from the end of w to the end of v.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *w*
@@ -7345,7 +8130,6 @@ from the end of w to the end of v.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7363,7 +8147,6 @@ The direction of the vector does not change.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3)
 - *divisor*
@@ -7371,7 +8154,6 @@ The direction of the vector does not change.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7386,7 +8168,6 @@ also called the scalar product.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *w*
@@ -7394,7 +8175,6 @@ also called the scalar product.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number
 
@@ -7408,7 +8188,6 @@ Test if vectors v, w are equal in value.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *w*
@@ -7416,7 +8195,6 @@ Test if vectors v, w are equal in value.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean, true if equal
 
@@ -7430,19 +8208,16 @@ Create a [vec3](#affineplanevec3) from an array `[x, y, z]`.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *arrv*
   - an array
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Throws:</strong></p>
-
 
 - if arrv has less than three elements.
 
@@ -7457,7 +8232,6 @@ See also [affineplane.vec3.toPolar](#affineplanevec3topolar).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *radius*
   - a number, the radial distance from z-axis.
 - *direction*
@@ -7467,7 +8241,6 @@ See also [affineplane.vec3.toPolar](#affineplanevec3topolar).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7482,7 +8255,6 @@ See also [affineplane.vec3.toSpherical](#affineplanevec3tospherical).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *magnitude*
   - a number, the length of the vector.
 - *roll*
@@ -7492,7 +8264,6 @@ See also [affineplane.vec3.toSpherical](#affineplanevec3tospherical).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7508,7 +8279,6 @@ within the margin of [affineplane.epsilon](#affineplaneepsilon).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *w*
@@ -7516,7 +8286,6 @@ within the margin of [affineplane.epsilon](#affineplaneepsilon).
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean, true if vectors are independent.
 
@@ -7530,13 +8299,11 @@ Get the vector -v.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7552,13 +8319,11 @@ The euclidean length of the vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number
 
@@ -7601,7 +8366,6 @@ a sequence of points.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3), in the reference basis.
 - *plane*
@@ -7609,7 +8373,6 @@ a sequence of points.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec2](#affineplanevec2) on the image plane.
 
@@ -7625,7 +8388,6 @@ parallel with another vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3) to be projected.
 - *w*
@@ -7633,7 +8395,6 @@ parallel with another vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3), parallel with w.
 
@@ -7652,7 +8413,6 @@ it to each vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *axis*
@@ -7662,7 +8422,6 @@ it to each vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7677,7 +8436,6 @@ Roll is applied before pitch.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *roll*
@@ -7687,7 +8445,6 @@ Roll is applied before pitch.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7703,7 +8460,6 @@ Roll is applied before pitch.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 - *roll*
@@ -7713,7 +8469,6 @@ Roll is applied before pitch.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7729,7 +8484,6 @@ The direction of the vector does not change.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3)
 - *multiplier*
@@ -7737,7 +8491,6 @@ The direction of the vector does not change.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7753,7 +8506,6 @@ As an exception, zero vector length remains zero.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3), non-zero vector.
 - *magnitude*
@@ -7761,7 +8513,6 @@ As an exception, zero vector length remains zero.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3)
 
@@ -7783,13 +8534,11 @@ See [affineplane.vec3.add](#affineplanevec3add) to add two vectors together.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vs*
   - an array of [vec3](#affineplanevec3). The array can be empty.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3). If the array is empty, returns the zero vector.
 
@@ -7803,13 +8552,11 @@ Convert vector to array with elements `[x, y, z]`.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - an array
 
@@ -7823,13 +8570,11 @@ Get cylindrical polar coordinates of a vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - object with properties
   - *radius*
@@ -7852,13 +8597,11 @@ See also [affineplane.vec3.fromSpherical](#affineplanevec3fromspherical).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - object with properties:
   - *magnitude*
@@ -7878,7 +8621,6 @@ Transform a vector. Translation does not affect the vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3)
 - *tr*
@@ -7886,7 +8628,6 @@ Transform a vector. Translation does not affect the vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3), the transformed vector
 
@@ -7902,7 +8643,6 @@ Note that plane translation does not affect vectors.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3) on the source plane.
 - *plane*
@@ -7910,7 +8650,6 @@ Note that plane translation does not affect vectors.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3), represented on the reference plane.
 
@@ -7925,7 +8664,6 @@ without losing information.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *vec*
   - a [vec3](#affineplanevec3) on the reference plane.
 - *plane*
@@ -7933,7 +8671,6 @@ without losing information.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3), represented on the target plane.
 
@@ -7949,13 +8686,11 @@ If zero vector is given, assume direction towards positive x.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec3](#affineplanevec3)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec3](#affineplanevec3), magnitude of one.
 
@@ -7971,13 +8706,11 @@ Check if object is a valid [vec3](#affineplanevec3).
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - an object
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a boolean
 
@@ -8008,7 +8741,6 @@ Add two vectors together via component-wise addition.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec4](#affineplanevec4)
 - *w*
@@ -8016,7 +8748,6 @@ Add two vectors together via component-wise addition.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec4](#affineplanevec4)
 
@@ -8027,7 +8758,6 @@ Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/add.
 ## [affineplane](#affineplane).[vec4](#affineplanevec4).[create](#affineplanevec4create)(x, y, z, w)
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
 
 - *x*
   - a number
@@ -8041,7 +8771,6 @@ Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/add.
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
 
-
 - a [vec4](#affineplanevec4)
 
 
@@ -8054,13 +8783,11 @@ The length of 4D vector. Also called the norm.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec4](#affineplanevec4)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a number
 
@@ -8074,7 +8801,6 @@ Scalar multiplication of a vector.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
-
 - *v*
   - a [vec4](#affineplanevec4)
 - *m*
@@ -8082,7 +8808,6 @@ Scalar multiplication of a vector.
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
 
 - a [vec4](#affineplanevec4)
 
