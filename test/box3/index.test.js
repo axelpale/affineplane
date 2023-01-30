@@ -6,6 +6,7 @@ const units = {
   create: require('./create.test'),
   fromPoints: require('./fromPoints.test'),
   getAngle: require('./getAngle.test'),
+  getBounds: require('./getBounds.test'),
   getSize: require('./getSize.test'),
   getVolume: require('./getVolume.test'),
   homothety: require('./homothety.test'),
