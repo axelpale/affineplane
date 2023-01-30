@@ -7,6 +7,7 @@ const units = {
   getAngle: require('./getAngle.test'),
   getVolume: require('./getVolume.test'),
   homothety: require('./homothety.test'),
+  projectTo: require('./projectTo.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test')
