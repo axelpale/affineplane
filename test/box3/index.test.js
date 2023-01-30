@@ -5,6 +5,7 @@ const units = {
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
   getAngle: require('./getAngle.test'),
+  getSize: require('./getSize.test'),
   getVolume: require('./getVolume.test'),
   homothety: require('./homothety.test'),
   projectTo: require('./projectTo.test'),
