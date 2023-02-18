@@ -22,6 +22,8 @@ With [npm](https://www.npmjs.com/package/affineplane) or [yarn](https://yarnpkg.
 
 Shapes with position in space:
 
+- [box2](https://axelpale.github.io/affineplane/docs/API.html#affineplanebox2), a cuboid in 2D, `{a,b,x,y,w,h}`
+- [box3](https://axelpale.github.io/affineplane/docs/API.html#affineplanebox3), a cuboid in 3D, `{a,b,x,y,z,w,h,d}`
 - [dir2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir2), direction in 2D, `{x,y}` of unit length
 - [dir3](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir3), direction in 3D, `{x,y,z}` of unit length
 - [dist2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist2), distance between two points in 2D, `number`
