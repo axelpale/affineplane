@@ -12,6 +12,7 @@ const units = {
   invert: require('./invert.test'),
   limitScale: require('./limitScale.test'),
   projectTo: require('./projectTo.test'),
+  projectToDepth: require('./projectToDepth.test'),
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),
   rotateToOrtho: require('./rotateToOrtho.test'),
