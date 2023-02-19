@@ -14,6 +14,7 @@ const units = {
   getSize: require('./getSize.test'),
   homothety: require('./homothety.test'),
   projectTo: require('./projectTo.test'),
+  resizeBy: require('./resizeBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test')
