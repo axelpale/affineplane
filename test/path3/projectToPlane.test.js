@@ -2,7 +2,7 @@ const affineplane = require('../../index')
 const path3 = affineplane.path3
 
 module.exports = (ts) => {
-  ts.test('case: basic projectTo', (t) => {
+  ts.test('case: basic projectToPlane', (t) => {
     // let path, plane
 
     const path = [{ x: 0, y: 0, z: 0 }, { x: 1, y: 1, z: 1 }]
