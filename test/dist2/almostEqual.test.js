@@ -9,11 +9,11 @@ module.exports = (ts) => {
     )
     t.ok(
       dist2.almostEqual(2, 2),
-      'positive vector'
+      'positive numbers'
     )
     t.notOk(
       dist2.almostEqual(-1, 1),
-      'different vectors'
+      'different numbers'
     )
 
     t.end()
