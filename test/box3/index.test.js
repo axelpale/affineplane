@@ -12,7 +12,7 @@ const units = {
   getSize: require('./getSize.test'),
   getVolume: require('./getVolume.test'),
   homothety: require('./homothety.test'),
-  projectTo: require('./projectTo.test'),
+  projectToPlane: require('./projectToPlane.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test')

@@ -15,7 +15,7 @@ const units = {
   getPath: require('./getPath.test'),
   getSize: require('./getSize.test'),
   homothety: require('./homothety.test'),
-  projectTo: require('./projectTo.test'),
+  projectToPlane: require('./projectToPlane.test'),
   resizeBy: require('./resizeBy.test'),
   resizeTo: require('./resizeTo.test'),
   rotateBy: require('./rotateBy.test'),
