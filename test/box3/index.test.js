@@ -15,6 +15,7 @@ const units = {
   projectToPlane: require('./projectToPlane.test'),
   resizeBy: require('./resizeBy.test'),
   resizeTo: require('./resizeTo.test'),
+  rotateBy: require('./rotateBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   translateBy: require('./translateBy.test'),
