@@ -2,6 +2,7 @@
 const units = {
   almostEqual: require('./almostEqual.test'),
   at: require('./at.test'),
+  atBox: require('./atBox.test'),
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
   fromPoints: require('./fromPoints.test'),
