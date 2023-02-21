@@ -13,6 +13,7 @@ const units = {
   getVolume: require('./getVolume.test'),
   homothety: require('./homothety.test'),
   projectToPlane: require('./projectToPlane.test'),
+  resizeBy: require('./resizeBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   translateBy: require('./translateBy.test'),
