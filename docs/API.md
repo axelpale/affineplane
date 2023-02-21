@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.11.0-alpha
+# Affineplane API Documentation v2.11.0
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
@@ -720,6 +720,7 @@ thus can be represented in any basis without loss of information.
 
 - [affineplane.box3.almostEqual](#affineplanebox3almostequal)
 - [affineplane.box3.at](#affineplanebox3at)
+- [affineplane.box3.atBox](#affineplanebox3atbox)
 - [affineplane.box3.atNorm](#affineplanebox3atnorm)
 - [affineplane.box3.create](#affineplanebox3create)
 - [affineplane.box3.fromPoints](#affineplanebox3frompoints)
@@ -789,6 +790,31 @@ Take a point on the box, represented in the reference basis.
 
 
 Source: [at.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/at.js)
+
+<a name="affineplanebox3atbox"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[atBox](#affineplanebox3atbox)(box, x, y, z)
+
+Take a point in the reference basis and represent it in the box basis.
+This is like [affineplane.box3.at](#affineplanebox3at) but to the other direction.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3)
+- *x*
+  - horizontal coordinate in the reference basis.
+- *y*
+  - vertical coordinate in the reference basis.
+- *z*
+  - depth coordinate in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point3](#affineplanepoint3) in the box basis.
+
+
+Source: [atBox.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/atBox.js)
 
 <a name="affineplanebox3atnorm"></a>
 ## [affineplane](#affineplane).[box3](#affineplanebox3).[atNorm](#affineplanebox3atnorm)(box, nw, nh, nd)
