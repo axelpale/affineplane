@@ -2,7 +2,7 @@
 const units = {
   combine: require('./combine.test'),
   create: require('./create.test'),
-  projectTo: require('./projectTo.test'),
+  projectToPlane: require('./projectToPlane.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test')
 }

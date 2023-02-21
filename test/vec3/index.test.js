@@ -11,7 +11,7 @@ const units = {
   independent: require('./independent.test'),
   invert: require('./invert.test'),
   magnitude: require('./magnitude.test'),
-  projectTo: require('./projectTo.test'),
+  projectToPlane: require('./projectToPlane.test'),
   projectToVector: require('./projectToVector.test'),
   rotateAroundAxis: require('./rotateAroundAxis.test'),
   rotateBy: require('./rotateBy.test'),

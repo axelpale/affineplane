@@ -3,7 +3,7 @@ const units = {
   almostEqual: require('./almostEqual.test'),
   fromSpherical: require('./fromSpherical.test'),
   fromVector: require('./fromVector.test'),
-  projectTo: require('./projectTo.test'),
+  projectToPlane: require('./projectToPlane.test'),
   toSpherical: require('./toSpherical.test'),
   toVector: require('./toVector.test'),
   transitFrom: require('./transitFrom.test'),

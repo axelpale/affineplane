@@ -6,7 +6,7 @@ const units = {
   direction: require('./direction.test'),
   homothety: require('./homothety.test'),
   projectToLine: require('./projectToLine.test'),
-  projectTo: require('./projectTo.test'),
+  projectToPlane: require('./projectToPlane.test'),
   transformMany: require('./transformMany.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),

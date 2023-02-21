@@ -2,6 +2,7 @@
 const units = {
   almostEqual: require('./almostEqual.test'),
   at: require('./at.test'),
+  atBox: require('./atBox.test'),
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
   fromPoints: require('./fromPoints.test'),
@@ -12,9 +13,13 @@ const units = {
   getSize: require('./getSize.test'),
   getVolume: require('./getVolume.test'),
   homothety: require('./homothety.test'),
-  projectTo: require('./projectTo.test'),
+  projectToPlane: require('./projectToPlane.test'),
+  resizeBy: require('./resizeBy.test'),
+  resizeTo: require('./resizeTo.test'),
+  rotateBy: require('./rotateBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
+  translateBy: require('./translateBy.test'),
   validate: require('./validate.test')
 }
 

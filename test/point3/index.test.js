@@ -11,7 +11,7 @@ const units = {
   homothety: require('./homothety.test'),
   offset: require('./offset.test'),
   polarOffset: require('./polarOffset.test'),
-  projectTo: require('./projectTo.test'),
+  projectToPlane: require('./projectToPlane.test'),
   rotateBy: require('./rotateBy.test'),
   round: require('./round.test'),
   toArray: require('./toArray.test'),

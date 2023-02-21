@@ -37,7 +37,7 @@ const drawPoint = (ctx, p) => {
   // Project
   const plane = { a: 1, b: 0, x: 0, y: 0, z: focalLength - viewingDistance }
   const camera = { x: center.x, y: center.y, z: -viewingDistance }
-  const p2 = point3.projectTo(p, plane, camera)
+  const p2 = point3.projectToPlane(p, plane, camera)
 
   const half = Math.round(pointSize / 2)
   ctx.fillStyle = 'white'

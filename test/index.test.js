@@ -26,6 +26,9 @@ const units = {
   'affineplane.rect2': require('./rect2/index.test'),
   'affineplane.rect3': require('./rect3/index.test'),
   'affineplane.rot2': require('./rot2/index.test'),
+  'affineplane.scalar1': require('./scalar1/index.test'),
+  'affineplane.scalar2': require('./scalar2/index.test'),
+  'affineplane.scalar3': require('./scalar3/index.test'),
   'affineplane.size2': require('./size2/index.test'),
   'affineplane.size3': require('./size3/index.test'),
   'affineplane.vec2': require('./vec2/index.test'),
@@ -39,6 +42,7 @@ const units = {
 test.Test.prototype.almostEqual = require('./utils/almostEqual')
 test.Test.prototype.notAlmostEqual = require('./utils/notAlmostEqual')
 test.Test.prototype.transformEqual = require('./utils/transformEqual')
+test.Test.prototype.almostEqualBasis = require('./utils/almostEqualBasis')
 test.Test.prototype.almostEqualBox = require('./utils/almostEqualBox')
 test.Test.prototype.almostEqualVector = require('./utils/almostEqualVector')
 

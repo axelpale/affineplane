@@ -22,6 +22,8 @@ With [npm](https://www.npmjs.com/package/affineplane) or [yarn](https://yarnpkg.
 
 Shapes with position in space:
 
+- [box2](https://axelpale.github.io/affineplane/docs/API.html#affineplanebox2), a cuboid in 2D, `{a,b,x,y,w,h}`
+- [box3](https://axelpale.github.io/affineplane/docs/API.html#affineplanebox3), a cuboid in 3D, `{a,b,x,y,z,w,h,d}`
 - [dir2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir2), direction in 2D, `{x,y}` of unit length
 - [dir3](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir3), direction in 3D, `{x,y,z}` of unit length
 - [dist2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist2), distance between two points in 2D, `number`
@@ -111,13 +113,13 @@ A projection maps geometry from a source plane to an image plane. Unlike transit
 
 Affineplane provides orthogonal and perspective projections between parallel planes. Perspective projections require you to specify a camera location. Orthogonal projections do not require camera but can be thought as perspective projections with camera at infinity. The following snippet gives examples of both orthogonal and perspective projections. See also the illustration below for visual aid.
 
-    const p = { x: 4, y: 2, z: 4 }
-    const image = { a: 1, b: 0, x: 0, y: 0, z: 2 }
-    const portho = aff.point2.projectTo(p, image)
-    // portho equals { x: 4, y: 2 }
+    const point = { x: 4, y: 2, z: 4 }
+    const imagePlane = { a: 1, b: 0, x: 0, y: 0, z: 2 }
+    const pointOrtho = aff.point2.projectToPlane(point, imagePlane)
+    // pointOrtho equals { x: 4, y: 2 }
     const camera = { x: 0, y: 0, z: 0 }
-    const ppersp = aff.point2.projectTo(p, image, camera)
-    // ppersp equals { x: 2, y: 1 }
+    const pointPersp = aff.point2.projectToPlane(point, imagePlane, camera)
+    // pointPersp equals { x: 2, y: 1 }
 
 In the snippet above, the image plane onto project to is otherwise equivalent to the reference plane but two units off along z-axis. The depth offset does not affect the orthogonal projection which results the same point but without z-axis property. In contrast, the perspective projection and camera at z=0 map the point closer to the camera as illustrated below.
 

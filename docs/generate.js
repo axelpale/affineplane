@@ -64,6 +64,7 @@ yamdog.generate({
       helm3: '#affineplanehelm3',
       line2: '#affineplaneline2',
       line3: '#affineplaneline3',
+      orient2: '#affineplaneorient2',
       path2: '#affineplanepath2',
       path3: '#affineplanepath3',
       plane2: '#affineplaneplane2',
