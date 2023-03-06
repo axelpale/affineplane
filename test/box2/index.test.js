@@ -14,6 +14,7 @@ const units = {
   getMinimumBounds: require('./getMinimumBounds.test'),
   getPath: require('./getPath.test'),
   getSize: require('./getSize.test'),
+  hasPoint: require('./hasPoint.test'),
   homothety: require('./homothety.test'),
   projectToPlane: require('./projectToPlane.test'),
   resizeBy: require('./resizeBy.test'),
