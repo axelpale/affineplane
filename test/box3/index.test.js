@@ -8,6 +8,7 @@ const units = {
   fromPoints: require('./fromPoints.test'),
   getAngle: require('./getAngle.test'),
   getBasis: require('./getBasis.test'),
+  getBasisInverse: require('./getBasisInverse.test'),
   getBounds: require('./getBounds.test'),
   getMinimumBounds: require('./getMinimumBounds.test'),
   getSize: require('./getSize.test'),
