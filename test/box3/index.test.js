@@ -12,6 +12,7 @@ const units = {
   getBounds: require('./getBounds.test'),
   getMinimumBounds: require('./getMinimumBounds.test'),
   getSize: require('./getSize.test'),
+  getSphere: require('./getSphere.test'),
   getVolume: require('./getVolume.test'),
   hasPoint: require('./hasPoint.test'),
   homothety: require('./homothety.test'),
