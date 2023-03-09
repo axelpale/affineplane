@@ -29,6 +29,7 @@ const units = {
   'affineplane.scalar1': require('./scalar1/index.test'),
   'affineplane.scalar2': require('./scalar2/index.test'),
   'affineplane.scalar3': require('./scalar3/index.test'),
+  'affineplane.segment2': require('./segment2/index.test'),
   'affineplane.sphere2': require('./sphere2/index.test'),
   'affineplane.sphere3': require('./sphere3/index.test'),
   'affineplane.size2': require('./size2/index.test'),
