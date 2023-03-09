@@ -20,6 +20,12 @@ module.exports = (ts) => {
       'offset zero spheres'
     )
 
+    t.equal(
+      sphere3.gap({ x: 0, y: 0, z: 0, r: 1 }, { x: 1, y: 2, z: 2 }),
+      2,
+      'should gap to point'
+    )
+
     t.end()
   })
 }
