@@ -3,6 +3,7 @@ const units = {
   at: require('./at.test'),
   create: require('./create.test'),
   fromPoints: require('./fromPoints.test'),
+  intersection: require('./intersection.test'),
   validate: require('./validate.test')
 }
 
