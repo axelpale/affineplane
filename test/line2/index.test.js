@@ -4,6 +4,7 @@ const units = {
   create: require('./create.test'),
   fromPoints: require('./fromPoints.test'),
   intersection: require('./intersection.test'),
+  normal: require('./normal.test'),
   validate: require('./validate.test')
 }
 
