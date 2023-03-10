@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.11.0
+# Affineplane API Documentation v2.12.0
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
@@ -43,8 +43,11 @@ The functions are grouped in the following submodules.
 - [affineplane.scalar1](#affineplanescalar1)
 - [affineplane.scalar2](#affineplanescalar2)
 - [affineplane.scalar3](#affineplanescalar3)
+- [affineplane.segment2](#affineplanesegment2)
 - [affineplane.size2](#affineplanesize2)
 - [affineplane.size3](#affineplanesize3)
+- [affineplane.sphere2](#affineplanesphere2)
+- [affineplane.sphere3](#affineplanesphere3)
 - [affineplane.vec2](#affineplanevec2)
 - [affineplane.vec3](#affineplanevec3)
 - [affineplane.vec4](#affineplanevec4)
@@ -148,6 +151,7 @@ and thus can be represented in any basis without loss of information.
 - [affineplane.box2.at](#affineplanebox2at)
 - [affineplane.box2.atBox](#affineplanebox2atbox)
 - [affineplane.box2.atNorm](#affineplanebox2atnorm)
+- [affineplane.box2.collide](#affineplanebox2collide)
 - [affineplane.box2.create](#affineplanebox2create)
 - [affineplane.box2.fromPoints](#affineplanebox2frompoints)
 - [affineplane.box2.getAngle](#affineplanebox2getangle)
@@ -155,12 +159,17 @@ and thus can be represented in any basis without loss of information.
 - [affineplane.box2.getBasis](#affineplanebox2getbasis)
 - [affineplane.box2.getBasisInverse](#affineplanebox2getbasisinverse)
 - [affineplane.box2.getBounds](#affineplanebox2getbounds)
+- [affineplane.box2.getCircle](#affineplanebox2getcircle)
 - [affineplane.box2.getMinimumBounds](#affineplanebox2getminimumbounds)
 - [affineplane.box2.getPath](#affineplanebox2getpath)
 - [affineplane.box2.getPoints](#affineplanebox2getpoints)
 - [affineplane.box2.getPolygon](#affineplanebox2getpolygon)
+- [affineplane.box2.getSegments](#affineplanebox2getsegments)
 - [affineplane.box2.getSize](#affineplanebox2getsize)
+- [affineplane.box2.getSphere](#affineplanebox2getsphere)
+- [affineplane.box2.hasPoint](#affineplanebox2haspoint)
 - [affineplane.box2.homothety](#affineplanebox2homothety)
+- [affineplane.box2.offset](#affineplanebox2offset)
 - [affineplane.box2.projectTo](#affineplanebox2projectto)
 - [affineplane.box2.projectToPlane](#affineplanebox2projecttoplane)
 - [affineplane.box2.resizeBy](#affineplanebox2resizeby)
@@ -169,7 +178,7 @@ and thus can be represented in any basis without loss of information.
 - [affineplane.box2.scaleBy](#affineplanebox2scaleby)
 - [affineplane.box2.transitFrom](#affineplanebox2transitfrom)
 - [affineplane.box2.transitTo](#affineplanebox2transitto)
-- [affineplane.box2.translateBy](#affineplanebox2translateby)
+- [affineplane.box2.translate](#affineplanebox2translate)
 - [affineplane.box2.validate](#affineplanebox2validate)
 
 
@@ -245,7 +254,7 @@ Source: [atBox.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/at
 <a name="affineplanebox2atnorm"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[atNorm](#affineplanebox2atnorm)(box, nw, nh)
 
-Take a point on the box.
+Take a point on the box at the normalized coordinates.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
@@ -263,6 +272,26 @@ Take a point on the box.
 
 
 Source: [atNorm.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/atNorm.js)
+
+<a name="affineplanebox2collide"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[collide](#affineplanebox2collide)(b, bb)
+
+Do two boxes collide?
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *b*
+  - a [box2](#affineplanebox2), in the reference basis
+- *bb*
+  - a [box2](#affineplanebox2), in the reference basis
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if boxes collide.
+
+
+Source: [collide.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/collide.js)
 
 <a name="affineplanebox2create"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[create](#affineplanebox2create)(plane, size)
@@ -404,6 +433,28 @@ the given box or boxes.
 
 Source: [getBounds.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getBounds.js)
 
+<a name="affineplanebox2getcircle"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getCircle](#affineplanebox2getcircle)(box)
+
+Get the circumscribed circle of the box. In other words, get the circle
+that contains the box so that the box corners are on it.
+The resulting circle is also the minimum bounding circle of the box.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere2
+
+
+Aliases: [affineplane.box2.getSphere](#affineplanebox2getsphere)
+
+Source: [getCircle.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getCircle.js)
+
 <a name="affineplanebox2getminimumbounds"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[getMinimumBounds](#affineplanebox2getminimumbounds)(boxes)
 
@@ -458,6 +509,24 @@ Alias of [affineplane.box2.getPath](#affineplanebox2getpath)
 
 Source: [getPath.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getPath.js)
 
+<a name="affineplanebox2getsegments"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getSegments](#affineplanebox2getsegments)(box)
+
+Get the four line segments of the box.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- array of segment2, each segment in the reference basis.
+
+
+Source: [getSegments.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getSegments.js)
+
 <a name="affineplanebox2getsize"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[getSize](#affineplanebox2getsize)(box)
 
@@ -476,18 +545,46 @@ Get the size of the box.
 
 Source: [getSize.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getSize.js)
 
-<a name="affineplanebox2homothety"></a>
-## [affineplane](#affineplane).[box2](#affineplanebox2).[homothety](#affineplanebox2homothety)(box, center, ratio)
+<a name="affineplanebox2getsphere"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getSphere](#affineplanebox2getsphere)
 
-Perform homothety about the center. In other words, scale the box
-about the fixed center point.
+Alias of [affineplane.box2.getCircle](#affineplanebox2getcircle)
+
+Source: [getCircle.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getCircle.js)
+
+<a name="affineplanebox2haspoint"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[hasPoint](#affineplanebox2haspoint)(box, point)
+
+Test if a point is inside the box. If the point is at the box edge,
+it is counted as being inside.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), in the reference basis.
+- *point*
+  - a [point2](#affineplanepoint2), in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [hasPoint.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/hasPoint.js)
+
+<a name="affineplanebox2homothety"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[homothety](#affineplanebox2homothety)(box, origin, ratio)
+
+Perform homothety about the origin. In other words, scale the box
+about the fixed pivot point.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 - *box*
   - a [box2](#affineplanebox2), the box to be scaled.
-- *center*
-  - a [point2](#affineplanepoint2), the fixed pivot point.
+- *origin*
+  - a [point2](#affineplanepoint2), the fixed origin point.
 - *ratio*
   - a number, the scaling ratio.
 
@@ -500,6 +597,28 @@ about the fixed center point.
 Aliases: [affineplane.box2.scaleBy](#affineplanebox2scaleby)
 
 Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/homothety.js)
+
+<a name="affineplanebox2offset"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[offset](#affineplanebox2offset)(box, dx, dy)
+
+Move the box horizontally and vertically.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2)
+- *dx*
+  - a number
+- *dy*
+  - a number
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2)
+
+
+Source: [offset.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/offset.js)
 
 <a name="affineplanebox2projectto"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[projectTo](#affineplanebox2projectto)
@@ -611,7 +730,7 @@ Rotation direction is from positive x axis towards positive y axis.
 Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/rotateBy.js)
 
 <a name="affineplanebox2scaleby"></a>
-## [affineplane](#affineplane).[box2](#affineplanebox2).[scaleBy](#affineplanebox2scaleby)(box, center, ratio)
+## [affineplane](#affineplane).[box2](#affineplanebox2).[scaleBy](#affineplanebox2scaleby)(box, origin, ratio)
 
 Alias of [affineplane.box2.homothety](#affineplanebox2homothety)
 
@@ -657,19 +776,18 @@ Convert a box from the reference basis to the target basis.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/transitTo.js)
 
-<a name="affineplanebox2translateby"></a>
-## [affineplane](#affineplane).[box2](#affineplanebox2).[translateBy](#affineplanebox2translateby)(box, dx, dy)
+<a name="affineplanebox2translate"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[translate](#affineplanebox2translate)(box, vec)
 
-Move the box horizontally and vertically.
+Move the box horizontally and vertically by a vector.
+See [affineplane.box2.offset](#affineplanebox2offset) to move by scalars.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 - *box*
   - a [box2](#affineplanebox2)
-- *dx*
-  - a number
-- *dy*
-  - a number
+- *vec*
+  - a [vec2](#affineplanevec2)
 
 
 <p style="margin-bottom: 0"><strong>Returns:</strong></p>
@@ -677,7 +795,7 @@ Move the box horizontally and vertically.
 - a [box2](#affineplanebox2)
 
 
-Source: [translateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/translateBy.js)
+Source: [translate.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/translate.js)
 
 <a name="affineplanebox2validate"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[validate](#affineplanebox2validate)(b)
@@ -726,10 +844,13 @@ thus can be represented in any basis without loss of information.
 - [affineplane.box3.fromPoints](#affineplanebox3frompoints)
 - [affineplane.box3.getAngle](#affineplanebox3getangle)
 - [affineplane.box3.getBasis](#affineplanebox3getbasis)
+- [affineplane.box3.getBasisInverse](#affineplanebox3getbasisinverse)
 - [affineplane.box3.getBounds](#affineplanebox3getbounds)
 - [affineplane.box3.getMinimumBounds](#affineplanebox3getminimumbounds)
 - [affineplane.box3.getSize](#affineplanebox3getsize)
+- [affineplane.box3.getSphere](#affineplanebox3getsphere)
 - [affineplane.box3.getVolume](#affineplanebox3getvolume)
+- [affineplane.box3.hasPoint](#affineplanebox3haspoint)
 - [affineplane.box3.homothety](#affineplanebox3homothety)
 - [affineplane.box3.projectTo](#affineplanebox3projectto)
 - [affineplane.box3.projectToPlane](#affineplanebox3projecttoplane)
@@ -739,6 +860,7 @@ thus can be represented in any basis without loss of information.
 - [affineplane.box3.scaleBy](#affineplanebox3scaleby)
 - [affineplane.box3.transitFrom](#affineplanebox3transitfrom)
 - [affineplane.box3.transitTo](#affineplanebox3transitto)
+- [affineplane.box3.translate](#affineplanebox3translate)
 - [affineplane.box3.translateBy](#affineplanebox3translateby)
 - [affineplane.box3.validate](#affineplanebox3validate)
 
@@ -918,6 +1040,26 @@ The scale of the resulting basis is always 1.
 
 Source: [getBasis.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getBasis.js)
 
+<a name="affineplanebox3getbasisinverse"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[getBasisInverse](#affineplanebox3getbasisinverse)(box)
+
+Get the outer basis of the box represented in the box basis.
+The scale of the resulting basis is always 1.
+See also [affineplane.box3.getBasis](#affineplanebox3getbasis).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3) in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [plane3](#affineplaneplane3) in the box basis. The outer basis.
+
+
+Source: [getBasisInverse.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getBasisInverse.js)
+
 <a name="affineplanebox3getbounds"></a>
 ## [affineplane](#affineplane).[box3](#affineplanebox3).[getBounds](#affineplanebox3getbounds)(boxes)
 
@@ -980,6 +1122,26 @@ Get the size of the box.
 
 Source: [getSize.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getSize.js)
 
+<a name="affineplanebox3getsphere"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[getSphere](#affineplanebox3getsphere)(box)
+
+Get the circumscribed sphere of the box. In other words, get the sphere
+that contains the box so that the box corners are on the sphere.
+The resulting sphere is also the minimum bounding sphere of the box.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3), in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere3
+
+
+Source: [getSphere.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getSphere.js)
+
 <a name="affineplanebox3getvolume"></a>
 ## [affineplane](#affineplane).[box3](#affineplanebox3).[getVolume](#affineplanebox3getvolume)(box)
 
@@ -998,6 +1160,27 @@ in the reference basis.
 
 
 Source: [getVolume.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/getVolume.js)
+
+<a name="affineplanebox3haspoint"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[hasPoint](#affineplanebox3haspoint)(box, point)
+
+Test if a point is inside the box. If the point is at the box edge,
+it is counted as being inside.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3), in the reference basis.
+- *point*
+  - a [point3](#affineplanepoint3), in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [hasPoint.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/hasPoint.js)
 
 <a name="affineplanebox3homothety"></a>
 ## [affineplane](#affineplane).[box3](#affineplanebox3).[homothety](#affineplanebox3homothety)(box, origin, ratio)
@@ -1188,6 +1371,27 @@ Convert a box from the reference basis to the target basis.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/transitTo.js)
 
+<a name="affineplanebox3translate"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[translate](#affineplanebox3translate)(box, vec)
+
+Move the box by the given vector.
+See [affineplane.box3](#affineplanebox3).offset to translate by scalars.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box3](#affineplanebox3)
+- *vec*
+  - a [vec3](#affineplanevec3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box3](#affineplanebox3)
+
+
+Source: [translate.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/translate.js)
+
 <a name="affineplanebox3translateby"></a>
 ## [affineplane](#affineplane).[box3](#affineplanebox3).[translateBy](#affineplanebox3translateby)(box, dx, dy, dz)
 
@@ -1210,7 +1414,7 @@ Move the box along x, y, and/or z axis by the given amounts.
 - a [box3](#affineplanebox3)
 
 
-Source: [translateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/translateBy.js)
+Source: [offset.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/offset.js)
 
 <a name="affineplanebox3validate"></a>
 ## [affineplane](#affineplane).[box3](#affineplanebox3).[validate](#affineplanebox3validate)(b)
@@ -1716,6 +1920,7 @@ change the distance measure.
 - [affineplane.dist2.projectToPlane](#affineplanedist2projecttoplane)
 - [affineplane.dist2.transitFrom](#affineplanedist2transitfrom)
 - [affineplane.dist2.transitTo](#affineplanedist2transitto)
+- [affineplane.dist2.validate](#affineplanedist2validate)
 
 
 Source: [dist2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/index.js)
@@ -1858,6 +2063,25 @@ in the coordinate system of the target.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/transitTo.js)
 
+<a name="affineplanedist2validate"></a>
+## [affineplane](#affineplane).[dist2](#affineplanedist2).[validate](#affineplanedist2validate)(d)
+
+Check if the argument is a valid [dist2](#affineplanedist2).
+Valid [dist2](#affineplanedist2) is a zero or positive number and not NaN.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *d*
+  - a value
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/validate.js)
+
 <a name="affineplanedist3"></a>
 ## [affineplane](#affineplane).[dist3](#affineplanedist3)
 
@@ -1879,6 +2103,7 @@ change the distance measure.
 - [affineplane.dist3.projectToPlane](#affineplanedist3projecttoplane)
 - [affineplane.dist3.transitFrom](#affineplanedist3transitfrom)
 - [affineplane.dist3.transitTo](#affineplanedist3transitto)
+- [affineplane.dist3.validate](#affineplanedist3validate)
 
 
 Source: [dist3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/index.js)
@@ -2022,6 +2247,25 @@ in the coordinate system of the basis.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/transitTo.js)
+
+<a name="affineplanedist3validate"></a>
+## [affineplane](#affineplane).[dist3](#affineplanedist3).[validate](#affineplanedist3validate)(d)
+
+Check if the argument is a valid [dist3](#affineplanedist3).
+Valid [dist3](#affineplanedist3) is a zero or positive number and not NaN.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *d*
+  - a value
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/validate.js)
 
 <a name="affineplaneepsilon"></a>
 ## [affineplane](#affineplane).[epsilon](#affineplaneepsilon)
@@ -3735,6 +3979,8 @@ A [line2](#affineplaneline2) is an object `{ origin: {x,y}, span: {x,y} }`
 - [affineplane.line2.at](#affineplaneline2at)
 - [affineplane.line2.create](#affineplaneline2create)
 - [affineplane.line2.fromPoints](#affineplaneline2frompoints)
+- [affineplane.line2.intersection](#affineplaneline2intersection)
+- [affineplane.line2.normal](#affineplaneline2normal)
 - [affineplane.line2.validate](#affineplaneline2validate)
 
 
@@ -3803,6 +4049,51 @@ with a spanning vector from p to q.
 
 Source: [fromPoints.js](https://github.com/axelpale/affineplane/blob/main/lib/line2/fromPoints.js)
 
+<a name="affineplaneline2intersection"></a>
+## [affineplane](#affineplane).[line2](#affineplaneline2).[intersection](#affineplaneline2intersection)(l, ll)
+
+Find intersection point between two lines, if any.
+If the lines are parallel but not equal, no intersection exist and
+therefore the result is null.
+If the lines are equal, while the whole line
+would be the true intersection,
+the result is the origin point of the first line.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *l*
+  - a [line2](#affineplaneline2)
+- *ll*
+  - a [line2](#affineplaneline2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point2](#affineplanepoint2) or null
+
+
+Source: [intersection.js](https://github.com/axelpale/affineplane/blob/main/lib/line2/intersection.js)
+
+<a name="affineplaneline2normal"></a>
+## [affineplane](#affineplane).[line2](#affineplaneline2).[normal](#affineplaneline2normal)(line)
+
+Get a normal vector for the line. It is perpendicular to the line.
+Note that a line has two normal vectors, one for each side.
+The returned normal is the one at the right hand.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *line*
+  - a [line2](#affineplaneline2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [vec2](#affineplanevec2), a vector perpendicular to the line.
+
+
+Source: [normal.js](https://github.com/axelpale/affineplane/blob/main/lib/line2/normal.js)
+
 <a name="affineplaneline2validate"></a>
 ## [affineplane](#affineplane).[line2](#affineplaneline2).[validate](#affineplaneline2validate)(obj)
 
@@ -3829,7 +4120,7 @@ Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/line
 Directed line object in 3D,
 Represented as an origin point and a spanning vector.
 
-A [line2](#affineplaneline2) is an object `{ origin: {x,y,z}, span: {x,y,z} }`
+A [line3](#affineplaneline3) is an object `{ origin: {x,y,z}, span: {x,y,z} }`
 
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
@@ -3838,6 +4129,7 @@ A [line2](#affineplaneline2) is an object `{ origin: {x,y,z}, span: {x,y,z} }`
 - [affineplane.line3.at](#affineplaneline3at)
 - [affineplane.line3.create](#affineplaneline3create)
 - [affineplane.line3.fromPoints](#affineplaneline3frompoints)
+- [affineplane.line3.intersection](#affineplaneline3intersection)
 - [affineplane.line3.validate](#affineplaneline3validate)
 
 
@@ -3905,6 +4197,31 @@ with a spanning vector from p to q.
 
 
 Source: [fromPoints.js](https://github.com/axelpale/affineplane/blob/main/lib/line3/fromPoints.js)
+
+<a name="affineplaneline3intersection"></a>
+## [affineplane](#affineplane).[line3](#affineplaneline3).[intersection](#affineplaneline3intersection)(l, ll)
+
+Find intersection point between two lines, if any.
+If the lines are parallel but not equal, or the lines are skew,
+no intersection exist and therefore the result is null.
+If the lines are equal, while the whole line
+would be the true intersection. However, in this case we pick
+the origin point of the first line.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *l*
+  - a [line3](#affineplaneline3)
+- *ll*
+  - a [line3](#affineplaneline3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point3](#affineplanepoint3) or null
+
+
+Source: [intersection.js](https://github.com/axelpale/affineplane/blob/main/lib/line3/intersection.js)
 
 <a name="affineplaneline3validate"></a>
 ## [affineplane](#affineplane).[line3](#affineplaneline3).[validate](#affineplaneline3validate)(line)
@@ -4063,6 +4380,7 @@ Example: `[{ x, y }, { x, y }, ...]`
 - [affineplane.path2.create](#affineplanepath2create)
 - [affineplane.path2.transitFrom](#affineplanepath2transitfrom)
 - [affineplane.path2.transitTo](#affineplanepath2transitto)
+- [affineplane.path2.validate](#affineplanepath2validate)
 
 
 Source: [path2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/index.js)
@@ -4145,6 +4463,25 @@ Transit a path to the target basis.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/transitTo.js)
 
+<a name="affineplanepath2validate"></a>
+## [affineplane](#affineplane).[path2](#affineplanepath2).[validate](#affineplanepath2validate)(p)
+
+Check if the object is a valid [path2](#affineplanepath2).
+A valid [path2](#affineplanepath2) is an array of valid [point2](#affineplanepoint2) objects.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/path2/validate.js)
+
 <a name="affineplanepath3"></a>
 ## [affineplane](#affineplane).[path3](#affineplanepath3)
 
@@ -4163,6 +4500,7 @@ Example: `[{ x, y, z }, { x, y, z }, ...]`
 - [affineplane.path3.projectToPlane](#affineplanepath3projecttoplane)
 - [affineplane.path3.transitFrom](#affineplanepath3transitfrom)
 - [affineplane.path3.transitTo](#affineplanepath3transitto)
+- [affineplane.path3.validate](#affineplanepath3validate)
 
 
 Source: [path3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/index.js)
@@ -4276,6 +4614,25 @@ Transit a path to the target basis.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/transitTo.js)
+
+<a name="affineplanepath3validate"></a>
+## [affineplane](#affineplane).[path3](#affineplanepath3).[validate](#affineplanepath3validate)(p)
+
+Check if the object is a valid [path3](#affineplanepath3).
+A valid [path3](#affineplanepath3) is an array of valid [point3](#affineplanepoint3) objects.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/validate.js)
 
 <a name="affineplaneplane2"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2)
@@ -5788,16 +6145,16 @@ Create `{ x, y }` point from array [x, y].
 Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/fromArray.js)
 
 <a name="affineplanepoint2homothety"></a>
-## [affineplane](#affineplane).[point2](#affineplanepoint2).[homothety](#affineplanepoint2homothety)(point, center, ratio)
+## [affineplane](#affineplane).[point2](#affineplanepoint2).[homothety](#affineplanepoint2homothety)(point, origin, ratio)
 
-Perform homothety about the center.
+Perform homothety about the origin point.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 - *point*
   - a [point2](#affineplanepoint2)
-- *center*
-  - a [point2](#affineplanepoint2)
+- *origin*
+  - a [point2](#affineplanepoint2), the pivot point
 - *ratio*
   - a number, the scaling ratio
 
@@ -6047,6 +6404,7 @@ Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/poi
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[translate](#affineplanepoint2translate)(p, vec)
 
 Translate the point by the given vector.
+See [affineplane.point2.offset](#affineplanepoint2offset) to translate by scalars.
 
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
@@ -6114,6 +6472,7 @@ translation of the plane on which they are represented.
 - [affineplane.point3.equal](#affineplanepoint3equal)
 - [affineplane.point3.equals](#affineplanepoint3equals)
 - [affineplane.point3.fromArray](#affineplanepoint3fromarray)
+- [affineplane.point3.homothety](#affineplanepoint3homothety)
 - [affineplane.point3.mean](#affineplanepoint3mean)
 - [affineplane.point3.offset](#affineplanepoint3offset)
 - [affineplane.point3.polarOffset](#affineplanepoint3polaroffset)
@@ -6320,6 +6679,28 @@ Create a [point3](#affineplanepoint3) from array `[x, y, z]`.
 
 
 Source: [fromArray.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/fromArray.js)
+
+<a name="affineplanepoint3homothety"></a>
+## [affineplane](#affineplane).[point3](#affineplanepoint3).[homothety](#affineplanepoint3homothety)(point, origin, ratio)
+
+Perform a homothety about the origin point.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *point*
+  - a [point3](#affineplanepoint3)
+- *origin*
+  - a [point3](#affineplanepoint3)
+- *ratio*
+  - a number
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point3](#affineplanepoint3)
+
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/homothety.js)
 
 <a name="affineplanepoint3mean"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[mean](#affineplanepoint3mean)
@@ -7186,6 +7567,7 @@ nor the representation.
 - [affineplane.scalar1.equal](#affineplanescalar1equal)
 - [affineplane.scalar1.transitFrom](#affineplanescalar1transitfrom)
 - [affineplane.scalar1.transitTo](#affineplanescalar1transitto)
+- [affineplane.scalar1.validate](#affineplanescalar1validate)
 
 
 Source: [scalar1/index.js](https://github.com/axelpale/affineplane/blob/main/lib/scalar1/index.js)
@@ -7298,6 +7680,25 @@ in the coordinate system of the target.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/scalar1/transitTo.js)
 
+<a name="affineplanescalar1validate"></a>
+## [affineplane](#affineplane).[scalar1](#affineplanescalar1).[validate](#affineplanescalar1validate)(s)
+
+Check if the argument is a valid scalar1.
+Valid scalar1 is a number and not NaN.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - a value
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid scalar1
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/scalar1/validate.js)
+
 <a name="affineplanescalar2"></a>
 ## [affineplane](#affineplane).[scalar2](#affineplanescalar2)
 
@@ -7322,6 +7723,7 @@ On the map, an area of 1 squaremeter of ground is represented by
 - [affineplane.scalar2.equal](#affineplanescalar2equal)
 - [affineplane.scalar2.transitFrom](#affineplanescalar2transitfrom)
 - [affineplane.scalar2.transitTo](#affineplanescalar2transitto)
+- [affineplane.scalar2.validate](#affineplanescalar2validate)
 
 
 Source: [scalar2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/scalar2/index.js)
@@ -7435,6 +7837,25 @@ in the coordinate system of the target.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/scalar2/transitTo.js)
 
+<a name="affineplanescalar2validate"></a>
+## [affineplane](#affineplane).[scalar2](#affineplanescalar2).[validate](#affineplanescalar2validate)(s)
+
+Check if the argument is a valid scalar2.
+Valid scalar2 is a number and not NaN.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - a value
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid scalar2
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/scalar2/validate.js)
+
 <a name="affineplanescalar3"></a>
 ## [affineplane](#affineplane).[scalar3](#affineplanescalar3)
 
@@ -7460,6 +7881,7 @@ In the miniature, the volume of 1 cubic meter is represented by
 - [affineplane.scalar3.equal](#affineplanescalar3equal)
 - [affineplane.scalar3.transitFrom](#affineplanescalar3transitfrom)
 - [affineplane.scalar3.transitTo](#affineplanescalar3transitto)
+- [affineplane.scalar3.validate](#affineplanescalar3validate)
 
 
 Source: [scalar3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/scalar3/index.js)
@@ -7572,6 +7994,147 @@ in the coordinate system of the target.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/scalar3/transitTo.js)
+
+<a name="affineplanescalar3validate"></a>
+## [affineplane](#affineplane).[scalar3](#affineplanescalar3).[validate](#affineplanescalar3validate)(s)
+
+Check if the argument is a valid scalar3.
+Valid scalar3 is a number and not NaN.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - a value
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid scalar3
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/scalar3/validate.js)
+
+<a name="affineplanesegment2"></a>
+## [affineplane](#affineplane).[segment2](#affineplanesegment2)
+
+Two-dimensional line segment. Represented by the segment start and end
+points in an array of length two.
+
+Example: `[{ x: 0, y: 0 }, { x: 1, y: 2 }]`
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.segment2.collide](#affineplanesegment2collide)
+- [affineplane.segment2.create](#affineplanesegment2create)
+- [affineplane.segment2.transitFrom](#affineplanesegment2transitfrom)
+- [affineplane.segment2.transitTo](#affineplanesegment2transitto)
+- [affineplane.segment2.validate](#affineplanesegment2validate)
+
+
+Source: [segment2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/segment2/index.js)
+
+<a name="affineplanesegment2collide"></a>
+## [affineplane](#affineplane).[segment2](#affineplanesegment2).[collide](#affineplanesegment2collide)(s0, s1)
+
+Test if two segments collide.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s0*
+  - a segment2
+- *s1*
+  - a segment2
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if segments collide.
+
+
+Source: [collide.js](https://github.com/axelpale/affineplane/blob/main/lib/segment2/collide.js)
+
+<a name="affineplanesegment2create"></a>
+## [affineplane](#affineplane).[segment2](#affineplanesegment2).[create](#affineplanesegment2create)(p0, p1)
+
+Create a segment from points.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p0*
+  - a [point2](#affineplanepoint2)
+- *p1*
+  - a [point2](#affineplanepoint2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a segment2, an array.
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/segment2/create.js)
+
+<a name="affineplanesegment2transitfrom"></a>
+## [affineplane](#affineplane).[segment2](#affineplanesegment2).[transitFrom](#affineplanesegment2transitfrom)(seg, source)
+
+Represent a segment on the reference basis. In other words,
+transit the segment from the source basis to the reference basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *seg*
+  - a segment2, represented on the source basis.
+- *source*
+  - a [plane2](#affineplaneplane2), the source basis, represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a segment2, represented on the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/segment2/transitFrom.js)
+
+<a name="affineplanesegment2transitto"></a>
+## [affineplane](#affineplane).[segment2](#affineplanesegment2).[transitTo](#affineplanesegment2transitto)(seg, target)
+
+Represent a segment in the target basis. In other words,
+transit the segment from the reference basis to the target basis.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *seg*
+  - a segment2, represented on the reference basis.
+- *target*
+  - a [plane2](#affineplaneplane2), the target basis, represented on the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a segment2, represented in the target basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/segment2/transitTo.js)
+
+<a name="affineplanesegment2validate"></a>
+## [affineplane](#affineplane).[segment2](#affineplanesegment2).[validate](#affineplanesegment2validate)(seg)
+
+Check if the object is a valid segment2.
+A valid segment2 is an array of two valid [point2](#affineplanepoint2) objects.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *seg*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/segment2/validate.js)
 
 <a name="affineplanesize2"></a>
 ## [affineplane](#affineplane).[size2](#affineplanesize2)
@@ -7906,6 +8469,634 @@ the total number of voxels.
 
 
 Source: [volume.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/volume.js)
+
+<a name="affineplanesphere2"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2)
+
+Two dimensional sphere, a circle.
+
+Represented with an object `{ x, y, r }` for the origin and the radius.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.sphere2.almostEqual](#affineplanesphere2almostequal)
+- [affineplane.sphere2.area](#affineplanesphere2area)
+- [affineplane.sphere2.collide](#affineplanesphere2collide)
+- [affineplane.sphere2.copy](#affineplanesphere2copy)
+- [affineplane.sphere2.create](#affineplanesphere2create)
+- [affineplane.sphere2.gap](#affineplanesphere2gap)
+- [affineplane.sphere2.hasPoint](#affineplanesphere2haspoint)
+- [affineplane.sphere2.homothety](#affineplanesphere2homothety)
+- [affineplane.sphere2.offset](#affineplanesphere2offset)
+- [affineplane.sphere2.scaleBy](#affineplanesphere2scaleby)
+- [affineplane.sphere2.transitFrom](#affineplanesphere2transitfrom)
+- [affineplane.sphere2.transitTo](#affineplanesphere2transitto)
+- [affineplane.sphere2.validate](#affineplanesphere2validate)
+
+
+Source: [sphere2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/index.js)
+
+<a name="affineplanesphere2almostequal"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[almostEqual](#affineplanesphere2almostequal)(c, d[, tolerance])
+
+Test if two spheres are almost equal by the margin of tolerance.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere2
+- *d*
+  - a sphere2
+- *tolerance*
+  - optional number, default to [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/almostEqual.js)
+
+<a name="affineplanesphere2area"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[area](#affineplanesphere2area)(sp)
+
+Get area of the sphere.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- a sphere2
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a scalar2, a number
+
+
+Source: [area.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/area.js)
+
+<a name="affineplanesphere2collide"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[collide](#affineplanesphere2collide)(c, cc)
+
+Detect collision between two spheres.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere2
+- *cc*
+  - a sphere2
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- boolean, true if the spheres collide
+
+
+Source: [collide.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/collide.js)
+
+<a name="affineplanesphere2copy"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[copy](#affineplanesphere2copy)(p)
+
+Copy a sphere object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - a sphere2
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere2
+
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/copy.js)
+
+<a name="affineplanesphere2create"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[create](#affineplanesphere2create)(x, y, r)
+
+Create a sphere2 object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *x*
+  - a number
+- *y*
+  - a number
+- *r*
+  - a number, the radius
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere2
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/create.js)
+
+<a name="affineplanesphere2gap"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[gap](#affineplanesphere2gap)(c, cc)
+
+The gap distance between the two spheres is the closest distance between
+their surfaces. The gap is zero or negative when the spheres collide.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere2
+- *cc*
+  - a sphere2 or a [point2](#affineplanepoint2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a scalar1, a number, the closest distance between the sphere surfaces.
+
+
+Source: [gap.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/gap.js)
+
+<a name="affineplanesphere2haspoint"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[hasPoint](#affineplanesphere2haspoint)(c, point)
+
+Detect collision between a sphere and a point.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere2
+- *point*
+  - a [point2](#affineplanepoint2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- boolean, true if the point is inside the sphere or at the surface.
+
+
+Source: [hasPoint.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/hasPoint.js)
+
+<a name="affineplanesphere2homothety"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[homothety](#affineplanesphere2homothety)(sphere, origin, ratio)
+
+Perform homothety for the sphere about a pivot.
+In other words, scale the sphere by the given ratio,
+so that the pivot point stays fixed.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sphere*
+  - a sphere2
+- *origin*
+  - a [point2](#affineplanepoint2), the transform origin, the pivot point
+- *ratio*
+  - a number, the scaling ratio
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere2
+
+
+Aliases: [affineplane.sphere2.scaleBy](#affineplanesphere2scaleby)
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/homothety.js)
+
+<a name="affineplanesphere2offset"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[offset](#affineplanesphere2offset)(c, dx, dy)
+
+Offset a sphere by scalars dx, dy.
+See [affineplane.sphere2](#affineplanesphere2).translate to offset by a vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere2
+- *dx*
+  - a number, an offset along x-axis.
+- *dy*
+  - a number, an offset along y-axis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere2, translated
+
+
+Source: [offset.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/offset.js)
+
+<a name="affineplanesphere2scaleby"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[scaleBy](#affineplanesphere2scaleby)
+
+Alias of [affineplane.sphere2.homothety](#affineplanesphere2homothety)
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/homothety.js)
+
+<a name="affineplanesphere2transitfrom"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[transitFrom](#affineplanesphere2transitfrom)(sphere, source)
+
+Transit a sphere2 from the source plane
+to the reference plane.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sphere*
+  - a sphere2 on the source plane.
+- *source*
+  - a [plane2](#affineplaneplane2), the source plane, represented on the reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere2, represented on the reference plane.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/transitFrom.js)
+
+<a name="affineplanesphere2transitto"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[transitTo](#affineplanesphere2transitto)(sphere, target)
+
+Transit a sphere2 to a target plane.
+In other words, represent the sphere
+in the coordinate system of the target plane.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sphere*
+  - a sphere2 on the reference plane.
+- *target*
+  - a [plane2](#affineplaneplane2), the target plane, represented on the reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere2, represented on the target plane.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/transitTo.js)
+
+<a name="affineplanesphere2validate"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[validate](#affineplanesphere2validate)(p)
+
+Check if the object is a valid sphere2.
+A valid sphere2 has x, y, r properties that are valid numbers.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid sphere2
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/validate.js)
+
+<a name="affineplanesphere3"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3)
+
+Three dimensional sphere.
+
+Represented with an object `{ x, y, z, r }` for the origin and the radius.
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.sphere3.almostEqual](#affineplanesphere3almostequal)
+- [affineplane.sphere3.area](#affineplanesphere3area)
+- [affineplane.sphere3.collide](#affineplanesphere3collide)
+- [affineplane.sphere3.copy](#affineplanesphere3copy)
+- [affineplane.sphere3.create](#affineplanesphere3create)
+- [affineplane.sphere3.gap](#affineplanesphere3gap)
+- [affineplane.sphere3.hasPoint](#affineplanesphere3haspoint)
+- [affineplane.sphere3.homothety](#affineplanesphere3homothety)
+- [affineplane.sphere3.offset](#affineplanesphere3offset)
+- [affineplane.sphere3.projectTo](#affineplanesphere3projectto)
+- [affineplane.sphere3.projectToPlane](#affineplanesphere3projecttoplane)
+- [affineplane.sphere3.scaleBy](#affineplanesphere3scaleby)
+- [affineplane.sphere3.transitFrom](#affineplanesphere3transitfrom)
+- [affineplane.sphere3.transitTo](#affineplanesphere3transitto)
+- [affineplane.sphere3.validate](#affineplanesphere3validate)
+- [affineplane.sphere3.volume](#affineplanesphere3volume)
+
+
+Source: [sphere3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/index.js)
+
+<a name="affineplanesphere3almostequal"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[almostEqual](#affineplanesphere3almostequal)(c, d[, tolerance])
+
+Test if two spheres are almost equal by the margin of tolerance.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere3
+- *d*
+  - a sphere3
+- *tolerance*
+  - optional number, default to [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/almostEqual.js)
+
+<a name="affineplanesphere3area"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[area](#affineplanesphere3area)(sp)
+
+Get surface area of the sphere.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- a sphere3
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a scalar2, a number. The area.
+
+
+Source: [area.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/area.js)
+
+<a name="affineplanesphere3collide"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[collide](#affineplanesphere3collide)(c, cc)
+
+Detect collision between two spheres.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere3
+- *cc*
+  - a sphere3
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- boolean, true if the spheres collide
+
+
+Source: [collide.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/collide.js)
+
+<a name="affineplanesphere3copy"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[copy](#affineplanesphere3copy)(p)
+
+Copy a sphere object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - a sphere3
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere3
+
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/copy.js)
+
+<a name="affineplanesphere3create"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[create](#affineplanesphere3create)(x, y, z, r)
+
+Create a sphere3 object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *x*
+  - a number
+- *y*
+  - a number
+- *z*
+  - a number
+- *r*
+  - a number, the radius
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere3
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/create.js)
+
+<a name="affineplanesphere3gap"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[gap](#affineplanesphere3gap)(c, cc)
+
+The gap distance between the two spheres is the closest distance between
+their surfaces. The gap is zero or negative when the spheres collide.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere3
+- *cc*
+  - a sphere3 or a [point3](#affineplanepoint3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a scalar1, a number, the closest distance between the sphere surfaces.
+
+
+Source: [gap.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/gap.js)
+
+<a name="affineplanesphere3haspoint"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[hasPoint](#affineplanesphere3haspoint)(c, point)
+
+Detect collision between a sphere and a point.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere3
+- *point*
+  - a [point2](#affineplanepoint2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- boolean, true if the point is inside the sphere or at the surface.
+
+
+Source: [hasPoint.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/hasPoint.js)
+
+<a name="affineplanesphere3homothety"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[homothety](#affineplanesphere3homothety)(sphere, origin, ratio)
+
+Perform homothety for the sphere about a pivot.
+In other words, scale the sphere by the given ratio,
+so that the pivot point stays fixed.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sphere*
+  - a sphere3
+- *origin*
+  - a [point3](#affineplanepoint3), the transform origin, the pivot point
+- *ratio*
+  - a number, the scaling ratio
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere3
+
+
+Aliases: [affineplane.sphere3.scaleBy](#affineplanesphere3scaleby)
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/homothety.js)
+
+<a name="affineplanesphere3offset"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[offset](#affineplanesphere3offset)(c, dx, dy[, dz])
+
+Offset a sphere by scalars dx, dy, dz.
+See [affineplane.sphere3](#affineplanesphere3).translate to offset by a vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a sphere3
+- *dx*
+  - a number, an offset along x-axis.
+- *dy*
+  - a number, an offset along y-axis.
+- *dz*
+  - optional number. The offset along z-axis, default is 0.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere3, translated
+
+
+Source: [offset.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/offset.js)
+
+<a name="affineplanesphere3projectto"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[projectTo](#affineplanesphere3projectto)
+
+Alias of [affineplane.sphere3.projectToPlane](#affineplanesphere3projecttoplane)
+
+Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/projectToPlane.js)
+
+<a name="affineplanesphere3projecttoplane"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[projectToPlane](#affineplanesphere3projecttoplane)(sphere, plane[, camera])
+
+Project a 3D sphere onto a plane in 3D space. The result is a 2D sphere.
+If the camera is undefined, project orthogonally.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sphere*
+  - a sphere3 in the reference space.
+- *plane*
+  - a [plane3](#affineplaneplane3) in the reference space. The target plane.
+- *camera*
+  - optional [point3](#affineplanepoint3) in the reference space. The camera position.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere2 on the target plane.
+
+
+Aliases: [affineplane.sphere3.projectTo](#affineplanesphere3projectto)
+
+Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/projectToPlane.js)
+
+<a name="affineplanesphere3scaleby"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[scaleBy](#affineplanesphere3scaleby)
+
+Alias of [affineplane.sphere3.homothety](#affineplanesphere3homothety)
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/homothety.js)
+
+<a name="affineplanesphere3transitfrom"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[transitFrom](#affineplanesphere3transitfrom)(sphere, source)
+
+Transit a sphere3 from the source plane
+to the reference plane.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sphere*
+  - a sphere3 on the source plane.
+- *source*
+  - a [plane3](#affineplaneplane3), the source plane, represented on the reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere3, represented on the reference plane.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/transitFrom.js)
+
+<a name="affineplanesphere3transitto"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[transitTo](#affineplanesphere3transitto)(sphere, target)
+
+Transit a sphere3 to a target plane.
+In other words, represent the sphere
+in the coordinate system of the target plane.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *sphere*
+  - a sphere3 on the reference plane.
+- *target*
+  - a [plane3](#affineplaneplane3), the target plane, represented on the reference plane.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a sphere3, represented on the target plane.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/transitTo.js)
+
+<a name="affineplanesphere3validate"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[validate](#affineplanesphere3validate)(p)
+
+Check if the object is a valid sphere3.
+A valid sphere3 has x, y, z, r properties that are valid numbers.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if valid sphere3
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/validate.js)
+
+<a name="affineplanesphere3volume"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[volume](#affineplanesphere3volume)(sp)
+
+Get volume of the sphere.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- a sphere3
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a scalar3, a number. The volume.
+
+
+Source: [volume.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/volume.js)
 
 <a name="affineplanevec2"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2)
