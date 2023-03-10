@@ -14,6 +14,7 @@ const units = {
   getCircle: require('./getCircle.test'),
   getMinimumBounds: require('./getMinimumBounds.test'),
   getPath: require('./getPath.test'),
+  getSegments: require('./getSegments.test'),
   getSize: require('./getSize.test'),
   hasPoint: require('./hasPoint.test'),
   homothety: require('./homothety.test'),
