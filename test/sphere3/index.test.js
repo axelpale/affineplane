@@ -9,7 +9,8 @@ const units = {
   projectToPlane: require('./projectToPlane.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
-  validate: require('./validate.test')
+  validate: require('./validate.test'),
+  volume: require('./volume.test')
 }
 
 module.exports = (t) => {
