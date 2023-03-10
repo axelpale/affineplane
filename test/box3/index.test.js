@@ -8,18 +8,22 @@ const units = {
   fromPoints: require('./fromPoints.test'),
   getAngle: require('./getAngle.test'),
   getBasis: require('./getBasis.test'),
+  getBasisInverse: require('./getBasisInverse.test'),
   getBounds: require('./getBounds.test'),
   getMinimumBounds: require('./getMinimumBounds.test'),
   getSize: require('./getSize.test'),
+  getSphere: require('./getSphere.test'),
   getVolume: require('./getVolume.test'),
+  hasPoint: require('./hasPoint.test'),
   homothety: require('./homothety.test'),
+  offset: require('./offset.test'),
   projectToPlane: require('./projectToPlane.test'),
   resizeBy: require('./resizeBy.test'),
   resizeTo: require('./resizeTo.test'),
   rotateBy: require('./rotateBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
-  translateBy: require('./translateBy.test'),
+  translate: require('./translate.test'),
   validate: require('./validate.test')
 }
 
