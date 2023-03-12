@@ -8,6 +8,7 @@ const units = {
   offset: require('./offset.test'),
   projectToPlane: require('./projectToPlane.test'),
   rotateAroundLine: require('./rotateAroundLine.test'),
+  rotateBy: require('./rotateBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test'),
