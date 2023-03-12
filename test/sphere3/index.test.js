@@ -8,6 +8,7 @@ const units = {
   hasPoint: require('./hasPoint.test'),
   homothety: require('./homothety.test'),
   offset: require('./offset.test'),
+  polarOffset: require('./polarOffset.test'),
   projectToPlane: require('./projectToPlane.test'),
   rotateAroundLine: require('./rotateAroundLine.test'),
   rotateBy: require('./rotateBy.test'),
