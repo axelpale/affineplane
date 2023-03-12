@@ -6,6 +6,7 @@ const units = {
   hasPoint: require('./hasPoint.test'),
   homothety: require('./homothety.test'),
   offset: require('./offset.test'),
+  rotateBy: require('./rotateBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test')
