@@ -37,7 +37,7 @@
   "devDependencies": {
     "async": "^3.2.4",
     "genversion": "^3.1.1",
-    "nodemon": "^2.0.20",
+    "nodemon": "^2.0.21",
     "standard": "^17.0.0",
     "tap-arc": "^0.3.5",
     "tape": "^5.6.3",
