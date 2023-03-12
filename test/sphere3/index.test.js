@@ -10,6 +10,7 @@ const units = {
   projectToPlane: require('./projectToPlane.test'),
   rotateAroundLine: require('./rotateAroundLine.test'),
   rotateBy: require('./rotateBy.test'),
+  size: require('./size.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test'),
