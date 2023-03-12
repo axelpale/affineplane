@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
   almostEqual: require('./almostEqual.test'),
+  boundingBox: require('./boundingBox.test'),
   collide: require('./collide.test'),
   gap: require('./gap.test'),
   hasPoint: require('./hasPoint.test'),
