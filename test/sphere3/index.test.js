@@ -7,6 +7,7 @@ const units = {
   homothety: require('./homothety.test'),
   offset: require('./offset.test'),
   projectToPlane: require('./projectToPlane.test'),
+  rotateAroundLine: require('./rotateAroundLine.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test'),
