@@ -6,7 +6,8 @@ const units = {
   fromAxisAngle: require('./fromAxisAngle.test'),
   fromVector: require('./fromVector.test'),
   hamilton: require('./hamilton.test'),
-  norm: require('./norm.test')
+  norm: require('./norm.test'),
+  rotateVector: require('./rotateVector.test')
 }
 
 module.exports = (t) => {
