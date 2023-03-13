@@ -12,6 +12,7 @@ const units = {
   offset: require('./offset.test'),
   polarOffset: require('./polarOffset.test'),
   projectToPlane: require('./projectToPlane.test'),
+  rotateAroundLine: require('./rotateAroundLine.test'),
   rotateBy: require('./rotateBy.test'),
   round: require('./round.test'),
   toArray: require('./toArray.test'),
