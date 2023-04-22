@@ -82,6 +82,7 @@ yamdog.generate({
       scalar2: '#affineplanescalar2',
       scalar3: '#affineplanescalar3',
       segment2: '#affineplanesegment2',
+      segment3: '#affineplanesegment3',
       size2: '#affineplanesize2',
       size3: '#affineplanesize3',
       sphere2: '#affineplanesphere2',
