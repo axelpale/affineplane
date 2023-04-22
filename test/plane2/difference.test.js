@@ -7,8 +7,8 @@ module.exports = (ts) => {
 
     t.almostEqual(
       plane2.between(source, target),
-      { a: 0.5, b: 0, x: -0.5, y: -0.5 },
-      'source represented on target'
+      { a: 0.5, b: 0, x: 0, y: 0 },
+      'transformation that would map target to source'
     )
 
     t.end()
