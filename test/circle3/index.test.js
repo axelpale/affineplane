@@ -2,6 +2,7 @@
 const units = {
   almostEqual: require('./almostEqual.test'),
   boundaries: require('./boundaries.test'),
+  collisions: require('./collisions.test'),
   copy: require('./copy.test'),
   measures: require('./measures.test'),
   positions: require('./positions.test'),
