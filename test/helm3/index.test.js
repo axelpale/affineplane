@@ -8,6 +8,7 @@ const units = {
   copy: require('./copy.test'),
   create: require('./create.test'),
   det: require('./det.test'),
+  difference: require('./difference.test'),
   equal: require('./equal.test'),
   fromArray: require('./fromArray.test'),
   fromBasisVector: require('./fromBasisVector.test'),
