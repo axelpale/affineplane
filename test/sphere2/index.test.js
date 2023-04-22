@@ -3,6 +3,7 @@ const units = {
   almostEqual: require('./almostEqual.test'),
   atCenter: require('./atCenter.test'),
   boundingBox: require('./boundingBox.test'),
+  boundingCircle: require('./boundingCircle.test'),
   collide: require('./collide.test'),
   gap: require('./gap.test'),
   hasPoint: require('./hasPoint.test'),
