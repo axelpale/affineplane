@@ -8,7 +8,7 @@ module.exports = (ts) => {
       'should be zero area'
     )
 
-    t.deepEqual(
+    t.equal(
       circle3.area({ x: 1, y: 1, z: 1, r: 1 }),
       Math.PI,
       'should not be affected by translation'
