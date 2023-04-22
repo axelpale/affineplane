@@ -6,6 +6,7 @@ const units = {
   copy: require('./copy.test'),
   measures: require('./measures.test'),
   positions: require('./positions.test'),
+  projections: require('./projections.test'),
   transformations: require('./transformations.test'),
   transitions: require('./transitions.test'),
   validate: require('./validate.test')
