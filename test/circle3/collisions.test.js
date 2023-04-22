@@ -24,4 +24,31 @@ module.exports = (ts) => {
 
     t.end()
   })
+
+  ts.test('case: basic circle collision', (t) => {
+    let cc, c
+
+    cc = { x: 0, y: 0, z: 0, r: 0 }
+    c = { x: 0, y: 0, z: 0, r: 1 }
+    t.true(
+      circle3.collide(cc, c),
+      'same origin collide'
+    )
+
+    cc = { x: 0, y: 0, z: 0, r: 1 }
+    c = { x: 0, y: 0, z: 1, r: 1 }
+    t.false(
+      circle3.collideCircle(cc, c),
+      'z offset do not collide'
+    )
+
+    cc = { x: -1, y: 0, z: 0, r: 1 }
+    c = { x: 1, y: 0, z: 0, r: 1 }
+    t.true(
+      circle3.collideCircle(cc, c),
+      'edges touch'
+    )
+
+    t.end()
+  })
 }
