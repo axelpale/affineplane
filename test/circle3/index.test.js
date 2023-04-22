@@ -2,6 +2,7 @@
 const units = {
   almostEqual: require('./almostEqual.test'),
   copy: require('./copy.test'),
+  transitions: require('./transitions.test'),
   validate: require('./validate.test')
 }
 
