@@ -16,4 +16,14 @@ module.exports = (ts) => {
 
     t.end()
   })
+
+  ts.test('case: basic circle size', (t) => {
+    t.deepEqual(
+      circle3.size({ x: 0, y: 0, z: 0, r: 1 }),
+      { w: 2, h: 2, d: 0 },
+      'should have zero depth'
+    )
+
+    t.end()
+  })
 }
