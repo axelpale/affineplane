@@ -48,4 +48,35 @@ module.exports = (ts) => {
 
     t.end()
   })
+
+  ts.test('case: basic rotate by z', (t) => {
+    let c, origin
+    const PI = Math.PI
+
+    c = { x: 0, y: 0, z: 0, r: 0 }
+    origin = { x: 0, y: 0, z: 0 }
+    t.deepEqual(
+      circle3.rotateBy(c, origin, 0),
+      { x: 0, y: 0, z: 0, r: 0 },
+      'trivial zero'
+    )
+
+    c = { x: 0, y: 0, z: 2, r: 1 }
+    origin = { x: 0, y: 0, z: 1 }
+    t.almostEqualCircle(
+      circle3.rotateBy(c, origin, PI),
+      { x: 0, y: 0, z: 2, r: 1 },
+      'should rotate around z axis, same origin'
+    )
+
+    c = { x: 0, y: 0, z: 2, r: 1 }
+    origin = { x: 0, y: 2, z: 1 }
+    t.almostEqualCircle(
+      circle3.rotateBy(c, origin, PI),
+      { x: 0, y: 4, z: 2, r: 1 },
+      'should rotate around z axis'
+    )
+
+    t.end()
+  })
 }
