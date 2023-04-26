@@ -12,6 +12,22 @@ module.exports = (ts) => {
       'mean of three points'
     )
 
+    t.deepEqual(
+      point2.mean([
+        { x: 1, y: 2 }
+      ]),
+      { x: 1, y: 2 },
+      'mean of single point, alias'
+    )
+
+    t.throws(() => {
+      point2.average([])
+    }, 'detect empty array')
+
+    t.throws(() => {
+      point2.average()
+    }, 'detect empty parameters')
+
     t.end()
   })
 }
