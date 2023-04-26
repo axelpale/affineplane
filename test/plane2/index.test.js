@@ -11,6 +11,7 @@ const units = {
   getScale: require('./getScale.test'),
   invert: require('./invert.test'),
   limitScale: require('./limitScale.test'),
+  orientation: require('./orientation.test'),
   projectToPlane: require('./projectToPlane.test'),
   rotateBy: require('./rotateBy.test'),
   rotateTo: require('./rotateTo.test'),

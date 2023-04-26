@@ -6,11 +6,12 @@ const units = {
   'affineplane.angle': require('./angle/index.test'),
   'affineplane.box2': require('./box2/index.test'),
   'affineplane.box3': require('./box3/index.test'),
-  'affineplane.epsilon': require('./epsilon/index.test'),
+  'affineplane.circle3': require('./circle3/index.test'),
   'affineplane.dir2': require('./dir2/index.test'),
   'affineplane.dir3': require('./dir3/index.test'),
   'affineplane.dist2': require('./dist2/index.test'),
   'affineplane.dist3': require('./dist3/index.test'),
+  'affineplane.epsilon': require('./epsilon/index.test'),
   'affineplane.helm2': require('./helm2/index.test'),
   'affineplane.helm3': require('./helm3/index.test'),
   'affineplane.line2': require('./line2/index.test'),
@@ -30,6 +31,7 @@ const units = {
   'affineplane.scalar2': require('./scalar2/index.test'),
   'affineplane.scalar3': require('./scalar3/index.test'),
   'affineplane.segment2': require('./segment2/index.test'),
+  'affineplane.segment3': require('./segment3/index.test'),
   'affineplane.sphere2': require('./sphere2/index.test'),
   'affineplane.sphere3': require('./sphere3/index.test'),
   'affineplane.size2': require('./size2/index.test'),
@@ -47,8 +49,10 @@ test.Test.prototype.notAlmostEqual = require('./utils/notAlmostEqual')
 test.Test.prototype.transformEqual = require('./utils/transformEqual')
 test.Test.prototype.almostEqualBasis = require('./utils/almostEqualBasis')
 test.Test.prototype.almostEqualBox = require('./utils/almostEqualBox')
+test.Test.prototype.almostEqualCircle = require('./utils/almostEqualSphere')
+test.Test.prototype.almostEqualHelmert = require('./utils/almostEqualHelmert')
 test.Test.prototype.almostEqualPoint = require('./utils/almostEqualPoint')
-test.Test.prototype.almostEqualSphere = require('./utils/almostEqualSphere')
+test.Test.prototype.almostEqualSphere = test.Test.prototype.almostEqualCircle
 test.Test.prototype.almostEqualVector = require('./utils/almostEqualVector')
 
 // Run test suite

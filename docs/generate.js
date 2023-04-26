@@ -56,6 +56,8 @@ yamdog.generate({
     decor.linkKeywords({
       box2: '#affineplanebox2',
       box3: '#affineplanebox3',
+      circle2: '#affineplanecircle2',
+      circle3: '#affineplanecircle3',
       dir2: '#affineplanedir2',
       dir3: '#affineplanedir3',
       dist2: '#affineplanedist2',
@@ -80,6 +82,7 @@ yamdog.generate({
       scalar2: '#affineplanescalar2',
       scalar3: '#affineplanescalar3',
       segment2: '#affineplanesegment2',
+      segment3: '#affineplanesegment3',
       size2: '#affineplanesize2',
       size3: '#affineplanesize3',
       sphere2: '#affineplanesphere2',
