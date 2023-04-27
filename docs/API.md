@@ -1939,16 +1939,17 @@ Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/circ
 <a name="affineplanedir2"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2)
 
-A direction on 2D space.
+A direction on 2D space, represented by the object `{ x, y }`.
 
 A direction is basically a unit vector.
 When a direction is transited between planes, only the rotation of
-the coordinate space affects the direction.
+the coordinate space affects the direction. Scale change does not affect it.
 
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.dir2.copy](#affineplanedir2copy)
 - [affineplane.dir2.create](#affineplanedir2create)
 - [affineplane.dir2.fromPolar](#affineplanedir2frompolar)
 - [affineplane.dir2.fromVector](#affineplanedir2fromvector)
@@ -1959,9 +1960,28 @@ the coordinate space affects the direction.
 - [affineplane.dir2.toVector](#affineplanedir2tovector)
 - [affineplane.dir2.transitFrom](#affineplanedir2transitfrom)
 - [affineplane.dir2.transitTo](#affineplanedir2transitto)
+- [affineplane.dir2.validate](#affineplanedir2validate)
 
 
 Source: [dir2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/index.js)
+
+<a name="affineplanedir2copy"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[copy](#affineplanedir2copy)(dir)
+
+Copy direction object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *dir*
+  - a [dir2](#affineplanedir2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [dir2](#affineplanedir2)
+
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/copy.js)
 
 <a name="affineplanedir2create"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[create](#affineplanedir2create)
@@ -2131,10 +2151,31 @@ in the coordinate system of the target plane.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/transitTo.js)
 
+<a name="affineplanedir2validate"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[validate](#affineplanedir2validate)(d)
+
+Check if object is a valid [dir2](#affineplanedir2). Valid [dir2](#affineplanedir2) is an object with
+properties x,y that represent a unit vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *d*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/validate.js)
+
 <a name="affineplanedir3"></a>
 ## [affineplane](#affineplane).[dir3](#affineplanedir3)
 
-Direction in 3D. Basically a unit vector that carries semantics of direction.
+A direction in 3D, represented by the object `{ x, y, z }`.
+
+The direction is basically a unit vector that carries semantics of direction.
 Under a change of the reference frame, the change in translation and scale
 do not affect the direction, only the change in orientation (=attitude) does.
 
@@ -2144,6 +2185,7 @@ do not affect the direction, only the change in orientation (=attitude) does.
 
 - [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
 - [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
+- [affineplane.dir3.copy](#affineplanedir3copy)
 - [affineplane.dir3.create](#affineplanedir3create)
 - [affineplane.dir3.fromSpherical](#affineplanedir3fromspherical)
 - [affineplane.dir3.fromVector](#affineplanedir3fromvector)
@@ -2153,6 +2195,7 @@ do not affect the direction, only the change in orientation (=attitude) does.
 - [affineplane.dir3.toVector](#affineplanedir3tovector)
 - [affineplane.dir3.transitFrom](#affineplanedir3transitfrom)
 - [affineplane.dir3.transitTo](#affineplanedir3transitto)
+- [affineplane.dir3.validate](#affineplanedir3validate)
 
 
 Source: [dir3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/index.js)
@@ -2204,6 +2247,24 @@ The directions are compared as two unit vectors.
 
 
 Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/almostEqual.js)
+
+<a name="affineplanedir3copy"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[copy](#affineplanedir3copy)(dir)
+
+Copy direction object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *dir*
+  - a [dir3](#affineplanedir3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [dir3](#affineplanedir3)
+
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/copy.js)
 
 <a name="affineplanedir3create"></a>
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[create](#affineplanedir3create)
@@ -2397,6 +2458,25 @@ in the coordinate system of the target plane.
 
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/transitTo.js)
+
+<a name="affineplanedir3validate"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[validate](#affineplanedir3validate)(d)
+
+Check if object is a valid [dir3](#affineplanedir3). Valid [dir3](#affineplanedir3) is an object with
+properties x,y,z that represent a unit vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *d*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/validate.js)
 
 <a name="affineplanedist2"></a>
 ## [affineplane](#affineplane).[dist2](#affineplanedist2)
@@ -11954,9 +12034,11 @@ A [vec4](#affineplanevec4) is a 4D vector { x, y, z, w }.
 
 
 - [affineplane.vec4.add](#affineplanevec4add)
+- [affineplane.vec4.almostEqual](#affineplanevec4almostequal)
 - [affineplane.vec4.create](#affineplanevec4create)
 - [affineplane.vec4.norm](#affineplanevec4norm)
 - [affineplane.vec4.scaleBy](#affineplanevec4scaleby)
+- [affineplane.vec4.validate](#affineplanevec4validate)
 
 
 Source: [vec4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/index.js)
@@ -11980,6 +12062,29 @@ Add two vectors together via component-wise addition.
 
 
 Source: [add.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/add.js)
+
+<a name="affineplanevec4almostequal"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4).[almostEqual](#affineplanevec4almostequal)(v, w[, epsilon])
+
+Test if vectors are almost equal by the margin of epsilon.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - a [vec4](#affineplanevec4)
+- *w*
+  - a [vec4](#affineplanevec4)
+- *epsilon*
+  - Optional number, default to [affineplane.epsilon](#affineplaneepsilon).
+  - Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/almostEqual.js)
 
 <a name="affineplanevec4create"></a>
 ## [affineplane](#affineplane).[vec4](#affineplanevec4).[create](#affineplanevec4create)(x, y, z, w)
@@ -12040,6 +12145,24 @@ Scalar multiplication of a vector.
 
 
 Source: [scaleBy.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/scaleBy.js)
+
+<a name="affineplanevec4validate"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4).[validate](#affineplanevec4validate)(v)
+
+Check if object is a valid [vec4](#affineplanevec4).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/validate.js)
 
 <a name="affineplaneversion"></a>
 ## [affineplane](#affineplane).[version](#affineplaneversion)
