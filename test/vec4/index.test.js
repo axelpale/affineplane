@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
-  add: require('./add.test')
+  add: require('./add.test'),
+  validate: require('./validate.test')
 }
 
 module.exports = (t) => {
