@@ -1,6 +1,7 @@
 // A unit for each method.
 const units = {
   almostEqual: require('./almostEqual.test'),
+  copy: require('./copy.test'),
   fromPolar: require('./fromPolar.test'),
   fromVector: require('./fromVector.test'),
   projectToPlane: require('./projectToPlane.test'),
