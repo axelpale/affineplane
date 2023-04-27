@@ -1,7 +1,7 @@
 {
   "name": "affineplane",
-  "version": "2.14.1",
-  "description": "Affine plane geometry library",
+  "version": "2.15.0",
+  "description": "Affine geometry library for 2D and 3D spaces",
   "keywords": [
     "affine",
     "transformation",
