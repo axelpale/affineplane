@@ -7,7 +7,8 @@ const units = {
   toPolar: require('./toPolar.test'),
   toVector: require('./toVector.test'),
   transitFrom: require('./transitFrom.test'),
-  transitTo: require('./transitTo.test')
+  transitTo: require('./transitTo.test'),
+  validate: require('./validate.test')
 }
 
 module.exports = (t) => {
