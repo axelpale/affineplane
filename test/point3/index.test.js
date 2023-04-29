@@ -8,6 +8,7 @@ const units = {
   distance: require('./distance.test'),
   distanceToLine: require('./distanceToLine.test'),
   distanceToPlane: require('./distanceToPlane.test'),
+  distanceToRay: require('./distanceToRay.test'),
   equal: require('./equal.test'),
   fromArray: require('./fromArray.test'),
   homothety: require('./homothety.test'),
