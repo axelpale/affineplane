@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.15.0
+# Affineplane API Documentation v2.16.0
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
