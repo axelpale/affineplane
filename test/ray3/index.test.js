@@ -7,6 +7,7 @@ const units = {
   getVector: require('./getVector.test'),
   homothety: require('./homothety.test'),
   invert: require('./invert.test'),
+  offset: require('./offset.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test')
