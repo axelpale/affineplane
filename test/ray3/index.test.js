@@ -5,6 +5,7 @@ const units = {
   create: require('./create.test'),
   getOrigin: require('./getOrigin.test'),
   getVector: require('./getVector.test'),
+  homothety: require('./homothety.test'),
   invert: require('./invert.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
