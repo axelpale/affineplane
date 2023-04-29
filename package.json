@@ -1,6 +1,6 @@
 {
   "name": "affineplane",
-  "version": "2.15.0",
+  "version": "2.16.0",
   "description": "Affine geometry library for 2D and 3D spaces",
   "keywords": [
     "affine",
@@ -21,7 +21,10 @@
     "similarity",
     "helmert",
     "perspective",
-    "projection"
+    "projection",
+    "segment",
+    "line",
+    "ray"
   ],
   "homepage": "https://github.com/axelpale/affineplane",
   "main": "index.js",

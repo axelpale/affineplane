@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.15.0
+# Affineplane API Documentation v2.16.0
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
@@ -39,6 +39,7 @@ The functions are grouped in the following submodules.
 - [affineplane.point3](#affineplanepoint3)
 - [affineplane.poly2](#affineplanepoly2)
 - [affineplane.quat4](#affineplanequat4)
+- [affineplane.ray3](#affineplaneray3)
 - [affineplane.rect2](#affineplanerect2)
 - [affineplane.rect3](#affineplanerect3)
 - [affineplane.rot2](#affineplanerot2)
@@ -150,6 +151,8 @@ and thus can be represented in any basis without loss of information.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.box2.UNIT](#affineplanebox2unit)
+- [affineplane.box2.ZERO](#affineplanebox2zero)
 - [affineplane.box2.almostEqual](#affineplanebox2almostequal)
 - [affineplane.box2.at](#affineplanebox2at)
 - [affineplane.box2.atBox](#affineplanebox2atbox)
@@ -186,6 +189,34 @@ and thus can be represented in any basis without loss of information.
 
 
 Source: [box2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/index.js)
+
+<a name="affineplanebox2unit"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[UNIT](#affineplanebox2unit)
+
+An origin-centered box with unit width and height.
+
+Source: [box2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/index.js)
+
+<a name="affineplanebox2zero"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[ZERO](#affineplanebox2zero)
+
+A zero-size box.
+
+Source: [box2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/index.js)
+
+<a name="affineplanebox3unit"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[UNIT](#affineplanebox3unit)
+
+An origin-centered box with unit width, height, and depth.
+
+Source: [box3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/index.js)
+
+<a name="affineplanebox3zero"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[ZERO](#affineplanebox3zero)
+
+A zero-size box.
+
+Source: [box3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/index.js)
 
 <a name="affineplanebox2almostequal"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[almostEqual](#affineplanebox2almostequal)(b, bb[, tolerance])
@@ -839,6 +870,8 @@ thus can be represented in any basis without loss of information.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.box3.UNIT](#affineplanebox3unit)
+- [affineplane.box3.ZERO](#affineplanebox3zero)
 - [affineplane.box3.almostEqual](#affineplanebox3almostequal)
 - [affineplane.box3.at](#affineplanebox3at)
 - [affineplane.box3.atBox](#affineplanebox3atbox)
@@ -1483,6 +1516,8 @@ Represented with an object `{ x, y, z, r }` for the origin and the radius.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.circle3.UNIT](#affineplanecircle3unit)
+- [affineplane.circle3.ZERO](#affineplanecircle3zero)
 - [affineplane.circle3.almostEqual](#affineplanecircle3almostequal)
 - [affineplane.circle3.area](#affineplanecircle3area)
 - [affineplane.circle3.atCenter](#affineplanecircle3atcenter)
@@ -1506,6 +1541,20 @@ Represented with an object `{ x, y, z, r }` for the origin and the radius.
 - [affineplane.circle3.translate](#affineplanecircle3translate)
 - [affineplane.circle3.validate](#affineplanecircle3validate)
 
+
+Source: [circle3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/index.js)
+
+<a name="affineplanecircle3unit"></a>
+## [affineplane](#affineplane).[circle3](#affineplanecircle3).[UNIT](#affineplanecircle3unit)
+
+The unit circle, radius=1.
+
+Source: [circle3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/index.js)
+
+<a name="affineplanecircle3zero"></a>
+## [affineplane](#affineplane).[circle3](#affineplanecircle3).[ZERO](#affineplanecircle3zero)
+
+A zero-radius circle.
 
 Source: [circle3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/index.js)
 
@@ -6689,6 +6738,7 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.point2.ZERO](#affineplanepoint2zero)
 - [affineplane.point2.almostEqual](#affineplanepoint2almostequal)
 - [affineplane.point2.average](#affineplanepoint2average)
 - [affineplane.point2.copy](#affineplanepoint2copy)
@@ -6720,6 +6770,13 @@ An affine space does not have origin; `{ x:0, y:0 }` is not an origin.
 - [affineplane.point2.validate](#affineplanepoint2validate)
 - [affineplane.point2.vectorTo](#affineplanepoint2vectorto)
 
+
+Source: [point2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/index.js)
+
+<a name="affineplanepoint2zero"></a>
+## [affineplane](#affineplane).[point2](#affineplanepoint2).[ZERO](#affineplanepoint2zero)
+
+The zero point
 
 Source: [point2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/index.js)
 
@@ -7266,6 +7323,7 @@ translation of the plane on which they are represented.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.point3.ZERO](#affineplanepoint3zero)
 - [affineplane.point3.almostEqual](#affineplanepoint3almostequal)
 - [affineplane.point3.average](#affineplanepoint3average)
 - [affineplane.point3.copy](#affineplanepoint3copy)
@@ -7275,7 +7333,9 @@ translation of the plane on which they are represented.
 - [affineplane.point3.difference](#affineplanepoint3difference)
 - [affineplane.point3.direction](#affineplanepoint3direction)
 - [affineplane.point3.distance](#affineplanepoint3distance)
+- [affineplane.point3.distanceToLine](#affineplanepoint3distancetoline)
 - [affineplane.point3.distanceToPlane](#affineplanepoint3distancetoplane)
+- [affineplane.point3.distanceToRay](#affineplanepoint3distancetoray)
 - [affineplane.point3.equal](#affineplanepoint3equal)
 - [affineplane.point3.equals](#affineplanepoint3equals)
 - [affineplane.point3.fromArray](#affineplanepoint3fromarray)
@@ -7297,6 +7357,13 @@ translation of the plane on which they are represented.
 - [affineplane.point3.validate](#affineplanepoint3validate)
 - [affineplane.point3.vectorTo](#affineplanepoint3vectorto)
 
+
+Source: [point3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/index.js)
+
+<a name="affineplanepoint3zero"></a>
+## [affineplane](#affineplane).[point3](#affineplanepoint3).[ZERO](#affineplanepoint3zero)
+
+The zero point
 
 Source: [point3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/index.js)
 
@@ -7442,6 +7509,27 @@ Euclidean distance between two points.
 
 Source: [distance.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/distance.js)
 
+<a name="affineplanepoint3distancetoline"></a>
+## [affineplane](#affineplane).[point3](#affineplanepoint3).[distanceToLine](#affineplanepoint3distancetoline)(p, line)
+
+Compute the smallest euclidean distance between a point and a line.
+See also [affineplane.point3.distanceToRay](#affineplanepoint3distancetoray).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - a [point3](#affineplanepoint3)
+- *line*
+  - a [line3](#affineplaneline3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number, a [scalar1](#affineplanescalar1), a [dist3](#affineplanedist3), a distance
+
+
+Source: [distanceToLine.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/distanceToLine.js)
+
 <a name="affineplanepoint3distancetoplane"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[distanceToPlane](#affineplanepoint3distancetoplane)(p, plane)
 
@@ -7461,6 +7549,30 @@ Euclidean distance between point and plane.
 
 
 Source: [distanceToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/distanceToPlane.js)
+
+<a name="affineplanepoint3distancetoray"></a>
+## [affineplane](#affineplane).[point3](#affineplanepoint3).[distanceToRay](#affineplanepoint3distancetoray)(p, ray)
+
+Compute the smallest euclidean distance between a point and a ray.
+For half of the space, the closest point on the ray is the ray origin
+and therefore, for points inside that half, the computation reduces
+to the euclidean distance to the ray origin.
+See also [affineplane.point3.distanceToLine](#affineplanepoint3distancetoline).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - a [point3](#affineplanepoint3)
+- *ray*
+  - a [ray3](#affineplaneray3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number, a [scalar1](#affineplanescalar1), a [dist3](#affineplanedist3), a distance
+
+
+Source: [distanceToRay.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/distanceToRay.js)
 
 <a name="affineplanepoint3equal"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[equal](#affineplanepoint3equal)(p, q)
@@ -7546,7 +7658,7 @@ Offset a point by scalars dx, dy, dz.
 <p style="margin-bottom: 0"><strong>Parameters:</strong></p>
 
 - *p*
-  - a [point2](#affineplanepoint2)
+  - a [point3](#affineplanepoint3)
 - *dx*
   - a number, the offset along x-axis
 - *dy*
@@ -8079,6 +8191,303 @@ an angle like π/2, the vector will be rotated twice that amount, π.
 
 
 Source: [rotateVector.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/rotateVector.js)
+
+<a name="affineplaneray3"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3)
+
+Ray is like a line but extends into one direction only from the origin.
+
+We represent ray with object `{ x, y, z, dx, dy, dz }`
+
+
+<p style="margin-bottom: 0"><strong>Contents:</strong></p>
+
+
+- [affineplane.ray3.DEFAULT](#affineplaneray3default)
+- [affineplane.ray3.ZERO](#affineplaneray3zero)
+- [affineplane.ray3.almostEqual](#affineplaneray3almostequal)
+- [affineplane.ray3.at](#affineplaneray3at)
+- [affineplane.ray3.copy](#affineplaneray3copy)
+- [affineplane.ray3.create](#affineplaneray3create)
+- [affineplane.ray3.getOrigin](#affineplaneray3getorigin)
+- [affineplane.ray3.getVector](#affineplaneray3getvector)
+- [affineplane.ray3.homothety](#affineplaneray3homothety)
+- [affineplane.ray3.invert](#affineplaneray3invert)
+- [affineplane.ray3.negate](#affineplaneray3negate)
+- [affineplane.ray3.offset](#affineplaneray3offset)
+- [affineplane.ray3.transitFrom](#affineplaneray3transitfrom)
+- [affineplane.ray3.transitTo](#affineplaneray3transitto)
+- [affineplane.ray3.validate](#affineplaneray3validate)
+
+
+Source: [ray3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/index.js)
+
+<a name="affineplaneray3default"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[DEFAULT](#affineplaneray3default)
+
+Default ray that has origin at zero and unit span along positive x-axis.
+
+Source: [ray3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/index.js)
+
+<a name="affineplaneray3zero"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[ZERO](#affineplaneray3zero)
+
+Invalid ray with origin at zero and zero spanning vector.
+
+Source: [ray3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/index.js)
+
+<a name="affineplaneray3almostequal"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[almostEqual](#affineplaneray3almostequal)(r, rr[, epsilon])
+
+Test if rays are almost equal by the margin of epsilon.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - a [ray3](#affineplaneray3)
+- *rr*
+  - a [ray3](#affineplaneray3)
+- *epsilon*
+  - Optional number, default to [affineplane.epsilon](#affineplaneepsilon).
+  - Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/almostEqual.js)
+
+<a name="affineplaneray3at"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[at](#affineplaneray3at)(line, c)
+
+Get a point on the ray at position c from the ray origin.
+For example, c=2 gives a point two ray spans away from the origin.
+Negative positions default to the ray origin.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *ray*
+  - a [ray3](#affineplaneray3)
+- *c*
+  - a number
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point3](#affineplanepoint3)
+
+
+Source: [at.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/at.js)
+
+<a name="affineplaneray3copy"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[copy](#affineplaneray3copy)(r)
+
+Copy ray object.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - a [ray3](#affineplaneray3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [ray3](#affineplaneray3)
+
+
+Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/copy.js)
+
+<a name="affineplaneray3create"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[create](#affineplaneray3create)(origin, span)
+
+Create a ray object from origin point and a spanning vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *origin*
+  - a [point3](#affineplanepoint3), the ray starting point.
+- *span*
+  - a [dir3](#affineplanedir3) or [vec3](#affineplanevec3), the ray direction and unit length along the ray.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [ray3](#affineplaneray3)
+
+
+Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/create.js)
+
+<a name="affineplaneray3getorigin"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[getOrigin](#affineplaneray3getorigin)(r)
+
+Get the origin point of the ray. Note that you can also use the ray
+object itself as a point.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - a [ray3](#affineplaneray3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [point3](#affineplanepoint3)
+
+
+Source: [getOrigin.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/getOrigin.js)
+
+<a name="affineplaneray3getvector"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[getVector](#affineplaneray3getvector)(r)
+
+Get the spanning vector of the ray.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - a [ray3](#affineplaneray3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [vec3](#affineplanevec3)
+
+
+Source: [getVector.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/getVector.js)
+
+<a name="affineplaneray3homothety"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[homothety](#affineplaneray3homothety)(ray, origin, ratio)
+
+Perform a homothety about the origin for the ray.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *ray*
+  - a [ray3](#affineplaneray3)
+- *origin*
+  - a [point3](#affineplanepoint3)
+- *ratio*
+  - a number, the scaling ratio
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [ray3](#affineplaneray3)
+
+
+Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/homothety.js)
+
+<a name="affineplaneray3invert"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[invert](#affineplaneray3invert)(r)
+
+Get a ray with the same magnitude but to opposite direction.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - a [ray3](#affineplaneray3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [ray3](#affineplaneray3)
+
+
+Aliases: [affineplane.ray3.negate](#affineplaneray3negate)
+
+Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/invert.js)
+
+<a name="affineplaneray3negate"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[negate](#affineplaneray3negate)
+
+Alias of [affineplane.ray3.invert](#affineplaneray3invert)
+
+Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/invert.js)
+
+<a name="affineplaneray3offset"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[offset](#affineplaneray3offset)(ray, dx, dy, dz)
+
+Offset a ray origin by scalars dx, dy, dz.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *ray*
+  - a [ray3](#affineplaneray3)
+- *dx*
+  - a number, the offset along x-axis
+- *dy*
+  - a number, the offset along y-axis
+- *dz*
+  - a number, the offset along z-axis
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [ray3](#affineplaneray3)
+
+
+Source: [offset.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/offset.js)
+
+<a name="affineplaneray3transitfrom"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[transitFrom](#affineplaneray3transitfrom)(ray, basis)
+
+Represent the ray in the reference basis without losing information.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *ray*
+  - a [ray3](#affineplaneray3), represented in the given basis.
+- *basis*
+  - a [plane3](#affineplaneplane3), represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [ray3](#affineplaneray3), represented in the reference basis.
+
+
+Source: [transitFrom.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/transitFrom.js)
+
+<a name="affineplaneray3transitto"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[transitTo](#affineplaneray3transitto)(ray, basis)
+
+Represent the ray in another basis
+without losing information.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *ray*
+  - a [ray3](#affineplaneray3), represented in the reference basis.
+- *basis*
+  - a [plane3](#affineplaneplane3), represented in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [ray3](#affineplaneray3), represented in the given basis.
+
+
+Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/transitTo.js)
+
+<a name="affineplaneray3validate"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[validate](#affineplaneray3validate)(r)
+
+Check if object is a valid [ray3](#affineplaneray3). Valid ray has numeric properties
+x, y, z, dx, dy, dz and has non-zero spanning vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/validate.js)
 
 <a name="affineplanerect2"></a>
 ## [affineplane](#affineplane).[rect2](#affineplanerect2)
@@ -9552,6 +9961,8 @@ Aliases: [affineplane.circle2](#affineplanecircle2)
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.sphere2.UNIT](#affineplanesphere2unit)
+- [affineplane.sphere2.ZERO](#affineplanesphere2zero)
 - [affineplane.sphere2.almostEqual](#affineplanesphere2almostequal)
 - [affineplane.sphere2.area](#affineplanesphere2area)
 - [affineplane.sphere2.atCenter](#affineplanesphere2atcenter)
@@ -9573,6 +9984,20 @@ Aliases: [affineplane.circle2](#affineplanecircle2)
 - [affineplane.sphere2.translate](#affineplanesphere2translate)
 - [affineplane.sphere2.validate](#affineplanesphere2validate)
 
+
+Source: [sphere2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/index.js)
+
+<a name="affineplanesphere2unit"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[UNIT](#affineplanesphere2unit)
+
+The unit circle, radius=1.
+
+Source: [sphere2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/index.js)
+
+<a name="affineplanesphere2zero"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[ZERO](#affineplanesphere2zero)
+
+A zero-radius circle.
 
 Source: [sphere2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/index.js)
 
@@ -9985,6 +10410,8 @@ Represented with an object `{ x, y, z, r }` for the origin and the radius.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.sphere3.UNIT](#affineplanesphere3unit)
+- [affineplane.sphere3.ZERO](#affineplanesphere3zero)
 - [affineplane.sphere3.almostEqual](#affineplanesphere3almostequal)
 - [affineplane.sphere3.area](#affineplanesphere3area)
 - [affineplane.sphere3.atCenter](#affineplanesphere3atcenter)
@@ -10010,6 +10437,20 @@ Represented with an object `{ x, y, z, r }` for the origin and the radius.
 - [affineplane.sphere3.validate](#affineplanesphere3validate)
 - [affineplane.sphere3.volume](#affineplanesphere3volume)
 
+
+Source: [sphere3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/index.js)
+
+<a name="affineplanesphere3unit"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[UNIT](#affineplanesphere3unit)
+
+The unit sphere, radius=1.
+
+Source: [sphere3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/index.js)
+
+<a name="affineplanesphere3zero"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[ZERO](#affineplanesphere3zero)
+
+A zero-radius sphere.
 
 Source: [sphere3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/index.js)
 
@@ -10504,6 +10945,7 @@ position vectors.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.vec2.ZERO](#affineplanevec2zero)
 - [affineplane.vec2.add](#affineplanevec2add)
 - [affineplane.vec2.almostEqual](#affineplanevec2almostequal)
 - [affineplane.vec2.average](#affineplanevec2average)
@@ -10543,6 +10985,27 @@ position vectors.
 
 
 Source: [vec2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/index.js)
+
+<a name="affineplanevec2zero"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[ZERO](#affineplanevec2zero)
+
+The zero vector in 2D
+
+Source: [vec2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/index.js)
+
+<a name="affineplanevec3zero"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[ZERO](#affineplanevec3zero)
+
+The zero vector in 3D
+
+Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/index.js)
+
+<a name="affineplanevec4zero"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4).[ZERO](#affineplanevec4zero)
+
+The zero vector in 4D
+
+Source: [vec4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/index.js)
 
 <a name="affineplanevec2add"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[add](#affineplanevec2add)(v, w)
@@ -11241,6 +11704,7 @@ and rotation when represented on different plane.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.vec3.ZERO](#affineplanevec3zero)
 - [affineplane.vec3.add](#affineplanevec3add)
 - [affineplane.vec3.almostEqual](#affineplanevec3almostequal)
 - [affineplane.vec3.average](#affineplanevec3average)
@@ -12033,6 +12497,7 @@ A [vec4](#affineplanevec4) is a 4D vector { x, y, z, w }.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.vec4.ZERO](#affineplanevec4zero)
 - [affineplane.vec4.add](#affineplanevec4add)
 - [affineplane.vec4.almostEqual](#affineplanevec4almostequal)
 - [affineplane.vec4.create](#affineplanevec4create)

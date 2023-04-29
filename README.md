@@ -37,9 +37,10 @@ Shapes with position in space:
 - [plane3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane3), an xy-plane in 3D, `{a,b,x,y,z}`
 - [point2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2), a location in 2D, `{x,y}`
 - [point3](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint3), a location in 3D, `{x,y,z}`
+- [ray3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneray3), a ray in 3D, `{x,y,z,dx,dy,dz}`
 - [scalar1](https://axelpale.github.io/affineplane/docs/API.html#affineplanescalar1), a first-order measure (length), `s`
 - [scalar2](https://axelpale.github.io/affineplane/docs/API.html#affineplanescalar2), a second-order measure (area), `ss`
-- [scalar3](https://axelpale.github.io/affineplane/docs/API.html#affineplanescalar3), a third-order measure (volume), `s`
+- [scalar3](https://axelpale.github.io/affineplane/docs/API.html#affineplanescalar3), a third-order measure (volume), `sss`
 - [segment2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesegment2), a line segment in 2D space, `[{x,y},{x,y}]`
 - [size2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesize2), a rectangle size in 2D, `{w,h}`
 - [size3](https://axelpale.github.io/affineplane/docs/API.html#affineplanesize3), a cuboid size in 3D, `{w,h,d}`
