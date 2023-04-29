@@ -1,7 +1,8 @@
 // A unit for each method.
 const units = {
   copy: require('./copy.test'),
-  create: require('./create.test')
+  create: require('./create.test'),
+  validate: require('./validate.test')
 }
 
 module.exports = (t) => {
