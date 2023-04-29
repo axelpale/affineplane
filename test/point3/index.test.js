@@ -6,6 +6,7 @@ const units = {
   difference: require('./difference.test'),
   direction: require('./direction.test'),
   distance: require('./distance.test'),
+  distanceToLine: require('./distanceToLine.test'),
   distanceToPlane: require('./distanceToPlane.test'),
   equal: require('./equal.test'),
   fromArray: require('./fromArray.test'),
