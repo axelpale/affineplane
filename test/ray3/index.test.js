@@ -6,6 +6,8 @@ const units = {
   getOrigin: require('./getOrigin.test'),
   getVector: require('./getVector.test'),
   invert: require('./invert.test'),
+  transitFrom: require('./transitFrom.test'),
+  transitTo: require('./transitTo.test'),
   validate: require('./validate.test')
 }
 
