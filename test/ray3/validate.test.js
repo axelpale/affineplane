@@ -18,7 +18,7 @@ module.exports = (ts) => {
     t.notOk(ray3.validate(null), 'detect null')
     t.notOk(ray3.validate({}), 'detect empty object')
     t.notOk(
-      ray3.validate({ x: 0, y: 0, z: 0, dx: 0, dy: 0 }),
+      ray3.validate({ x: 0, y: 0, z: 0, dx: 1, dy: 0 }),
       'detect missing prop'
     )
     t.notOk(
@@ -26,8 +26,12 @@ module.exports = (ts) => {
       'detect string value'
     )
     t.notOk(
-      ray3.validate({ x: 0, y: 0, z: NaN, dx: 0, dy: 0, dz: 0 }),
+      ray3.validate({ x: 0, y: 0, z: NaN, dx: 1, dy: 0, dz: 0 }),
       'detect NaN'
+    )
+    t.notOk(
+      ray3.validate({ x: 1, y: 1, z: 1, dx: 0, dy: 0, dz: 0 }),
+      'detect singular'
     )
 
     t.end()
