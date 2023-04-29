@@ -5,6 +5,7 @@ const units = {
   create: require('./create.test'),
   getOrigin: require('./getOrigin.test'),
   getVector: require('./getVector.test'),
+  invert: require('./invert.test'),
   validate: require('./validate.test')
 }
 
