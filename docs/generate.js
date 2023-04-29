@@ -77,6 +77,7 @@ yamdog.generate({
       point3: '#affineplanepoint3',
       poly2: '#affineplanepoly2',
       quat4: '#affineplanequat4',
+      ray3: '#affineplaneray3',
       rot2: '#affineplanerot2',
       scalar1: '#affineplanescalar1',
       scalar2: '#affineplanescalar2',
