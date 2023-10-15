@@ -42,6 +42,7 @@ Shapes with position in space:
 - [scalar2](https://axelpale.github.io/affineplane/docs/API.html#affineplanescalar2), a second-order measure (area), `ss`
 - [scalar3](https://axelpale.github.io/affineplane/docs/API.html#affineplanescalar3), a third-order measure (volume), `sss`
 - [segment2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesegment2), a line segment in 2D space, `[{x,y},{x,y}]`
+- [segment2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesegment3), a line segment in 3D space, `[{x,y,z},{x,y,z}]`
 - [size2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesize2), a rectangle size in 2D, `{w,h}`
 - [size3](https://axelpale.github.io/affineplane/docs/API.html#affineplanesize3), a cuboid size in 3D, `{w,h,d}`
 - [sphere2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesphere2), a circle in 2D, `{x,y,r}`
