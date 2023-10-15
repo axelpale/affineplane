@@ -14,6 +14,12 @@ module.exports = (ts) => {
       'concentric spheres overlap'
     )
 
+    t.equal(
+      sphere2.collisionArea({ x: 0, y: 0, r: 1 }, { x: 1.5, y: 1.5, r: 1 }),
+      0,
+      'spheres too far'
+    )
+
     t.almostEqual(
       sphere2.collisionArea({ x: 0, y: 0, r: 1 }, { x: 1, y: 0, r: 1 }),
       // overlap = 2 * segment
