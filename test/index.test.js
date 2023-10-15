@@ -52,6 +52,7 @@ test.Test.prototype.almostEqualBasis = require('./utils/almostEqualBasis')
 test.Test.prototype.almostEqualBox = require('./utils/almostEqualBox')
 test.Test.prototype.almostEqualCircle = require('./utils/almostEqualSphere')
 test.Test.prototype.almostEqualHelmert = require('./utils/almostEqualHelmert')
+test.Test.prototype.almostEqualOrient = require('./utils/almostEqualOrient')
 test.Test.prototype.almostEqualPoint = require('./utils/almostEqualPoint')
 test.Test.prototype.almostEqualSphere = test.Test.prototype.almostEqualCircle
 test.Test.prototype.almostEqualVector = require('./utils/almostEqualVector')
