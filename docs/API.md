@@ -534,14 +534,10 @@ Source: [getPath.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/
 
 Alias of [affineplane.box2.getPath](#affineplanebox2getpath)
 
-Source: [getPath.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getPath.js)
-
 <a name="affineplanebox2getpolygon"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[getPolygon](#affineplanebox2getpolygon)
 
 Alias of [affineplane.box2.getPath](#affineplanebox2getpath)
-
-Source: [getPath.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getPath.js)
 
 <a name="affineplanebox2getsegments"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[getSegments](#affineplanebox2getsegments)(box)
@@ -583,8 +579,6 @@ Source: [getSize.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[getSphere](#affineplanebox2getsphere)
 
 Alias of [affineplane.box2.getCircle](#affineplanebox2getcircle)
-
-Source: [getCircle.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getCircle.js)
 
 <a name="affineplanebox2haspoint"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[hasPoint](#affineplanebox2haspoint)(box, point)
@@ -658,8 +652,6 @@ Source: [offset.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/o
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[projectTo](#affineplanebox2projectto)
 
 Alias of [affineplane.box2.projectToPlane](#affineplanebox2projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/projectToPlane.js)
 
 <a name="affineplanebox2projecttoplane"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[projectToPlane](#affineplanebox2projecttoplane)(box, target[, camera])
@@ -767,8 +759,6 @@ Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/box2
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[scaleBy](#affineplanebox2scaleby)(box, origin, ratio)
 
 Alias of [affineplane.box2.homothety](#affineplanebox2homothety)
-
-Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/homothety.js)
 
 <a name="affineplanebox2transitfrom"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[transitFrom](#affineplanebox2transitfrom)(box, source)
@@ -1271,8 +1261,6 @@ Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/box
 
 Alias of [affineplane.box3.projectToPlane](#affineplanebox3projecttoplane)
 
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/projectToPlane.js)
-
 <a name="affineplanebox3projecttoplane"></a>
 ## [affineplane](#affineplane).[box3](#affineplanebox3).[projectToPlane](#affineplanebox3projecttoplane)(box, target[, camera])
 
@@ -1390,8 +1378,6 @@ Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/box3
 
 Alias of [affineplane.box3.homothety](#affineplanebox3homothety)
 
-Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/homothety.js)
-
 <a name="affineplanebox3transitfrom"></a>
 ## [affineplane](#affineplane).[box3](#affineplanebox3).[transitFrom](#affineplanebox3transitfrom)(box, source)
 
@@ -1502,8 +1488,6 @@ Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/box3
 ## [affineplane](#affineplane).[circle2](#affineplanecircle2)
 
 Alias of [affineplane.sphere2](#affineplanesphere2)
-
-Source: [sphere2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/index.js)
 
 <a name="affineplanecircle3"></a>
 ## [affineplane](#affineplane).[circle3](#affineplanecircle3)
@@ -1660,8 +1644,6 @@ Source: [collide.js](https://github.com/axelpale/affineplane/blob/main/lib/circl
 ## [affineplane](#affineplane).[circle3](#affineplanecircle3).[collideCircle](#affineplanecircle3collidecircle)(c, cc)
 
 Alias of [affineplane.circle3.collide](#affineplanecircle3collide)
-
-Source: [collide.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/collide.js)
 
 <a name="affineplanecircle3collidesegment"></a>
 ## [affineplane](#affineplane).[circle3](#affineplanecircle3).[collideSegment](#affineplanecircle3collidesegment)(c, seg)
@@ -1827,8 +1809,6 @@ Source: [polarOffset.js](https://github.com/axelpale/affineplane/blob/main/lib/c
 
 Alias of [affineplane.circle3.projectToPlane](#affineplanecircle3projecttoplane)
 
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/projectToPlane.js)
-
 <a name="affineplanecircle3projecttoplane"></a>
 ## [affineplane](#affineplane).[circle3](#affineplanecircle3).[projectToPlane](#affineplanecircle3projecttoplane)(circle, plane[, camera])
 
@@ -1882,8 +1862,6 @@ Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/circ
 ## [affineplane](#affineplane).[circle3](#affineplanecircle3).[scaleBy](#affineplanecircle3scaleby)
 
 Alias of [affineplane.circle3.homothety](#affineplanecircle3homothety)
-
-Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/homothety.js)
 
 <a name="affineplanecircle3size"></a>
 ## [affineplane](#affineplane).[circle3](#affineplanecircle3).[size](#affineplanecircle3size)(c)
@@ -2037,8 +2015,6 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/cop
 
 Alias of [affineplane.dir2.fromPolar](#affineplanedir2frompolar)
 
-Source: [fromPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/fromPolar.js)
-
 <a name="affineplanedir2frompolar"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[fromPolar](#affineplanedir2frompolar)(r)
 
@@ -2085,8 +2061,6 @@ Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/di
 
 Alias of [affineplane.dir2.projectToPlane](#affineplanedir2projecttoplane)
 
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/projectToPlane.js)
-
 <a name="affineplanedir2projecttoplane"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[projectToPlane](#affineplanedir2projecttoplane)(dir, plane)
 
@@ -2114,8 +2088,6 @@ Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/li
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[toAngle](#affineplanedir2toangle)
 
 Alias of [affineplane.dir2.toPolar](#affineplanedir2topolar)
-
-Source: [toPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/toPolar.js)
 
 <a name="affineplanedir2topolar"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[toPolar](#affineplanedir2topolar)(dir)
@@ -2320,8 +2292,6 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/cop
 
 Alias of [affineplane.dir3.fromSpherical](#affineplanedir3fromspherical)
 
-Source: [fromSpherical.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/fromSpherical.js)
-
 <a name="affineplanedir3fromspherical"></a>
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[fromSpherical](#affineplanedir3fromspherical)(theta, phi)
 
@@ -2387,8 +2357,6 @@ Source: [fromVector.js](https://github.com/axelpale/affineplane/blob/main/lib/di
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[projectTo](#affineplanedir3projectto)
 
 Alias of [affineplane.dir3.projectToPlane](#affineplanedir3projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/projectToPlane.js)
 
 <a name="affineplanedir3projecttoplane"></a>
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[projectToPlane](#affineplanedir3projecttoplane)(dir, plane)
@@ -2619,8 +2587,6 @@ Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/e
 
 Alias of [affineplane.dist2.projectToPlane](#affineplanedist2projecttoplane)
 
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/dist2/projectToPlane.js)
-
 <a name="affineplanedist2projecttoplane"></a>
 ## [affineplane](#affineplane).[dist2](#affineplanedist2).[projectToPlane](#affineplanedist2projecttoplane)(dist, target[, camera])
 
@@ -2800,8 +2766,6 @@ Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/e
 ## [affineplane](#affineplane).[dist3](#affineplanedist3).[projectTo](#affineplanedist3projectto)
 
 Alias of [affineplane.dist3.projectToPlane](#affineplanedist3projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/dist3/projectToPlane.js)
 
 <a name="affineplanedist3projecttoplane"></a>
 ## [affineplane](#affineplane).[dist3](#affineplanedist3).[projectToPlane](#affineplanedist3projecttoplane)(dist, target[, camera])
@@ -3046,21 +3010,15 @@ Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/h
 
 Alias of [affineplane.helm2.almostEqual](#affineplanehelm2almostequal)
 
-Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/almostEqual.js)
-
 <a name="affineplanehelm2clone"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[clone](#affineplanehelm2clone)
 
 Alias of [affineplane.helm2.copy](#affineplanehelm2copy)
 
-Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/copy.js)
-
 <a name="affineplanehelm2combine"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[combine](#affineplanehelm2combine)
 
 Alias of [affineplane.helm2.compose](#affineplanehelm2compose)
-
-Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/compose.js)
 
 <a name="affineplanehelm2compose"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[compose](#affineplanehelm2compose)(tr, ts)
@@ -3156,8 +3114,6 @@ Source: [det.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/det
 
 Alias of [affineplane.helm2.det](#affineplanehelm2det)
 
-Source: [det.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/det.js)
-
 <a name="affineplanehelm2equal"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[equal](#affineplanehelm2equal)(tr, ts)
 
@@ -3187,8 +3143,6 @@ Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/e
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[equals](#affineplanehelm2equals)
 
 Alias of [affineplane.helm2.equal](#affineplanehelm2equal)
-
-Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/equal.js)
 
 <a name="affineplanehelm2fromarray"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[fromArray](#affineplanehelm2fromarray)(abxy)
@@ -3367,8 +3321,6 @@ Source: [getRotation.js](https://github.com/axelpale/affineplane/blob/main/lib/h
 
 Alias of [affineplane.helm2.getDilation](#affineplanehelm2getdilation)
 
-Source: [getDilation.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/getDilation.js)
-
 <a name="affineplanehelm2gettranslation"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[getTranslation](#affineplanehelm2gettranslation)(tr)
 
@@ -3391,8 +3343,6 @@ Source: [getTranslation.js](https://github.com/axelpale/affineplane/blob/main/li
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[inverse](#affineplanehelm2inverse)(tr)
 
 Alias of [affineplane.helm2.invert](#affineplanehelm2invert)
-
-Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/invert.js)
 
 <a name="affineplanehelm2invert"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[invert](#affineplanehelm2invert)(tr)
@@ -3443,14 +3393,10 @@ Source: [limitDilation.js](https://github.com/axelpale/affineplane/blob/main/lib
 
 Alias of [affineplane.helm2.compose](#affineplanehelm2compose)
 
-Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/compose.js)
-
 <a name="affineplanehelm2projectto"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[projectTo](#affineplanehelm2projectto)
 
 Alias of [affineplane.helm2.projectToPlane](#affineplanehelm2projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/helm2/projectToPlane.js)
 
 <a name="affineplanehelm2projecttocameratransform"></a>
 ## [affineplane](#affineplane).[helm2](#affineplanehelm2).[projectToCameraTransform](#affineplanehelm2projecttocameratransform)(helm, origin, camera)
@@ -3988,21 +3934,15 @@ Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/h
 
 Alias of [affineplane.helm3.almostEqual](#affineplanehelm3almostequal)
 
-Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/almostEqual.js)
-
 <a name="affineplanehelm3clone"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[clone](#affineplanehelm3clone)
 
 Alias of [affineplane.helm3.copy](#affineplanehelm3copy)
 
-Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/copy.js)
-
 <a name="affineplanehelm3combine"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[combine](#affineplanehelm3combine)
 
 Alias of [affineplane.helm3.compose](#affineplanehelm3compose)
-
-Source: [compose.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/compose.js)
 
 <a name="affineplanehelm3compose"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[compose](#affineplanehelm3compose)(tr, ts)
@@ -4101,8 +4041,6 @@ Source: [det.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/det
 
 Alias of [affineplane.helm3.det](#affineplanehelm3det)
 
-Source: [det.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/det.js)
-
 <a name="affineplanehelm3difference"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[difference](#affineplanehelm3difference)(h, hh)
 
@@ -4154,8 +4092,6 @@ Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/e
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[equals](#affineplanehelm3equals)
 
 Alias of [affineplane.helm3.equal](#affineplanehelm3equal)
-
-Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/equal.js)
 
 <a name="affineplanehelm3fromarray"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[fromArray](#affineplanehelm3fromarray)(arr)
@@ -4307,8 +4243,6 @@ Source: [getRotation.js](https://github.com/axelpale/affineplane/blob/main/lib/h
 
 Alias of [affineplane.helm3.getDilation](#affineplanehelm3getdilation)
 
-Source: [getDilation.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/getDilation.js)
-
 <a name="affineplanehelm3gettranslation"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[getTranslation](#affineplanehelm3gettranslation)(tr)
 
@@ -4331,8 +4265,6 @@ Source: [getTranslation.js](https://github.com/axelpale/affineplane/blob/main/li
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[inverse](#affineplanehelm3inverse)(tr)
 
 Alias of [affineplane.helm3.invert](#affineplanehelm3invert)
-
-Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/invert.js)
 
 <a name="affineplanehelm3invert"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[invert](#affineplanehelm3invert)(tr)
@@ -4382,8 +4314,6 @@ Source: [limitDilation.js](https://github.com/axelpale/affineplane/blob/main/lib
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[projectTo](#affineplanehelm3projectto)
 
 Alias of [affineplane.helm3.projectToPlane](#affineplanehelm3projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/projectToPlane.js)
 
 <a name="affineplanehelm3projecttoplane"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[projectToPlane](#affineplanehelm3projecttoplane)(tr, plane)
@@ -4621,8 +4551,6 @@ Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/hel
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[translateBy](#affineplanehelm3translateby)
 
 Alias of [affineplane.helm3.addTranslation](#affineplanehelm3addtranslation)
-
-Source: [addTranslation.js](https://github.com/axelpale/affineplane/blob/main/lib/helm3/addTranslation.js)
 
 <a name="affineplanehelm3validate"></a>
 ## [affineplane](#affineplane).[helm3](#affineplanehelm3).[validate](#affineplanehelm3validate)(tr)
@@ -4931,6 +4859,8 @@ Orientation in 2D. Represented by an object `{ a, b }`.
 
 - [affineplane.orient2.almostEqual](#affineplaneorient2almostequal)
 - [affineplane.orient2.create](#affineplaneorient2create)
+- [affineplane.orient2.fromPolar](#affineplaneorient2frompolar)
+- [affineplane.orient2.fromVector](#affineplaneorient2fromvector)
 - [affineplane.orient2.transitFrom](#affineplaneorient2transitfrom)
 - [affineplane.orient2.transitTo](#affineplaneorient2transitto)
 - [affineplane.orient2.validate](#affineplaneorient2validate)
@@ -4977,6 +4907,33 @@ Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/o
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/orient2/create.js)
+
+<a name="affineplaneorient2frompolar"></a>
+## [affineplane](#affineplane).[orient2](#affineplaneorient2).[fromPolar](#affineplaneorient2frompolar)(direction)
+
+Create an orientation from angle or vector.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *direction*
+  - a number, the azimuth angle in radians.
+  - a [dir2](#affineplanedir2)
+  - a [vec2](#affineplanevec2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- an [orient2](#affineplaneorient2)
+
+
+Aliases: [affineplane.orient2.fromVector](#affineplaneorient2fromvector)
+
+Source: [fromPolar.js](https://github.com/axelpale/affineplane/blob/main/lib/orient2/fromPolar.js)
+
+<a name="affineplaneorient2fromvector"></a>
+## [affineplane](#affineplane).[orient2](#affineplaneorient2).[fromVector](#affineplaneorient2fromvector)(vec)
+
+Alias of [affineplane.orient2.fromPolar](#affineplaneorient2frompolar)
 
 <a name="affineplaneorient2transitfrom"></a>
 ## [affineplane](#affineplane).[orient2](#affineplaneorient2).[transitFrom](#affineplaneorient2transitfrom)(r, source)
@@ -5225,8 +5182,6 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/
 
 Alias of [affineplane.path3.projectToPlane](#affineplanepath3projecttoplane)
 
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/path3/projectToPlane.js)
-
 <a name="affineplanepath3projecttoplane"></a>
 ## [affineplane](#affineplane).[path3](#affineplanepath3).[projectToPlane](#affineplanepath3projecttoplane)(path, plane[, camera])
 
@@ -5431,8 +5386,6 @@ Source: [at.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/at.
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[between](#affineplaneplane2between)
 
 Alias of [affineplane.plane2.difference](#affineplaneplane2difference)
-
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/difference.js)
 
 <a name="affineplaneplane2compose"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[compose](#affineplaneplane2compose)(planea, planeb)
@@ -5669,8 +5622,6 @@ Source: [orientation.js](https://github.com/axelpale/affineplane/blob/main/lib/p
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[projectTo](#affineplaneplane2projectto)
 
 Alias of [affineplane.plane2.projectToPlane](#affineplaneplane2projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/plane2/projectToPlane.js)
 
 <a name="affineplaneplane2projecttoplane"></a>
 ## [affineplane](#affineplane).[plane2](#affineplaneplane2).[projectToPlane](#affineplaneplane2projecttoplane)(plane, target[, camera])
@@ -6087,8 +6038,6 @@ Source: [at.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/at.
 
 Alias of [affineplane.plane3.difference](#affineplaneplane3difference)
 
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/difference.js)
-
 <a name="affineplaneplane3compose"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[compose](#affineplaneplane3compose)(planea, planeb)
 
@@ -6372,8 +6321,6 @@ Source: [projectByDepth.js](https://github.com/axelpale/affineplane/blob/main/li
 
 Alias of [affineplane.plane3.projectToPlane](#affineplaneplane3projecttoplane)
 
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/projectToPlane.js)
-
 <a name="affineplaneplane3projecttodepth"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[projectToDepth](#affineplaneplane3projecttodepth)(plane, depth, camera)
 
@@ -6607,8 +6554,6 @@ Source: [transform.js](https://github.com/axelpale/affineplane/blob/main/lib/pla
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[transformBy](#affineplaneplane3transformby)
 
 Alias of [affineplane.plane3.transform](#affineplaneplane3transform)
-
-Source: [transform.js](https://github.com/axelpale/affineplane/blob/main/lib/plane3/transform.js)
 
 <a name="affineplaneplane3transforminside"></a>
 ## [affineplane](#affineplane).[plane3](#affineplaneplane3).[transformInside](#affineplaneplane3transforminside)(plane, tr[, origin])
@@ -6865,14 +6810,10 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/point2
 
 Alias of [affineplane.point2.difference](#affineplanepoint2difference)
 
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
-
 <a name="affineplanepoint2diff"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[diff](#affineplanepoint2diff)
 
 Alias of [affineplane.point2.difference](#affineplanepoint2difference)
-
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
 
 <a name="affineplanepoint2difference"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[difference](#affineplanepoint2difference)(p, q)
@@ -6963,8 +6904,6 @@ Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/
 
 Alias of [affineplane.point2.equal](#affineplanepoint2equal)
 
-Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/equal.js)
-
 <a name="affineplanepoint2fromarray"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[fromArray](#affineplanepoint2fromarray)(arrp)
 
@@ -7010,14 +6949,10 @@ Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/poi
 
 Alias of [affineplane.point2.average](#affineplanepoint2average)
 
-Source: [average.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/average.js)
-
 <a name="affineplanepoint2move"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[move](#affineplanepoint2move)
 
 Alias of [affineplane.point2.translate](#affineplanepoint2translate)
-
-Source: [translate.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/translate.js)
 
 <a name="affineplanepoint2offset"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[offset](#affineplanepoint2offset)(p, dx, dy)
@@ -7091,8 +7026,6 @@ Source: [projectByDistance.js](https://github.com/axelpale/affineplane/blob/main
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[projectTo](#affineplanepoint2projectto)
 
 Alias of [affineplane.point2.projectToPlane](#affineplanepoint2projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/projectToPlane.js)
 
 <a name="affineplanepoint2projecttoline"></a>
 ## [affineplane](#affineplane).[point2](#affineplanepoint2).[projectToLine](#affineplanepoint2projecttoline)(p, line)
@@ -7310,8 +7243,6 @@ Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/poin
 
 Alias of [affineplane.point2.difference](#affineplanepoint2difference)
 
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point2/difference.js)
-
 <a name="affineplanepoint3"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3)
 
@@ -7438,14 +7369,10 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/point3
 
 Alias of [affineplane.point3.difference](#affineplanepoint3difference)
 
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
-
 <a name="affineplanepoint3diff"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[diff](#affineplanepoint3diff)
 
 Alias of [affineplane.point3.difference](#affineplanepoint3difference)
-
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
 
 <a name="affineplanepoint3difference"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[difference](#affineplanepoint3difference)(p, q)
@@ -7601,8 +7528,6 @@ Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/
 
 Alias of [affineplane.point3.equal](#affineplanepoint3equal)
 
-Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/equal.js)
-
 <a name="affineplanepoint3fromarray"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[fromArray](#affineplanepoint3fromarray)(arrp)
 
@@ -7647,8 +7572,6 @@ Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/poi
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[mean](#affineplanepoint3mean)
 
 Alias of [affineplane.point3.average](#affineplanepoint3average)
-
-Source: [average.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/average.js)
 
 <a name="affineplanepoint3offset"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[offset](#affineplanepoint3offset)(p, dx, dy, dz)
@@ -7727,8 +7650,6 @@ Source: [projectByDistance.js](https://github.com/axelpale/affineplane/blob/main
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[projectTo](#affineplanepoint3projectto)
 
 Alias of [affineplane.point3.projectToPlane](#affineplanepoint3projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/projectToPlane.js)
 
 <a name="affineplanepoint3projecttoplane"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[projectToPlane](#affineplanepoint3projecttoplane)(point, plane[, camera])
@@ -7907,8 +7828,6 @@ Source: [translate.js](https://github.com/axelpale/affineplane/blob/main/lib/poi
 
 Alias of [affineplane.point3.translate](#affineplanepoint3translate)
 
-Source: [translate.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/translate.js)
-
 <a name="affineplanepoint3validate"></a>
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[validate](#affineplanepoint3validate)(p)
 
@@ -7932,8 +7851,6 @@ Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/poin
 ## [affineplane](#affineplane).[point3](#affineplanepoint3).[vectorTo](#affineplanepoint3vectorto)
 
 Alias of [affineplane.point3.difference](#affineplanepoint3difference)
-
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/point3/difference.js)
 
 <a name="affineplanepoly2"></a>
 ## [affineplane](#affineplane).[poly2](#affineplanepoly2)
@@ -8057,8 +7974,6 @@ Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/
 
 Alias of [affineplane.quat4.difference](#affineplanequat4difference)
 
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/difference.js)
-
 <a name="affineplanequat4difference"></a>
 ## [affineplane](#affineplane).[quat4](#affineplanequat4).[difference](#affineplanequat4difference)(q, p)
 
@@ -8148,8 +8063,6 @@ Source: [hamilton.js](https://github.com/axelpale/affineplane/blob/main/lib/quat
 ## [affineplane](#affineplane).[quat4](#affineplanequat4).[multiply](#affineplanequat4multiply)
 
 Alias of [affineplane.quat4.hamilton](#affineplanequat4hamilton)
-
-Source: [hamilton.js](https://github.com/axelpale/affineplane/blob/main/lib/quat4/hamilton.js)
 
 <a name="affineplanequat4norm"></a>
 ## [affineplane](#affineplane).[quat4](#affineplanequat4).[norm](#affineplanequat4norm)(q)
@@ -8402,8 +8315,6 @@ Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/i
 ## [affineplane](#affineplane).[ray3](#affineplaneray3).[negate](#affineplaneray3negate)
 
 Alias of [affineplane.ray3.invert](#affineplaneray3invert)
-
-Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/invert.js)
 
 <a name="affineplaneray3offset"></a>
 ## [affineplane](#affineplane).[ray3](#affineplaneray3).[offset](#affineplaneray3offset)(ray, dx, dy, dz)
@@ -9969,8 +9880,10 @@ Aliases: [affineplane.circle2](#affineplanecircle2)
 - [affineplane.sphere2.boundingBox](#affineplanesphere2boundingbox)
 - [affineplane.sphere2.boundingCircle](#affineplanesphere2boundingcircle)
 - [affineplane.sphere2.collide](#affineplanesphere2collide)
+- [affineplane.sphere2.collisionArea](#affineplanesphere2collisionarea)
 - [affineplane.sphere2.copy](#affineplanesphere2copy)
 - [affineplane.sphere2.create](#affineplanesphere2create)
+- [affineplane.sphere2.fromPoints](#affineplanesphere2frompoints)
 - [affineplane.sphere2.gap](#affineplanesphere2gap)
 - [affineplane.sphere2.hasPoint](#affineplanesphere2haspoint)
 - [affineplane.sphere2.homothety](#affineplanesphere2homothety)
@@ -10116,6 +10029,26 @@ Detect collision between two spheres.
 
 Source: [collide.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/collide.js)
 
+<a name="affineplanesphere2collisionarea"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[collisionArea](#affineplanesphere2collisionarea)(c, cc)
+
+Compute collision area between two spheres.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a [sphere2](#affineplanesphere2)
+- *cc*
+  - a [sphere2](#affineplanesphere2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [scalar2](#affineplanescalar2), number, the area.
+
+
+Source: [collisionArea.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/collisionArea.js)
+
 <a name="affineplanesphere2copy"></a>
 ## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[copy](#affineplanesphere2copy)(p)
 
@@ -10155,6 +10088,27 @@ Create a [sphere2](#affineplanesphere2) object.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/create.js)
+
+<a name="affineplanesphere2frompoints"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[fromPoints](#affineplanesphere2frompoints)(p, q)
+
+Create a [sphere2](#affineplanesphere2) from two points,
+the origin p and the circumference point q.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - a [point2](#affineplanepoint2), at the circle center.
+- *q*
+  - a [point2](#affineplanepoint2), on the circle circumference.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [sphere2](#affineplanesphere2)
+
+
+Source: [fromPoints.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/fromPoints.js)
 
 <a name="affineplanesphere2gap"></a>
 ## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[gap](#affineplanesphere2gap)(c, cc)
@@ -10296,8 +10250,6 @@ Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/sphe
 
 Alias of [affineplane.sphere2.homothety](#affineplanesphere2homothety)
 
-Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/homothety.js)
-
 <a name="affineplanesphere2size"></a>
 ## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[size](#affineplanesphere2size)(sphere)
 
@@ -10420,6 +10372,7 @@ Represented with an object `{ x, y, z, r }` for the origin and the radius.
 - [affineplane.sphere3.collide](#affineplanesphere3collide)
 - [affineplane.sphere3.copy](#affineplanesphere3copy)
 - [affineplane.sphere3.create](#affineplanesphere3create)
+- [affineplane.sphere3.fromPoints](#affineplanesphere3frompoints)
 - [affineplane.sphere3.gap](#affineplanesphere3gap)
 - [affineplane.sphere3.hasPoint](#affineplanesphere3haspoint)
 - [affineplane.sphere3.homothety](#affineplanesphere3homothety)
@@ -10612,6 +10565,27 @@ Create a [sphere3](#affineplanesphere3) object.
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/create.js)
 
+<a name="affineplanesphere3frompoints"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[fromPoints](#affineplanesphere3frompoints)(p, q)
+
+Create a [sphere3](#affineplanesphere3) from two points,
+the origin p and the circumference point q.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - a [point3](#affineplanepoint3), at the circle center.
+- *q*
+  - a [point3](#affineplanepoint3), on the circle circumference.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [sphere3](#affineplanesphere3)
+
+
+Source: [fromPoints.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/fromPoints.js)
+
 <a name="affineplanesphere3gap"></a>
 ## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[gap](#affineplanesphere3gap)(c, cc)
 
@@ -10734,8 +10708,6 @@ Source: [polarOffset.js](https://github.com/axelpale/affineplane/blob/main/lib/s
 
 Alias of [affineplane.sphere3.projectToPlane](#affineplanesphere3projecttoplane)
 
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/projectToPlane.js)
-
 <a name="affineplanesphere3projecttoplane"></a>
 ## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[projectToPlane](#affineplanesphere3projecttoplane)(sphere, plane[, camera])
 
@@ -10811,8 +10783,6 @@ Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/sphe
 ## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[scaleBy](#affineplanesphere3scaleby)
 
 Alias of [affineplane.sphere3.homothety](#affineplanesphere3homothety)
-
-Source: [homothety.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/homothety.js)
 
 <a name="affineplanesphere3size"></a>
 ## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[size](#affineplanesphere3size)(sphere)
@@ -11343,8 +11313,6 @@ Source: [max.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/max.
 
 Alias of [affineplane.vec2.average](#affineplanevec2average)
 
-Source: [average.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/average.js)
-
 <a name="affineplanevec2min"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[min](#affineplanevec2min)(v, w)
 
@@ -11370,28 +11338,20 @@ Source: [min.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/min.
 
 Alias of [affineplane.vec2.invert](#affineplanevec2invert)
 
-Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/invert.js)
-
 <a name="affineplanevec2norm"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[norm](#affineplanevec2norm)
 
 Alias of [affineplane.vec2.magnitude](#affineplanevec2magnitude)
-
-Source: [magnitude.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/magnitude.js)
 
 <a name="affineplanevec2normalize"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[normalize](#affineplanevec2normalize)
 
 Alias of [affineplane.vec2.unit](#affineplanevec2unit)
 
-Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/unit.js)
-
 <a name="affineplanevec2projectto"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[projectTo](#affineplanevec2projectto)
 
 Alias of [affineplane.vec2.projectToPlane](#affineplanevec2projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/projectToPlane.js)
 
 <a name="affineplanevec2projecttoplane"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[projectToPlane](#affineplanevec2projecttoplane)(v, plane[, camera])
@@ -11871,8 +11831,6 @@ Source: [cross.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/cr
 
 Alias of [affineplane.vec3.difference](#affineplanevec3difference)
 
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/difference.js)
-
 <a name="affineplanevec3difference"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[difference](#affineplanevec3difference)(v, w)
 
@@ -12096,28 +12054,20 @@ Source: [magnitude.js](https://github.com/axelpale/affineplane/blob/main/lib/vec
 
 Alias of [affineplane.vec3.invert](#affineplanevec3invert)
 
-Source: [invert.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/invert.js)
-
 <a name="affineplanevec3norm"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[norm](#affineplanevec3norm)
 
 Alias of [affineplane.vec3.magnitude](#affineplanevec3magnitude)
-
-Source: [magnitude.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/magnitude.js)
 
 <a name="affineplanevec3normalize"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[normalize](#affineplanevec3normalize)
 
 Alias of [affineplane.vec3.unit](#affineplanevec3unit)
 
-Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/unit.js)
-
 <a name="affineplanevec3projectto"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[projectTo](#affineplanevec3projectto)
 
 Alias of [affineplane.vec3.projectToPlane](#affineplanevec3projecttoplane)
-
-Source: [projectToPlane.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/projectToPlane.js)
 
 <a name="affineplanevec3projecttoplane"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[projectToPlane](#affineplanevec3projecttoplane)(vec, plane[, position, camera])
@@ -12294,8 +12244,6 @@ Source: [scaleTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[subtract](#affineplanevec3subtract)
 
 Alias of [affineplane.vec3.difference](#affineplanevec3difference)
-
-Source: [difference.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/difference.js)
 
 <a name="affineplanevec3sum"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[sum](#affineplanevec3sum)(vs)
