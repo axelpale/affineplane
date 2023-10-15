@@ -6,6 +6,7 @@ const units = {
   boundingCircle: require('./boundingCircle.test'),
   collide: require('./collide.test'),
   collisionArea: require('./collisionArea.test'),
+  fromPoints: require('./fromPoints.test'),
   gap: require('./gap.test'),
   hasPoint: require('./hasPoint.test'),
   homothety: require('./homothety.test'),
