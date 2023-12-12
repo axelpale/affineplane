@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.17.1
+# Affineplane API Documentation v2.18.0
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
@@ -166,6 +166,7 @@ and thus can be represented in any basis without loss of information.
 - [affineplane.box2.getBasisInverse](#affineplanebox2getbasisinverse)
 - [affineplane.box2.getBounds](#affineplanebox2getbounds)
 - [affineplane.box2.getCircle](#affineplanebox2getcircle)
+- [affineplane.box2.getInnerSquare](#affineplanebox2getinnersquare)
 - [affineplane.box2.getMinimumBounds](#affineplanebox2getminimumbounds)
 - [affineplane.box2.getPath](#affineplanebox2getpath)
 - [affineplane.box2.getPoints](#affineplanebox2getpoints)
@@ -488,6 +489,24 @@ The resulting circle is also the minimum bounding circle of the box.
 Aliases: [affineplane.box2.getSphere](#affineplanebox2getsphere)
 
 Source: [getCircle.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getCircle.js)
+
+<a name="affineplanebox2getinnersquare"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[getInnerSquare](#affineplanebox2getinnersquare)(box)
+
+Get the largest square that fits inside the box and has the same center.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *box*
+  - a [box2](#affineplanebox2), in the reference basis.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [box2](#affineplanebox2), in the reference basis.
+
+
+Source: [getInnerSquare.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/getInnerSquare.js)
 
 <a name="affineplanebox2getminimumbounds"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[getMinimumBounds](#affineplanebox2getminimumbounds)(boxes)
@@ -1506,6 +1525,7 @@ Represented with an object `{ x, y, z, r }` for the origin and the radius.
 - [affineplane.circle3.area](#affineplanecircle3area)
 - [affineplane.circle3.atCenter](#affineplanecircle3atcenter)
 - [affineplane.circle3.boundingBox](#affineplanecircle3boundingbox)
+- [affineplane.circle3.boundingCircle](#affineplanecircle3boundingcircle)
 - [affineplane.circle3.collide](#affineplanecircle3collide)
 - [affineplane.circle3.collideCircle](#affineplanecircle3collidecircle)
 - [affineplane.circle3.collideSegment](#affineplanecircle3collidesegment)
@@ -1617,6 +1637,28 @@ Get outer cuboid boundary of the given circle.
 
 
 Source: [boundingBox.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/boundingBox.js)
+
+<a name="affineplanecircle3boundingcircle"></a>
+## [affineplane](#affineplane).[circle3](#affineplanecircle3).[boundingCircle](#affineplanecircle3boundingcircle)(circles)
+
+Find a circle that encloses all the given circles
+when projected onto the same xy-plane.
+The resulting circle shares the largest z coordinate of the given circles.
+The result is approximate but is quaranteed to contain the optimal
+(projected) bounding circle.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *circles*
+  - an array of [circle3](#affineplanecircle3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [circle3](#affineplanecircle3)
+
+
+Source: [boundingCircle.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/boundingCircle.js)
 
 <a name="affineplanecircle3collide"></a>
 ## [affineplane](#affineplane).[circle3](#affineplanecircle3).[collide](#affineplanecircle3collide)(c, cc)
@@ -10963,20 +11005,6 @@ The zero vector in 2D
 
 Source: [vec2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/index.js)
 
-<a name="affineplanevec3zero"></a>
-## [affineplane](#affineplane).[vec3](#affineplanevec3).[ZERO](#affineplanevec3zero)
-
-The zero vector in 3D
-
-Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/index.js)
-
-<a name="affineplanevec4zero"></a>
-## [affineplane](#affineplane).[vec4](#affineplanevec4).[ZERO](#affineplanevec4zero)
-
-The zero vector in 4D
-
-Source: [vec4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/index.js)
-
 <a name="affineplanevec2add"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[add](#affineplanevec2add)(v, w)
 
@@ -11612,46 +11640,6 @@ Translation of the plane does not affect the vector.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/transitTo.js)
 
-<a name="affineplanevec2unit"></a>
-## [affineplane](#affineplane).[vec2](#affineplanevec2).[unit](#affineplanevec2unit)(v)
-
-Get unit vector parallel to the given vector.
-The magnitude of unit vector is equal to one.
-If zero vector is given, assume direction towards positive x.
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-- *v*
-  - a [vec2](#affineplanevec2)
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-- a [vec2](#affineplanevec2), magnitude of one.
-
-
-Aliases: [affineplane.vec2.normalize](#affineplanevec2normalize)
-
-Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/unit.js)
-
-<a name="affineplanevec2validate"></a>
-## [affineplane](#affineplane).[vec2](#affineplanevec2).[validate](#affineplanevec2validate)(v)
-
-Check if object is a valid [vec2](#affineplanevec2).
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-- *v*
-  - an object
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-- a boolean
-
-
-Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/validate.js)
-
 <a name="affineplanevec3"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3)
 
@@ -11706,6 +11694,60 @@ and rotation when represented on different plane.
 
 
 Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/index.js)
+
+<a name="affineplanevec3zero"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[ZERO](#affineplanevec3zero)
+
+The zero vector in 3D
+
+Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/index.js)
+
+<a name="affineplanevec4zero"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4).[ZERO](#affineplanevec4zero)
+
+The zero vector in 4D
+
+Source: [vec4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/index.js)
+
+<a name="affineplanevec2unit"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[unit](#affineplanevec2unit)(v)
+
+Get unit vector parallel to the given vector.
+The magnitude of unit vector is equal to one.
+If zero vector is given, assume direction towards positive x.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - a [vec2](#affineplanevec2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [vec2](#affineplanevec2), magnitude of one.
+
+
+Aliases: [affineplane.vec2.normalize](#affineplanevec2normalize)
+
+Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/unit.js)
+
+<a name="affineplanevec2validate"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[validate](#affineplanevec2validate)(v)
+
+Check if object is a valid [vec2](#affineplanevec2).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/validate.js)
 
 <a name="affineplanevec3add"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[add](#affineplanevec3add)(v, w)
