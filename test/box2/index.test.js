@@ -13,6 +13,7 @@ const units = {
   getBasisInverse: require('./getBasisInverse.test'),
   getBounds: require('./getBounds.test'),
   getCircle: require('./getCircle.test'),
+  getInnerSquare: require('./getInnerSquare.test'),
   getMinimumBounds: require('./getMinimumBounds.test'),
   getPath: require('./getPath.test'),
   getSegments: require('./getSegments.test'),
