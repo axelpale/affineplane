@@ -39,11 +39,11 @@
   "license": "MIT",
   "devDependencies": {
     "async": "^3.2.5",
-    "genversion": "^3.1.1",
-    "nodemon": "^3.0.2",
+    "genversion": "^3.2.0",
+    "nodemon": "^3.1.4",
     "standard": "^17.1.0",
     "tap-arc": "^1.2.2",
-    "tape": "^5.7.2",
+    "tape": "^5.8.1",
     "yamdog": "^2.1.0"
   },
   "scripts": {
