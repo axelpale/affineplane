@@ -9934,6 +9934,8 @@ Aliases: [affineplane.circle2](#affineplanecircle2)
 - [affineplane.sphere2.rotateBy](#affineplanesphere2rotateby)
 - [affineplane.sphere2.scaleBy](#affineplanesphere2scaleby)
 - [affineplane.sphere2.size](#affineplanesphere2size)
+- [affineplane.sphere2.tangentCircle](#affineplanesphere2tangentcircle)
+- [affineplane.sphere2.tangentCircles](#affineplanesphere2tangentcircles)
 - [affineplane.sphere2.transitFrom](#affineplanesphere2transitfrom)
 - [affineplane.sphere2.transitTo](#affineplanesphere2transitto)
 - [affineplane.sphere2.translate](#affineplanesphere2translate)
@@ -10309,6 +10311,73 @@ Get the rectangular size of the circle.
 
 
 Source: [size.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/size.js)
+
+<a name="affineplanesphere2tangentcircle"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[tangentCircle](#affineplanesphere2tangentcircle)(ca, cb, r, righthand)
+
+Find a circle C that is left-hand tangent to the circles A and B.
+Use the fourth parameter to switch to right-hand tangent.
+Note the coordinate system: x-axis points right and y-axis points down.
+
+If the gap between A and B is too large for C to be tangent to both
+then the resulting circle is tangent with A and as close to B as possible.
+Under the righthand flag, the preference is reversed.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *ca*
+  - a [sphere2](#affineplanesphere2) {x,y,r}, the circle A.
+- *cb*
+  - a [sphere2](#affineplanesphere2) {x,y,r}, the circle B.
+- *r*
+  - a number, a [dist2](#affineplanedist2), the radius of the circle C.
+- *righthand*
+  - a boolean, default false. Set true to find right-hand tangent circle.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [sphere2](#affineplanesphere2) `{x,y,r}`
+
+
+See also [sphere2](#affineplanesphere2).tangentCircles for efficient computation of both hands with just one function call.
+
+Source: [tangentCircle.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/tangentCircle.js)
+
+<a name="affineplanesphere2tangentcircles"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[tangentCircles](#affineplanesphere2tangentcircles)(ca, cb, r)
+
+Find circles of radius r that are externally tangent to the given circles A and B.
+Usually there are two such circles, one at the left-hand side and one at the right-hand side
+with respect to the vector from A to B. The function returns the two circles in this left-right order.
+
+If the gap between A and B is too large for the circles to be tangent to both A and B
+then the function compromises and returns two circles: the first is tangent to A at the direction of B
+and the second is tangent to B at the direction of A.
+
+If the gap between A and B just fits a circle of radius r, the function returns only one circle.
+
+If the circles A and B are nested, the function compromises and returns only one circle that is externally
+tangent to the larger one so that the returned circle is still as close to the smaller one as possible.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *ca*
+  - a circle {x,y,r}, the circle A.
+- *cb*
+  - a circle {x,y,r}, the circle B.
+- *r*
+  - a number, the radius of the circles to find.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- an array of [sphere2](#affineplanesphere2). The array contains either one or two [sphere2](#affineplanesphere2).
+
+
+See also [sphere2](#affineplanesphere2).tangentCircle if you only need either the left-hand or right-hand result.
+
+Source: [tangentCircles.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/tangentCircles.js)
 
 <a name="affineplanesphere2transitfrom"></a>
 ## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[transitFrom](#affineplanesphere2transitfrom)(sphere, source)
@@ -11640,6 +11709,46 @@ Translation of the plane does not affect the vector.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/transitTo.js)
 
+<a name="affineplanevec2unit"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[unit](#affineplanevec2unit)(v)
+
+Get unit vector parallel to the given vector.
+The magnitude of unit vector is equal to one.
+If zero vector is given, assume direction towards positive x.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - a [vec2](#affineplanevec2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [vec2](#affineplanevec2), magnitude of one.
+
+
+Aliases: [affineplane.vec2.normalize](#affineplanevec2normalize)
+
+Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/unit.js)
+
+<a name="affineplanevec2validate"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[validate](#affineplanevec2validate)(v)
+
+Check if object is a valid [vec2](#affineplanevec2).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/validate.js)
+
 <a name="affineplanevec3"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3)
 
@@ -11708,46 +11817,6 @@ Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/ve
 The zero vector in 4D
 
 Source: [vec4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/index.js)
-
-<a name="affineplanevec2unit"></a>
-## [affineplane](#affineplane).[vec2](#affineplanevec2).[unit](#affineplanevec2unit)(v)
-
-Get unit vector parallel to the given vector.
-The magnitude of unit vector is equal to one.
-If zero vector is given, assume direction towards positive x.
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-- *v*
-  - a [vec2](#affineplanevec2)
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-- a [vec2](#affineplanevec2), magnitude of one.
-
-
-Aliases: [affineplane.vec2.normalize](#affineplanevec2normalize)
-
-Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/unit.js)
-
-<a name="affineplanevec2validate"></a>
-## [affineplane](#affineplane).[vec2](#affineplanevec2).[validate](#affineplanevec2validate)(v)
-
-Check if object is a valid [vec2](#affineplanevec2).
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-- *v*
-  - an object
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-- a boolean
-
-
-Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/validate.js)
 
 <a name="affineplanevec3add"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[add](#affineplanevec3add)(v, w)
