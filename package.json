@@ -1,6 +1,6 @@
 {
   "name": "affineplane",
-  "version": "2.18.0",
+  "version": "2.19.0",
   "description": "Affine geometry library for 2D and 3D spaces",
   "keywords": [
     "affine",
