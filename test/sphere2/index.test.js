@@ -14,6 +14,8 @@ const units = {
   polarOffset: require('./polarOffset.test'),
   rotateBy: require('./rotateBy.test'),
   size: require('./size.test'),
+  tangentCircle: require('./tangentCircle.test'),
+  tangentCircles: require('./tangentCircles.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
   validate: require('./validate.test')
