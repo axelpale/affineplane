@@ -2,6 +2,7 @@
 const units = {
   almostEqual: require('./almostEqual.test'),
   copy: require('./copy.test'),
+  equal: require('./equal.test'),
   fromPolar: require('./fromPolar.test'),
   fromVector: require('./fromVector.test'),
   projectToPlane: require('./projectToPlane.test'),
