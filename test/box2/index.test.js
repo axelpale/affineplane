@@ -6,6 +6,7 @@ const units = {
   atNorm: require('./atNorm.test'),
   collide: require('./collide.test'),
   create: require('./create.test'),
+  equal: require('./equal.test'),
   fromPoints: require('./fromPoints.test'),
   getAngle: require('./getAngle.test'),
   getArea: require('./getArea.test'),
