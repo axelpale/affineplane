@@ -5,6 +5,7 @@ const units = {
   boundingBox: require('./boundingBox.test'),
   boundingSphere: require('./boundingSphere.test'),
   collide: require('./collide.test'),
+  equal: require('./equal.test'),
   fromPoints: require('./fromPoints.test'),
   gap: require('./gap.test'),
   hasPoint: require('./hasPoint.test'),

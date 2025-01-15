@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.19.0
+# Affineplane API Documentation v2.20.0
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
@@ -159,6 +159,7 @@ and thus can be represented in any basis without loss of information.
 - [affineplane.box2.atNorm](#affineplanebox2atnorm)
 - [affineplane.box2.collide](#affineplanebox2collide)
 - [affineplane.box2.create](#affineplanebox2create)
+- [affineplane.box2.equal](#affineplanebox2equal)
 - [affineplane.box2.fromPoints](#affineplanebox2frompoints)
 - [affineplane.box2.getAngle](#affineplanebox2getangle)
 - [affineplane.box2.getArea](#affineplanebox2getarea)
@@ -204,20 +205,6 @@ Source: [box2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/bo
 A zero-size box.
 
 Source: [box2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/index.js)
-
-<a name="affineplanebox3unit"></a>
-## [affineplane](#affineplane).[box3](#affineplanebox3).[UNIT](#affineplanebox3unit)
-
-An origin-centered box with unit width, height, and depth.
-
-Source: [box3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/index.js)
-
-<a name="affineplanebox3zero"></a>
-## [affineplane](#affineplane).[box3](#affineplanebox3).[ZERO](#affineplanebox3zero)
-
-A zero-size box.
-
-Source: [box3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/index.js)
 
 <a name="affineplanebox2almostequal"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[almostEqual](#affineplanebox2almostequal)(b, bb[, tolerance])
@@ -347,6 +334,27 @@ Create a [box2](#affineplanebox2) object.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/create.js)
+
+<a name="affineplanebox2equal"></a>
+## [affineplane](#affineplane).[box2](#affineplanebox2).[equal](#affineplanebox2equal)(b, bb)
+
+Test if two boxes are strictly equal in orientation, position, and size.
+Boxes are allowed to have additional non-equal properties.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *b*
+  - a [box2](#affineplanebox2)
+- *bb*
+  - a [box2](#affineplanebox2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/box2/equal.js)
 
 <a name="affineplanebox2frompoints"></a>
 ## [affineplane](#affineplane).[box2](#affineplanebox2).[fromPoints](#affineplanebox2frompoints)(points)
@@ -887,6 +895,7 @@ thus can be represented in any basis without loss of information.
 - [affineplane.box3.atNorm](#affineplanebox3atnorm)
 - [affineplane.box3.collide](#affineplanebox3collide)
 - [affineplane.box3.create](#affineplanebox3create)
+- [affineplane.box3.equal](#affineplanebox3equal)
 - [affineplane.box3.fromPoints](#affineplanebox3frompoints)
 - [affineplane.box3.getAngle](#affineplanebox3getangle)
 - [affineplane.box3.getBasis](#affineplanebox3getbasis)
@@ -910,6 +919,20 @@ thus can be represented in any basis without loss of information.
 - [affineplane.box3.translateBy](#affineplanebox3translateby)
 - [affineplane.box3.validate](#affineplanebox3validate)
 
+
+Source: [box3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/index.js)
+
+<a name="affineplanebox3unit"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[UNIT](#affineplanebox3unit)
+
+An origin-centered box with unit width, height, and depth.
+
+Source: [box3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/index.js)
+
+<a name="affineplanebox3zero"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[ZERO](#affineplanebox3zero)
+
+A zero-size box.
 
 Source: [box3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/index.js)
 
@@ -1049,6 +1072,27 @@ Create a [box3](#affineplanebox3) object.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/create.js)
+
+<a name="affineplanebox3equal"></a>
+## [affineplane](#affineplane).[box3](#affineplanebox3).[equal](#affineplanebox3equal)(b, bb)
+
+Test if two boxes are strictly equal in orientation, position, and size.
+Boxes are allowed to have additional non-equal properties.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *b*
+  - a [box3](#affineplanebox3)
+- *bb*
+  - a [box3](#affineplanebox3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/box3/equal.js)
 
 <a name="affineplanebox3frompoints"></a>
 ## [affineplane](#affineplane).[box3](#affineplanebox3).[fromPoints](#affineplanebox3frompoints)(points)
@@ -1531,6 +1575,7 @@ Represented with an object `{ x, y, z, r }` for the origin and the radius.
 - [affineplane.circle3.collideSegment](#affineplanecircle3collidesegment)
 - [affineplane.circle3.copy](#affineplanecircle3copy)
 - [affineplane.circle3.create](#affineplanecircle3create)
+- [affineplane.circle3.equal](#affineplanecircle3equal)
 - [affineplane.circle3.hasPoint](#affineplanecircle3haspoint)
 - [affineplane.circle3.homothety](#affineplanecircle3homothety)
 - [affineplane.circle3.offset](#affineplanecircle3offset)
@@ -1749,6 +1794,27 @@ parallel to xy-plane.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/create.js)
+
+<a name="affineplanecircle3equal"></a>
+## [affineplane](#affineplane).[circle3](#affineplanecircle3).[equal](#affineplanecircle3equal)(c, d)
+
+Test if two spheres are strictly equal in radius and position.
+See [affineplane.circle3.almostEqual](#affineplanecircle3almostequal) for loose comparison.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a [circle3](#affineplanecircle3)
+- *d*
+  - a [circle3](#affineplanecircle3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/circle3/equal.js)
 
 <a name="affineplanecircle3haspoint"></a>
 ## [affineplane](#affineplane).[circle3](#affineplanecircle3).[hasPoint](#affineplanecircle3haspoint)(c, point)
@@ -2018,8 +2084,10 @@ the coordinate space affects the direction. Scale change does not affect it.
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.dir2.almostEqual](#affineplanedir2almostequal)
 - [affineplane.dir2.copy](#affineplanedir2copy)
 - [affineplane.dir2.create](#affineplanedir2create)
+- [affineplane.dir2.equal](#affineplanedir2equal)
 - [affineplane.dir2.fromPolar](#affineplanedir2frompolar)
 - [affineplane.dir2.fromVector](#affineplanedir2fromvector)
 - [affineplane.dir2.projectTo](#affineplanedir2projectto)
@@ -2033,6 +2101,30 @@ the coordinate space affects the direction. Scale change does not affect it.
 
 
 Source: [dir2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/index.js)
+
+<a name="affineplanedir2almostequal"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[almostEqual](#affineplanedir2almostequal)(d, dd[, epsilon])
+
+Test if directions are almost equal by the margin of epsilon.
+The directions are compared as two unit vectors.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *d*
+  - a [dir2](#affineplanedir2)
+- *dd*
+  - a [dir2](#affineplanedir2)
+- *epsilon*
+  - Optional number, default to [affineplane.epsilon](#affineplaneepsilon).
+  - Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/almostEqual.js)
 
 <a name="affineplanedir2copy"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[copy](#affineplanedir2copy)(dir)
@@ -2056,6 +2148,27 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/cop
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[create](#affineplanedir2create)
 
 Alias of [affineplane.dir2.fromPolar](#affineplanedir2frompolar)
+
+<a name="affineplanedir2equal"></a>
+## [affineplane](#affineplane).[dir2](#affineplanedir2).[equal](#affineplanedir2equal)(d, dd)
+
+Test if directions are strictly equal in value.
+The directions are compared as two vectors.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *d*
+  - a [dir2](#affineplanedir2)
+- *dd*
+  - a [dir2](#affineplanedir2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/equal.js)
 
 <a name="affineplanedir2frompolar"></a>
 ## [affineplane](#affineplane).[dir2](#affineplanedir2).[fromPolar](#affineplanedir2frompolar)(r)
@@ -2247,9 +2360,9 @@ do not affect the direction, only the change in orientation (=attitude) does.
 
 
 - [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
-- [affineplane.dir3.almostEqual](#affineplanedir3almostequal)
 - [affineplane.dir3.copy](#affineplanedir3copy)
 - [affineplane.dir3.create](#affineplanedir3create)
+- [affineplane.dir3.equal](#affineplanedir3equal)
 - [affineplane.dir3.fromSpherical](#affineplanedir3fromspherical)
 - [affineplane.dir3.fromVector](#affineplanedir3fromvector)
 - [affineplane.dir3.projectTo](#affineplanedir3projectto)
@@ -2262,30 +2375,6 @@ do not affect the direction, only the change in orientation (=attitude) does.
 
 
 Source: [dir3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/index.js)
-
-<a name="affineplanedir3almostequal"></a>
-## [affineplane](#affineplane).[dir3](#affineplanedir3).[almostEqual](#affineplanedir3almostequal)(d, dd[, epsilon])
-
-Test if directions are almost equal by the margin of epsilon.
-The directions are compared as two unit vectors.
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-- *d*
-  - a [dir2](#affineplanedir2)
-- *dd*
-  - a [dir2](#affineplanedir2)
-- *epsilon*
-  - Optional number, default to [affineplane.epsilon](#affineplaneepsilon).
-  - Set to 0 for strict comparison.
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-- a boolean
-
-
-Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/dir2/almostEqual.js)
 
 <a name="affineplanedir3almostequal"></a>
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[almostEqual](#affineplanedir3almostequal)(d, dd[, epsilon])
@@ -2333,6 +2422,27 @@ Source: [copy.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/cop
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[create](#affineplanedir3create)
 
 Alias of [affineplane.dir3.fromSpherical](#affineplanedir3fromspherical)
+
+<a name="affineplanedir3equal"></a>
+## [affineplane](#affineplane).[dir3](#affineplanedir3).[equal](#affineplanedir3equal)(d, dd)
+
+Test if directions are strictly equal in value.
+The directions are compared as two vectors.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *d*
+  - a [dir3](#affineplanedir3)
+- *dd*
+  - a [dir3](#affineplanedir3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/dir3/equal.js)
 
 <a name="affineplanedir3fromspherical"></a>
 ## [affineplane](#affineplane).[dir3](#affineplanedir3).[fromSpherical](#affineplanedir3fromspherical)(theta, phi)
@@ -4901,6 +5011,7 @@ Orientation in 2D. Represented by an object `{ a, b }`.
 
 - [affineplane.orient2.almostEqual](#affineplaneorient2almostequal)
 - [affineplane.orient2.create](#affineplaneorient2create)
+- [affineplane.orient2.equal](#affineplaneorient2equal)
 - [affineplane.orient2.fromPolar](#affineplaneorient2frompolar)
 - [affineplane.orient2.fromVector](#affineplaneorient2fromvector)
 - [affineplane.orient2.transitFrom](#affineplaneorient2transitfrom)
@@ -4949,6 +5060,26 @@ Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/o
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/orient2/create.js)
+
+<a name="affineplaneorient2equal"></a>
+## [affineplane](#affineplane).[orient2](#affineplaneorient2).[equal](#affineplaneorient2equal)(p, q)
+
+Test if two orientations are strictly equal in value.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *p*
+  - an [orient2](#affineplaneorient2)
+- *q*
+  - an [orient2](#affineplaneorient2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/orient2/equal.js)
 
 <a name="affineplaneorient2frompolar"></a>
 ## [affineplane](#affineplane).[orient2](#affineplaneorient2).[fromPolar](#affineplaneorient2frompolar)(direction)
@@ -8164,6 +8295,7 @@ We represent ray with object `{ x, y, z, dx, dy, dz }`
 - [affineplane.ray3.at](#affineplaneray3at)
 - [affineplane.ray3.copy](#affineplaneray3copy)
 - [affineplane.ray3.create](#affineplaneray3create)
+- [affineplane.ray3.equal](#affineplaneray3equal)
 - [affineplane.ray3.getOrigin](#affineplaneray3getorigin)
 - [affineplane.ray3.getVector](#affineplaneray3getvector)
 - [affineplane.ray3.homothety](#affineplaneray3homothety)
@@ -8273,6 +8405,26 @@ Create a ray object from origin point and a spanning vector.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/create.js)
+
+<a name="affineplaneray3equal"></a>
+## [affineplane](#affineplane).[ray3](#affineplaneray3).[equal](#affineplaneray3equal)(r, rr)
+
+Test if rays are strictly equal in position and direction.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *r*
+  - a [ray3](#affineplaneray3)
+- *rr*
+  - a [ray3](#affineplaneray3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/ray3/equal.js)
 
 <a name="affineplaneray3getorigin"></a>
 ## [affineplane](#affineplane).[ray3](#affineplaneray3).[getOrigin](#affineplaneray3getorigin)(r)
@@ -8761,6 +8913,12 @@ Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/rec
 ## [affineplane](#affineplane).[rot2](#affineplanerot2)
 
 Rotation in 2D. Represented by object `{ a, b }`.
+
+Rotation differs from orientation in the manner that
+where orientation is a static rotational position of an object,
+rotation is dynamic transform of an object.
+Therefore a change of basis does not affect rotation but
+it does affect orientation.
 
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
@@ -9574,13 +9732,18 @@ Two-dimensional rectangular size, consisting of width and height.
 
 Represented with an object `{ w, h }`.
 
+Note that size is invariant under rotation.
+Consider using [box2](#affineplanebox2) to maintain rotation and position data of a rectangular size.
+
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.size2.almostEqual](#affineplanesize2almostequal)
 - [affineplane.size2.area](#affineplanesize2area)
 - [affineplane.size2.atNorm](#affineplanesize2atnorm)
 - [affineplane.size2.create](#affineplanesize2create)
+- [affineplane.size2.equal](#affineplanesize2equal)
 - [affineplane.size2.scaleBy](#affineplanesize2scaleby)
 - [affineplane.size2.transitFrom](#affineplanesize2transitfrom)
 - [affineplane.size2.transitTo](#affineplanesize2transitto)
@@ -9588,6 +9751,28 @@ Represented with an object `{ w, h }`.
 
 
 Source: [size2/index.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/index.js)
+
+<a name="affineplanesize2almostequal"></a>
+## [affineplane](#affineplane).[size2](#affineplanesize2).[almostEqual](#affineplanesize2almostequal)(s, ss[, tolerance])
+
+Test if two sizes are equal within tolerance.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - a [size2](#affineplanesize2)
+- *ss*
+  - a [size2](#affineplanesize2)
+- *tolerance*
+  - optional number, default is [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/almostEqual.js)
 
 <a name="affineplanesize2area"></a>
 ## [affineplane](#affineplane).[size2](#affineplanesize2).[area](#affineplanesize2area)(sz)
@@ -9649,6 +9834,27 @@ Create a [size2](#affineplanesize2) object.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/create.js)
+
+<a name="affineplanesize2equal"></a>
+## [affineplane](#affineplane).[size2](#affineplanesize2).[equal](#affineplanesize2equal)(s, ss)
+
+Test if two sizes are strictly equal in value.
+The size objects are allowed to have additional non-equal properties.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - a [size2](#affineplanesize2)
+- *ss*
+  - a [size2](#affineplanesize2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/size2/equal.js)
 
 <a name="affineplanesize2scaleby"></a>
 ## [affineplane](#affineplane).[size2](#affineplanesize2).[scaleBy](#affineplanesize2scaleby)(sz, multiplier)
@@ -9739,12 +9945,17 @@ Three-dimensional cuboid size, consisting of width, height, and depth.
 
 Represented with an object `{ w, h, d }`.
 
+Note that sizes are invariant under rotation.
+Consider using [box3](#affineplanebox3) to track position and rotation of a rectangular size.
+
 
 <p style="margin-bottom: 0"><strong>Contents:</strong></p>
 
 
+- [affineplane.size3.almostEqual](#affineplanesize3almostequal)
 - [affineplane.size3.atNorm](#affineplanesize3atnorm)
 - [affineplane.size3.create](#affineplanesize3create)
+- [affineplane.size3.equal](#affineplanesize3equal)
 - [affineplane.size3.scaleBy](#affineplanesize3scaleby)
 - [affineplane.size3.transitFrom](#affineplanesize3transitfrom)
 - [affineplane.size3.transitTo](#affineplanesize3transitto)
@@ -9753,6 +9964,28 @@ Represented with an object `{ w, h, d }`.
 
 
 Source: [size3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/index.js)
+
+<a name="affineplanesize3almostequal"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3).[almostEqual](#affineplanesize3almostequal)(s, ss[, tolerance])
+
+Test if two sizes are equal within tolerance.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - a [size3](#affineplanesize3)
+- *ss*
+  - a [size3](#affineplanesize3)
+- *tolerance*
+  - optional number, default is [affineplane.epsilon](#affineplaneepsilon). Set to 0 for strict comparison.
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/almostEqual.js)
 
 <a name="affineplanesize3atnorm"></a>
 ## [affineplane](#affineplane).[size3](#affineplanesize3).[atNorm](#affineplanesize3atnorm)(sz, nw, nh, nd)
@@ -9799,6 +10032,27 @@ Create a [size3](#affineplanesize3) object.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/create.js)
+
+<a name="affineplanesize3equal"></a>
+## [affineplane](#affineplane).[size3](#affineplanesize3).[equal](#affineplanesize3equal)(s, ss)
+
+Test if two sizes are strictly equal in value.
+The size objects are allowed to have additional non-equal properties.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - a [size3](#affineplanesize3)
+- *ss*
+  - a [size3](#affineplanesize3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/size3/equal.js)
 
 <a name="affineplanesize3scaleby"></a>
 ## [affineplane](#affineplane).[size3](#affineplanesize3).[scaleBy](#affineplanesize3scaleby)(sz, multiplier)
@@ -9925,6 +10179,7 @@ Aliases: [affineplane.circle2](#affineplanecircle2)
 - [affineplane.sphere2.collisionArea](#affineplanesphere2collisionarea)
 - [affineplane.sphere2.copy](#affineplanesphere2copy)
 - [affineplane.sphere2.create](#affineplanesphere2create)
+- [affineplane.sphere2.equal](#affineplanesphere2equal)
 - [affineplane.sphere2.fromPoints](#affineplanesphere2frompoints)
 - [affineplane.sphere2.gap](#affineplanesphere2gap)
 - [affineplane.sphere2.hasPoint](#affineplanesphere2haspoint)
@@ -10132,6 +10387,27 @@ Create a [sphere2](#affineplanesphere2) object.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/create.js)
+
+<a name="affineplanesphere2equal"></a>
+## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[equal](#affineplanesphere2equal)(s, p)
+
+Test if two spheres are strictly equal in radius and position.
+See [affineplane.sphere2.almostEqual](#affineplanesphere2almostequal) for loose comparison.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *s*
+  - a [sphere2](#affineplanesphere2)
+- *p*
+  - a [sphere2](#affineplanesphere2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere2/equal.js)
 
 <a name="affineplanesphere2frompoints"></a>
 ## [affineplane](#affineplane).[sphere2](#affineplanesphere2).[fromPoints](#affineplanesphere2frompoints)(p, q)
@@ -10483,6 +10759,7 @@ Represented with an object `{ x, y, z, r }` for the origin and the radius.
 - [affineplane.sphere3.collide](#affineplanesphere3collide)
 - [affineplane.sphere3.copy](#affineplanesphere3copy)
 - [affineplane.sphere3.create](#affineplanesphere3create)
+- [affineplane.sphere3.equal](#affineplanesphere3equal)
 - [affineplane.sphere3.fromPoints](#affineplanesphere3frompoints)
 - [affineplane.sphere3.gap](#affineplanesphere3gap)
 - [affineplane.sphere3.hasPoint](#affineplanesphere3haspoint)
@@ -10675,6 +10952,27 @@ Create a [sphere3](#affineplanesphere3) object.
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/create.js)
+
+<a name="affineplanesphere3equal"></a>
+## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[equal](#affineplanesphere3equal)(c, d)
+
+Test if two spheres are strictly equal in radius and position.
+See [affineplane.sphere3.almostEqual](#affineplanesphere3almostequal) for loose comparison.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *c*
+  - a [sphere3](#affineplanesphere3)
+- *d*
+  - a [sphere3](#affineplanesphere3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/sphere3/equal.js)
 
 <a name="affineplanesphere3frompoints"></a>
 ## [affineplane](#affineplane).[sphere3](#affineplanesphere3).[fromPoints](#affineplanesphere3frompoints)(p, q)
@@ -11709,46 +12007,6 @@ Translation of the plane does not affect the vector.
 
 Source: [transitTo.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/transitTo.js)
 
-<a name="affineplanevec2unit"></a>
-## [affineplane](#affineplane).[vec2](#affineplanevec2).[unit](#affineplanevec2unit)(v)
-
-Get unit vector parallel to the given vector.
-The magnitude of unit vector is equal to one.
-If zero vector is given, assume direction towards positive x.
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-- *v*
-  - a [vec2](#affineplanevec2)
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-- a [vec2](#affineplanevec2), magnitude of one.
-
-
-Aliases: [affineplane.vec2.normalize](#affineplanevec2normalize)
-
-Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/unit.js)
-
-<a name="affineplanevec2validate"></a>
-## [affineplane](#affineplane).[vec2](#affineplanevec2).[validate](#affineplanevec2validate)(v)
-
-Check if object is a valid [vec2](#affineplanevec2).
-
-<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
-
-- *v*
-  - an object
-
-
-<p style="margin-bottom: 0"><strong>Returns:</strong></p>
-
-- a boolean
-
-
-Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/validate.js)
-
 <a name="affineplanevec3"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3)
 
@@ -11817,6 +12075,46 @@ Source: [vec3/index.js](https://github.com/axelpale/affineplane/blob/main/lib/ve
 The zero vector in 4D
 
 Source: [vec4/index.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/index.js)
+
+<a name="affineplanevec2unit"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[unit](#affineplanevec2unit)(v)
+
+Get unit vector parallel to the given vector.
+The magnitude of unit vector is equal to one.
+If zero vector is given, assume direction towards positive x.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - a [vec2](#affineplanevec2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a [vec2](#affineplanevec2), magnitude of one.
+
+
+Aliases: [affineplane.vec2.normalize](#affineplanevec2normalize)
+
+Source: [unit.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/unit.js)
+
+<a name="affineplanevec2validate"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[validate](#affineplanevec2validate)(v)
+
+Check if object is a valid [vec2](#affineplanevec2).
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - an object
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean
+
+
+Source: [validate.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/validate.js)
 
 <a name="affineplanevec3add"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[add](#affineplanevec3add)(v, w)
@@ -12560,6 +12858,7 @@ A [vec4](#affineplanevec4) is a 4D vector { x, y, z, w }.
 - [affineplane.vec4.add](#affineplanevec4add)
 - [affineplane.vec4.almostEqual](#affineplanevec4almostequal)
 - [affineplane.vec4.create](#affineplanevec4create)
+- [affineplane.vec4.equal](#affineplanevec4equal)
 - [affineplane.vec4.norm](#affineplanevec4norm)
 - [affineplane.vec4.scaleBy](#affineplanevec4scaleby)
 - [affineplane.vec4.validate](#affineplanevec4validate)
@@ -12631,6 +12930,26 @@ Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/v
 
 
 Source: [create.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/create.js)
+
+<a name="affineplanevec4equal"></a>
+## [affineplane](#affineplane).[vec4](#affineplanevec4).[equal](#affineplanevec4equal)(v, w)
+
+Test if vectors v, w are equal in value.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - a [vec4](#affineplanevec4)
+- *w*
+  - a [vec4](#affineplanevec4)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a boolean, true if equal
+
+
+Source: [equal.js](https://github.com/axelpale/affineplane/blob/main/lib/vec4/equal.js)
 
 <a name="affineplanevec4norm"></a>
 ## [affineplane](#affineplane).[vec4](#affineplanevec4).[norm](#affineplanevec4norm)(v)

@@ -1,6 +1,6 @@
 {
   "name": "affineplane",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "description": "Affine geometry library for 2D and 3D spaces",
   "keywords": [
     "affine",
@@ -22,6 +22,8 @@
     "helmert",
     "perspective",
     "projection",
+    "measure",
+    "invariance",
     "segment",
     "line",
     "ray"
@@ -38,19 +40,20 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "async": "^3.2.5",
+    "async": "^3.2.6",
     "genversion": "^3.2.0",
-    "nodemon": "^3.1.4",
-    "standard": "^17.1.0",
-    "tap-arc": "^1.2.2",
-    "tape": "^5.8.1",
+    "nodemon": "^3.1.9",
+    "standard": "^17.1.2",
+    "tap-arc": "^1.3.2",
+    "tape": "^5.9.0",
     "yamdog": "^2.1.0"
   },
   "scripts": {
     "lint": "standard index.js 'lib/**/*.js' 'test/**/*.js'",
     "lint:fix": "standard --fix index.js 'lib/**/*.js' 'test/**/*.js'",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "tape test/index.test.js | tap-arc --pessimistic",
+    "test:unit": "tape test/index.test.js",
+    "test:debug": "tape test/index.test.js | tap-arc --pessimistic",
     "test:watch": "nodemon -q --watch lib --watch test --exec 'npm --silent test'",
     "gv": "genversion lib/version.js",
     "build:docs": "node docs/generate.js",

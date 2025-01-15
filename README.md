@@ -1,7 +1,7 @@
 # affineplane
 
 [![NPM Version](https://img.shields.io/npm/v/affineplane.svg?colorB=7fcd0f)](https://www.npmjs.com/package/affineplane)
-[![Travis Build Status](https://img.shields.io/travis/com/axelpale/affineplane)](https://app.travis-ci.com/github/axelpale/affineplane)
+[![GitHub Actions Build status](https://img.shields.io/github/actions/workflow/status/axelpale/affineplane/affineplane-ci.yml)](https://github.com/axelpale/affineplane/actions/workflows/affineplane-ci.yml)
 [![License](https://img.shields.io/npm/l/affineplane)](#license)
 ![Dependency status](https://img.shields.io/badge/dependencies-none-lightgrey)
 
@@ -24,13 +24,10 @@ Shapes with position in space:
 
 - [box2](https://axelpale.github.io/affineplane/docs/API.html#affineplanebox2), a cuboid in 2D, `{a,b,x,y,w,h}`
 - [box3](https://axelpale.github.io/affineplane/docs/API.html#affineplanebox3), a cuboid in 3D, `{a,b,x,y,z,w,h,d}`
-- [dir2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir2), a direction in 2D, `{x,y}` of unit length
-- [dir3](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir3), a direction in 3D, `{x,y,z}` of unit length
-- [dist2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist2), a distance between two points in 2D, `number`
-- [dist3](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist3), a distance between two points in 3D, `number`
+- [circle2](https://axelpale.github.io/affineplane/docs/API.html#affineplanecircle2), a circle in 2D, `{x,y,r}`
+- [circle3](https://axelpale.github.io/affineplane/docs/API.html#affineplanecircle3), a flat circle in 3D, `{x,y,z,r}`
 - [line2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneline2), a line in 2D, `{origin,span}`
 - [line3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneline3), a line in 3D, `{origin,span}`
-- [orient2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneorient2), an orientation in 2D, `{a,b}`
 - [path2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepath2), an sequence of points in 2D, `[{x,y},...]`
 - [path3](https://axelpale.github.io/affineplane/docs/API.html#affineplanepath3), an sequence of points in 3D, `[{x,y,z},...]`
 - [plane2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneplane2), a plane in 2D, `{a,b,x,y}`
@@ -38,15 +35,23 @@ Shapes with position in space:
 - [point2](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint2), a location in 2D, `{x,y}`
 - [point3](https://axelpale.github.io/affineplane/docs/API.html#affineplanepoint3), a location in 3D, `{x,y,z}`
 - [ray3](https://axelpale.github.io/affineplane/docs/API.html#affineplaneray3), a ray in 3D, `{x,y,z,dx,dy,dz}`
+- [segment2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesegment2), a line segment in 2D space, `[{x,y},{x,y}]`
+- [segment3](https://axelpale.github.io/affineplane/docs/API.html#affineplanesegment3), a line segment in 3D space, `[{x,y,z},{x,y,z}]`
+- [sphere2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesphere2), a circle in 2D, `{x,y,r}`
+- [sphere3](https://axelpale.github.io/affineplane/docs/API.html#affineplanesphere3), a sphere in 3D, `{x,y,z,r}`
+
+Measurements of shapes:
+
+- [dir2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir2), a direction in 2D, `{x,y}` of unit length
+- [dir3](https://axelpale.github.io/affineplane/docs/API.html#affineplanedir3), a direction in 3D, `{x,y,z}` of unit length
+- [dist2](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist2), a distance between two points in 2D, `number`
+- [dist3](https://axelpale.github.io/affineplane/docs/API.html#affineplanedist3), a distance between two points in 3D, `number`
+- [orient2](https://axelpale.github.io/affineplane/docs/API.html#affineplaneorient2), an orientation in 2D, `{a,b}`
 - [scalar1](https://axelpale.github.io/affineplane/docs/API.html#affineplanescalar1), a first-order measure (length), `s`
 - [scalar2](https://axelpale.github.io/affineplane/docs/API.html#affineplanescalar2), a second-order measure (area), `ss`
 - [scalar3](https://axelpale.github.io/affineplane/docs/API.html#affineplanescalar3), a third-order measure (volume), `sss`
-- [segment2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesegment2), a line segment in 2D space, `[{x,y},{x,y}]`
-- [segment3](https://axelpale.github.io/affineplane/docs/API.html#affineplanesegment3), a line segment in 3D space, `[{x,y,z},{x,y,z}]`
 - [size2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesize2), a rectangle size in 2D, `{w,h}`
 - [size3](https://axelpale.github.io/affineplane/docs/API.html#affineplanesize3), a cuboid size in 3D, `{w,h,d}`
-- [sphere2](https://axelpale.github.io/affineplane/docs/API.html#affineplanesphere2), a circle in 2D, `{x,y,r}`
-- [sphere3](https://axelpale.github.io/affineplane/docs/API.html#affineplanesphere3), a sphere in 3D, `{x,y,z,r}`
 
 Movements of shapes:
 
