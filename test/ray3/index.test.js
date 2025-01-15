@@ -4,6 +4,7 @@ const units = {
   at: require('./at.test'),
   copy: require('./copy.test'),
   create: require('./create.test'),
+  equal: require('./equal.test'),
   getOrigin: require('./getOrigin.test'),
   getVector: require('./getVector.test'),
   homothety: require('./homothety.test'),
