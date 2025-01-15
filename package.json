@@ -22,6 +22,8 @@
     "helmert",
     "perspective",
     "projection",
+    "measure",
+    "invariance",
     "segment",
     "line",
     "ray"
