@@ -4,6 +4,7 @@ const units = {
   boundaries: require('./boundaries.test'),
   collisions: require('./collisions.test'),
   copy: require('./copy.test'),
+  equal: require('./equal.test'),
   measures: require('./measures.test'),
   positions: require('./positions.test'),
   projections: require('./projections.test'),
