@@ -1,7 +1,7 @@
 # affineplane
 
 [![NPM Version](https://img.shields.io/npm/v/affineplane.svg?colorB=7fcd0f)](https://www.npmjs.com/package/affineplane)
-[![Travis Build Status](https://img.shields.io/travis/com/axelpale/affineplane)](https://app.travis-ci.com/github/axelpale/affineplane)
+[![GitHub Actions Build status](https://img.shields.io/github/actions/workflow/status/axelpale/affineplane/affineplane-ci.yml)](https://github.com/axelpale/affineplane/actions/workflows/affineplane-ci.yml)
 [![License](https://img.shields.io/npm/l/affineplane)](#license)
 ![Dependency status](https://img.shields.io/badge/dependencies-none-lightgrey)
 
