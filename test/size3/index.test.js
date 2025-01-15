@@ -1,7 +1,9 @@
 // A unit for each method.
 const units = {
+  almostEqual: require('./almostEqual.test'),
   atNorm: require('./atNorm.test'),
   create: require('./create.test'),
+  equal: require('./equal.test'),
   scaleBy: require('./scaleBy.test'),
   transitFrom: require('./transitFrom.test'),
   transitTo: require('./transitTo.test'),
