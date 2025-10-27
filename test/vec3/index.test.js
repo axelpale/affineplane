@@ -2,6 +2,7 @@
 const units = {
   add: require('./add.test'),
   almostEqual: require('./almostEqual.test'),
+  angleBetween: require('./angleBetween.test'),
   cross: require('./cross.test'),
   difference: require('./difference.test'),
   divide: require('./divide.test'),
