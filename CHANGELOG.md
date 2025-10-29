@@ -334,9 +334,9 @@ In this version increment we introduce various collision detection methods.
 ### Changed
 
 - Added "See also" section to readme.
-- Small corrections and improvements to docs
-- Switch deprecated test reporter module
-- Upgrade dev dependencies
+- Small corrections and improvements to docs.
+- Switch deprecated test reporter module.
+- Upgrade dev dependencies.
 
 ### Fixed
 
@@ -346,12 +346,117 @@ In this version increment we introduce various collision detection methods.
 
 
 ## [2.5.1] - 2022-09-19
+
+### Changed
+
+- Update docs
+
+### Fixed
+
+- Repair helm2.projectTo
+- Repair helm and plane validation: use manhattan distance
+
+
 ## [2.5.0] - 2022-09-15
+
+### Added
+
+- New function: point2.almostEqual
+- New function: vec2.independent
+- New function: vec3.independent
+- New function: vec2.transformBy
+- New function: vec3.transformBy
+- Add documentation for plane3.projectTo
+
+### Changed
+
+- Improve docs notation on optional params.
+
+
 ## [2.4.0] - 2022-09-13
+
+### Added
+
+- New function plane3.getNormal
+- New function for vec2 vec3: .divide
+- Alias vec2 vec3 .unit .normalize
+- Alias vec3 .norm .magnitude
+- Alias vec2 vec3 .diff .difference .subtract
+- Alias point2 point3 .diff .delta
+- New few images in the API docs
+- Add linked titles in API docs
+
+### Changed
+
+- Improve vector test suites
+- Limit travis to main branch
+
+### Fixed
+
+- Correct inverted vec3.difference
+- Repair missing export for vec2.equal
+
+
 ## [2.3.0] - 2022-09-01
+
+### Added
+
+- New function vec2.cross - The cross product magnitude for 2D vectors
+- New function vec3.dot - The dot product for 3D vectors
+- New function vec3.cross - The cross product for 3D vectors
+- Add Travis CI integration and build badge
+
+
 ## [2.2.0] - 2022-08-31
+
+### Added
+
+- New function plane2.copy
+- New function plane3.copy
+- New constant plane2.IDENTITY
+- New constant plane3.IDENTITY
+- New function plane3.rotateToOrtho
+
+### Changed
+
+- Improve docs slightly
+- Upgrade codebase to standard style v17
+
+
 ## [2.1.0] - 2022-08-30
+
+### Added
+
+- New constant for plane2 plane3: IDENTITY
+- New function plane3.rotateToOrtho
+
+### Fixed
+
+- Correct readme badge urls
+
+
 ## [2.0.0] - 2022-08-29
+
+Lots of breaking changes in every geometry. Only the major ones are listed here.
+
+### Added
+
+- New geometry: `plane2`, `plane3`.
+- New geometry: `helm2`, `helm3`.
+- New geometry: `line2`, `line3`.
+- New geometry: `point3`, `vec3`.
+- New perspective projections for multiple geometries: `projectTo`.
+
+### Changed
+
+- BREAKING tran2 is replaced by plane2 and helm2 to separate passive and active transformations.
+- BREAKING proj2 is replaced by transitFrom, transitTo, and projectTo functions for each geometry.
+- BREAKING vector2 is renamed to vec2.
+- Improve documentation, lots of fixes.
+- Improve introduction with illustrations.
+- Write more comprehensive test suite
+
+
 ## [1.2.1] - 2022-07-19
 ## [1.2.0] - 2022-06-19
 ## [1.1.0] - 2022-06-19
