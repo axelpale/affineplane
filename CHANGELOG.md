@@ -247,3 +247,51 @@ In this version increment we introduce various collision detection methods.
 - Ensure non-negative size in `size2.scaleBy`.
 - Correct `point2.homothety` documentation.
 
+
+## [2.9.0] - 2022-12-04
+
+### Added
+
+- New function `helm2.fromPlane`.
+- New function `helm3.fromPlane`.
+- New function `helm2.limitDilation`.
+- New function `helm3.limitDilation`.
+- New function `plane2.limitScale`.
+- New function `plane3.limitScale`.
+- New function `plane2.transformInside`.
+- New function `plane3.transformInside`.
+- New function `plane2.almostEqual`.
+- New function `plane3.almostEqual`.
+- New alias for `plane3`: `basis2z`.
+- Illustrate `plane2` in API docs.
+
+### Changed
+
+- Various small improvements to API docs.
+
+
+## [2.8.0] - 2022-11-28
+
+### Added
+
+- New `helm2` functions: `fromVector`, `fromBasisVector`.
+- New `helm3` functions: `fromVector`, `fromBasisVector`.
+- New `plane2` function: `fromHelmert`. Creates passive transformations from active transformations.
+- New `point2` function: `direction`. Get direction between a point pair.
+- New `point3` function: `direction`. Get direction between a point pair.
+- New `vec2` function: `projectToVector`.
+- New `vec3` function: `projectToVector`.
+- New alias for `vec2.projectTo`: `projectToPlane`.
+- New alias for `vec3.projectTo`: `projectToPlane`.
+- Add parameter `origin` to the transform methods of `plane2` and `plane3` in order to apply a helmertian to a plane at custom point.
+
+### Changed
+
+- Improve test assertion for vectors.
+- Upgrade yamdog for better API docs.
+- Small improvements to docs.
+
+### Fixed
+
+- Correct terminology in `fromPolar` and `toPolar` functions of `vec2` and `vec3`.
+
