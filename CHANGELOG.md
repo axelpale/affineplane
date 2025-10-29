@@ -297,7 +297,54 @@ In this version increment we introduce various collision detection methods.
 
 
 ## [2.7.0] - 2022-10-28
+
+### Added
+
+- New namespace vec4 for 4D vector geometry
+- New namespace quat4 for quaternion geometry
+- New namespace rect2 for 2D rectangle with place and orientation in 3D
+- New namespace rect3 for 2D rectangle with place and orientation in 3D
+- New namespace path3 for 3D point sequence in 3D space
+- Implement point3.round
+- Implement vec3.rotateAroundAxis
+- Implement path2 functions: combine, transitFrom, transitTo
+- Alias helm3.translateBy = .addTranslation
+- Alias basis2 = plane2
+- Alias basis3 = plane3
+
+### Changed
+
+- Improved tests: vec3
+- Improved docs: point2, helm3
+- Change travis test environment from Ubuntu 16.04 to Ubuntu 20.04
+- Quicker test suite workflow with pessimistic test runs
+
+
 ## [2.6.0] - 2022-10-05
+
+### Added
+
+- New dir2 functions .almostEqual, .fromVector, .toPolar, .toVector
+- New dir3 geometry with various functions
+- New dist3 geometry with various functions
+- New angle geometry helper functions
+- Alias point3.translate = point3.translateBy
+- Alias plane3.transform = plane3.transformBy
+
+### Changed
+
+- Added "See also" section to readme.
+- Small corrections and improvements to docs
+- Switch deprecated test reporter module
+- Upgrade dev dependencies
+
+### Fixed
+
+- Correct z-axis behaviour under scaling; make it scale uniformly with x and y. Geometry affected by the bug: plane3, helm3, point3, vec3
+- Repair plane3.translateTo. Preserve z when dz not specified.
+- Remodel dir2 as unit vector instead of a number
+
+
 ## [2.5.1] - 2022-09-19
 ## [2.5.0] - 2022-09-15
 ## [2.4.0] - 2022-09-13
