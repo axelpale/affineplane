@@ -171,3 +171,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Repair broken `sphere2.translate` and `sphere3.translate`.
 
+
+## [2.12.0] - 2023-03-11
+
+In this version increment we introduce various collision detection methods.
+
+### Added
+
+- New geometry: `sphere2`, `sphere3`, `segment2`.
+- New `box2` functions: `hasPoint`, `getCircle`, `getSegments`, `offset`, `translate`, `collide`.
+- New `box3` functions: `getBasisInverse`, `hasPoint`, `getSphere`, `offset`, `translate`.
+- New `scalar1` function: `validate`.
+- New `scalar2` function: `validate`.
+- New `scalar3` function: `validate`.
+- New `dist2` function: `validate`.
+- New `dist3` function: `validate`.
+- New `line2` functions: `intersection`, `normal`.
+- New `line3` function: `intersection`.
+- New `path2` function: `validate`.
+- New `path3` function: `validate`.
+
+### Changed
+
+- Improve API docs for `point2`, `box2`, `box3`, `line2`.
+- Improve tests for `point2`.
