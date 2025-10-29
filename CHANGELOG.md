@@ -70,7 +70,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Add missing `segment3` entry in README.
+- Add missing `segment3` entry in README (#22).
 - Handle `sphere2.collisionArea` nested circle special case.
 
 
@@ -195,3 +195,55 @@ In this version increment we introduce various collision detection methods.
 
 - Improve API docs for `point2`, `box2`, `box3`, `line2`.
 - Improve tests for `point2`.
+
+
+## [2.11.0] - 2023-02-21
+
+### Added
+
+- New geometry: `scalar1`, `scalar2`, `scalar3`.
+- New `orient2` function: `almostEqual`.
+- New `box2` functions: `atBox`, `resizeBy`, `resizeTo`, `translateBy`, `rotateBy`, `getBasisInverse`.
+- New `box3` functions: `atBox`, `resizeBy`, `resizeTo`, `translateBy`, `rotateBy`.
+- New `plane3` functions: `projectToDepth`, `projectToScale`.
+- New test utility: `almostEqualBasis`.
+
+### Changed
+
+- Upgrade `box3.projectToPlane` to do perspective projection.
+- Upgrade `vec3.projectToPlane` to do perspective projection.
+- Improve `box2` and `box3` documentation.
+- Reveal `orient2` documentation.
+- Use `projectToPlane` instead of `projectTo` alias in code examples.
+- Mark `rect2` and `rect3` as deprecated.
+
+### Removed
+
+- Hide aliases `vector2` and `vector3` in documentation.
+
+
+## [2.10.0] - 2023-01-31
+
+### Added
+
+- New rectangular cuboid geometry: `box2`, `box3` (#14).
+- New size geometry `size3` (#15).
+- New orientation geometry: `orient2`.
+- New `dist2` functions: `equal`, `almostEqual`.
+- New `dist3` functions: `equal`, `almostEqual`.
+- New `size2` function: `validate`.
+- New alias for all `projectTo` functions: `projectToplane`.
+- New alias for `point2.difference`: `vectorTo`.
+- New alias for `point3.difference`: `vectorTo`.
+
+### Changed
+
+- Migrate API docs to yamdog v2.
+
+### Fixed
+
+- Correct `point2.transformMany` parameter order.
+- Use identity default in `helm2.fromFeatures`.
+- Ensure non-negative size in `size2.scaleBy`.
+- Correct `point2.homothety` documentation.
+
