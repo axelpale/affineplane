@@ -458,8 +458,67 @@ Lots of breaking changes in every geometry. Only the major ones are listed here.
 
 
 ## [1.2.1] - 2022-07-19
+
+### Changed
+
+- Improve and correct docs.
+- Generate API docs with `yamdog`
+
+
 ## [1.2.0] - 2022-06-19
+
+### Added
+
+- New function `tran2.rotateToOrtho` to snap 90 deg turns.
+- New alias `tran2.ROT0` for the constant `tran2.IDENTITY`.
+- New alias `proj2.copy` for the function `proj2.clone`.
+
+### Changed
+
+- Extend `tran2.fromPolar` parameters: x and y params become optional.
+- Improve API docs
+
+
 ## [1.1.0] - 2022-06-19
+
+### Added
+
+- New geometry `dir2`: a data structure and functions for direction and for its orthogonal projection.
+- New function `proj2.size2`: orthogonal projection for size2
+
+### Changed
+
+- Improve docs
+- Streamline test suite.
+
+
 ## [1.0.1] - 2022-05-07
+
+### Added
+
+- New function `vector2.toPolar`.
+
+### Changed
+
+- Improve and correct API documentation.
+
+
 ## [1.0.0] - 2022-04-17
+
+### Added
+
+- New geometry:
+  - `dist2`
+  - `linear2`
+  - `path2`
+  - `point2`
+  - `point3`
+  - `poly2`
+  - `proj2`
+  - `proj3`
+  - `size2`
+  - `tran2`
+  - `vector2`
+  - `vector3`
+- New constant: `epsilon`
 
