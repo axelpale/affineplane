@@ -1,5 +1,5 @@
 <a name="top"></a>
-# Affineplane API Documentation v2.20.0
+# Affineplane API Documentation v2.21.0
 
 Welcome to affineplane API reference documentation. These docs are generated with [yamdog](https://axelpale.github.io/yamdog/).
 
@@ -11327,6 +11327,7 @@ position vectors.
 - [affineplane.vec2.ZERO](#affineplanevec2zero)
 - [affineplane.vec2.add](#affineplanevec2add)
 - [affineplane.vec2.almostEqual](#affineplanevec2almostequal)
+- [affineplane.vec2.angleBetween](#affineplanevec2anglebetween)
 - [affineplane.vec2.average](#affineplanevec2average)
 - [affineplane.vec2.copy](#affineplanevec2copy)
 - [affineplane.vec2.create](#affineplanevec2create)
@@ -11413,6 +11414,29 @@ Test if two vectors v and w are almost equal by the margin of epsilon.
 
 
 Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/almostEqual.js)
+
+<a name="affineplanevec2anglebetween"></a>
+## [affineplane](#affineplane).[vec2](#affineplanevec2).[angleBetween](#affineplanevec2anglebetween)(v, w)
+
+Measure the smallest angle between vector v and w.
+Always positive.
+Computes the arccosine of the dot product,
+divided by the geometric mean of the magnitudes.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - a [vec2](#affineplanevec2)
+- *w*
+  - a [vec2](#affineplanevec2)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number in range [0, π], the angle in radians.
+
+
+Source: [angleBetween.js](https://github.com/axelpale/affineplane/blob/main/lib/vec2/angleBetween.js)
 
 <a name="affineplanevec2average"></a>
 ## [affineplane](#affineplane).[vec2](#affineplanevec2).[average](#affineplanevec2average)(vs)
@@ -12022,6 +12046,7 @@ and rotation when represented on different plane.
 - [affineplane.vec3.ZERO](#affineplanevec3zero)
 - [affineplane.vec3.add](#affineplanevec3add)
 - [affineplane.vec3.almostEqual](#affineplanevec3almostequal)
+- [affineplane.vec3.angleBetween](#affineplanevec3anglebetween)
 - [affineplane.vec3.average](#affineplanevec3average)
 - [affineplane.vec3.copy](#affineplanevec3copy)
 - [affineplane.vec3.create](#affineplanevec3create)
@@ -12045,7 +12070,7 @@ and rotation when represented on different plane.
 - [affineplane.vec3.projectToVector](#affineplanevec3projecttovector)
 - [affineplane.vec3.rotateAroundAxis](#affineplanevec3rotatearoundaxis)
 - [affineplane.vec3.rotateBy](#affineplanevec3rotateby)
-- [affineplane.vec3.rotateBy](#affineplanevec3rotateby)
+- [affineplane.vec3.rotateTo](#affineplanevec3rotateto)
 - [affineplane.vec3.scaleBy](#affineplanevec3scaleby)
 - [affineplane.vec3.scaleTo](#affineplanevec3scaleto)
 - [affineplane.vec3.subtract](#affineplanevec3subtract)
@@ -12156,6 +12181,29 @@ Test if vectors are almost equal by the margin of epsilon.
 
 
 Source: [almostEqual.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/almostEqual.js)
+
+<a name="affineplanevec3anglebetween"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[angleBetween](#affineplanevec3anglebetween)(v, w)
+
+Measure the smallest angle between vector v and w.
+Always positive.
+Computes the arccosine of the dot product,
+divided by the geometric mean of the magnitudes.
+
+<p style="margin-bottom: 0"><strong>Parameters:</strong></p>
+
+- *v*
+  - a [vec3](#affineplanevec3)
+- *w*
+  - a [vec3](#affineplanevec3)
+
+
+<p style="margin-bottom: 0"><strong>Returns:</strong></p>
+
+- a number in range [0, π], the angle in radians.
+
+
+Source: [angleBetween.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/angleBetween.js)
 
 <a name="affineplanevec3average"></a>
 ## [affineplane](#affineplane).[vec3](#affineplanevec3).[average](#affineplanevec3average)(vs)
@@ -12581,8 +12629,8 @@ Roll is applied before pitch.
 
 Source: [rotateBy.js](https://github.com/axelpale/affineplane/blob/main/lib/vec3/rotateBy.js)
 
-<a name="affineplanevec3rotateby"></a>
-## [affineplane](#affineplane).[vec3](#affineplanevec3).[rotateBy](#affineplanevec3rotateby)(v, roll[, pitch])
+<a name="affineplanevec3rotateto"></a>
+## [affineplane](#affineplane).[vec3](#affineplanevec3).[rotateTo](#affineplanevec3rotateto)(v, roll[, pitch])
 
 Rotate vector so that it points to the given radian angles.
 The vector magnitude is preserved.
