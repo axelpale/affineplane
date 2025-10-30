@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.21.0] - 2025-xx-xx
+## [2.21.0] - 2025-10-30
 
 ### Added
 
@@ -14,8 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Repair vec3.rotateTo API docs name (#30).
-- Ignore .github workflow files in NPM package (#29).
+- Repair `vec3.rotateTo` API docs name (#30).
+- Ignore `.github` workflow files in NPM package (#29).
 
 
 ## [2.20.0] - 2025-01-15
@@ -300,36 +300,36 @@ In this version increment we introduce various collision detection methods.
 
 ### Added
 
-- New namespace vec4 for 4D vector geometry
-- New namespace quat4 for quaternion geometry
-- New namespace rect2 for 2D rectangle with place and orientation in 3D
-- New namespace rect3 for 2D rectangle with place and orientation in 3D
-- New namespace path3 for 3D point sequence in 3D space
-- Implement point3.round
-- Implement vec3.rotateAroundAxis
-- Implement path2 functions: combine, transitFrom, transitTo
+- New geometry `vec4` for 4D vector geometry
+- New geometry `quat4` for quaternion geometry
+- New geometry `rect2` for 2D rectangle with place and orientation in 3D
+- New geometry `rect3` for 2D rectangle with place and orientation in 3D
+- New geometry `path3` for 3D point sequence in 3D space
+- Implement `point3.round`.
+- Implement `vec3.rotateAroundAxis`.
+- Implement `path2` functions: combine, transitFrom, transitTo
 - Alias helm3.translateBy = .addTranslation
 - Alias basis2 = plane2
 - Alias basis3 = plane3
 
 ### Changed
 
-- Improved tests: vec3
-- Improved docs: point2, helm3
-- Change travis test environment from Ubuntu 16.04 to Ubuntu 20.04
-- Quicker test suite workflow with pessimistic test runs
+- Improved tests: `vec3`.
+- Improved docs: `point2`, `helm3`.
+- Change travis test environment from Ubuntu 16.04 to Ubuntu 20.04.
+- Quicker test suite workflow with pessimistic test runs.
 
 
 ## [2.6.0] - 2022-10-05
 
 ### Added
 
-- New dir2 functions .almostEqual, .fromVector, .toPolar, .toVector
-- New dir3 geometry with various functions
-- New dist3 geometry with various functions
-- New angle geometry helper functions
-- Alias point3.translate = point3.translateBy
-- Alias plane3.transform = plane3.transformBy
+- New `dir2` functions .almostEqual, .fromVector, .toPolar, .toVector
+- New `dir3` geometry with various functions
+- New `dist3` geometry with various functions
+- New `angle` geometry helper functions
+- Alias `point3.translate` = `point3.translateBy`.
+- Alias `plane3.transform` = `plane3.transformBy`.
 
 ### Changed
 
@@ -341,32 +341,32 @@ In this version increment we introduce various collision detection methods.
 ### Fixed
 
 - Correct z-axis behaviour under scaling; make it scale uniformly with x and y. Geometry affected by the bug: plane3, helm3, point3, vec3
-- Repair plane3.translateTo. Preserve z when dz not specified.
-- Remodel dir2 as unit vector instead of a number
+- Repair `plane3.translateTo`. Preserve z when dz not specified.
+- Remodel `dir2` as unit vector instead of a number
 
 
 ## [2.5.1] - 2022-09-19
 
 ### Changed
 
-- Update docs
+- Update docs.
 
 ### Fixed
 
-- Repair helm2.projectTo
-- Repair helm and plane validation: use manhattan distance
+- Repair `helm2.projectTo`.
+- Repair helm and plane validation: use manhattan distance.
 
 
 ## [2.5.0] - 2022-09-15
 
 ### Added
 
-- New function: point2.almostEqual
-- New function: vec2.independent
-- New function: vec3.independent
-- New function: vec2.transformBy
-- New function: vec3.transformBy
-- Add documentation for plane3.projectTo
+- New function: `point2.almostEqual`.
+- New function: `vec2.independent`.
+- New function: `vec3.independent`.
+- New function: `vec2.transformBy`.
+- New function: `vec3.transformBy`.
+- Add documentation for `plane3.projectTo`.
 
 ### Changed
 
@@ -377,62 +377,62 @@ In this version increment we introduce various collision detection methods.
 
 ### Added
 
-- New function plane3.getNormal
-- New function for vec2 vec3: .divide
+- New function `plane3.getNormal`.
+- New function for `vec2`, `vec3`: .divide
 - Alias vec2 vec3 .unit .normalize
 - Alias vec3 .norm .magnitude
 - Alias vec2 vec3 .diff .difference .subtract
 - Alias point2 point3 .diff .delta
-- New few images in the API docs
-- Add linked titles in API docs
+- New images in the API docs.
+- Add linked titles in API docs.
 
 ### Changed
 
-- Improve vector test suites
-- Limit travis to main branch
+- Improve vector test suites.
+- Limit travis to main branch.
 
 ### Fixed
 
-- Correct inverted vec3.difference
-- Repair missing export for vec2.equal
+- Correct inverted `vec3.difference`.
+- Repair missing export for `vec2.equal`.
 
 
 ## [2.3.0] - 2022-09-01
 
 ### Added
 
-- New function vec2.cross - The cross product magnitude for 2D vectors
-- New function vec3.dot - The dot product for 3D vectors
-- New function vec3.cross - The cross product for 3D vectors
-- Add Travis CI integration and build badge
+- New function `vec2.cross` - The cross product magnitude for 2D vectors.
+- New function `vec3.dot` - The dot product for 3D vectors.
+- New function `vec3.cross` - The cross product for 3D vectors.
+- Add Travis CI integration and build badge.
 
 
 ## [2.2.0] - 2022-08-31
 
 ### Added
 
-- New function plane2.copy
-- New function plane3.copy
-- New constant plane2.IDENTITY
-- New constant plane3.IDENTITY
-- New function plane3.rotateToOrtho
+- New function `plane2.copy`
+- New function `plane3.copy`
+- New constant `plane2.IDENTITY`
+- New constant `plane3.IDENTITY`
+- New function `plane3.rotateToOrtho`
 
 ### Changed
 
-- Improve docs slightly
-- Upgrade codebase to standard style v17
+- Improve docs slightly.
+- Upgrade codebase to `standard` style v17.
 
 
 ## [2.1.0] - 2022-08-30
 
 ### Added
 
-- New constant for plane2 plane3: IDENTITY
-- New function plane3.rotateToOrtho
+- New constant for `plane2`, `plane3`: `IDENTITY`.
+- New function `plane3.rotateToOrtho`.
 
 ### Fixed
 
-- Correct readme badge urls
+- Correct readme badge urls.
 
 
 ## [2.0.0] - 2022-08-29
@@ -449,12 +449,12 @@ Lots of breaking changes in every geometry. Only the major ones are listed here.
 
 ### Changed
 
-- BREAKING tran2 is replaced by plane2 and helm2 to separate passive and active transformations.
-- BREAKING proj2 is replaced by transitFrom, transitTo, and projectTo functions for each geometry.
-- BREAKING vector2 is renamed to vec2.
+- BREAKING `tran2` is replaced by `plane2` and `helm2` to separate passive and active transformations.
+- BREAKING `proj2` is replaced by functions `transitFrom`, `transitTo`, and `projectTo` in each geometry.
+- BREAKING `vector2` is renamed to `vec2`.
 - Improve documentation, lots of fixes.
 - Improve introduction with illustrations.
-- Write more comprehensive test suite
+- Write more comprehensive test suite.
 
 
 ## [1.2.1] - 2022-07-19
@@ -462,7 +462,7 @@ Lots of breaking changes in every geometry. Only the major ones are listed here.
 ### Changed
 
 - Improve and correct docs.
-- Generate API docs with `yamdog`
+- Generate API docs with `yamdog`.
 
 
 ## [1.2.0] - 2022-06-19
@@ -484,7 +484,7 @@ Lots of breaking changes in every geometry. Only the major ones are listed here.
 ### Added
 
 - New geometry `dir2`: a data structure and functions for direction and for its orthogonal projection.
-- New function `proj2.size2`: orthogonal projection for size2
+- New function `proj2.size2`: orthogonal projection for `size2`.
 
 ### Changed
 
